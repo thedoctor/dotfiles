@@ -1,0 +1,2 @@
+# Don't keep saves
+home/.emacs.d/auto-save-list/*
