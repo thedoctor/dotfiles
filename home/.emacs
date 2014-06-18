@@ -33,7 +33,7 @@
 (setq-default auto-mode-alist
   (append '(("\.css.php$" . css-mode)
             ("\.php$" . php-mode)
-            ("\.module$" . php-mode))
+            ("\.module$" . php-mode)
             ("\.inc$" . php-mode))
           ;;("\.ctp$" . web-mode))
           auto-mode-alist))
