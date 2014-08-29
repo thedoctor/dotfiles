@@ -59,7 +59,7 @@
 
 ;; Show me dem line-numbers
 (setq linum-format "%d ")
-
+(add-hook 'after-change-major-mode-hook 'linum-mode)
 
 ;;;;---------------------------------------------------------------------------
 ;; SECTION: Plugins
@@ -96,16 +96,16 @@
 
 ;; Stripes - sets the background color of every even line. In this case, it's set to #141414 -- change in stripes.el
 (require 'stripes)
-(turn-on-stripes-mode)
+(add-hook 'after-change-major-mode-hook 'turn-on-stripes-mode)
 
 ;; Column-marker - let's highlight column 80 so we know where to trim lines. Love me dat PEP
 (require 'column-marker)
-(add-hook 'emacs-startup-hook (lambda () (interactive) (column-marker-2 80)))
-(add-hook 'emacs-startup-hook 'column-number-mode)
+(add-hook 'after-change-major-mode-hook (lambda () (interactive) (column-marker-2 80)))
+(add-hook 'after-change-major-mode-hook 'column-number-mode)
 
 ;; Highlight-chars - Customizable regex highlighting.
 (require 'highlight-chars)
 ;; Highlight tabs - we almost always want spaces.
-(add-hook 'font-lock-mode-hook 'hc-highlight-tabs)
+(add-hook 'after-change-major-mode-hook 'hc-highlight-tabs)
 ;; Highlight trailing whitespace.
-(add-hook 'font-lock-mode-hook 'hc-highlight-trailing-whitespace)
+(add-hook 'after-change-major-mode-hook 'hc-highlight-trailing-whitespace)
