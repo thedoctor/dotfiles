@@ -78,17 +78,17 @@
 
 ;; Windmove - for switching between frames -- easier than C-x o.
 (require 'windmove)
-(global-set-key (kbd "ESC <left>")  'windmove-left)
-(global-set-key (kbd "ESC <right>") 'windmove-right)
-(global-set-key (kbd "ESC <up>")    'windmove-up)
-(global-set-key (kbd "ESC <down>")  'windmove-down)
+(global-set-key (kbd "ESC 8")    'windmove-up)
+(global-set-key (kbd "ESC 5")  'windmove-down)
+(global-set-key (kbd "ESC 4")  'windmove-left)
+(global-set-key (kbd "ESC 6") 'windmove-right)
 
 ;; Buffer-move - for swapping buffers between frames. Numpad is great for this.
 (require 'buffer-move)
-(global-set-key (kbd "ESC 8")     'buf-move-up)
-(global-set-key (kbd "ESC 5")   'buf-move-down)
-(global-set-key (kbd "ESC 4")   'buf-move-left)
-(global-set-key (kbd "ESC 6")  'buf-move-right)
+(global-set-key (kbd "C-x <kp-8>")    'buf-move-up)
+(global-set-key (kbd "C-x <kp-5>")  'buf-move-down)
+(global-set-key (kbd "C-x <kp-4>")  'buf-move-left)
+(global-set-key (kbd "C-x <kp-6>") 'buf-move-right)
 
 ;; IDO - interactive do, basically auto-completion for switching buffers and finding files. Replaces main C-x f and C-x b.
 (require 'ido)
@@ -96,7 +96,7 @@
 
 ;; Stripes - sets the background color of every even line. In this case, it's set to #141414 -- change in stripes.el
 (require 'stripes)
-(add-hook 'after-change-major-mode-hook 'turn-on-stripes-mode)
+;;(add-hook 'after-change-major-mode-hook 'turn-on-stripes-mode)
 
 ;; Column-marker - let's highlight column 80 so we know where to trim lines. Love me dat PEP
 (require 'column-marker)

@@ -66,7 +66,7 @@
      minor-mode-alist)))
 
 (defface stripes-face
-  `((t (:background "#141414")))
+  `((t (:background "#050505")))
   "Face for alternate lines."
   :group 'stripes)
 
@@ -135,7 +135,7 @@ This will not monitor changes of the buffer."
      (forward-line stripes-lcount)
      (setq ovl (make-overlay ppp (point)))
      (overlay-put ovl 'face 'stripes-face)))))))
-   
+
 (defun stripes-after-change-function (beg end length)
   "After change function for color alternation mode.
 Refreshes all the highlighting.  This is slow, but as mostly lists are
