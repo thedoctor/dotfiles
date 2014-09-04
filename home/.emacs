@@ -60,6 +60,8 @@
 ;; Show me dem line-numbers
 (setq linum-format "%d ")
 (add-hook 'after-change-major-mode-hook 'linum-mode)
+(global-set-key (kbd "ESC <up>")  scroll-down)
+(global-set-key (kbd "ESC <down>") 'scroll-up)
 
 ;;;;---------------------------------------------------------------------------
 ;; SECTION: Plugins
@@ -89,6 +91,16 @@
 (global-set-key (kbd "C-x <kp-5>")  'buf-move-down)
 (global-set-key (kbd "C-x <kp-4>")  'buf-move-left)
 (global-set-key (kbd "C-x <kp-6>") 'buf-move-right)
+
+;; Resizing windows - not a plugin, but related.
+(global-set-key (kbd "ESC i")              'enlarge-window)
+(global-set-key (kbd "ESC k")               'shrink-window)
+(global-set-key (kbd "ESC j")  'shrink-window-horizontally)
+(global-set-key (kbd "ESC l") 'enlarge-window-horizontally)
+
+;; DoReMi - Incrementally perform action with arrow keys
+;; (require 'doremi)
+;; TODO (doremi)
 
 ;; IDO - interactive do, basically auto-completion for switching buffers and finding files. Replaces main C-x f and C-x b.
 (require 'ido)
