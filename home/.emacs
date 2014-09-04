@@ -60,7 +60,7 @@
 ;; Show me dem line-numbers
 (setq linum-format "%d ")
 (add-hook 'after-change-major-mode-hook 'linum-mode)
-(global-set-key (kbd "ESC <up>")  scroll-down)
+(global-set-key (kbd "ESC <up>") 'scroll-down)
 (global-set-key (kbd "ESC <down>") 'scroll-up)
 
 ;;;;---------------------------------------------------------------------------
