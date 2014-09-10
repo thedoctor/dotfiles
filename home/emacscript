@@ -1,0 +1,2 @@
+#!/bin/sh
+~/Emacs.app/Contents/MacOS/Emacs -nw "$@"
