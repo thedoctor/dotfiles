@@ -18,10 +18,18 @@
 ;;;;---------------------------------------------------------------------------
 ;; This is the directory where we keep plugins.
 (add-to-list 'load-path "~/.emacs.d/elisp/")
+(add-to-list 'load-path "~/.emacs.d/elisp/markdown-mode/")
 
 ;;;;---------------------------------------------------------------------------
 ;; SECTION: MODES
 ;;;;---------------------------------------------------------------------------
+
+;; Markdown Mode
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;; PHP Mode
 (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
@@ -58,8 +66,8 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Show me dem line-numbers
-(setq linum-format "%d ")
-(add-hook 'after-change-major-mode-hook 'linum-mode)
+;; (setq linum-format "%d ")
+;; (add-hook 'after-change-major-mode-hook 'linum-mode)
 
 (global-set-key (kbd "ESC <up>") 'scroll-down)
 (global-set-key (kbd "ESC <down>") 'scroll-up)
