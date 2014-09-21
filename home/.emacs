@@ -18,7 +18,6 @@
 ;;;;---------------------------------------------------------------------------
 ;; This is the directory where we keep plugins.
 (add-to-list 'load-path "~/.emacs.d/elisp/")
-(add-to-list 'load-path "~/.emacs.d/elisp/markdown-mode/")
 
 ;;;;---------------------------------------------------------------------------
 ;; SECTION: MODES
