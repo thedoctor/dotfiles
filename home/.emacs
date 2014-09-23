@@ -18,7 +18,6 @@
 ;;;;---------------------------------------------------------------------------
 ;; This is the directory where we keep plugins.
 (add-to-list 'load-path "~/.emacs.d/elisp/")
-(add-to-list 'load-path "~/.emacs.d/elisp/markdown-mode/")
 
 ;;;;---------------------------------------------------------------------------
 ;; SECTION: MODES
@@ -32,11 +31,19 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;; PHP Mode
-(autoload 'php-mode "php-mode" "Major mode for editing php code." t)
+(autoload 'php-mode "php-mode" "Major mode for PHP." t)
+
+;; JSON Mode
+(autoload 'json-mode "json-mode" "Major mode for JSON." t)
+(add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
 
 ;; JS2 Mode
-(autoload 'js2-mode "js2-mode" nil t)
+(autoload 'js2-mode "js2-mode" "Alternate major mode for JavaScript." t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+;; CoffeeScript Mode
+(autoload 'coffee-mode "coffee-mode" "Major mode for CoffeeScript." t)
+(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
 
 (setq-default auto-mode-alist
   (append '(("\.css.php$" . css-mode)
