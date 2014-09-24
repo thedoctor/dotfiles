@@ -35,6 +35,8 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 alias ll='ls -la'
 alias cp='rsync -aP'
+alias eamcs='emacs'
+alias emasc='emacs'
 alias flag='toilet -f mono12 '
 
 alias cc="drush rr && drush cc all"
