@@ -42,6 +42,7 @@ alias flag='toilet -f mono12 '
 alias cc="drush rr && drush cc all"
 alias ccfg="drush rr && drush cc all && fg"
 alias dl="tail -f /tmp/drupal_debug.txt"
+alias rmpyc="find . -type f -name '*.pyc' -exec rm {} \;"
 
 export PYTHONSTARTUP=~/.pythonrc
 export RBENV_ROOT="${HOME}/.rbenv"; if [ -d "${RBENV_ROOT}" ]; then export PATH="${RBENV_ROOT}/bin:${PATH}"; eval "$(rbenv init -)"; fi
