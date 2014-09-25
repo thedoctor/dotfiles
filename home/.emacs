@@ -49,7 +49,8 @@
   (append '(("\.css.php$" . css-mode)
             ("\.php$" . php-mode)
             ("\.module$" . php-mode)
-            ("\.inc$" . php-mode))
+            ("\.inc$" . php-mode)
+            ("Rakefile" . ruby-mode))
           ;;("\.ctp$" . web-mode))
           auto-mode-alist))
 
