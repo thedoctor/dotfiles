@@ -46,3 +46,4 @@ alias rmpyc="find . -type f -name '*.pyc' -exec rm {} \;"
 
 export PYTHONSTARTUP=~/.pythonrc
 export RBENV_ROOT="${HOME}/.rbenv"; if [ -d "${RBENV_ROOT}" ]; then export PATH="${RBENV_ROOT}/bin:${PATH}"; eval "$(rbenv init -)"; fi
+export WORKON_HOME=~/Envs

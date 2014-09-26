@@ -1,2 +1,5 @@
 # Don't keep saves
 home/.emacs.d/auto-save-list/*
+
+# Don't keep virtualenvs
+home/Envs/*/**
