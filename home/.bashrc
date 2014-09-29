@@ -47,4 +47,10 @@ alias rmpyc="find . -type f -name '*.pyc' -exec rm {} \;"
 export PYTHONSTARTUP=~/.pythonrc
 export RBENV_ROOT="${HOME}/.rbenv"; if [ -d "${RBENV_ROOT}" ]; then export PATH="${RBENV_ROOT}/bin:${PATH}"; eval "$(rbenv init -)"; fi
 export WORKON_HOME=~/Envs
+if [ ! -e "/usr/local/bin/virtualenvwrapper.sh" ]
+then
+    pip install virtualenv
+    pip install virtualenvwrapper
+fi
+
 source virtualenvwrapper.sh
