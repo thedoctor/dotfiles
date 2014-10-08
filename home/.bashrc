@@ -1,3 +1,8 @@
+ngrepl() {
+  echo "sudo ngrep -W byline -d lo port $1"
+  sudo ngrep -W byline -d lo port $1
+}
+
 mfind(){
     find "$1" -type f -exec grep -iIHn "$2" {} \;
 }

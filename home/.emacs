@@ -18,6 +18,7 @@
 ;;;;---------------------------------------------------------------------------
 ;; This is the directory where we keep plugins.
 (add-to-list 'load-path "~/.emacs.d/elisp/")
+(add-to-list 'load-path "~/.emacs.d/elpa/")
 
 ;;;;---------------------------------------------------------------------------
 ;; SECTION: MODES
@@ -50,6 +51,7 @@
             ("\.php$" . php-mode)
             ("\.module$" . php-mode)
             ("\.inc$" . php-mode)
+            (".pythonrc" . python-mode)
             ("Rakefile" . ruby-mode))
           ;;("\.ctp$" . web-mode))
           auto-mode-alist))
@@ -64,6 +66,9 @@
 (setq-default c-basic-indent 2)
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
+
+;; Follow symlinks
+(setq-default vc-follow-symlinks t)
 
 ;; Turn on syntax hightlighting.
 (if (fboundp 'global-font-lock-mode)

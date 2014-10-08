@@ -1,1 +1,16 @@
-from pprint import pprint as pr
+from pprint import pprint as p
+from time import time
+import inspect as i
+
+def show(a):
+    p(i.getmembers(a))
+
+# round-py testing
+import round
+c = round.client("http://localhost:8998")
+d = c.developers.create(email="test{}@email.com".format(time()), password="password")
+apps = d.applications
+a = d.applications['default']
+nc = round.client("http://localhost:8998")
+nc.context.authorize("Gem-Application", url=a.resource.url, api_token=a.resource.api_token)
+nc.application
