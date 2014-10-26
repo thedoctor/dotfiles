@@ -42,6 +42,10 @@
 (autoload 'js2-mode "js2-mode" "Alternate major mode for JavaScript." t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
+;; SCSS Mode
+(autoload 'scss-mode "scss-mode")
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
+
 ;; CoffeeScript Mode
 (autoload 'coffee-mode "coffee-mode" "Major mode for CoffeeScript." t)
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
