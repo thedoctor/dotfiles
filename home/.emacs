@@ -42,6 +42,10 @@
 (autoload 'js2-mode "js2-mode" "Alternate major mode for JavaScript." t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
+;; SCSS Mode
+(autoload 'scss-mode "scss-mode")
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
+
 ;; CoffeeScript Mode
 (autoload 'coffee-mode "coffee-mode" "Major mode for CoffeeScript." t)
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
@@ -61,10 +65,9 @@
 ;; SECTION: PREFERENCES
 ;;;;---------------------------------------------------------------------------
 
-;; Indenting style - follow Python conventions.
-;; i.e. Never tabs: always replace with 4 spaces.
-(setq-default c-basic-indent 2)
-(setq-default tab-width 4)
+(setq-default tab-width 2)
+(defvaralias 'c-basic-offset 'tab-width)
+(defvaralias 'cperl-indent-level 'tab-width)
 (setq-default indent-tabs-mode nil)
 
 ;; Follow symlinks
