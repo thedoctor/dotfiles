@@ -65,10 +65,9 @@
 ;; SECTION: PREFERENCES
 ;;;;---------------------------------------------------------------------------
 
-;; Indenting style - follow Python conventions.
-;; i.e. Never tabs: always replace with 4 spaces.
-(setq-default c-basic-indent 2)
-(setq-default tab-width 4)
+(setq-default tab-width 2)
+(defvaralias 'c-basic-offset 'tab-width)
+(defvaralias 'cperl-indent-level 'tab-width)
 (setq-default indent-tabs-mode nil)
 
 ;; Follow symlinks
