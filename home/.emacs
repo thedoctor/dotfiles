@@ -144,3 +144,4 @@
 (add-hook 'after-change-major-mode-hook 'hc-highlight-tabs)
 ;; Highlight trailing whitespace.
 (add-hook 'after-change-major-mode-hook 'hc-highlight-trailing-whitespace)
+(put 'upcase-region 'disabled nil)
