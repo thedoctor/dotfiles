@@ -47,6 +47,25 @@ gchk(){
   git checkout "$@"
 }
 
+gl(){
+  if [ $# -eq 0 ]
+  then
+    git log --oneline --stat
+  else
+    git log -$1 --oneline --stat
+  fi
+}
+
+glp() {
+  if [ $# -eq 0 ]
+  then
+    git log -p --stat
+  else
+    git log -p -$1 --stat
+  fi
+}
+
+
 alias gs="echo '> git status' && git status"
 
 up(){
@@ -63,9 +82,6 @@ up(){
   cd $d
 }
 
-gitlog(){
-    git log -$1 --oneline --stat
-}
 
 source ~/.git-prompt.sh
 
