@@ -4,8 +4,42 @@ ngrepl() {
 }
 
 mfind(){
-    find "$1" -type f -exec grep -iIHn "$2" {} \;
+  find "$1" -type f -exec grep -iIHn "$2" {} \;
 }
+
+push(){
+  git push "$@"
+}
+
+pusho(){
+  push origin "$@"
+}
+
+pull(){
+  git pull "$@"
+}
+
+pullo(){
+  pull origin "$@"
+}
+
+gca(){
+  git commit -am "$1"
+}
+
+gc(){
+  git commit "${@: 1:$#-1}" -m "${@: -1}"
+}
+
+gd(){
+  git diff "$@"
+}
+
+gchk(){
+  git checkout "$@"
+}
+
+alias gs='git status'
 
 up(){
   local d=""
@@ -48,6 +82,8 @@ alias cc="drush rr && drush cc all"
 alias ccfg="drush rr && drush cc all && fg"
 alias dl="tail -f /tmp/drupal_debug.txt"
 alias rmpyc="find . -type f -name '*.pyc' -exec rm {} \;"
+alias rmtilda="find . -name '*~' -exec rm {} \;"
+
 
 export PYTHONSTARTUP=~/.pythonrc
 export RBENV_ROOT="${HOME}/.rbenv"; if [ -d "${RBENV_ROOT}" ]; then export PATH="${RBENV_ROOT}/bin:${PATH}"; eval "$(rbenv init -)"; fi
