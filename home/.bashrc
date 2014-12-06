@@ -7,29 +7,37 @@ mfind(){
   find "$1" -type f -exec grep -iIHn "$2" {} \;
 }
 
-push(){
+g(){
+  echo "> git $@"
+  git "$@"
+}
+
+psh(){
   echo "> git push $@"
   git push "$@"
 }
 
-pusho(){
-  echo "> git push origin $@"
-  push origin "$@"
+psho(){
+  psh origin "$@"
 }
 
-pull(){
+pll(){
   echo "> git pull $@"
   git pull "$@"
 }
 
-pullo(){
-  echo "> git pull origin $@"
-  pull origin "$@"
+pllo(){
+  pll origin "$@"
 }
 
 gca(){
   echo "> git commit -am \"$1\""
   git commit -am "$1"
+}
+
+gb(){
+  echo "> git branch $@"
+  git branch "$@"
 }
 
 gc(){
