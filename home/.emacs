@@ -18,6 +18,7 @@
 ;;;;---------------------------------------------------------------------------
 ;; This is the directory where we keep plugins.
 (add-to-list 'load-path "~/.emacs.d/elisp/")
+(add-to-list 'load-path "~/.emacs.d/elisp/cl-lib/")
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 
 ;;;;---------------------------------------------------------------------------
@@ -47,6 +48,7 @@
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 
 ;; CoffeeScript Mode
+(require 'cl-lib)
 (autoload 'coffee-mode "coffee-mode" "Major mode for CoffeeScript." t)
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
 
