@@ -34,7 +34,7 @@ psho(){
 }
 
 pll(){
-  git pull "$@"
+  g pull "$@"
 }
 
 pllo(){
