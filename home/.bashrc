@@ -59,6 +59,10 @@ gchk(){
   git checkout "$@"
 }
 
+ga(){
+  g add "$@"
+}
+
 gl(){
   if [ $# -eq 0 ]
   then
@@ -119,7 +123,7 @@ alias ccfg="drush rr && drush cc all && fg"
 alias dl="tail -f /tmp/drupal_debug.txt"
 alias rmpyc="find . -type f -name '*.pyc' -exec rm {} \;"
 alias rmtilda="find . -name '*~' -exec rm {} \;"
-
+alias remount="sudo kextunload /System/Library/Extensions/AppleStorageDrivers.kext/Contents/PlugIns/AppleUSBCardReader.kext && sudo kextload /System/Library/Extensions/AppleStorageDrivers.kext/Contents/PlugIns/AppleUSBCardReader.kext"
 
 export PYTHONSTARTUP=~/.pythonrc
 export RBENV_ROOT="${HOME}/.rbenv"; if [ -d "${RBENV_ROOT}" ]; then export PATH="${RBENV_ROOT}/bin:${PATH}"; eval "$(rbenv init -)"; fi
@@ -131,3 +135,5 @@ then
 fi
 
 source virtualenvwrapper.sh
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
