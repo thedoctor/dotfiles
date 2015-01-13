@@ -12,9 +12,16 @@ g(){
   git "$@"
 }
 
+ga(){
+  g add "$@"
+}
+
+gr(){
+  g reset HEAD "$@"
+}
+
 psh(){
-  echo "> git push $@"
-  git push "$@"
+  g push "$@"
 }
 
 psho(){
@@ -22,7 +29,6 @@ psho(){
 }
 
 pll(){
-  echo "> git pull $@"
   git pull "$@"
 }
 
@@ -31,45 +37,40 @@ pllo(){
 }
 
 gca(){
-  echo "> git commit -am \"$1\""
-  git commit -am "$1"
+  g commit -am "$1"
 }
 
 gb(){
-  echo "> git branch $@"
-  git branch "$@"
+  g branch "$@"
 }
 
 gc(){
-  echo "> git commit ${@: 1:$#-1} -m \"${@: -1}\""
-  git commit "${@: 1:$#-1}" -m "${@: -1}"
+  g commit "${@: 1:$#-1}" -m "${@: -1}"
 }
 
 gd(){
-  echo "> git diff $@"
-  git diff "$@"
+  g diff "$@"
 }
 
 gchk(){
-  echo "> git checkout $@"
-  git checkout "$@"
+  g checkout "$@"
 }
 
 gl(){
   if [ $# -eq 0 ]
   then
-    git log --oneline --stat
+    g log --oneline --stat
   else
-    git log -$1 --oneline --stat
+    g log -$1 --oneline --stat "${@: 2:$#}"
   fi
 }
 
 glp() {
   if [ $# -eq 0 ]
   then
-    git log -p --stat
+    g log -p --stat
   else
-    git log -p -$1 --stat
+    g log -p -$1 --stat
   fi
 }
 
