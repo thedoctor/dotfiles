@@ -25,7 +25,12 @@ psh(){
 }
 
 psho(){
-  psh origin "$@"
+  if [ $# -eq 0 ]
+  then
+    psh origin HEAD
+  else
+    psh origin "$@"
+  fi
 }
 
 pll(){
@@ -33,7 +38,12 @@ pll(){
 }
 
 pllo(){
-  pll origin "$@"
+  if [ $# -eq 0 ]
+  then
+    pll origin HEAD
+  else
+    pll origin "$@"
+  fi
 }
 
 gca(){
@@ -59,10 +69,6 @@ gd(){
 
 gchk(){
   g checkout "$@"
-}
-
-ga(){
-  g add "$@"
 }
 
 gl(){
