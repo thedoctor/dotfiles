@@ -45,7 +45,12 @@ gb(){
 }
 
 gc(){
-  g commit "${@: 1:$#-1}" -m "${@: -1}"
+  if [ $# -eq 0 ]
+  then
+    g commit
+  else
+    g commit "${@: 1:$#-1}" -m "${@: -1}"
+  fi
 }
 
 gd(){
