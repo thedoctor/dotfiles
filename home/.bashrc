@@ -72,12 +72,7 @@ gchk(){
 }
 
 gl(){
-  if [ $# -eq 0 ]
-  then
-    g log --oneline --stat
-  else
-    g log -$1 --oneline --stat "${@: 2:$#}"
-  fi
+  g log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 }
 
 glp() {
