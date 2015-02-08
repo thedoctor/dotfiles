@@ -141,3 +141,5 @@ source virtualenvwrapper.sh
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 source ~/.git-completion.bash
+alias clearberks='rm -rf ~/.berkshelf/vagrant-berkshelf/shelves/*'
+workon py
