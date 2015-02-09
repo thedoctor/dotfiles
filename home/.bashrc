@@ -131,15 +131,18 @@ alias remount="sudo kextunload /System/Library/Extensions/AppleStorageDrivers.ke
 export PYTHONSTARTUP=~/.pythonrc
 export RBENV_ROOT="${HOME}/.rbenv"; if [ -d "${RBENV_ROOT}" ]; then export PATH="${RBENV_ROOT}/bin:${PATH}"; eval "$(rbenv init -)"; fi
 export WORKON_HOME=~/Envs
-if [ ! -e "/usr/local/bin/virtualenvwrapper.sh" ]
+if [ ! -e "~/.local/bin/virtualenvwrapper.sh" ]
 then
-    pip install virtualenv
-    pip install virtualenvwrapper
+    pip install --user virtualenv
+    pip install --user virtualenvwrapper
 fi
 
-source virtualenvwrapper.sh
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+source ./.local/bin/virtualenvwrapper.sh
+export PATH="$PATH:${HOME}/.local/bin"
+
 source ~/.git-completion.bash
 alias clearberks='rm -rf ~/.berkshelf/vagrant-berkshelf/shelves/*'
 workon py
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
