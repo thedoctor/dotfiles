@@ -131,7 +131,7 @@ alias remount="sudo kextunload /System/Library/Extensions/AppleStorageDrivers.ke
 export PYTHONSTARTUP=~/.pythonrc
 export RBENV_ROOT="${HOME}/.rbenv"; if [ -d "${RBENV_ROOT}" ]; then export PATH="${RBENV_ROOT}/bin:${PATH}"; eval "$(rbenv init -)"; fi
 export WORKON_HOME=~/Envs
-if [ ! -e "~/.local/bin/virtualenvwrapper.sh" ]
+if [ ! -e "${HOME}/.local/bin/virtualenvwrapper.sh" ]
 then
     pip install --user virtualenv
     pip install --user virtualenvwrapper
