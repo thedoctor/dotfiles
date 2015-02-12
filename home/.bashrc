@@ -2,7 +2,6 @@ RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]"
 GREEN="\[\033[0;32m\]"
 
-PS1="$RED\$(date +%H:%M) \w$YELLOW\$(__git_ps1)$GREEN\$ "
 PATH=$PATH:$HOME/bin:/usr/sbin
 export PATH
 
@@ -101,7 +100,6 @@ glp() {
   fi
 }
 
-
 alias gs="echo '> git status' && git status"
 
 up(){
@@ -130,31 +128,20 @@ alias dl="tail -f /tmp/drupal_debug.txt"
 alias rmpyc="find . -type f -name '*.pyc' -exec rm {} \;"
 alias rmtilda="find . -name '*~' -exec rm {} \;"
 alias remount="sudo kextunload /System/Library/Extensions/AppleStorageDrivers.kext/Contents/PlugIns/AppleUSBCardReader.kext && sudo kextload /System/Library/Extensions/AppleStorageDrivers.kext/Contents/PlugIns/AppleUSBCardReader.kext"
+alias clearberks='rm -rf ~/.berkshelf/vagrant-berkshelf/shelves/*'
 
 export PYTHONSTARTUP=~/.pythonrc
-export RBENV_ROOT="${HOME}/.rbenv"; if [ -d "${RBENV_ROOT}" ]; then export PATH="${RBENV_ROOT}/bin:${PATH}"; eval "$(rbenv init -)"; fi
-export WORKON_HOME=~/Envs
-if [ ! -e "${HOME}/.local/bin/virtualenvwrapper.sh" ]
-then
-    pip install --user virtualenv
-    pip install --user virtualenvwrapper
-fi
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-if [ -f ~/.git-completion.bash ]; then
-    source ~/.git-completion.bash
-    __git_complete g __git_main
-    __git_complete gc _git_commit
-    __git_complete gchk _git_checkout
-    __git_complete gm __git_merge
-    __git_complete pll _git_pull
-    __git_complete psh _git_push
+export RBENV_ROOT="${HOME}/.rbenv"; if [ -d "${RBENV_ROOT}" ]; then export PATH="${RBENV_ROOT}/bin:${PATH}"; eval "$(rbenv init -)"; fi
+
+export WORKON_HOME=~/Envs
+
+if [ ! -e "${HOME}/.local/bin/virtualenvwrapper.sh"]; then
+    if [ ! -e "${HOME}/.virtualenvwrapper.sh" ]; then
+        pip install --user virtualenv
+        pip install --user virtualenvwrapper
+    fi
 fi
-if [ -f ~/.git-prompt.bash ]; then
-    source ~/.git-prompt.sh
-fi
-alias clearberks='rm -rf ~/.berkshelf/vagrant-berkshelf/shelves/*'
 
 if [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
     source ~/.local/bin/virtualenvwrapper.sh
@@ -165,4 +152,20 @@ fi
 if [ -f ~/virtualenvwrapper.sh ]; then
     source ~/virtualenvwrapper.sh
     workon py
+fi
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+source ~/.git-prompt.sh
+PS1="$RED\$(date +%H:%M) \w$YELLOW\$(__git_ps1)$GREEN\$ "
+
+if [ -f ~/.git-completion.bash ]; then
+    source ~/.git-completion.bash
+    __git_complete g __git_main
+    __git_complete gc _git_commit
+    __git_complete gchk _git_checkout
+    __git_complete gm _git_merge
+    __git_complete pll _git_pull
+    __git_complete psh _git_push
 fi
