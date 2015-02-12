@@ -20,6 +20,10 @@ gr(){
   g reset HEAD "$@"
 }
 
+gm(){
+  g merge "$@"
+}
+
 psh(){
   g push "$@"
 }
@@ -102,8 +106,6 @@ up(){
 }
 
 
-source ~/.git-prompt.sh
-
 RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]"
 GREEN="\[\033[0;32m\]"
@@ -140,6 +142,20 @@ fi
 source virtualenvwrapper.sh
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-source ~/.git-completion.bash
+if [ -f ~/.git-completion.bash ]; then
+    source ~/.git-completion.bash
+    __git_complete g __git_main
+    __git_complete gc _git_commit
+    __git_complete gchk _git_checkout
+    __git_complete gm __git_merge
+    __git_complete pllo _git_pull
+    __git_complete pll _git_pull
+    __git_complete psh _git_push
+    __git_complete psho _git_push
+fi
+if [ -f ~/.git-prompt.bash ]; then
+    source ~/.git-prompt.sh
+fi
 alias clearberks='rm -rf ~/.berkshelf/vagrant-berkshelf/shelves/*'
 workon py
+export EDITOR="emacs"
