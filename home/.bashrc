@@ -148,10 +148,8 @@ if [ -f ~/.git-completion.bash ]; then
     __git_complete gc _git_commit
     __git_complete gchk _git_checkout
     __git_complete gm __git_merge
-    __git_complete pllo _git_pull
     __git_complete pll _git_pull
     __git_complete psh _git_push
-    __git_complete psho _git_push
 fi
 if [ -f ~/.git-prompt.bash ]; then
     source ~/.git-prompt.sh
