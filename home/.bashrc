@@ -1,3 +1,16 @@
+RED="\[\033[0;31m\]"
+YELLOW="\[\033[0;33m\]"
+GREEN="\[\033[0;32m\]"
+
+PS1="$RED\$(date +%H:%M) \w$YELLOW\$(__git_ps1)$GREEN\$ "
+PATH=$PATH:$HOME/bin:/usr/sbin
+export PATH
+
+export CLICOLOR=1
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+
+export EDITOR="emacs"
+
 ngrepl() {
   echo "> sudo ngrep -W byline -d lo port $1"
   sudo ngrep -W byline -d lo port $1
@@ -105,18 +118,6 @@ up(){
   cd $d
 }
 
-
-RED="\[\033[0;31m\]"
-YELLOW="\[\033[0;33m\]"
-GREEN="\[\033[0;32m\]"
-
-PS1="$RED\$(date +%H:%M) \w$YELLOW\$(__git_ps1)$GREEN\$ "
-PATH=$PATH:$HOME/bin:/usr/sbin
-export PATH
-
-export CLICOLOR=1
-export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
-
 alias ll='ls -la'
 alias cp='rsync -aP'
 alias eamcs='emacs'
@@ -133,13 +134,12 @@ alias remount="sudo kextunload /System/Library/Extensions/AppleStorageDrivers.ke
 export PYTHONSTARTUP=~/.pythonrc
 export RBENV_ROOT="${HOME}/.rbenv"; if [ -d "${RBENV_ROOT}" ]; then export PATH="${RBENV_ROOT}/bin:${PATH}"; eval "$(rbenv init -)"; fi
 export WORKON_HOME=~/Envs
-if [ ! -e "/usr/local/bin/virtualenvwrapper.sh" ]
+if [ ! -e "${HOME}/.local/bin/virtualenvwrapper.sh" ]
 then
-    pip install virtualenv
-    pip install virtualenvwrapper
+    pip install --user virtualenv
+    pip install --user virtualenvwrapper
 fi
 
-source virtualenvwrapper.sh
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 if [ -f ~/.git-completion.bash ]; then
@@ -155,5 +155,14 @@ if [ -f ~/.git-prompt.bash ]; then
     source ~/.git-prompt.sh
 fi
 alias clearberks='rm -rf ~/.berkshelf/vagrant-berkshelf/shelves/*'
-workon py
-export EDITOR="emacs"
+
+if [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
+    source ~/.local/bin/virtualenvwrapper.sh
+    export PATH="$PATH:${HOME}/.local/bin"
+    workon py
+fi
+
+if [ -f ~/virtualenvwrapper.sh ]; then
+    source ~/virtualenvwrapper.sh
+    workon py
+fi

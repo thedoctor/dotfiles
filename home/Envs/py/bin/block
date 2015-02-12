@@ -1,0 +1,10 @@
+#!/Users/matt/.homesick/repos/adventure-castle/home/Envs/py/bin/python
+# EASY-INSTALL-ENTRY-SCRIPT: 'pycoin==0.42','console_scripts','block'
+__requires__ = 'pycoin==0.42'
+import sys
+from pkg_resources import load_entry_point
+
+if __name__ == '__main__':
+    sys.exit(
+        load_entry_point('pycoin==0.42', 'console_scripts', 'block')()
+    )

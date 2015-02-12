@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: patchboard
+Version: 0.5.0
+Summary: Python client for Patchboard APIs
+Home-page: http://github.com/patchboard/patchboard-py
+Author: Dustin Laurence
+Author-email: dustin@pandastrike.com
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN
