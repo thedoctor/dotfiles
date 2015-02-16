@@ -136,20 +136,22 @@ export RBENV_ROOT="${HOME}/.rbenv"; if [ -d "${RBENV_ROOT}" ]; then export PATH=
 
 export WORKON_HOME=~/Envs
 
-if [ ! -e "${HOME}/.local/bin/virtualenvwrapper.sh"]; then
-    if [ ! -e "${HOME}/.virtualenvwrapper.sh" ]; then
-        pip install --user virtualenv
-        pip install --user virtualenvwrapper
+if [ ! -e "${HOME}/.local/bin/virtualenvwrapper.sh" ]; then
+    if [ ! -e "${HOME}/virtualenvwrapper.sh" ]; then
+        if [ ! -e "/usr/local/bin/virtualenvwrapper.sh" ]; then
+            pip install --user virtualenv
+            pip install --user virtualenvwrapper
+        fi
     fi
 fi
 
-if [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
+if [ -f "${HOME}/.local/bin/virtualenvwrapper.sh" ]; then
     source ~/.local/bin/virtualenvwrapper.sh
     export PATH="$PATH:${HOME}/.local/bin"
     workon py
 fi
 
-if [ -f ~/virtualenvwrapper.sh ]; then
+if [ -f "${HOME}/virtualenvwrapper.sh" ]; then
     source ~/virtualenvwrapper.sh
     workon py
 fi
