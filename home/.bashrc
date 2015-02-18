@@ -10,6 +10,20 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 export EDITOR="emacs"
 
+jiraprefix(){
+  prefix=""
+  env_re="[0-9]+"
+  jira_re="[^/]*/?([0-9]{3,4}).*"
+  if [[ $(__git_ps1) =~ $jira_re ]]; then prefix="GP-${BASH_REMATCH[1]}"; else
+      if [[ "${JIRA_NUM}" =~ $env_re ]]; then
+          prefix="GP-${JIRA_NUM}"
+      else
+          prefix="";
+      fi
+  fi
+  echo "$prefix "
+}
+
 ngrepl() {
   echo "> sudo ngrep -W byline -d lo port $1"
   sudo ngrep -W byline -d lo port $1
@@ -63,7 +77,7 @@ pllo(){
 }
 
 gca(){
-  g commit -am "$1"
+  g commit -am "$(jiraprefix)$1"
 }
 
 gb(){
@@ -75,7 +89,7 @@ gc(){
   then
     g commit
   else
-    g commit "${@: 1:$#-1}" -m "${@: -1}"
+    g commit "${@: 1:$#-1}" -m "$(jiraprefix)${@: -1}"
   fi
 }
 
@@ -100,6 +114,7 @@ glp() {
   fi
 }
 
+
 alias gs="echo '> git status' && git status"
 
 up(){
@@ -118,7 +133,10 @@ up(){
 
 alias ll='ls -la'
 alias cp='rsync -aP'
+# I'm bad at typing
 alias eamcs='emacs'
+alias emac='emacs'
+alias emcas='emacs'
 alias emasc='emacs'
 alias flag='toilet -f mono12 '
 
@@ -153,6 +171,11 @@ fi
 
 if [ -f "${HOME}/virtualenvwrapper.sh" ]; then
     source ~/virtualenvwrapper.sh
+    workon py
+fi
+
+if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
     workon py
 fi
 
