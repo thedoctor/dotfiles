@@ -177,6 +177,8 @@ if [ ! -e "${HOME}/.local/bin/virtualenvwrapper.sh" ]; then
     fi
 fi
 
+export WORKON_HOME=~/Envs
+
 if [ -f "${HOME}/.local/bin/virtualenvwrapper.sh" ]; then
     source ~/.local/bin/virtualenvwrapper.sh
     export PATH="$PATH:${HOME}/.local/bin"
@@ -192,8 +194,6 @@ if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
     source /usr/local/bin/virtualenvwrapper.sh
     workon py
 fi
-
-export WORKON_HOME=~/Envs
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
