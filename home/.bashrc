@@ -147,12 +147,26 @@ alias rmpyc="find . -type f -name '*.pyc' -exec rm {} \;"
 alias rmtilda="find . -name '*~' -exec rm {} \;"
 alias remount="sudo kextunload /System/Library/Extensions/AppleStorageDrivers.kext/Contents/PlugIns/AppleUSBCardReader.kext && sudo kextload /System/Library/Extensions/AppleStorageDrivers.kext/Contents/PlugIns/AppleUSBCardReader.kext"
 alias clearberks='rm -rf ~/.berkshelf/vagrant-berkshelf/shelves/*'
+alias roundpy='gemp && cd roundpy'
+alias bashrc='source ~/.bashrc'
 
 export PYTHONSTARTUP=~/.pythonrc
 
 export RBENV_ROOT="${HOME}/.rbenv"; if [ -d "${RBENV_ROOT}" ]; then export PATH="${RBENV_ROOT}/bin:${PATH}"; eval "$(rbenv init -)"; fi
 
-export WORKON_HOME=~/Envs
+source ~/.git-prompt.sh
+PS1="$RED\w$YELLOW\$(__git_ps1)$GREEN\$ "
+
+if [ -f ~/.git-completion.bash ]; then
+    source ~/.git-completion.bash
+    __git_complete g __git_main
+    __git_complete gc _git_commit
+    __git_complete gchk _git_checkout
+    __git_complete gm _git_merge
+    __git_complete pll _git_pull
+    __git_complete psh _git_push
+fi
+
 
 if [ ! -e "${HOME}/.local/bin/virtualenvwrapper.sh" ]; then
     if [ ! -e "${HOME}/virtualenvwrapper.sh" ]; then
@@ -179,18 +193,7 @@ if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
     workon py
 fi
 
+export WORKON_HOME=~/Envs
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
-source ~/.git-prompt.sh
-PS1="$RED\$(date +%H:%M) \w$YELLOW\$(__git_ps1)$GREEN\$ "
-
-if [ -f ~/.git-completion.bash ]; then
-    source ~/.git-completion.bash
-    __git_complete g __git_main
-    __git_complete gc _git_commit
-    __git_complete gchk _git_checkout
-    __git_complete gm _git_merge
-    __git_complete pll _git_pull
-    __git_complete psh _git_push
-fi
