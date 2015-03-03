@@ -179,6 +179,12 @@ fi
 
 export WORKON_HOME=~/Envs
 
+if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+    workon py
+fi
+
+
 if [ -f "${HOME}/.local/bin/virtualenvwrapper.sh" ]; then
     source ~/.local/bin/virtualenvwrapper.sh
     export PATH="$PATH:${HOME}/.local/bin"
@@ -187,11 +193,6 @@ fi
 
 if [ -f "${HOME}/virtualenvwrapper.sh" ]; then
     source ~/virtualenvwrapper.sh
-    workon py
-fi
-
-if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
-    source /usr/local/bin/virtualenvwrapper.sh
     workon py
 fi
 
