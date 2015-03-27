@@ -21,6 +21,14 @@
 (add-to-list 'load-path "~/.emacs.d/elisp/cl-lib/")
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (package-initialize)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+    )
+
+(add-hook 'before-save-hook 'gofmt-before-save)
+
 ;;;;---------------------------------------------------------------------------
 ;; SECTION: MODES
 ;;;;---------------------------------------------------------------------------
@@ -64,7 +72,7 @@
 
 
 ;;;;---------------------------------------------------------------------------
-;; SECTION: PREFERENCES
+;; SECTION: Preferences
 ;;;;---------------------------------------------------------------------------
 
 (setq-default tab-width 2)
@@ -87,9 +95,49 @@
 (setq linum-format "%d ")
 (add-hook 'after-change-major-mode-hook 'linum-mode)
 
+;; Reload file from disk - without a verbose yes/no confirm
+(defun revert-buffer-no-confirm ()
+  "Revert buffer without confirmation."
+  (interactive) (revert-buffer t t))
+
+(defun enlarge-window-three ()
+  "Grow current window vertically in increments of 3 rows"
+  (interactive)
+  (setq current-prefix-arg '(3))
+  (call-interactively 'enlarge-window))
+(defun enlarge-window-horizontally-four ()
+  "Grow current window horizontally in increments of 3 rows"
+  (interactive)
+  (setq current-prefix-arg '(4))
+  (call-interactively 'enlarge-window-horizontally))
+(defun shrink-window-three ()
+  "Shrink current window vertically in increments of 3 rows"
+  (interactive)
+  (setq current-prefix-arg '(3))
+  (call-interactively 'shrink-window))
+(defun shrink-window-horizontally-four ()
+  "Shrink current window horizontally in increments of 3 rows"
+  (interactive)
+  (setq current-prefix-arg '(4))
+  (call-interactively 'shrink-window-horizontally))
+
+;;;;---------------------------------------------------------------------------
+;; SECTION: Key Bindings
+;;;;---------------------------------------------------------------------------
+
+;; Reload from file
+(global-set-key (kbd "C-x r") 'revert-buffer-no-confirm)
+
 (global-set-key (kbd "ESC <up>") 'scroll-down)
 (global-set-key (kbd "ESC <down>") 'scroll-up)
 (global-set-key (kbd "<C-tab>") 'indent-region)
+
+;; Resizing windows
+(global-set-key (kbd "ESC i")             'enlarge-window-three)
+(global-set-key (kbd "ESC k")              'shrink-window-three)
+(global-set-key (kbd "ESC j")  'shrink-window-horizontally-four)
+(global-set-key (kbd "ESC l") 'enlarge-window-horizontally-four)
+
 
 ;;;;---------------------------------------------------------------------------
 ;; SECTION: Plugins
@@ -120,12 +168,6 @@
 (global-set-key (kbd "C-x <kp-4>")  'buf-move-left)
 (global-set-key (kbd "C-x <kp-6>") 'buf-move-right)
 
-;; Resizing windows - not a plugin, but related.
-(global-set-key (kbd "ESC i")              'enlarge-window)
-(global-set-key (kbd "ESC k")               'shrink-window)
-(global-set-key (kbd "ESC j")  'shrink-window-horizontally)
-(global-set-key (kbd "ESC l") 'enlarge-window-horizontally)
-
 ;; DoReMi - Incrementally perform action with arrow keys
 ;; (require 'doremi)
 ;; TODO (doremi)
@@ -145,8 +187,9 @@
 
 ;; Highlight-chars - Customizable regex highlighting.
 (require 'highlight-chars)
-;; Highlight tabs - we almost always want spaces.
-(add-hook 'after-change-major-mode-hook 'hc-highlight-tabs)
+;; Highlight tabs - we almost always want spaces. (exception: Go-mode)
+(unless (equal major-mode 'go-mode)
+  (add-hook 'after-change-major-mode-hook 'hc-highlight-tabs))
 ;; Highlight trailing whitespace.
 (add-hook 'after-change-major-mode-hook 'hc-highlight-trailing-whitespace)
 (put 'upcase-region 'disabled nil)

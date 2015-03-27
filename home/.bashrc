@@ -197,4 +197,4 @@ if [ -f "${HOME}/virtualenvwrapper.sh" ]; then
 fi
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="/usr/local/heroku/bin:${HOME}/.local/bin:$PATH"
