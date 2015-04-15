@@ -114,8 +114,10 @@ glp() {
   fi
 }
 
-
-alias gs="echo '> git status' && git status"
+gs(){
+  echo '> git status'
+  git status
+}
 
 up(){
   local d=""

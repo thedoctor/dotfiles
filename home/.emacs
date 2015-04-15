@@ -24,8 +24,11 @@
 (when (>= emacs-major-version 24)
   (require 'package)
   (package-initialize)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-    )
+  (add-to-list 'package-archives
+               '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  (add-to-list 'package-archives
+               '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+  )
 
 (add-hook 'before-save-hook 'gofmt-before-save)
 
@@ -54,6 +57,10 @@
 ;; SCSS Mode
 (autoload 'scss-mode "scss-mode")
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
+
+;; Dart Mode
+(autoload 'dart-mode "dart-mode")
+(add-to-list 'auto-mode-alist '("\\.dart\\'" . dart-mode))
 
 ;; CoffeeScript Mode
 (require 'cl-lib)
@@ -95,6 +102,14 @@
 (setq linum-format "%d ")
 (add-hook 'after-change-major-mode-hook 'linum-mode)
 
+;; Set magit colors.
+(eval-after-load 'magit
+  '(progn
+     (set-face-foreground 'magit-diff-add "black")
+     (set-face-foreground 'magit-diff-del "red3")
+     (unless window-system
+              (set-face-background 'magit-item-highlight "white"))))
+
 ;; Reload file from disk - without a verbose yes/no confirm
 (defun revert-buffer-no-confirm ()
   "Revert buffer without confirmation."
@@ -121,6 +136,16 @@
   (setq current-prefix-arg '(4))
   (call-interactively 'shrink-window-horizontally))
 
+(defun toggle-term-mode ()
+  "Toggle setting tab widths between 4 and 8"
+  (interactive)
+  (call-interactively (if (term-in-char-mode) 'term-line-mode 'term-char-mode)))
+
+(defun copy-to-sys-clipboard (&optional b e)
+  "Copy region to system clipboard"
+  (interactive "r")
+  (shell-command-on-region b e "pbcopy"))
+
 ;;;;---------------------------------------------------------------------------
 ;; SECTION: Key Bindings
 ;;;;---------------------------------------------------------------------------
@@ -128,9 +153,13 @@
 ;; Reload from file
 (global-set-key (kbd "C-x r") 'revert-buffer-no-confirm)
 
-(global-set-key (kbd "ESC <up>") 'scroll-down)
-(global-set-key (kbd "ESC <down>") 'scroll-up)
+(global-set-key (kbd "ESC <up>")  'scroll-down)
+(global-set-key (kbd "ESC <down>")  'scroll-up)
 (global-set-key (kbd "<C-tab>") 'indent-region)
+
+;; line-mode for editing, char-mode for terminal
+(global-set-key (kbd "C-x x") 'toggle-term-mode)
+;; (define-key term-mode-map (kbd "M-x") 'nil)
 
 ;; Resizing windows
 (global-set-key (kbd "ESC i")             'enlarge-window-three)
@@ -138,6 +167,11 @@
 (global-set-key (kbd "ESC j")  'shrink-window-horizontally-four)
 (global-set-key (kbd "ESC l") 'enlarge-window-horizontally-four)
 
+;; Copy to system clipboard
+(global-set-key (kbd "ESC c") 'copy-to-sys-clipboard)
+
+;; Launch magit
+(global-set-key (kbd "C-x g") 'magit-status)
 
 ;;;;---------------------------------------------------------------------------
 ;; SECTION: Plugins
@@ -168,6 +202,11 @@
 (global-set-key (kbd "C-x <kp-4>")  'buf-move-left)
 (global-set-key (kbd "C-x <kp-6>") 'buf-move-right)
 
+(global-set-key (kbd "C-x w") 'delete-trailing-whitespace)
+
+;; Unbind M-numpad-4 and M-numpad-6, cause I use those for nav
+;; (global-set-key (kbd "M-s-4") 'windmove-left)
+
 ;; DoReMi - Incrementally perform action with arrow keys
 ;; (require 'doremi)
 ;; TODO (doremi)
@@ -193,3 +232,18 @@
 ;; Highlight trailing whitespace.
 (add-hook 'after-change-major-mode-hook 'hc-highlight-trailing-whitespace)
 (put 'upcase-region 'disabled nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(egg-confirm-next-action t)
+ '(egg-enable-tooltip t)
+ '(split-height-threshold nil)
+ '(split-width-threshold 0))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
