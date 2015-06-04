@@ -7,6 +7,7 @@ export PATH
 
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+export LS_COLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 export EDITOR="emacs"
 
@@ -77,7 +78,7 @@ pllo(){
 }
 
 gca(){
-  g commit -am "$(jiraprefix)$1"
+  g commit -a "$@"
 }
 
 gb(){
@@ -89,7 +90,7 @@ gc(){
   then
     g commit
   else
-    g commit "${@: 1:$#-1}" -m "$(jiraprefix)${@: -1}"
+    g commit "${@: 1:$#-1}" -m "${@: -1}"
   fi
 }
 
@@ -147,6 +148,7 @@ alias ccfg="drush rr && drush cc all && fg"
 alias dl="tail -f /tmp/drupal_debug.txt"
 alias rmpyc="find . -type f -name '*.pyc' -exec rm {} \;"
 alias rmtilda="find . -name '*~' -exec rm {} \;"
+alias cltr="rmpyc; rmtilda"
 alias remount="sudo kextunload /System/Library/Extensions/AppleStorageDrivers.kext/Contents/PlugIns/AppleUSBCardReader.kext && sudo kextload /System/Library/Extensions/AppleStorageDrivers.kext/Contents/PlugIns/AppleUSBCardReader.kext"
 alias clearberks='rm -rf ~/.berkshelf/vagrant-berkshelf/shelves/*'
 alias roundpy='gemp && cd roundpy'
@@ -200,3 +202,8 @@ fi
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:${HOME}/.local/bin:$PATH"
+
+### For tx, bx, and ku (pycoin cli tools)
+PYCOIN_CACHE_DIR=~/.pycoin_cache
+PYCOIN_SERVICE_PROVIDERS=BLOCKR_IO:BLOCKCHAIN_INFO:BITEASY:BLOCKEXPLORER
+export PYCOIN_CACHE_DIR PYCOIN_SERVICE_PROVIDERS

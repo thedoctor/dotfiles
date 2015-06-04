@@ -1,21 +1,7 @@
 ;;;;---------------------------------------------------------------------------
-;; .emacs configuration file
-;; author: Matt Smith
-;; tested on: GNU Emacs 23.1.1 (x86_64-redhat-linux-gnu, GTK+ Version 2.18.9)
-;;
-;; packages used:
-;;   revive (session management)
-;;   buffer-move (shoving around frames)
-;;   windmove (switching between frames; buffer-move dependency)
-;;   ido (buffer/file selection)
-;;   stripes (alternating background colors.
-;;
-;; about:
-;;   This config file solves some of my big problems with emacs, mostly having
-;;   to do with frames.
-;;
-;; last mod: 2012-08-21
+;; EMACS ROCKS
 ;;;;---------------------------------------------------------------------------
+
 ;; This is the directory where we keep plugins.
 (add-to-list 'load-path "~/.emacs.d/elisp/")
 (add-to-list 'load-path "~/.emacs.d/elisp/cl-lib/")
@@ -23,11 +9,13 @@
 
 (when (>= emacs-major-version 24)
   (require 'package)
-  (package-initialize)
   (add-to-list 'package-archives
-               '("melpa" . "http://melpa.milkbox.net/packages/") t)
+               '("melpa" . "http://melpa.org/packages/"))
   (add-to-list 'package-archives
                '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+  (add-to-list 'package-archives
+               '("org" . "http://orgmode.org/elpa/"))
+  (package-initialize)
   )
 
 (add-hook 'before-save-hook 'gofmt-before-save)
@@ -58,9 +46,17 @@
 (autoload 'scss-mode "scss-mode")
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 
+(require 'dart-mode)
 ;; Dart Mode
 (autoload 'dart-mode "dart-mode")
 (add-to-list 'auto-mode-alist '("\\.dart\\'" . dart-mode))
+
+;; Add Rubocop to ruby-mode
+(add-hook 'ruby-mode-hook 'rubocop-mode)
+
+;; Arduino Mode
+(autoload 'dart-mode "arduino-mode")
+(add-to-list 'auto-mode-alist '("\\.sketch\\'" . arduino-mode))
 
 ;; CoffeeScript Mode
 (require 'cl-lib)
@@ -74,7 +70,6 @@
             ("\.inc$" . php-mode)
             (".pythonrc" . python-mode)
             ("Rakefile" . ruby-mode))
-          ;;("\.ctp$" . web-mode))
           auto-mode-alist))
 
 
@@ -103,6 +98,7 @@
 (add-hook 'after-change-major-mode-hook 'linum-mode)
 
 ;; Set magit colors.
+(setq magit-auto-revert-mode nil)
 (eval-after-load 'magit
   '(progn
      (set-face-foreground 'magit-diff-add "black")
@@ -120,8 +116,8 @@
   (interactive)
   (setq current-prefix-arg '(3))
   (call-interactively 'enlarge-window))
-(defun enlarge-window-horizontally-four ()
-  "Grow current window horizontally in increments of 3 rows"
+(defun enlarge-window-horizontally-five ()
+  "Grow current window horizontally in increments of 5 columns"
   (interactive)
   (setq current-prefix-arg '(4))
   (call-interactively 'enlarge-window-horizontally))
@@ -130,8 +126,8 @@
   (interactive)
   (setq current-prefix-arg '(3))
   (call-interactively 'shrink-window))
-(defun shrink-window-horizontally-four ()
-  "Shrink current window horizontally in increments of 3 rows"
+(defun shrink-window-horizontally-five ()
+  "Shrink current window horizontally in increments of five columns"
   (interactive)
   (setq current-prefix-arg '(4))
   (call-interactively 'shrink-window-horizontally))
@@ -162,16 +158,22 @@
 ;; (define-key term-mode-map (kbd "M-x") 'nil)
 
 ;; Resizing windows
-(global-set-key (kbd "ESC i")             'enlarge-window-three)
-(global-set-key (kbd "ESC k")              'shrink-window-three)
-(global-set-key (kbd "ESC j")  'shrink-window-horizontally-four)
-(global-set-key (kbd "ESC l") 'enlarge-window-horizontally-four)
+(global-set-key (kbd "ESC k")             'enlarge-window-three)
+(global-set-key (kbd "ESC j")              'shrink-window-three)
+(global-set-key (kbd "ESC h")  'shrink-window-horizontally-five)
+(global-set-key (kbd "ESC l") 'enlarge-window-horizontally-five)
+;; (global-set-key (kbd "ESC k")    'windmove-up)
+;; (global-set-key (kbd "ESC j")  'windmove-down)
+;; (global-set-key (kbd "ESC h")  'windmove-left)
+;; (global-set-key (kbd "ESC l") 'windmove-right)
 
 ;; Copy to system clipboard
 (global-set-key (kbd "ESC c") 'copy-to-sys-clipboard)
 
-;; Launch magit
+;; Launch magit - should probably do something with egg instead.
 (global-set-key (kbd "C-x g") 'magit-status)
+
+;;
 
 ;;;;---------------------------------------------------------------------------
 ;; SECTION: Plugins
@@ -230,7 +232,8 @@
 (unless (equal major-mode 'go-mode)
   (add-hook 'after-change-major-mode-hook 'hc-highlight-tabs))
 ;; Highlight trailing whitespace.
-(add-hook 'after-change-major-mode-hook 'hc-highlight-trailing-whitespace)
+(unless (equal major-mode 'term-mode)
+  (add-hook 'after-change-major-mode-hook 'hc-highlight-trailing-whitespace))
 (put 'upcase-region 'disabled nil)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -240,7 +243,8 @@
  '(egg-confirm-next-action t)
  '(egg-enable-tooltip t)
  '(split-height-threshold nil)
- '(split-width-threshold 0))
+ '(split-width-threshold 0)
+ '(visible-bell nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

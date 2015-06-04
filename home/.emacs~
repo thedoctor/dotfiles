@@ -58,6 +58,10 @@
 (autoload 'scss-mode "scss-mode")
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 
+;; Dart Mode
+(autoload 'dart-mode "dart-mode")
+(add-to-list 'auto-mode-alist '("\\.dart\\'" . dart-mode))
+
 ;; CoffeeScript Mode
 (require 'cl-lib)
 (autoload 'coffee-mode "coffee-mode" "Major mode for CoffeeScript." t)
@@ -103,7 +107,6 @@
   '(progn
      (set-face-foreground 'magit-diff-add "black")
      (set-face-foreground 'magit-diff-del "red3")
-     ;; Unbind M-numpad-4 and M-numpad-6, cause I use those for nav
      (unless window-system
               (set-face-background 'magit-item-highlight "white"))))
 
@@ -199,6 +202,11 @@
 (global-set-key (kbd "C-x <kp-4>")  'buf-move-left)
 (global-set-key (kbd "C-x <kp-6>") 'buf-move-right)
 
+(global-set-key (kbd "C-x w") 'delete-trailing-whitespace)
+
+;; Unbind M-numpad-4 and M-numpad-6, cause I use those for nav
+;; (global-set-key (kbd "M-s-4") 'windmove-left)
+
 ;; DoReMi - Incrementally perform action with arrow keys
 ;; (require 'doremi)
 ;; TODO (doremi)
@@ -231,7 +239,9 @@
  ;; If there is more than one, they won't work right.
  '(egg-confirm-next-action t)
  '(egg-enable-tooltip t)
- '(split-height-threshold nil))
+ '(split-height-threshold nil)
+ '(split-width-threshold 0)
+ '(visible-bell nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
