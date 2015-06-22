@@ -11,7 +11,6 @@
   (setq package-list
         '(arduino-mode
           column-marker
-          dart-mode
           egg
           go-errcheck
           go-mode
@@ -38,6 +37,15 @@
   (add-to-list 'package-archives
                '("org" . "http://orgmode.org/elpa/"))
   (package-initialize)
+
+  ; fetch the list of packages available
+  (or (file-exists-p package-user-dir)
+      (package-refresh-contents))
+
+  ; install the missing packages
+  (dolist (package package-list)
+    (unless (package-installed-p package)
+      (package-install package)))
   )
 
 (add-hook 'before-save-hook 'gofmt-before-save)
@@ -67,11 +75,6 @@
 ;; SCSS Mode
 (autoload 'scss-mode "scss-mode")
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
-
-(require 'dart-mode)
-;; Dart Mode
-(autoload 'dart-mode "dart-mode")
-(add-to-list 'auto-mode-alist '("\\.dart\\'" . dart-mode))
 
 ;; Add Rubocop to ruby-mode
 (add-hook 'ruby-mode-hook 'rubocop-mode)
