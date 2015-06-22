@@ -1,5 +1,9 @@
 # Don't keep saves
 home/.emacs.d/auto-save-list/*
 
+# Don't keep emacs packages
+home/.emacs.d/elpa/*
+home/.emacs.d/elpa/archives/**
+
 # Don't keep virtualenvs
 home/Envs/*/**
