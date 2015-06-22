@@ -8,6 +8,28 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/")
 
 (when (>= emacs-major-version 24)
+  (setq package-list
+        '(arduino-mode
+          column-marker
+          dart-mode
+          egg
+          go-errcheck
+          go-mode
+          idomenu
+          json-mode
+          json-snatcher
+          json-reformat
+          json-reformat
+          json-snatcher
+          magit
+          git-rebase-mode
+          git-commit-mode
+          php-mode
+          revive
+          rubocop
+          dash
+          web-mode))
+
   (require 'package)
   (add-to-list 'package-archives
                '("melpa" . "http://melpa.org/packages/"))
