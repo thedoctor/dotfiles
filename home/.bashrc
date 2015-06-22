@@ -35,8 +35,16 @@ ngrepl() {
   sudo ngrep -W byline -d lo port $1
 }
 
+worker() {
+  sudo ssh -i ~/.ssh/twogem-worker ubuntu@$1
+}
+
 mfind(){
   find "$1" -type f -exec grep -iIHn "$2" {} \;
+}
+
+dec(){
+  find ~/encrypted/ -type f -name "*${1}*.gpg" -exec gpg -d {} \;
 }
 
 g(){
