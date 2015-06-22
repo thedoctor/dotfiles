@@ -11,6 +11,11 @@ export LS_COLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 export EDITOR="emacs"
 
+fateproc(){
+  sudo ps aux| grep server | grep -v grep | awk '{ print $2 }' | xargs kill
+  $@
+}
+
 jiraprefix(){
   prefix=""
   env_re="[0-9]+"
