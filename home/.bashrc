@@ -16,6 +16,13 @@ fateproc(){
   $@
 }
 
+gemset(){
+  if [ -h "${HOME}/.gemwallet" ]; then
+     unlink "${HOME}/.gemwallet"
+  fi
+  ln -s "${HOME}/.gemwallet.${1}" "${HOME}/.gemwallet"
+}
+
 jiraprefix(){
   prefix=""
   env_re="[0-9]+"
@@ -44,7 +51,7 @@ mfind(){
 }
 
 dec(){
-  find ~/encrypted/ -type f -name "*${1}*.gpg" -exec gpg -d {} \;
+  find ~/encrypted/ -type f -name "*${1}*.*" -exec gpg -d {} \;
 }
 
 g(){

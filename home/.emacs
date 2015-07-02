@@ -45,10 +45,62 @@
   ; install the missing packages
   (dolist (package package-list)
     (unless (package-installed-p package)
-      (package-install package)))
-  )
+      (package-install package))))
 
-(add-hook 'before-save-hook 'gofmt-before-save)
+;;;;---------------------------------------------------------------------------
+;; PACKAGES
+;;;;---------------------------------------------------------------------------
+
+(require 'windmove)
+(require 'buffer-move)
+
+;; Highlight uncommited git changes: https://github.com/dgutov/diff-hl
+(require 'diff-hl)
+(require 'diff-hl-margin)
+(global-diff-hl-mode)
+(add-hook 'after-change-major-mode-hook 'diff-hl-margin-mode)
+
+;; Go format. Use if I ever start go-ing again.
+;;(add-hook 'before-save-hook 'gofmt-before-save)
+
+;; IDO - interactive do, basically auto-completion for switching buffers and finding files. Replaces main C-x f and C-x b.
+(require 'ido)
+(ido-mode t)
+
+;; Stripes - sets the background color of every even line. In this case, it's set to #141414 -- change in stripes.el
+(require 'stripes)
+;;(add-hook 'after-change-major-mode-hook 'turn-on-stripes-mode)
+
+;; Column-marker - let's highlight column 80 so we know where to trim lines. Love me dat PEP
+(require 'column-marker)
+(add-hook 'after-change-major-mode-hook (lambda () (interactive) (column-marker-2 80)))
+(add-hook 'after-change-major-mode-hook 'column-number-mode)
+
+;; Highlight-chars - Customizable regex highlighting.
+(require 'highlight-chars)
+;; Highlight tabs - we almost always want spaces. (exception: Go-mode)
+(unless (equal major-mode 'go-mode)
+  (add-hook 'after-change-major-mode-hook 'hc-highlight-tabs))
+;; Highlight trailing whitespace.
+(unless (equal major-mode 'term-mode)
+  (add-hook 'after-change-major-mode-hook 'hc-highlight-trailing-whitespace))
+(put 'upcase-region 'disabled nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(egg-confirm-next-action t)
+ '(egg-enable-tooltip t)
+ '(split-height-threshold nil)
+ '(split-width-threshold 0)
+ '(visible-bell nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 
 ;;;;---------------------------------------------------------------------------
 ;; SECTION: MODES
@@ -171,38 +223,22 @@
 ;; SECTION: Key Bindings
 ;;;;---------------------------------------------------------------------------
 
+;; Universal
+
 ;; Reload from file
 (global-set-key (kbd "C-x r") 'revert-buffer-no-confirm)
 
-(global-set-key (kbd "ESC <up>")  'scroll-down)
-(global-set-key (kbd "ESC <down>")  'scroll-up)
-(global-set-key (kbd "<C-tab>") 'indent-region)
+;; TODO Figure out indent region.
+;; (global-set-key (kbd "<C-tab>") 'indent-region)
 
 ;; line-mode for editing, char-mode for terminal
 (global-set-key (kbd "C-x x") 'toggle-term-mode)
-;; (define-key term-mode-map (kbd "M-x") 'nil)
-
-;; Resizing windows
-(global-set-key (kbd "ESC k")             'enlarge-window-three)
-(global-set-key (kbd "ESC j")              'shrink-window-three)
-(global-set-key (kbd "ESC h")  'shrink-window-horizontally-five)
-(global-set-key (kbd "ESC l") 'enlarge-window-horizontally-five)
-;; (global-set-key (kbd "ESC k")    'windmove-up)
-;; (global-set-key (kbd "ESC j")  'windmove-down)
-;; (global-set-key (kbd "ESC h")  'windmove-left)
-;; (global-set-key (kbd "ESC l") 'windmove-right)
 
 ;; Copy to system clipboard
 (global-set-key (kbd "ESC c") 'copy-to-sys-clipboard)
 
-;; Launch magit - should probably do something with egg instead.
-(global-set-key (kbd "C-x g") 'magit-status)
-
-;;
-
-;;;;---------------------------------------------------------------------------
-;; SECTION: Plugins
-;;;;---------------------------------------------------------------------------
+;; TODO: Learn egg
+;; (global-set-key (kbd "C-x g") 'magit-status)
 
 ;; Revive - lets you maintain your open buffers and frame configuration.
 (autoload 'save-current-configuration "revive" "Save status" t)
@@ -215,64 +251,69 @@
 ;; C-x . forget
 (define-key ctl-x-map "." 'wipe)
 
+(global-set-key (kbd "C-x w") 'delete-trailing-whitespace)
+
+
+;; QWERTY (ergodox)
+;; Resizing windows
+(global-unset-key (kbd "C-M-i"))
+(add-hook 'help-mode-hook
+          (lambda()
+            (local-unset-key (kbd "C-M-i"))))
+(add-hook 'after-change-major-mode-hook
+          (lambda()
+            (local-unset-key (kbd "C-M-i"))))
+(global-set-key (kbd "C-M-i")             'enlarge-window-three)
+(global-set-key (kbd "C-M-k")              'shrink-window-three)
+(global-set-key (kbd "C-M-j")  'shrink-window-horizontally-five)
+(global-set-key (kbd "C-M-l") 'enlarge-window-horizontally-five)
+
 ;; Windmove - for switching between frames -- easier than C-x o.
-(require 'windmove)
+(global-set-key (kbd "ESC i")    'windmove-up)
+(global-set-key (kbd "ESC k")  'windmove-down)
+(global-set-key (kbd "ESC j")  'windmove-left)
+(global-set-key (kbd "ESC l") 'windmove-right)
+
+;; Buffer-move - for swapping buffers between frames.
+(global-set-key (kbd "C-x i")    'buf-move-up)
+(global-set-key (kbd "C-x k")  'buf-move-down)
+(global-set-key (kbd "C-x j")  'buf-move-left)
+(global-set-key (kbd "C-x l") 'buf-move-right)
+
+;; QWERTY
+;; Resizing windows
+;; (global-set-key (kbd "ESC i")             'enlarge-window-three)
+;; (global-set-key (kbd "ESC k")              'shrink-window-three)
+;; (global-set-key (kbd "ESC j")  'shrink-window-horizontally-five)
+;; (global-set-key (kbd "ESC l") 'enlarge-window-horizontally-five)
+
+;; Windmove - for switching between frames -- easier than C-x o.
 (global-set-key (kbd "ESC 8")    'windmove-up)
 (global-set-key (kbd "ESC 5")  'windmove-down)
 (global-set-key (kbd "ESC 4")  'windmove-left)
 (global-set-key (kbd "ESC 6") 'windmove-right)
 
-;; Buffer-move - for swapping buffers between frames. Numpad is great for this.
-(require 'buffer-move)
+;; Buffer-move - for swapping buffers between frames.
 (global-set-key (kbd "C-x <kp-8>")    'buf-move-up)
 (global-set-key (kbd "C-x <kp-5>")  'buf-move-down)
 (global-set-key (kbd "C-x <kp-4>")  'buf-move-left)
 (global-set-key (kbd "C-x <kp-6>") 'buf-move-right)
 
-(global-set-key (kbd "C-x w") 'delete-trailing-whitespace)
+;; COLEMAK (ergodox)
+;; Resizing windows
+;; (global-set-key (kbd "ESC y")             'enlarge-window-three)
+;; (global-set-key (kbd "ESC u")              'shrink-window-three)
+;; (global-set-key (kbd "ESC l")  'shrink-window-horizontally-five)
+;; (global-set-key (kbd "ESC ;") 'enlarge-window-horizontally-five)
 
-;; Unbind M-numpad-4 and M-numpad-6, cause I use those for nav
-;; (global-set-key (kbd "M-s-4") 'windmove-left)
+;; ;; Windmove - for switching between frames -- easier than C-x o.
+;; (global-set-key (kbd "ESC i")    'windmove-up)
+;; (global-set-key (kbd "ESC e")  'windmove-down)
+;; (global-set-key (kbd "ESC n")  'windmove-left)
+;; (global-set-key (kbd "ESC o") 'windmove-right)
 
-;; DoReMi - Incrementally perform action with arrow keys
-;; (require 'doremi)
-;; TODO (doremi)
-
-;; IDO - interactive do, basically auto-completion for switching buffers and finding files. Replaces main C-x f and C-x b.
-(require 'ido)
-(ido-mode t)
-
-;; Stripes - sets the background color of every even line. In this case, it's set to #141414 -- change in stripes.el
-(require 'stripes)
-;;(add-hook 'after-change-major-mode-hook 'turn-on-stripes-mode)
-
-;; Column-marker - let's highlight column 80 so we know where to trim lines. Love me dat PEP
-(require 'column-marker)
-(add-hook 'after-change-major-mode-hook (lambda () (interactive) (column-marker-2 80)))
-(add-hook 'after-change-major-mode-hook 'column-number-mode)
-
-;; Highlight-chars - Customizable regex highlighting.
-(require 'highlight-chars)
-;; Highlight tabs - we almost always want spaces. (exception: Go-mode)
-(unless (equal major-mode 'go-mode)
-  (add-hook 'after-change-major-mode-hook 'hc-highlight-tabs))
-;; Highlight trailing whitespace.
-(unless (equal major-mode 'term-mode)
-  (add-hook 'after-change-major-mode-hook 'hc-highlight-trailing-whitespace))
-(put 'upcase-region 'disabled nil)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(egg-confirm-next-action t)
- '(egg-enable-tooltip t)
- '(split-height-threshold nil)
- '(split-width-threshold 0)
- '(visible-bell nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; ;; Buffer-move - for swapping buffers between frames.
+;; (global-set-key (kbd "C-x i")    'buf-move-up)
+;; (global-set-key (kbd "C-x e")  'buf-move-down)
+;; (global-set-key (kbd "C-x n")  'buf-move-left)
+;; (global-set-key (kbd "C-x o") 'buf-move-right)
