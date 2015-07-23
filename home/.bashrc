@@ -16,11 +16,34 @@ fateproc(){
   $@
 }
 
-gemset(){
-  if [ -h "${HOME}/.gemwallet" ]; then
-     unlink "${HOME}/.gemwallet"
+alias ebashrc="emacs ${HOME}/.bashrc && source ${HOME}/.bashrc"
+alias edox="emacs ${HOME}/dev/ergodox/tmk_keyboard/keyboard/ergodox/keymap.c"
+
+updox(){
+  cd "${HOME}/dev/ergodox/tmk_keyboard/keyboard/ergodox"
+  make -f Makefile.lufa clean && make -f Makefile.lufa
+  cd -
+
+  # cd "${HOME}/dev/ergodox"
+  # python3 'build-scripts/gen-ui-info.py' --current-date '2014-06-09 22:35:15+02:00' --git-commit-date '2012-12-20 16:34:08 -0800' --git-commit-id '43ee200b2b6e2e234ee8d13d8824e1d5068ba7d0' --map-file-path 'tmk_keyboard/keyboard/ergodox_lufa.map' --source-code-path 'tmk_keyboard/keyboard' --matrix-file-path 'tmk_keyboard/common/matrix.h' --layout-file-path 'tmk_keyboard/keyboard/ergodox/keymap.c' > ui-info
+  # python3 build-scripts/gen-layout.py --ui-info-file ui-info >layout.html
+  # python -c 'from webbrowser import open_new; open_new("./layout.html");'
+  # cd -
+}
+
+alias egw="emacs ${HOME}/.gemwallet"
+
+gemsave(){
+  if [ -f "${HOME}/.gemwallet" ]; then
+      cp "${HOME}/.gemwallet" "${HOME}/.gemwallet.${1}"
   fi
-  ln -s "${HOME}/.gemwallet.${1}" "${HOME}/.gemwallet"
+}
+
+gemset(){
+  if [ -f "${HOME}/.gemwallet" ]; then
+     rm "${HOME}/.gemwallet"
+  fi
+  cp "${HOME}/.gemwallet.${1}" "${HOME}/.gemwallet"
 }
 
 jiraprefix(){
@@ -51,7 +74,7 @@ mfind(){
 }
 
 dec(){
-  find ~/encrypted/ -type f -name "*${1}*.*" -exec gpg -d {} \;
+  find ~/encrypted/ -type f -iregex ".*${1}.*[gpgasc][gpgasc][gpgasc]" -exec gpg -d {} \;
 }
 
 g(){

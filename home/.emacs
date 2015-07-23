@@ -237,6 +237,8 @@
 ;; Copy to system clipboard
 (global-set-key (kbd "ESC c") 'copy-to-sys-clipboard)
 
+;; Replace string (in region or rest of file)
+(global-set-key (kbd "ESC s") 'replace-string)
 ;; TODO: Learn egg
 ;; (global-set-key (kbd "C-x g") 'magit-status)
 

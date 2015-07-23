@@ -1,0 +1,28 @@
+def cli_to_ipy(fn):
+    d={}
+    with open(fn) as f:
+        for l in f.readlines():
+            if l[:2] == '-a':
+                d['apitoken']=l[2:-1]
+            if l[:2] == '-m':
+                d['admintoken']=l[2:-1]
+            if l[:2] == '-d':
+                d['devicetoken']=l[2:-1]
+            if l[:2] == '-u':
+                d['url']=l[2:-1]
+            if l[:2] == '-e':
+                d['email']=l[2:-1]
+    return d
+
+def gogo(context='usr'):
+    d = cli_to_ipy('/Users/matt/.gemwallet')
+    from round import client
+    global c; global usr; global app;
+    c = client(url=d['url'] if 'url' in d else None)
+    try:
+        if context != 'usr': raise Exception()
+        usr = c.authenticate_device(d['apitoken'],d['devicetoken'],d['email'])
+        print("usr: {}".format(usr))
+    except:
+        app = c.authenticate_application(d['apitoken'],d['admintoken'])
+        print("app: {}".format(app))
