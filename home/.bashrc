@@ -72,7 +72,22 @@ worker() {
 mfind(){
   find "$1" -type f -exec grep -iIHn "$2" {} \;
 }
+mrepl(){
+  if [[ $# -eq 3 ]]; then
+      read -p "Are you sure you want to replace all occurrences of $2 with $3 in $1? [Y/n] " -r
+      echo
+      if [[ $REPLY =~ ^[Yy]$ ]]
+      then
+          find "$1" -type f -exec sed -i "s/$2/$3/g" {} \;
+      fi
+  else
+      echo 'Usage: mrepl DIR search-string replace-string'
+  fi
+}
 
+decc(){
+  dec $@ | pbcopy
+}
 dec(){
   find ~/encrypted/ -type f -iregex ".*${1}.*[gpgasc][gpgasc][gpgasc]" -exec gpg -d {} \;
 }
@@ -189,7 +204,7 @@ alias flag='toilet -f mono12 '
 alias cc="drush rr && drush cc all"
 alias ccfg="drush rr && drush cc all && fg"
 alias dl="tail -f /tmp/drupal_debug.txt"
-alias rmpyc="find . -type f -name '*.pyc' -exec rm {} \;"
+alias rmpyc="find . -type f -name '*.pyc' -exec rm -f {} \;"
 alias rmtilda="find . -name '*~' -exec rm {} \;"
 alias cltr="rmpyc; rmtilda"
 alias remount="sudo kextunload /System/Library/Extensions/AppleStorageDrivers.kext/Contents/PlugIns/AppleUSBCardReader.kext && sudo kextload /System/Library/Extensions/AppleStorageDrivers.kext/Contents/PlugIns/AppleUSBCardReader.kext"
