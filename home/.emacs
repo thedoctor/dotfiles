@@ -14,7 +14,7 @@
           egg
           go-errcheck
           go-mode
-          idomenu
+          helm
           json-mode
           json-snatcher
           json-reformat
@@ -63,9 +63,12 @@
 ;; Go format. Use if I ever start go-ing again.
 ;;(add-hook 'before-save-hook 'gofmt-before-save)
 
+
 ;; IDO - interactive do, basically auto-completion for switching buffers and finding files. Replaces main C-x f and C-x b.
-(require 'ido)
-(ido-mode t)
+;; (require 'ido)
+;; (ido-mode t)
+;; IDO replaced by Helm, which does dope shit for finding files/buffers
+(require 'helm-config)
 
 ;; Stripes - sets the background color of every even line. In this case, it's set to #141414 -- change in stripes.el
 (require 'stripes)
@@ -153,6 +156,15 @@
 ;;;;---------------------------------------------------------------------------
 ;; SECTION: Preferences
 ;;;;---------------------------------------------------------------------------
+
+;; Helm-mode on
+(helm-mode 1)
+
+;; Resize the helm window according to its content
+(helm-autoresize-mode 1)
+
+;; Keep it tight, tho
+(setq-default helm-autoresize-max-height 30)
 
 (setq-default tab-width 2)
 (defvaralias 'c-basic-offset 'tab-width)
@@ -254,6 +266,10 @@
 (define-key ctl-x-map "." 'wipe)
 
 (global-set-key (kbd "C-x w") 'delete-trailing-whitespace)
+
+;; Helm, has a great command auto-completion interface, so we'll assign it to M-x
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-w") 'helm-imenu)
 
 
 ;; QWERTY (ergodox)
