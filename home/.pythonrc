@@ -1,3 +1,6 @@
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
 def cli_to_ipy(fn):
     d={}
     with open(fn) as f:

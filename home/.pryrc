@@ -1,3 +1,4 @@
+
 Pry.editor = 'emacs'
 
 
@@ -106,22 +107,28 @@ def cli_to_ipy(fn)
     d
 end
 
-c = user = app = nil
-
+$cli = nil
+$usr = nil
+$app = nil
+def usr; $usr; end
+def app; $app; end
+def cli; $cli; end
 def gogo(context='usr')
   d = cli_to_ipy('/Users/matt/.gemwallet')
-  require 'round'
-  c = Round.client(d['url']) if d['url']
-  c ||= Round.client
+  require_relative '/Users/matt/dev/gem/gembox/projects/roundrb/lib/round'
+
+  $cli = Round.client(d['url']) if d['url']
+  $cli ||= Round.client
   raise StandardError if context != 'usr'
-  usr = c.authenticate_device(email: d['email'],
-                              api_token: d['apitoken'],
-                              device_token: d['devicetoken'])
-  puts "usr: #{usr}"
-  usr
-rescue
-  app = c.authenticate_application(api_token: d['apitoken'],
-                                   admin_token: d['admintoken'])
-  puts "app: #{app}"
-  app
+  $usr = $cli.authenticate_device(email: d['email'],
+                                  api_token: d['apitoken'],
+                                  device_token: d['devicetoken'])
+  puts "usr: #{$usr}"
+  $usr
+rescue => e
+  puts e
+  $app = $cli.authenticate_application(api_token: d['apitoken'],
+                                       admin_token: d['admintoken'])
+  puts "app: #{$app}"
+  $app
 end

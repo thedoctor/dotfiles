@@ -1,23 +1,21 @@
-RED="\[\033[0;31m\]"
-YELLOW="\[\033[0;33m\]"
-GREEN="\[\033[0;32m\]"
-
-PATH=$PATH:$HOME/bin:/usr/sbin
+PATH=$PATH:$HOME/bin:/usr/sbin:$HOME/.util/bin
 export PATH
 
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export LS_COLORS=gxBxhxDxfxhxhxhxhxcxcx
 
-export EDITOR="emacs"
+export EDITOR="emacsclient -t"
 
 fateproc(){
   sudo ps aux| grep server | grep -v grep | awk '{ print $2 }' | xargs kill
   $@
 }
 
-alias ebashrc="emacs ${HOME}/.bashrc && source ${HOME}/.bashrc"
-alias edox="emacs ${HOME}/dev/ergodox/tmk_keyboard/keyboard/ergodox/keymap.c"
+alias erc="e ${HOME}/.bashrc && source ${HOME}/.bashrc"
+alias edox="e ${HOME}/dev/ergodox/tmk_keyboard/keyboard/ergodox/keymap.c"
+alias egw="emacsclient -t ${HOME}/.gemwallet"
+
 
 updox(){
   cd "${HOME}/dev/ergodox/tmk_keyboard/keyboard/ergodox"
@@ -30,8 +28,6 @@ updox(){
   # python -c 'from webbrowser import open_new; open_new("./layout.html");'
   # cd -
 }
-
-alias egw="emacs ${HOME}/.gemwallet"
 
 gemsave(){
   if [ -f "${HOME}/.gemwallet" ]; then
@@ -92,6 +88,10 @@ dec(){
   find ~/encrypted/ -type f -iregex ".*${1}.*[gpgasc][gpgasc][gpgasc]" -exec gpg -d {} \;
 }
 
+be(){
+  bundle exec "$@"
+}
+
 g(){
   echo "> git $@"
   git "$@"
@@ -119,6 +119,18 @@ psho(){
     psh origin HEAD
   else
     psh origin "$@"
+  fi
+}
+
+grel(){
+  if [ $# -eq 0 ]; then
+      echo "Usage: grel TAGNAME [BRANCH]"
+  else
+      g tag -d "$1" &>/dev/null ; psho --tags :"$1" &>/dev/null ; g tag -a "$1" -m "Release $1" && psho --tags
+  fi
+
+  if [ $# -eq 2 ]; then
+      psho "$2"
   fi
 }
 
@@ -195,6 +207,7 @@ up(){
 alias ll='ls -la'
 alias cp='rsync -aP'
 # I'm bad at typing
+alias e='emacsclient -t'
 alias eamcs='emacs'
 alias emac='emacs'
 alias emcas='emacs'
@@ -217,7 +230,6 @@ export PYTHONSTARTUP=~/.pythonrc
 export RBENV_ROOT="${HOME}/.rbenv"; if [ -d "${RBENV_ROOT}" ]; then export PATH="${RBENV_ROOT}/bin:${PATH}"; eval "$(rbenv init -)"; fi
 
 source ~/.git-prompt.sh
-PS1="$RED\w$YELLOW\$(__git_ps1)$GREEN\$ "
 
 if [ -f ~/.git-completion.bash ]; then
     source ~/.git-completion.bash
@@ -265,3 +277,6 @@ export PATH="/usr/local/heroku/bin:${HOME}/.local/bin:$PATH"
 PYCOIN_CACHE_DIR=~/.pycoin_cache
 PYCOIN_SERVICE_PROVIDERS=BLOCKR_IO:BLOCKCHAIN_INFO:BITEASY:BLOCKEXPLORER
 export PYCOIN_CACHE_DIR PYCOIN_SERVICE_PROVIDERS
+
+# Run twolfson/sexy-bash-prompt
+. ~/.bash_prompt

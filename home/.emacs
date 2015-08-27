@@ -15,14 +15,15 @@
           go-errcheck
           go-mode
           helm
+          helm-ls-git
+          ace-jump-mode
+          jedi
           json-mode
           json-snatcher
           json-reformat
           json-reformat
           json-snatcher
           magit
-          git-rebase-mode
-          git-commit-mode
           php-mode
           revive
           rubocop
@@ -65,10 +66,13 @@
 
 
 ;; IDO - interactive do, basically auto-completion for switching buffers and finding files. Replaces main C-x f and C-x b.
-;; (require 'ido)
-;; (ido-mode t)
+;;(require 'ido)
+;;(ido-mode t)
+;;(ido-vertical-mode t)
 ;; IDO replaced by Helm, which does dope shit for finding files/buffers
 (require 'helm-config)
+(require 'helm-ls-git)
+(require 'helm-fuzzy-find)
 
 ;; Stripes - sets the background color of every even line. In this case, it's set to #141414 -- change in stripes.el
 (require 'stripes)
@@ -108,6 +112,18 @@
 ;;;;---------------------------------------------------------------------------
 ;; SECTION: MODES
 ;;;;---------------------------------------------------------------------------
+
+;; Jedi mode (python autocompletion)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
+
+;; Ace Jump Mode
+(autoload
+  'ace-jump-mode
+  "ace-jump-mode"
+  "Emacs quick move minor mode"
+  t)
+(define-key global-map (kbd "C-x SPC") 'ace-jump-mode)
 
 ;; Markdown Mode
 (autoload 'markdown-mode "markdown-mode"
@@ -157,6 +173,15 @@
 ;; SECTION: Preferences
 ;;;;---------------------------------------------------------------------------
 
+(defun split-horizontally-for-temp-buffers ()
+  "Split the window horizontally for temp buffers."
+  (when (and (one-window-p t)
+             (not (active-minibuffer-window)))
+    (split-window-horizontally)))
+(add-hook 'temp-buffer-setup-hook 'split-horizontally-for-temp-buffers)
+
+
+
 ;; Helm-mode on
 (helm-mode 1)
 
@@ -165,6 +190,8 @@
 
 ;; Keep it tight, tho
 (setq-default helm-autoresize-max-height 30)
+(setq-default helm-mode-fuzzy-match t)
+(setq-default helm-completion-in-region-fuzzy-match t)
 
 (setq-default tab-width 2)
 (defvaralias 'c-basic-offset 'tab-width)
@@ -237,6 +264,9 @@
 
 ;; Universal
 
+;; Map M-x to M-a
+(global-set-key (kbd "M-a") 'execute-extended-command)
+
 ;; Reload from file
 (global-set-key (kbd "C-x r") 'revert-buffer-no-confirm)
 
@@ -270,7 +300,7 @@
 ;; Helm, has a great command auto-completion interface, so we'll assign it to M-x
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-w") 'helm-imenu)
-
+(global-set-key (kbd "C-x C-d") 'helm-browse-project)
 
 ;; QWERTY (ergodox)
 ;; Resizing windows
