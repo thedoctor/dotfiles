@@ -29,6 +29,13 @@ updox(){
   # cd -
 }
 
+alias wiki="web https://github.com/GemHQ/Gem/wiki"
+
+web(){
+    # TODO: check for scheme and make a smart guess to prepend one if missing.
+    python -c "from webbrowser import open; open('${1}')"
+}
+
 gemsave(){
   if [ -f "${HOME}/.gemwallet" ]; then
       cp "${HOME}/.gemwallet" "${HOME}/.gemwallet.${1}"
@@ -87,6 +94,11 @@ decc(){
 dec(){
   find ~/encrypted/ -type f -iregex ".*${1}.*[gpgasc][gpgasc][gpgasc]" -exec gpg -d {} \;
 }
+
+viscosity(){
+  osascript -e 'tell application "Viscosity" to connect "${1}"'
+}
+alias ore="osascript -e 'tell application \"Viscosity\" to connect \"gem-oregon\"'"
 
 be(){
   bundle exec "$@"
@@ -280,3 +292,4 @@ export PYCOIN_CACHE_DIR PYCOIN_SERVICE_PROVIDERS
 
 # Run twolfson/sexy-bash-prompt
 . ~/.bash_prompt
+source /usr/local/etc/bash_completion.d/password-store

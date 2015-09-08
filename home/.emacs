@@ -73,6 +73,15 @@
 (require 'helm-config)
 (require 'helm-ls-git)
 (require 'helm-fuzzy-find)
+;; open helm buffer inside current window, not occupy whole other window
+(setq helm-split-window-in-side-p           t
+      ;; move to end or beginning of source when reaching top or bottom of source.
+      helm-move-to-line-cycle-in-source     t
+      ;; search for library in `require' and `declare-function' sexp.
+      helm-ff-search-library-in-sexp        t
+      ;; scroll 8 lines other window using M-<next>/M-<prior>
+      helm-scroll-amount                    8
+      helm-ff-file-name-history-use-recentf t)
 
 ;; Stripes - sets the background color of every even line. In this case, it's set to #141414 -- change in stripes.el
 (require 'stripes)
@@ -80,7 +89,9 @@
 
 ;; Column-marker - let's highlight column 80 so we know where to trim lines. Love me dat PEP
 (require 'column-marker)
-(add-hook 'after-change-major-mode-hook (lambda () (interactive) (column-marker-2 80)))
+(add-hook 'after-change-major-mode-hook (lambda () (interactive) (column-marker-1 80)))
+
+;; Column-number - show c # in the line at the bottom (what's that called?)
 (add-hook 'after-change-major-mode-hook 'column-number-mode)
 
 ;; Highlight-chars - Customizable regex highlighting.
@@ -113,9 +124,21 @@
 ;; SECTION: MODES
 ;;;;---------------------------------------------------------------------------
 
+;; Python mode
+(add-hook 'python-mode-hook (lambda ()
+                              (interactive)
+                              (column-marker-1 80)))
 ;; Jedi mode (python autocompletion)
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
+
+;; Ruby mode
+(add-hook 'ruby-mode-hook (lambda ()
+                            (interactive)
+                            (column-marker-1 80)))
+
+;; Add Rubocop to ruby-mode
+(add-hook 'ruby-mode-hook 'rubocop-mode)
 
 ;; Ace Jump Mode
 (autoload
@@ -134,6 +157,9 @@
 
 ;; PHP Mode
 (autoload 'php-mode "php-mode" "Major mode for PHP." t)
+(add-hook 'php-mode-hook (lambda ()
+                           (interactive)
+                           (column-marker-1 80)))
 
 ;; JSON Mode
 (autoload 'json-mode "json-mode" "Major mode for JSON." t)
@@ -142,13 +168,13 @@
 ;; JS2 Mode
 (autoload 'js2-mode "js2-mode" "Alternate major mode for JavaScript." t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-hook 'js2-mode-hook (lambda ()
+                           (interactive)
+                           (column-marker-1 80)))
 
 ;; SCSS Mode
 (autoload 'scss-mode "scss-mode")
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
-
-;; Add Rubocop to ruby-mode
-(add-hook 'ruby-mode-hook 'rubocop-mode)
 
 ;; Arduino Mode
 (autoload 'dart-mode "arduino-mode")
@@ -158,6 +184,9 @@
 (require 'cl-lib)
 (autoload 'coffee-mode "coffee-mode" "Major mode for CoffeeScript." t)
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+(add-hook 'php-mode-hook (lambda ()
+                           (interactive)
+                           (column-marker-1 80)))
 
 (setq-default auto-mode-alist
   (append '(("\.css.php$" . css-mode)
@@ -226,6 +255,14 @@
 (defun revert-buffer-no-confirm ()
   "Revert buffer without confirmation."
   (interactive) (revert-buffer t t))
+(defun revert-all-buffers ()
+  "Refreshes all open buffers from their respective files."
+  (interactive)
+  (dolist (buf (buffer-list))
+    (with-current-buffer buf
+      (when (and (buffer-file-name) (file-exists-p (buffer-file-name)) (not (buffer-modified-p)))
+        (revert-buffer t t t) )))
+  (message "Refreshed open files.") )
 
 (defun enlarge-window-three ()
   "Grow current window vertically in increments of 3 rows"
