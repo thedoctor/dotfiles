@@ -11,7 +11,6 @@
   (setq package-list
         '(arduino-mode
           column-marker
-          egg
           go-errcheck
           go-mode
           helm
@@ -23,7 +22,6 @@
           json-reformat
           json-reformat
           json-snatcher
-          magit
           php-mode
           revive
           rubocop
@@ -59,57 +57,107 @@
 (require 'diff-hl)
 (require 'diff-hl-margin)
 (global-diff-hl-mode)
-(add-hook 'after-change-major-mode-hook 'diff-hl-margin-mode)
 
-;; Go format. Use if I ever start go-ing again.
-;;(add-hook 'before-save-hook 'gofmt-before-save)
-
-
-;; IDO - interactive do, basically auto-completion for switching buffers and finding files. Replaces main C-x f and C-x b.
-;;(require 'ido)
-;;(ido-mode t)
-;;(ido-vertical-mode t)
-;; IDO replaced by Helm, which does dope shit for finding files/buffers
+;; DEPRECATED AS FUCK
+;; IDO - interactive do, basically auto-completion for switching buffers and
+;;       finding files. Replaces main C-x f and C-x b.
+;; (require 'ido)
+;; (ido-mode t)
+;; (ido-vertical-mode t)
+;;
+;; Helm! Which replaced IDO and does dope shit for finding files/buffers
 (require 'helm-config)
 (require 'helm-ls-git)
 (require 'helm-fuzzy-find)
 ;; open helm buffer inside current window, not occupy whole other window
 (setq helm-split-window-in-side-p           t
-      ;; move to end or beginning of source when reaching top or bottom of source.
+      ;; move to end or beginning of source when reaching top or bottom of source
       helm-move-to-line-cycle-in-source     t
-      ;; search for library in `require' and `declare-function' sexp.
+      ;; search for library in `require' and `declare-function' sexp
       helm-ff-search-library-in-sexp        t
       ;; scroll 8 lines other window using M-<next>/M-<prior>
       helm-scroll-amount                    8
       helm-ff-file-name-history-use-recentf t)
 
-;; Stripes - sets the background color of every even line. In this case, it's set to #141414 -- change in stripes.el
+;; Stripes - sets the background color of every even line. In this case, it's set
+;; to #141414 -- change in stripes.el
 (require 'stripes)
 ;;(add-hook 'after-change-major-mode-hook 'turn-on-stripes-mode)
 
-;; Column-marker - let's highlight column 80 so we know where to trim lines. Love me dat PEP
+;; Column-marker - let's highlight column 80 so we know where to trim lines.
+;; Love me dat PEP
 (require 'column-marker)
-(add-hook 'after-change-major-mode-hook (lambda () (interactive) (column-marker-1 80)))
-
-;; Column-number - show c # in the line at the bottom (what's that called?)
-(add-hook 'after-change-major-mode-hook 'column-number-mode)
-
 ;; Highlight-chars - Customizable regex highlighting.
 (require 'highlight-chars)
-;; Highlight tabs - we almost always want spaces. (exception: Go-mode)
-(unless (equal major-mode 'go-mode)
-  (add-hook 'after-change-major-mode-hook 'hc-highlight-tabs))
-;; Highlight trailing whitespace.
-(unless (equal major-mode 'term-mode)
-  (add-hook 'after-change-major-mode-hook 'hc-highlight-trailing-whitespace))
+
+
+(define-minor-mode respectful-mode
+  "I use this to tell emacs not to care that other people do shitty things like use tabs or leave trailing whitespace. -_-"
+  :init-value nil
+  " respectful"
+  nil
+  nil
+  :global 1
+  (funcall
+   (lambda()
+     (if (equal hc-highlight-trailing-whitespace-p 't)
+         (funcall (lambda ()
+                    (remove-hook 'before-save-hook 'delete-trailing-whitespace)
+                    (hc-toggle-highlight-trailing-whitespace 0)
+                    (hc-toggle-highlight-tabs 0)))
+       (funcall (lambda ()
+                  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+                  (hc-toggle-highlight-trailing-whitespace 't)
+                  (hc-toggle-highlight-tabs 't)))
+       ))))
+
+
+;; Run these every time we change modes.
+(add-hook
+ 'after-change-major-mode-hook
+ (lambda ()
+
+   ;; Highlight tabs - we almost always want spaces. (exception: Go-mode)
+   (unless (or (equal major-mode 'go-mode)
+               (equal major-mode 'fundamental-mode)
+               (equal major-mode 'term-mode)) (hc-highlight-tabs))
+
+   (if (or (equal major-mode 'fundamental-mode)
+           (equal major-mode 'term-mode))
+       ;; Don't because we're not editing code, or we must permit evil.
+       (remove-hook 'before-save-hook 'delete-trailing-whitespace)
+     ;; Delete trailing whitespace on save.
+     (add-hook 'before-save-hook 'delete-trailing-whitespace))
+
+
+   ;; Go format.
+   (if (equal major-mode 'go-mode)
+       (add-hook 'before-save-hook 'gofmt-before-save)
+     (remove-hook 'before-save-hook 'gofmt-before-save))
+
+   ;; Column-number - show c # in the line at the bottom (what's that called?)
+   (column-number-mode)
+
+   ;; Highlight uncommited git changes: https://github.com/dgutov/diff-hl
+   (diff-hl-margin-mode)
+
+   ;; Line-limit's usually 80 characters
+   (unless (equal major-mode 'fundamental-mode) (column-marker-1 81))
+   ;; But not always
+   (if (or (equal major-mode 'java-mode)
+           (equal major-mode 'json-mode)
+           (equal major-mode 'dart-mode)
+           (equal major-mode 'html-mode)) (column-marker-1 101))
+
+   ))
+
+
 (put 'upcase-region 'disabled nil)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(egg-confirm-next-action t)
- '(egg-enable-tooltip t)
  '(split-height-threshold nil)
  '(split-width-threshold 0)
  '(visible-bell nil))
@@ -125,17 +173,11 @@
 ;;;;---------------------------------------------------------------------------
 
 ;; Python mode
-(add-hook 'python-mode-hook (lambda ()
-                              (interactive)
-                              (column-marker-1 80)))
 ;; Jedi mode (python autocompletion)
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
 
 ;; Ruby mode
-(add-hook 'ruby-mode-hook (lambda ()
-                            (interactive)
-                            (column-marker-1 80)))
 
 ;; Add Rubocop to ruby-mode
 (add-hook 'ruby-mode-hook 'rubocop-mode)
@@ -146,7 +188,25 @@
   "ace-jump-mode"
   "Emacs quick move minor mode"
   t)
-(define-key global-map (kbd "C-x SPC") 'ace-jump-mode)
+
+;; C++ Mode
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
+(c-add-style
+ "my-stroustrup"
+ '("stroustrup"
+   (indent-tabs-mode . nil)               ; use spaces rather than tabs
+   (c-basic-offset . 4)                   ; indent by four spaces
+   (c-offsets-alist . ((inline-open . 0)  ; custom indentation rules
+                       (brace-list-open . 0)
+                       (statement-case-open . +)))))
+
+(defun my-c++-mode-hook ()
+  (c-set-style "my-stroustrup")
+  (auto-fill-mode)
+  (c-toggle-auto-hungry-state 1))
+
+(add-hook 'c++-mode-hook 'my-c++-mode-hook)
 
 ;; Markdown Mode
 (autoload 'markdown-mode "markdown-mode"
@@ -157,9 +217,6 @@
 
 ;; PHP Mode
 (autoload 'php-mode "php-mode" "Major mode for PHP." t)
-(add-hook 'php-mode-hook (lambda ()
-                           (interactive)
-                           (column-marker-1 80)))
 
 ;; JSON Mode
 (autoload 'json-mode "json-mode" "Major mode for JSON." t)
@@ -168,9 +225,6 @@
 ;; JS2 Mode
 (autoload 'js2-mode "js2-mode" "Alternate major mode for JavaScript." t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(add-hook 'js2-mode-hook (lambda ()
-                           (interactive)
-                           (column-marker-1 80)))
 
 ;; SCSS Mode
 (autoload 'scss-mode "scss-mode")
@@ -184,9 +238,6 @@
 (require 'cl-lib)
 (autoload 'coffee-mode "coffee-mode" "Major mode for CoffeeScript." t)
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
-(add-hook 'php-mode-hook (lambda ()
-                           (interactive)
-                           (column-marker-1 80)))
 
 (setq-default auto-mode-alist
   (append '(("\.css.php$" . css-mode)
@@ -210,7 +261,6 @@
 (add-hook 'temp-buffer-setup-hook 'split-horizontally-for-temp-buffers)
 
 
-
 ;; Helm-mode on
 (helm-mode 1)
 
@@ -222,9 +272,6 @@
 (setq-default helm-mode-fuzzy-match t)
 (setq-default helm-completion-in-region-fuzzy-match t)
 
-(setq-default tab-width 2)
-(defvaralias 'c-basic-offset 'tab-width)
-(defvaralias 'cperl-indent-level 'tab-width)
 (setq-default indent-tabs-mode nil)
 
 ;; Follow symlinks
@@ -235,21 +282,19 @@
     (global-font-lock-mode 1)        ; GNU Emacs
   (setq font-lock-auto-fontify t))   ; XEmacs
 
-;; Delete trailing whitespace on save.
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
 ;; Show me dem line-numbers
 (setq linum-format "%d ")
 (add-hook 'after-change-major-mode-hook 'linum-mode)
 
 ;; Set magit colors.
-(setq magit-auto-revert-mode nil)
-(eval-after-load 'magit
-  '(progn
-     (set-face-foreground 'magit-diff-add "black")
-     (set-face-foreground 'magit-diff-del "red3")
-     (unless window-system
-              (set-face-background 'magit-item-highlight "white"))))
+;; (setq magit-auto-revert-mode nil)
+;; (eval-after-load 'magit
+;;   '(progn
+;;      (set-face-foreground 'magit-diff-add "black")
+;;      (set-face-foreground 'magit-diff-del "red3")
+;;      (unless window-system
+;;               (set-face-background 'magit-item-highlight "white"))))
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 ;; Reload file from disk - without a verbose yes/no confirm
 (defun revert-buffer-no-confirm ()
@@ -306,6 +351,13 @@
 
 ;; Reload from file
 (global-set-key (kbd "C-x r") 'revert-buffer-no-confirm)
+(global-set-key (kbd "C-x C-r") 'revert-all-buffers)
+
+;; respectful mode
+(global-set-key (kbd "C-x e") 'respectful-mode)
+
+;; gtags-find-symbol
+(global-set-key (kbd "C-x g") 'helm-gtags-find-tag)
 
 ;; TODO Figure out indent region.
 ;; (global-set-key (kbd "<C-tab>") 'indent-region)
@@ -316,10 +368,11 @@
 ;; Copy to system clipboard
 (global-set-key (kbd "ESC c") 'copy-to-sys-clipboard)
 
+;; Ace jump
+(define-key global-map (kbd "ESC SPC") 'ace-jump-mode)
+
 ;; Replace string (in region or rest of file)
 (global-set-key (kbd "ESC s") 'replace-string)
-;; TODO: Learn egg
-;; (global-set-key (kbd "C-x g") 'magit-status)
 
 ;; Revive - lets you maintain your open buffers and frame configuration.
 (autoload 'save-current-configuration "revive" "Save status" t)
@@ -338,6 +391,8 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-w") 'helm-imenu)
 (global-set-key (kbd "C-x C-d") 'helm-browse-project)
+(global-set-key (kbd "M-m") 'helm-do-grep)
+
 
 ;; QWERTY (ergodox)
 ;; Resizing windows

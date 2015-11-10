@@ -16,6 +16,21 @@ alias erc="e ${HOME}/.bashrc && source ${HOME}/.bashrc"
 alias edox="e ${HOME}/dev/ergodox/tmk_keyboard/keyboard/ergodox/keymap.c"
 alias egw="emacsclient -t ${HOME}/.gemwallet"
 
+bc(){
+  /Users/matt/dev/gem/gembox/projects/elements/build/osx/bitcoin-cli $@;
+}
+btx(){
+  /Users/matt/dev/gem/gembox/projects/elements/build/osx/bitcoin-tx $@;
+}
+
+
+ac(){
+  /Users/matt/dev/gem/gembox/projects/elements/build/osx/alpha-cli $@;
+}
+atx(){
+  /Users/matt/dev/gem/gembox/projects/elements/build/osx/alpha-tx $@;
+}
+
 
 updox(){
   cd "${HOME}/dev/ergodox/tmk_keyboard/keyboard/ergodox"
@@ -36,6 +51,18 @@ web(){
     python -c "from webbrowser import open; open('${1}')"
 }
 
+addy(){
+  if [ $# -eq 0 ]; then
+    echo "Usage: addy INT(mg) [time]"
+  else
+    if [ $# -eq 1 ]; then
+      echo '.' | gcalcli --calendar Medical --title "adderall ${1}mg" --when "`date`" --duration 5 --description '' --where '' add
+    else
+      echo '.' | gcalcli --calendar Medical --title "adderall ${1}mg" --when "${2}" --duration 5 --description '' --where '' add
+    fi
+  fi
+}
+
 gemsave(){
   if [ -f "${HOME}/.gemwallet" ]; then
       cp "${HOME}/.gemwallet" "${HOME}/.gemwallet.${1}"
@@ -49,27 +76,9 @@ gemset(){
   cp "${HOME}/.gemwallet.${1}" "${HOME}/.gemwallet"
 }
 
-jiraprefix(){
-  prefix=""
-  env_re="[0-9]+"
-  jira_re="[^/]*/?([0-9]{3,4}).*"
-  if [[ $(__git_ps1) =~ $jira_re ]]; then prefix="GP-${BASH_REMATCH[1]}"; else
-      if [[ "${JIRA_NUM}" =~ $env_re ]]; then
-          prefix="GP-${JIRA_NUM}"
-      else
-          prefix="";
-      fi
-  fi
-  echo "$prefix "
-}
-
 ngrepl() {
   echo "> sudo ngrep -W byline -d lo port $1"
   sudo ngrep -W byline -d lo port $1
-}
-
-worker() {
-  sudo ssh -i ~/.ssh/twogem-worker ubuntu@$1
 }
 
 mfind(){
@@ -91,8 +100,9 @@ mrepl(){
 decc(){
   dec $@ | pbcopy
 }
+
 dec(){
-  find ~/encrypted/ -type f -iregex ".*${1}.*[gpgasc][gpgasc][gpgasc]" -exec gpg -d {} \;
+  find ~/.encrypted/ -type f -iregex ".*${1}.*[gpgasc][gpgasc][gpgasc]" -exec gpg -d {} \;
 }
 
 viscosity(){
@@ -144,6 +154,10 @@ grel(){
   if [ $# -eq 2 ]; then
       psho "$2"
   fi
+}
+
+irclog () {
+  cat "$@" | grep -v "has joined #" | grep -v "has quit \["  | grep -v "now known as"
 }
 
 pll(){
@@ -241,7 +255,8 @@ export PYTHONSTARTUP=~/.pythonrc
 
 export RBENV_ROOT="${HOME}/.rbenv"; if [ -d "${RBENV_ROOT}" ]; then export PATH="${RBENV_ROOT}/bin:${PATH}"; eval "$(rbenv init -)"; fi
 
-source ~/.git-prompt.sh
+
+# source ~/.git-prompt.sh
 
 if [ -f ~/.git-completion.bash ]; then
     source ~/.git-completion.bash
@@ -265,19 +280,19 @@ fi
 
 export WORKON_HOME=~/Envs
 
-if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
+if [[ -f "/usr/local/bin/virtualenvwrapper.sh" && -n $SEXY ]]; then
     source /usr/local/bin/virtualenvwrapper.sh
     workon py
 fi
 
 
-if [ -f "${HOME}/.local/bin/virtualenvwrapper.sh" ]; then
+if [[ -f "${HOME}/.local/bin/virtualenvwrapper.sh" && -n $SEXY ]]; then
     source ~/.local/bin/virtualenvwrapper.sh
     export PATH="$PATH:${HOME}/.local/bin"
     workon py
 fi
 
-if [ -f "${HOME}/virtualenvwrapper.sh" ]; then
+if [[ -f "${HOME}/virtualenvwrapper.sh" && -n $SEXY ]]; then
     source ~/virtualenvwrapper.sh
     workon py
 fi
@@ -291,5 +306,10 @@ PYCOIN_SERVICE_PROVIDERS=BLOCKR_IO:BLOCKCHAIN_INFO:BITEASY:BLOCKEXPLORER
 export PYCOIN_CACHE_DIR PYCOIN_SERVICE_PROVIDERS
 
 # Run twolfson/sexy-bash-prompt
-. ~/.bash_prompt
-source /usr/local/etc/bash_completion.d/password-store
+if [[ -f ~/.bash_prompt && -n $SEXY ]]; then
+    . ~/.bash_prompt
+fi
+
+if [[ "$SEXY" != "1" ]]; then
+    export PS1="$(pwd): "
+fi
