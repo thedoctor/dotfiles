@@ -1,0 +1,54 @@
+# This is Git's per-user configuration file.
+[user]
+        name = Matt Smith
+        email = matt.the.smith@gmail.com
+[core]
+        editor = emacs
+        excludesfile = /Users/matt/.gitignore_global
+[web]
+        browser = google-chrome
+[merge]
+        tool = emerge
+[color]
+        ui = auto
+[color "branch"]
+        current = yellow bold
+        local = green bold
+        remote = cyan bold
+[color "diff"]
+        meta = yellow bold
+        frag = magenta bold
+        old = red bold
+        new = green bold
+        whitespace = red reverse
+[color "diff-highlight"]
+        oldNormal = red bold
+        newNormal = green bold
+        oldHighlight = red bold 52
+        newHighlight = green bold 22
+[color "status"]
+        added = green bold
+        changed = yellow bold
+        untracked = red bold
+[pager]
+        diff = diff-so-fancy | less --tabs=1,5 -RFX
+        show = diff-so-fancy | less --tabs=1,5 -RFX
+[alias]
+        s = status
+        a = add
+        c = commit
+        cam = !git commit -a -m "$@"
+        cm = !git commit -m "$@"
+        p = push
+        t = tag
+        pt = push --tags
+        po = push origin
+        pot = push origin --tags
+        pl = pull
+        plo = pull origin
+        co = checkout
+        rb = rebase
+        rs = reset
+        m = merge
+        mt = mergetool
+        release = !grel
