@@ -90,7 +90,6 @@
 ;; Highlight-chars - Customizable regex highlighting.
 (require 'highlight-chars)
 
-
 (define-minor-mode respectful-mode
   "I use this to tell emacs not to care that other people do shitty things like use tabs or leave trailing whitespace. -_-"
   :init-value nil
@@ -98,18 +97,19 @@
   nil
   nil
   :global 1
-  (funcall
-   (lambda()
-     (if (equal hc-highlight-trailing-whitespace-p 't)
-         (funcall (lambda ()
-                    (remove-hook 'before-save-hook 'delete-trailing-whitespace)
-                    (hc-toggle-highlight-trailing-whitespace 0)
-                    (hc-toggle-highlight-tabs 0)))
-       (funcall (lambda ()
-                  (add-hook 'before-save-hook 'delete-trailing-whitespace)
-                  (hc-toggle-highlight-trailing-whitespace 't)
-                  (hc-toggle-highlight-tabs 't)))
-       ))))
+  (funcall (lambda()
+             (if (equal hc-highlight-trailing-whitespace-p 't)
+                 (progn
+                   (remove-hook 'before-save-hook 'delete-trailing-whitespace)
+                   (hc-toggle-highlight-trailing-whitespace 0)
+                   (hc-toggle-highlight-tabs 0)
+                   (message "respectful-mode enabled"))
+               (progn
+                 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+                 (hc-toggle-highlight-trailing-whitespace 't)
+                 (hc-toggle-highlight-tabs 't)
+                 (message "respectful-mode disabled; fuck yeah")))
+             )))
 
 
 ;; Run these every time we change modes.
@@ -120,7 +120,9 @@
    ;; Highlight tabs - we almost always want spaces. (exception: Go-mode)
    (unless (or (equal major-mode 'go-mode)
                (equal major-mode 'fundamental-mode)
-               (equal major-mode 'term-mode)) (hc-highlight-tabs))
+               (equal major-mode 'term-mode))
+     (progn (hc-toggle-highlight-trailing-whitespace 't)
+            (hc-toggle-highlight-tabs 't)))
 
    (if (or (equal major-mode 'fundamental-mode)
            (equal major-mode 'term-mode))
@@ -150,7 +152,6 @@
            (equal major-mode 'html-mode)) (column-marker-1 101))
 
    ))
-
 
 (put 'upcase-region 'disabled nil)
 (custom-set-variables
@@ -207,6 +208,7 @@
   (c-toggle-auto-hungry-state 1))
 
 (add-hook 'c++-mode-hook 'my-c++-mode-hook)
+(add-hook 'c-mode-hook 'my-c++-mode-hook)
 
 ;; Markdown Mode
 (autoload 'markdown-mode "markdown-mode"
@@ -225,6 +227,7 @@
 ;; JS2 Mode
 (autoload 'js2-mode "js2-mode" "Alternate major mode for JavaScript." t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(setq js2-basic-offset 2)
 
 ;; SCSS Mode
 (autoload 'scss-mode "scss-mode")
@@ -245,6 +248,7 @@
             ("\.module$" . php-mode)
             ("\.inc$" . php-mode)
             (".pythonrc" . python-mode)
+            (".erb" . html-mode)
             ("Rakefile" . ruby-mode))
           auto-mode-alist))
 
