@@ -7,14 +7,11 @@ export LS_COLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 export EDITOR="emacsclient -t"
 
-fateproc(){
-  sudo ps aux| grep server | grep -v grep | awk '{ print $2 }' | xargs kill
-  $@
-}
+export PYTHONSTARTUP=~/.pythonrc
 
-alias erc="e ${HOME}/.bashrc && source ${HOME}/.bashrc"
-alias edox="e ${HOME}/dev/ergodox/tmk_keyboard/keyboard/ergodox/keymap.c"
-alias egw="emacsclient -t ${HOME}/.gemwallet"
+export RBENV_ROOT="${HOME}/.rbenv"; if [ -d "${RBENV_ROOT}" ]; then export PATH="${RBENV_ROOT}/bin:${PATH}"; eval "$(rbenv init -)"; fi
+
+export WORKON_HOME=~/Envs
 
 bc(){
   /Users/matt/dev/gem/gembox/projects/elements/build/osx/bitcoin-cli $@;
@@ -23,14 +20,12 @@ btx(){
   /Users/matt/dev/gem/gembox/projects/elements/build/osx/bitcoin-tx $@;
 }
 
-
 ac(){
   /Users/matt/dev/gem/gembox/projects/elements/build/osx/alpha-cli $@;
 }
 atx(){
   /Users/matt/dev/gem/gembox/projects/elements/build/osx/alpha-tx $@;
 }
-
 
 updox(){
   cd "${HOME}/dev/ergodox/tmk_keyboard/keyboard/ergodox"
@@ -43,8 +38,6 @@ updox(){
   # python -c 'from webbrowser import open_new; open_new("./layout.html");'
   # cd -
 }
-
-alias wiki="web https://github.com/GemHQ/Gem/wiki"
 
 web(){
     # TODO: check for scheme and make a smart guess to prepend one if missing.
@@ -108,10 +101,36 @@ dec(){
 viscosity(){
   osascript -e 'tell application "Viscosity" to connect "${1}"'
 }
-alias ore="osascript -e 'tell application \"Viscosity\" to connect \"gem-oregon\"'"
 
 be(){
   bundle exec "$@"
+}
+
+jiranum(){
+    prefix=""
+    env_re="[0-9]+"
+    jira_re="[^/]*/?([0-9]{3,4}).*"
+    if [[ $(sexy_bash_prompt_get_git_branch) =~ $jira_re ]]; then prefix="${BASH_REMATCH[1]}"; else
+        if [[ "${JIRA_NUM}" =~ $env_re ]]; then
+            prefix="${JIRA_NUM}"
+        else
+            prefix="";
+        fi
+    fi
+    echo "$prefix"
+}
+
+gcj(){
+    read -p "Issue? GEM-[$(jiranum)] " -e num
+    [[ $num == '' ]] && num="$(jiranum)" || num="$num"
+
+    read -p "Log time? [N/<value><unit>[ ...]] " -e time
+    if [[ $time == 'n' || $time == 'N' || $time == '' ]]
+    then
+        git commit --author="Matt Smith <matt@gem.co>" -m "GEM-${num} ${@: -1}" "${@: 1:$#-1}"
+    else
+        git commit --author="Matt Smith <matt@gem.co>" -m "GEM-${num} #time ${time} ${@: -1}" "${@: 1:$#-1}"
+    fi
 }
 
 g(){
@@ -120,39 +139,40 @@ g(){
 }
 
 ga(){
-  g add "$@"
+  g a "$@"
 }
 
-gr(){
-  g reset HEAD "$@"
+gt(){
+  g t "$@"
+}
+
+grs(){
+  g rs HEAD "$@"
 }
 
 gm(){
-  g merge "$@"
+  g m "$@"
 }
 
-psh(){
-  g push "$@"
-}
-
-psho(){
-  if [ $# -eq 0 ]
-  then
-    psh origin HEAD
-  else
-    psh origin "$@"
-  fi
+p(){
+  g p "$@"
 }
 
 grel(){
   if [ $# -eq 0 ]; then
       echo "Usage: grel TAGNAME [BRANCH]"
   else
-      g tag -d "$1" &>/dev/null ; psho --tags :"$1" &>/dev/null ; g tag -a "$1" -m "Release $1" && psho --tags
+      read -p "Did you git changelog? [Y/n]" -e yn
+      if [[ $yn == 'n' || $yn == 'N' ]]
+      then
+        return 1
+      fi
+
+      g tag -d "$1" &>/dev/null ; g pot :"$1" &>/dev/null ; g t -a "$1" -m "Release $1" && g pot
   fi
 
   if [ $# -eq 2 ]; then
-      psho "$2"
+      g po "$2"
   fi
 }
 
@@ -160,17 +180,8 @@ irclog () {
   cat "$@" | grep -v "has joined #" | grep -v "has quit \["  | grep -v "now known as"
 }
 
-pll(){
+pl(){
   g pull "$@"
-}
-
-pllo(){
-  if [ $# -eq 0 ]
-  then
-    pll origin HEAD
-  else
-    pll origin "$@"
-  fi
 }
 
 gca(){
@@ -194,6 +205,10 @@ gd(){
   g diff "$@"
 }
 
+gs(){
+  g s
+}
+
 gchk(){
   g checkout "$@"
 }
@@ -211,11 +226,6 @@ glp() {
   fi
 }
 
-gs(){
-  echo '> git status'
-  git status
-}
-
 up(){
   local d=""
   limit=$1
@@ -230,61 +240,68 @@ up(){
   cd $d
 }
 
-alias ll='ls -la'
-alias cp='rsync -aP'
+alias bashrc='source ~/.bashrc'
+
 # I'm bad at typing
+alias cc="drush rr && drush cc all"
+alias ccfg="drush rr && drush cc all && fg"
+alias clearberks='rm -rf ~/.berkshelf/vagrant-berkshelf/shelves/*'
+alias cltr="rmpyc; rmtilda"
+alias cp='rsync -aP'
+
+alias dl="tail -f /tmp/drupal_debug.txt"
+alias dockerc="docker-compose"
+alias dockerm="docker-machine"
+
 alias e='emacsclient -t'
 alias eamcs='emacs'
 alias emac='emacs'
 alias emcas='emacs'
 alias emasc='emacs'
-alias flag='toilet -f mono12 '
 
-alias cc="drush rr && drush cc all"
-alias ccfg="drush rr && drush cc all && fg"
-alias dl="tail -f /tmp/drupal_debug.txt"
+alias erc="e ${HOME}/.bashrc && source ${HOME}/.bashrc"
+alias edox="e ${HOME}/dev/ergodox/tmk_keyboard/keyboard/ergodox/keymap.c"
+alias egw="emacsclient -t ${HOME}/.gemwallet"
+
+alias flag='toilet -f mono12 '
+alias ll='ls -la'
+alias ore="pass -c gem/oregon && osascript -e 'tell application \"Viscosity\" to connect \"gem-oregon\"'"
+
 alias rmpyc="find . -type f -name '*.pyc' -exec rm -f {} \;"
 alias rmtilda="find . -name '*~' -exec rm {} \;"
-alias cltr="rmpyc; rmtilda"
 alias remount="sudo kextunload /System/Library/Extensions/AppleStorageDrivers.kext/Contents/PlugIns/AppleUSBCardReader.kext && sudo kextload /System/Library/Extensions/AppleStorageDrivers.kext/Contents/PlugIns/AppleUSBCardReader.kext"
-alias clearberks='rm -rf ~/.berkshelf/vagrant-berkshelf/shelves/*'
 alias roundpy='gemp && cd roundpy'
-alias bashrc='source ~/.bashrc'
 
-export PYTHONSTARTUP=~/.pythonrc
+alias wiki="web https://gemology.atlassian.net/wiki/display/GE/Gem+Engineering"
 
-export RBENV_ROOT="${HOME}/.rbenv"; if [ -d "${RBENV_ROOT}" ]; then export PATH="${RBENV_ROOT}/bin:${PATH}"; eval "$(rbenv init -)"; fi
-
-
-# source ~/.git-prompt.sh
+# Run twolfson/sexy-bash-prompt
+if [[ -f ~/.bash_prompt && -n $SEXY ]]; then
+    . ~/.bash_prompt
+fi
 
 if [ -f ~/.git-completion.bash ]; then
     source ~/.git-completion.bash
     __git_complete g __git_main
     __git_complete gc _git_commit
+    __git_complete gl _git_log
     __git_complete gchk _git_checkout
     __git_complete gm _git_merge
-    __git_complete pll _git_pull
-    __git_complete psh _git_push
+    __git_complete pl _git_pull
+    __git_complete p _git_push
 fi
 
-
-if [ ! -e "${HOME}/.local/bin/virtualenvwrapper.sh" ]; then
-    if [ ! -e "${HOME}/virtualenvwrapper.sh" ]; then
-        if [ ! -e "/usr/local/bin/virtualenvwrapper.sh" ]; then
-            pip install --user virtualenv
-            pip install --user virtualenvwrapper
-        fi
-    fi
+# Stupid virtualenv checks, fixme.
+if [ ! -e "${HOME}/.local/bin/virtualenvwrapper.sh" ] &&
+       [ ! -e "${HOME}/virtualenvwrapper.sh" ] &&
+       [ ! -e "/usr/local/bin/virtualenvwrapper.sh" ]; then
+    pip install --user virtualenv
+    pip install --user virtualenvwrapper
 fi
-
-export WORKON_HOME=~/Envs
 
 if [[ -f "/usr/local/bin/virtualenvwrapper.sh" && -n $SEXY ]]; then
     source /usr/local/bin/virtualenvwrapper.sh
     workon py
 fi
-
 
 if [[ -f "${HOME}/.local/bin/virtualenvwrapper.sh" && -n $SEXY ]]; then
     source ~/.local/bin/virtualenvwrapper.sh
@@ -305,11 +322,7 @@ PYCOIN_CACHE_DIR=~/.pycoin_cache
 PYCOIN_SERVICE_PROVIDERS=BLOCKR_IO:BLOCKCHAIN_INFO:BITEASY:BLOCKEXPLORER
 export PYCOIN_CACHE_DIR PYCOIN_SERVICE_PROVIDERS
 
-# Run twolfson/sexy-bash-prompt
-if [[ -f ~/.bash_prompt && -n $SEXY ]]; then
-    . ~/.bash_prompt
-fi
-
+# Basic Shell
 if [[ "$SEXY" != "1" ]]; then
     export PS1="$(pwd): "
 fi
