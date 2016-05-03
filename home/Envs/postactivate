@@ -1,4 +1,6 @@
 #!/bin/bash
 # This hook is sourced after every virtualenv is activated.
 
-PS1="(`basename \"$VIRTUAL_ENV\"`)$RED\w$YELLOW\$(__git_ps1)$GREEN\$ "
+source "$HOME/.bash_prompt"
+_OLD_PS1="$PS1"
+PS1="(`basename \"$VIRTUAL_ENV\"`) $PS1"
