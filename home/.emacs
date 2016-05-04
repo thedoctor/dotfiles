@@ -2,22 +2,27 @@
 ;;; Commentary:
 ;;;   flycheck told me to put this here lol
 
-
 ;;; Code:
-;; start emacs server
-;; (require 'server)
-;; (unless (server-running-p)
-;;   (server-start))
-
 ;; Disable defadvice redefinition warnings
 ;; (should reevaluate if this is safe every few months)
 (setq ad-redefinition-action 'accept)
 
 ;; Package sources
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (add-to-list 'load-path "~/.emacs.d/elisp/")
 (add-to-list 'load-path "~/.emacs.d/elisp/cl-lib/")
 (add-to-list 'load-path "~/.emacs.d/elisp/req-package/")
 (add-to-list 'load-path "~/.emacs.d/elpa/")
+
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+
+(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get/el-get/recipes")
+(el-get 'sync)
 
 (require 'package)
 (add-to-list 'package-archives
@@ -30,124 +35,146 @@
 
 (require 'req-package)
 
-(req-package el-get
-  :init
-  (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get/el-get/recipes")
-  (el-get 'sync))
-
-;; Column-marker - highlight column at max line length
-(req-package column-marker)
-
-;; ;; Column-number - show c # in the line at the bottom (what's that called?)
-;; (req-package column-number-mode
-;;              :config (global column-number-mode))
-
 (req-package ace-jump-mode
-             :bind ("ESC SPC" . ace-jump-mode))
+  :bind ("ESC SPC" . ace-jump-mode))
 
 (req-package arduino-mode
-             :mode "\\.sketch\\'"
-             :defer t)
+  :mode "\\.sketch\\'"
+  :defer t)
 
 (req-package html-mode
-             :mode "\\.html\\'" "\\.htm\\'" "\\.erb\\'"
-             :defer t)
+  :mode "\\.html\\'" "\\.htm\\'" "\\.erb\\'"
+  :defer t)
 
 (req-package scss-mode
-             :mode "\\.scss\\'"
-             :defer t)
+  :mode "\\.scss\\'"
+  :defer t)
 
 (req-package coffee-mode
-             :mode "\\.coffee\\'"
-             :defer t)
+  :mode "\\.coffee\\'"
+  :defer t)
 
 (req-package php-mode
-             :mode "\\.php\\'" "\\.module\\'" "\\.css.php\\'" "\\.inc\\'"
-             :interpreter "php")
+  :mode "\\.php\\'" "\\.module\\'" "\\.css.php\\'" "\\.inc\\'"
+  :interpreter "php")
 
 (req-package solidity-mode
-             :mode "\\.sol\\'"
-             :init (setq solidity-solc-path "/usr/local/bin/solc")
-             :bind ((:map solidity-mode-map ("M-j" . nil))
-                    (:map solidity-mode-map ("M-a" . nil))
-                    (:map solidity-mode-map ("C-M-j" . nil))))
+  :require flymake-solidity
+  :mode "\\.sol\\'"
+  :init (setq solidity-solc-path "/usr/local/bin/solc")
+  :bind ((:map solidity-mode-map ("M-j" . nil))
+         (:map solidity-mode-map ("M-a" . nil))
+         (:map solidity-mode-map ("C-M-j" . nil))))
 
 (req-package jedi
-             :mode ("\\.py\\'" . python-mode) ( "\\.pythonrc\\'" . python-mode)
-             :interpreter ("python" . python-mode)
-             :init (setq jedi:complete-on-dot t)
-             :config
-             ((add-hook 'python-mode-hook 'jedi:setup)
-              (add-hook 'python-mode-hook (lambda () (setq python-indent-offset 4)))))
+  :mode ("\\.py\\'" . python-mode) ( "\\.pythonrc\\'" . python-mode)
+  :interpreter ("python" . python-mode)
+  :init (setq jedi:complete-on-dot t)
+  :config
+  ((add-hook 'python-mode-hook 'jedi:setup)
+   (add-hook 'python-mode-hook (lambda () (setq python-indent-offset 4)))))
 
 (req-package rubocop
-             :mode "\\.rb\\'" "Rakefile"
-             :interpreter "ruby"
-             :config (add-hook 'ruby-mode-hook 'rubocop-mode))
+  :mode "\\.rb\\'" "Rakefile"
+  :interpreter "ruby"
+  :config (add-hook 'ruby-mode-hook 'rubocop-mode))
 
 (req-package markdown-mode
-             :mode "\\.text\\'" "\\.md\\'" "\\.markdown\\'")
+  :mode "\\.text\\'" "\\.md\\'" "\\.markdown\\'")
 
 (req-package json-mode
-             :require json-snatcher json-reformat
-             :mode "\\.json$")
+  :require json-snatcher json-reformat
+  :mode "\\.json$")
 
 (req-package go-errcheck
-             :require go-mode)
+  :require go-mode
+  :init
+  (add-hook 'after-change-major-mode-hook (lambda() (if (equal major-mode 'go-mode)
+                                                        (add-hook 'before-save-hook 'gofmt-before-save)
+                                                      (remove-hook 'before-save-hook 'gofmt-before-save)))))
 
 (req-package c++-mode
-             :mode ("\\.h\\'" . c++-mode) ("\\.cpp\\'" . c++-mode)
-             :config
-             ((c-add-style
-               "my-stroustrup"
-	       '("stroustrup"
-                 (indent-tabs-mode . nil)              ; use spaces not tabs
-		 (c-basic-offset . 4)                  ; indent by four spaces
-                 (c-offsets-alist . ((inline-open . 0) ; custom indentation rules
-				     (brace-list-open . 0)
-                                     (statement-case-open . +)))))
-              (defun my-c++-mode-hook ()
-                (c-set-style "my-stroustrup")
-                (auto-fill-mode)
-                (c-toggle-auto-hungry-state 1))
-              (add-hook 'c++-mode-hook 'my-c++-mode-hook)
-              (add-hook 'c-mode-hook 'my-c++-mode-hook)))
+  :mode ("\\.h\\'" . c++-mode) ("\\.cpp\\'" . c++-mode)
+  :config
+  ((c-add-style
+    "my-stroustrup"
+    '("stroustrup"
+      (indent-tabs-mode . nil)              ; use spaces not tabs
+      (c-basic-offset . 4)                  ; indent by four spaces
+      (c-offsets-alist . ((inline-open . 0) ; custom indentation rules
+                          (brace-list-open . 0)
+                          (statement-case-open . +)))))
+   (defun my-c++-mode-hook ()
+     (c-set-style "my-stroustrup")
+     (auto-fill-mode)
+     (c-toggle-auto-hungry-state 1))
+   (add-hook 'c++-mode-hook 'my-c++-mode-hook)
+   (add-hook 'c-mode-hook 'my-c++-mode-hook)))
 
-(req-package flycheck
-             :require flymake-solidity
-             :bind (:map flycheck-mode-map ("C-M-f" . helm-flycheck))
-             :config
-             ((flycheck-add-mode 'javascript-eslint 'web-mode)
-              (setq flycheck-disabled-checkers '(javascript-jshint))))
-
+(req-package flycheck)
+(req-package helm)
+(req-package helm-ls-git)
+(req-package helm-fuzzy-find)
+(req-package helm-flycheck)
+(req-package helm-gtags)
 (req-package helm-config
-             :require helm-ls-git helm-fuzzy-find helm-flycheck helm-gtags helm
-             :bind (("M-a" . helm-M-x)
-                    ("C-x C-f" . helm-find-files)
-                    ("C-x r" . revert-buffer-no-confirm)
-                    ("C-x C-r" . revert-all-buffers)
-                    ("C-x g" . helm-gtags-find-tag))
-             :config ((setq helm-split-window-in-side-p t
-                            helm-move-to-line-cycle-in-source t
-                            helm-ff-search-library-in-sexp t
-                            helm-scroll-amount 8
-                            helm-ff-file-name-history-use-recentf t)
-                      (helm-mode-1)
-                      (helm-autoresize-mode 1)
-                      (setq-default helm-autoresize-max-height 30
-                                    helm-mode-fuzzy-match t
-                                    helm-completion-in-region-fuzzy-match t)))
+  :commands (helm-M-x helm-find-files revert-all-buffers revert-buffer-no-confirm
+                      helm-gtags-find-tag helm-flycheck flycheck-add-mode)
+  :require helm-ls-git helm-fuzzy-find helm-flycheck helm-gtags helm flycheck
+  :bind (("M-a" . helm-M-x)
+         ("C-x C-f" . helm-find-files)
+         ("C-x r" . revert-buffer-no-confirm)
+         ("C-x C-r" . revert-all-buffers)
+         ("C-x g" . helm-gtags-find-tag)
+         (:map flycheck-mode-map ("C-M-f" . helm-flycheck)))
+  :init
+  (setq helm-split-window-in-side-p t
+        helm-move-to-line-cycle-in-source t
+        helm-ff-search-library-in-sexp t
+        helm-scroll-amount 8
+        flycheck-disabled-checkers '(javascript-jshint)
+        helm-ff-file-name-history-use-recentf t)
+  (setq-default helm-autoresize-max-height 30
+                helm-mode-fuzzy-match t
+                helm-completion-in-region-fuzzy-match t)
+  :config
+  ((flycheck-add-mode 'javascript-eslint 'web-mode)
+   (helm-mode-1)
+   (helm-autoresize-mode 1)))
 
 
-(req-package highlight-chars
-             :config
-             ((add-hook 'font-lock-mode-hook 'hc-highlight-tabs)
-              (add-hook 'font-lock-mode-hook 'hc-highlight-trailing-whitespace)))
+;; Column-marker - highlight column at max line length
+(req-package column-marker
+  :commands column-marker-1
+  :init
+  (add-hook 'after-change-major-mode-hook
+            (lambda ()
+              ;; Usually limit is 80 characters
+              (unless (equal major-mode 'fundamental-mode) (column-marker-1 81))
+              ;; Python is actually 79
+              (if (or (equal major-mode 'python-mode)
+                      (equal major-mode 'jedi-mode)) (column-marker-1 80))
+              ;; And the fatties are 100
+              (if (or (equal major-mode 'java-mode)
+                      (equal major-mode 'json-mode)
+                      (equal major-mode 'js-mode)
+                      (equal major-mode 'js2-mode)
+                      (equal major-mode 'solidity-mode)
+                      (equal major-mode 'dart-mode)
+                      (equal major-mode 'html-mode)) (column-marker-1 101)))))
 
-(req-package stripes
-             :config
-             (add-hook 'after-change-major-mode-hook
-                       'turn-on-stripes-mode))
+(req-package-force highlight-chars
+  :commands (hc-highlight-tabs hc-highlight-trailing-whitespace)
+  :init
+  (add-hook 'font-lock-mode-hook #'hc-highlight-tabs)
+  (add-hook 'font-lock-mode-hook #'hc-highlight-trailing-whitespace)
+  (add-hook 'before-save-hook #'delete-trailing-whitespace))
+
+(req-package-force stripe-buffer
+  :commands (turn-on-stripe-buffer-mode stripe-listify-buffer)
+  :init
+  ;;(add-hook 'font-lock-mode-hook #'turn-on-stripe-buffer-mode)
+  (add-hook 'dired-mode-hook #'stripe-listify-buffer))
 
 (req-package windmove)
 (req-package buffer-move)
@@ -157,8 +184,10 @@
 
 ;; Highlight uncommited git changes: https://github.com/dgutov/diff-hl
 (req-package diff-hl-margin
-             :require diff-hl
-             :config (global-diff-hl-mode))
+  :require diff-hl
+  :init
+  (add-hook 'after-change-major-mode-hook #'diff-hl-margin-mode)
+  :config (global-diff-hl-mode))
 
 (req-package-finish)
 
@@ -188,48 +217,24 @@
 ;;              )))
 
 ;; Run these every time we change modes.
-(add-hook
- 'after-change-major-mode-hook
- (lambda ()
+;; (add-hook
+;;  'after-change-major-mode-hook
+;;  (lambda ()
+;;    ;; Highlight tabs - we almost always want spaces. (exception: Go-mode)
+;;    (unless (or (equal major-mode 'go-mode)
+;;                (equal major-mode 'fundamental-mode)
+;;                (equal major-mode 'term-mode))
+;;      (progn (hc-toggle-highlight-trailing-whitespace 't)
+;;             (hc-toggle-highlight-tabs 't)))
+;;    (if (or (equal major-mode 'fundamental-mode)
+;;            (equal major-mode 'term-mode))
+;;        ;; Don't because we're not editing code, or we must permit evil.
+;;        (remove-hook 'before-save-hook 'delete-trailing-whitespace)
+;;      ;; Delete trailing whitespace on save.
+;;      (add-hook 'before-save-hook 'delete-trailing-whitespace))
+;;    ))
 
-   ;; Highlight tabs - we almost always want spaces. (exception: Go-mode)
-   (unless (or (equal major-mode 'go-mode)
-               (equal major-mode 'fundamental-mode)
-               (equal major-mode 'term-mode))
-     (progn (hc-toggle-highlight-trailing-whitespace 't)
-            (hc-toggle-highlight-tabs 't)))
-
-   (if (or (equal major-mode 'fundamental-mode)
-           (equal major-mode 'term-mode))
-       ;; Don't because we're not editing code, or we must permit evil.
-       (remove-hook 'before-save-hook 'delete-trailing-whitespace)
-     ;; Delete trailing whitespace on save.
-     (add-hook 'before-save-hook 'delete-trailing-whitespace))
-
-   ;; Go format.
-   (if (equal major-mode 'go-mode)
-       (add-hook 'before-save-hook 'gofmt-before-save)
-     (remove-hook 'before-save-hook 'gofmt-before-save))
-
-
-   ;; Highlight uncommited git changes: https://github.com/dgutov/diff-hl
-   (diff-hl-margin-mode)
-
-   ;; Line-limit's usually 80 characters
-   (unless (equal major-mode 'fundamental-mode) (column-marker-1 81))
-   ;; But not always
-   ;; python actually limits to 79
-   (if (equal major-mode 'python-mode) (column-marker-1 80))
-   (if (or (equal major-mode 'java-mode)
-           (equal major-mode 'json-mode)
-           (equal major-mode 'js-mode)
-           (equal major-mode 'js2-mode)
-           (equal major-mode 'solidity-mode)
-           (equal major-mode 'dart-mode)
-           (equal major-mode 'html-mode)) (column-marker-1 101))
-
-   ))
-
+;; v- Forgot what this is about -v
 (put 'upcase-region 'disabled nil)
 
 (custom-set-variables
@@ -245,7 +250,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(stripe-highlight ((t (:background "#101010")))))
 
 ;;;;---------------------------------------------------------------------------
 ;; SECTION: MODES
@@ -268,6 +273,8 @@
 (add-hook 'temp-buffer-setup-hook 'split-horizontally-for-temp-buffers)
 
 (setq-default indent-tabs-mode nil)
+
+(setq-default column-number-mode t)
 
 ;; Follow symlinks
 (setq-default vc-follow-symlinks t)

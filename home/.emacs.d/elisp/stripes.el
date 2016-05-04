@@ -66,7 +66,7 @@
      minor-mode-alist)))
 
 (defface stripes-face
-  `((t (:background "#050505")))
+  `((t (:background "#141414")))
   "Face for alternate lines."
   :group 'stripes)
 
