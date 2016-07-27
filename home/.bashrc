@@ -240,6 +240,29 @@ up(){
   cd $d
 }
 
+alias pc='ppc '
+ppc () {
+  echo "Note: doesn't work for subdirs yet =/"
+  read -a matches <<<$(find ~/.password-store/ -name "*$1*" -exec basename {} \;)
+  if [ ${#matches[@]} -ne 1 ]; then
+    printf '%s\n' "${matches[@]}"
+  else
+    pass -c $(echo ${matches[0]} | cut -d' ' -f1 | rev | cut -d'.' -f2- | rev)
+  fi
+}
+
+resetdb(){
+  if [ $# -ne 1 ]
+  then
+    echo "Usage: resetdb DBNAME"
+  else
+    echo "Dropping schema 'public' in ${1}"
+    psql -c "drop schema public cascade;" $1
+    echo "Creating new schema 'public' in ${1}"
+    psql -c "create schema public;" $1
+  fi
+}
+
 alias bashrc='source ~/.bashrc'
 
 # I'm bad at typing
@@ -273,6 +296,8 @@ alias remount="sudo kextunload /System/Library/Extensions/AppleStorageDrivers.ke
 alias roundpy='gemp && cd roundpy'
 
 alias wiki="web https://gemology.atlassian.net/wiki/display/GE/Gem+Engineering"
+alias kraken="pc kraken && web https://kraken.com/login"
+alias naw="web https://www.youtube.com/watch?v=-K7fCQlUhj0"
 
 # Run twolfson/sexy-bash-prompt
 if [[ -f ~/.bash_prompt && -n $SEXY ]]; then
@@ -316,6 +341,8 @@ fi
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:${HOME}/.local/bin:$PATH"
+### Meteor
+export PATH="${HOME}/.meteor:$PATH"
 
 ### For tx, bx, and ku (pycoin cli tools)
 PYCOIN_CACHE_DIR=~/.pycoin_cache

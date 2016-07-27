@@ -57,6 +57,10 @@
   :mode "\\.php$" "\\.module$" "\\.css.php$" "\\.inc$"
   :interpreter "php")
 
+(req-package yaml-mode
+  :mode "\\.yml$" "\\.yaml$"
+  :defer t)
+
 (req-package solidity-mode
   :require flymake-solidity
   :mode "\\.sol$"
@@ -91,9 +95,6 @@
 (req-package json-mode
   :require json-snatcher json-reformat
   :mode "\\.json$")
-
-(req-package yaml-mode
-  :mode "\\.yaml$" "\\.yml$")
 
 (req-package go-errcheck
   :require go-mode
@@ -133,7 +134,6 @@
   :ensure t
   :init
   (global-flycheck-mode)
-  (flycheck-add-mode 'yaml-jsyaml 'yaml-mode)
   (flycheck-add-mode 'javascript-eslint 'js2-mode)
   (setq-default flycheck-eslintrc (substitute-in-file-name "$HOME/.eslintrc"))
   (setq-default flycheck-disabled-checkers
