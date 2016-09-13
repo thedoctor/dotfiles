@@ -47,6 +47,7 @@
         pot = push origin --tags
         pl = pull
         plo = pull origin
+        sub = submodule
         co = checkout
         rb = rebase
         rs = reset

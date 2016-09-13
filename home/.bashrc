@@ -102,6 +102,10 @@ be(){
     bundle exec "$@"
 }
 
+k(){
+    kubectl "$@"
+}
+
 jiranum(){
     prefix=""
     env_re="[0-9]+"
@@ -237,11 +241,6 @@ up(){
 
 alias bashrc='source ~/.bashrc'
 
-# I'm bad at typing
-alias cc="drush rr && drush cc all"
-alias ccfg="drush rr && drush cc all && fg"
-alias clearberks='rm -rf ~/.berkshelf/vagrant-berkshelf/shelves/*'
-alias cltr="rmpyc; rmtilda"
 alias cp='rsync -aP'
 
 alias dl="tail -f /tmp/drupal_debug.txt"
@@ -258,18 +257,21 @@ alias erc="e ${HOME}/.bashrc && source ${HOME}/.bashrc"
 alias edox="e ${HOME}/dev/ergodox/tmk_keyboard/keyboard/ergodox/keymap.c"
 alias egw="emacsclient -t ${HOME}/.gemwallet"
 
+alias flag='toilet -f mono12 '
 alias ll='exa -l'
 alias la='exa -la'
 alias l='la'
 
-alias flag='toilet -f mono12 '
-alias ore="pass -c gem/oregon && osascript -e 'tell application \"Viscosity\" to connect \"gem-oregon\"'"
+alias ore="pass -c gem/oregon; osascript -e 'tell application \"Viscosity\" to connect \"gem-oregon\"'"
+alias kvpn="pass -c gem/kube-vpn; osascript -e 'tell application \"Viscosity\" to connect \"gem-kube\"'"
 
 alias rmpyc="find . -type f -name '*.pyc' -exec rm -f {} \;"
 alias rmtilda="find . -name '*~' -exec rm {} \;"
 alias nifty="sudo kextunload /System/Library/Extensions/AppleStorageDrivers.kext/Contents/PlugIns/AppleUSBCardReader.kext && sudo kextload /System/Library/Extensions/AppleStorageDrivers.kext/Contents/PlugIns/AppleUSBCardReader.kext"
 
 alias wiki="web https://gemology.atlassian.net/wiki/display/GE/Gem+Engineering"
+alias kraken="pc kraken && web https://kraken.com/login"
+alias naw="web https://www.youtube.com/watch?v=-K7fCQlUhj0"
 
 # Run twolfson/sexy-bash-prompt
 if [[ -f ~/.bash_prompt && -n $SEXY ]]; then
@@ -325,6 +327,10 @@ export PATH="/usr/local/heroku/bin:${HOME}/.local/bin:$PATH"
 ### For tx, bx, and ku (pycoin cli tools)
 export PYCOIN_CACHE_DIR=~/.pycoin_cache
 export PYCOIN_SERVICE_PROVIDERS=BLOCKR_IO:BLOCKCHAIN_INFO:BITEASY:BLOCKEXPLORER
+
+[[ -s "$(brew --prefix dvm)/dvm.sh" ]] && source "$(brew --prefix dvm)/dvm.sh"
+
+[[ -s "$(brew --prefix dvm)/bash_completion" ]] && source "$(brew --prefix dvm)/bash_completion"
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # ^--- well that's bullshit
