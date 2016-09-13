@@ -139,12 +139,12 @@
 (req-package dash)
 (req-package web-mode)
 
-;; Highlight uncommited git changes: https://github.com/dgutov/diff-hl
-(req-package diff-hl-margin
-  :require diff-hl
-  :init
-  (add-hook 'after-change-major-mode-hook #'diff-hl-margin-mode)
-  :config (global-diff-hl-mode))
+;; ;; Highlight uncommited git changes: https://github.com/dgutov/diff-hl
+;; (req-package diff-hl-margin
+;;   :require diff-hl
+;;   :init
+;;   (add-hook 'after-change-major-mode-hook #'diff-hl-margin-mode)
+;;   :config (global-diff-hl-mode))
 
 ;; (req-package-finish)
 
