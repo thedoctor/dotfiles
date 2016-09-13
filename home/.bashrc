@@ -43,25 +43,25 @@ web(){
 
 addy(){
     if [[ $# -eq 0 ]]; then
-	echo "Usage: addy INT(mg) [time]"
+        echo "Usage: addy INT(mg) [time]"
     else
-	if [[ $# -eq 1 ]]; then
-	    echo '.' | gcalcli --calendar Medical --title "adderall ${1}mg" --when "`date`" --duration 5 --description '' --where '' add
-	else
-	    echo '.' | gcalcli --calendar Medical --title "adderall ${1}mg" --when "${2}" --duration 5 --description '' --where '' add
-	fi
+        if [[ $# -eq 1 ]]; then
+            echo '.' | gcalcli --calendar Medical --title "adderall ${1}mg" --when "`date`" --duration 5 --description '' --where '' add
+        else
+            echo '.' | gcalcli --calendar Medical --title "adderall ${1}mg" --when "${2}" --duration 5 --description '' --where '' add
+        fi
     fi
 }
 
 gemsave(){
     if [[ -f "${HOME}/.gemwallet" ]]; then
-	cp "${HOME}/.gemwallet" "${HOME}/.gemwallet.${1}"
+        cp "${HOME}/.gemwallet" "${HOME}/.gemwallet.${1}"
     fi
 }
 
 gemset(){
     if [[ -f "${HOME}/.gemwallet" ]]; then
-	rm "${HOME}/.gemwallet"
+        rm "${HOME}/.gemwallet"
     fi
     cp "${HOME}/.gemwallet.${1}" "${HOME}/.gemwallet"
 }
@@ -76,13 +76,13 @@ mfind(){
 }
 mrepl(){
     if [[ $# -eq 3 ]]; then
-	read -p "Are you sure you want to replace all occurrences of $2 with $3 in $1? [Y/n] " -r
-	echo
-	if [[ $REPLY =~ ^[Yy]$ ]]; then
+        read -p "Are you sure you want to replace all occurrences of $2 with $3 in $1? [Y/n] " -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
             find "$1" -type f -exec sed -i "s/$2/$3/g" {} \;
-	fi
+        fi
     else
-	echo 'Usage: mrepl DIR search-string replace-string'
+        echo 'Usage: mrepl DIR search-string replace-string'
     fi
 }
 
@@ -107,7 +107,7 @@ jiranum(){
     env_re="[0-9]+"
     jira_re="[^/]*/?([0-9]{3,4}).*"
     if [[ $(sexy_bash_prompt_get_git_branch) =~ $jira_re ]]; then
-	prefix="${BASH_REMATCH[1]}";
+        prefix="${BASH_REMATCH[1]}";
     else
         if [[ "${JIRA_NUM}" =~ $env_re ]]; then
             prefix="${JIRA_NUM}"
@@ -157,20 +157,20 @@ p(){
 
 grel(){
     if [[ $# -eq 0 ]]; then
-	echo "Usage: grel TAGNAME [BRANCH]"
+        echo "Usage: grel TAGNAME [BRANCH]"
     else
-	read -p "Did you git changelog? [Y/n]" -e yn
-	if [[ $yn == 'n' || $yn == 'N' ]]; then
+        read -p "Did you git changelog? [Y/n]" -e yn
+        if [[ $yn == 'n' || $yn == 'N' ]]; then
             return 1
-	fi
+        fi
 
-	g tag -d "$1" &>/dev/null
-	g p origin --tags :"$1" &>/dev/null
-	g t -a "$1" -m "Release $1" && g p origin --tags
+        g tag -d "$1" &>/dev/null
+        g p origin --tags :"$1" &>/dev/null
+        g t -a "$1" -m "Release $1" && g p origin --tags
     fi
 
     if [[ $# -eq 2 ]]; then
-	g p origin "$2"
+        g p origin "$2"
     fi
 }
 
@@ -192,9 +192,9 @@ gb(){
 
 gc(){
     if [[ $# -eq 0 ]]; then
-	g commit
+        g commit
     else
-	g commit "${@: 1:$#-1}" -m "${@: -1}"
+        g commit "${@: 1:$#-1}" -m "${@: -1}"
     fi
 }
 
@@ -216,9 +216,9 @@ gl(){
 
 glp() {
     if [[ $# -eq 0 ]]; then
-	g log -p --stat
+        g log -p --stat
     else
-	g log -p -$1 --stat
+        g log -p -$1 --stat
     fi
 }
 
@@ -226,11 +226,11 @@ up(){
     local d=""
     limit=$1
     for ((i=1 ; i <= limit ; i++)); do
-	d=$d/..
+        d=$d/..
     done
     d=$(echo $d | sed 's/^\///')
     if [[ -z "$d" ]]; then
-	d=..
+        d=..
     fi
     cd $d
 }
@@ -302,17 +302,17 @@ fi
 
 if [[ -n $SEXY ]]; then
     if [[ -f "${HOME}/.local/bin/virtualenvwrapper.sh" ]]; then
-	source ~/.local/bin/virtualenvwrapper.sh
-	export PATH="$PATH:${HOME}/.local/bin"
-	workon py
+        source ~/.local/bin/virtualenvwrapper.sh
+        export PATH="$PATH:${HOME}/.local/bin"
+        workon py
     elif [[ -f "${HOME}/virtualenvwrapper.sh" ]]; then
-	source ~/virtualenvwrapper.sh
-	workon py
+        source ~/virtualenvwrapper.sh
+        workon py
     elif [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
-	source /usr/local/bin/virtualenvwrapper.sh
-	workon py
+        source /usr/local/bin/virtualenvwrapper.sh
+        workon py
     fi
-fi    
+fi
 
 # Basic Shell
 if [[ "$SEXY" != "1" ]]; then
@@ -321,7 +321,7 @@ fi
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:${HOME}/.local/bin:$PATH"
-    
+
 ### For tx, bx, and ku (pycoin cli tools)
 export PYCOIN_CACHE_DIR=~/.pycoin_cache
 export PYCOIN_SERVICE_PROVIDERS=BLOCKR_IO:BLOCKCHAIN_INFO:BITEASY:BLOCKEXPLORER

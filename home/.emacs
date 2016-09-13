@@ -111,37 +111,36 @@
    (add-hook 'c++-mode-hook 'my-c++-mode-hook)
    (add-hook 'c-mode-hook 'my-c++-mode-hook)))
 
-(req-package flycheck)
-(req-package helm)
-(req-package helm-ls-git)
-(req-package helm-fuzzy-find)
-(req-package helm-flycheck)
-(req-package helm-gtags)
-(req-package helm-config
-  :commands (helm-M-x helm-find-files revert-all-buffers revert-buffer-no-confirm
-                      helm-gtags-find-tag helm-flycheck flycheck-add-mode)
-  :require helm-ls-git helm-fuzzy-find helm-flycheck helm-gtags helm flycheck
-  :bind (("M-a" . helm-M-x)
-         ("C-x C-f" . helm-find-files)
-         ("C-x r" . revert-buffer-no-confirm)
-         ("C-x C-r" . revert-all-buffers)
-         ("C-x g" . helm-gtags-find-tag)
-         (:map flycheck-mode-map ("C-M-f" . helm-flycheck)))
-  :init
-  (setq helm-split-window-in-side-p t
-        helm-move-to-line-cycle-in-source t
-        helm-ff-search-library-in-sexp t
-        helm-scroll-amount 8
-        flycheck-disabled-checkers '(javascript-jshint)
-        helm-ff-file-name-history-use-recentf t)
-  (setq-default helm-autoresize-max-height 30
-                helm-mode-fuzzy-match t
-                helm-completion-in-region-fuzzy-match t)
-  :config
-  ((flycheck-add-mode 'javascript-eslint 'web-mode)
-   (helm-mode-1)
-   (helm-autoresize-mode 1)))
-
+;; (req-package flycheck)
+;; (req-package helm)
+;; (req-package helm-ls-git)
+;; (req-package helm-fuzzy-find)
+;; (req-package helm-flycheck)
+;; (req-package helm-gtags)
+;; (req-package helm-config
+;;   :commands (helm-M-x helm-find-files revert-all-buffers revert-buffer-no-confirm
+;;                       helm-gtags-find-tag helm-flycheck flycheck-add-mode)
+;;   :require helm-ls-git helm-fuzzy-find helm-flycheck helm-gtags helm flycheck
+;;   :bind (("M-a" . helm-M-x)
+;;          ("C-x C-f" . helm-find-files)
+;;          ("C-x r" . revert-buffer-no-confirm)
+;;          ("C-x C-r" . revert-all-buffers)
+;;          ("C-x g" . helm-gtags-find-tag)
+;;          (:map flycheck-mode-map ("C-M-f" . helm-flycheck)))
+;;   :init
+;;   (setq helm-split-window-in-side-p t
+;;         helm-move-to-line-cycle-in-source t
+;;         helm-ff-search-library-in-sexp t
+;;         helm-scroll-amount 8
+;;         flycheck-disabled-checkers '(javascript-jshint)
+;;         helm-ff-file-name-history-use-recentf t)
+;;   (setq-default helm-autoresize-max-height 30
+;;                 helm-mode-fuzzy-match t
+;;                 helm-completion-in-region-fuzzy-match t)
+;;   :config
+;;   ((flycheck-add-mode 'javascript-eslint 'web-mode)
+;;    (helm-mode-1)
+;;    (helm-autoresize-mode 1)))
 
 ;; Column-marker - highlight column at max line length
 (req-package column-marker
@@ -365,10 +364,10 @@
 
 (global-set-key (kbd "C-x w") 'delete-trailing-whitespace)
 
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-w") 'helm-imenu)
-(global-set-key (kbd "C-x C-d") 'helm-browse-project)
-(global-set-key (kbd "M-m") 'helm-do-grep)
+;; (global-set-key (kbd "M-x") 'helm-M-x)
+;; (global-set-key (kbd "M-w") 'helm-imenu)
+;; (global-set-key (kbd "C-x C-d") 'helm-browse-project)
+;; (global-set-key (kbd "M-m") 'helm-do-grep)
 
 ;; QWERTY (ergodox)
 ;; Resizing windows
