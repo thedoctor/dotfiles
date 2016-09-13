@@ -118,29 +118,29 @@
   :init
   (add-theme 'firebelly))
 
-(req-package darktooth-theme
-  :require smart-mode-line
-  :defer t
-  :init
-  (add-theme 'darktooth))
+;; (req-package darktooth-theme
+;;   :require smart-mode-line
+;;   :defer t
+;;   :init
+;;   (add-theme 'darktooth))
 
-(req-package hc-zenburn-theme
-  :require smart-mode-line
-  :defer t
-  :init
-  (add-theme 'hc-zenburn))
+;; (req-package hc-zenburn-theme
+;;   :require smart-mode-line
+;;   :defer t
+;;   :init
+;;   (add-theme 'hc-zenburn))
 
-(req-package dracula-theme
-  :require smart-mode-line
-  :defer t
-  :init
-  (add-theme 'dracula))
+;; (req-package dracula-theme
+;;   :require smart-mode-line
+;;   :defer t
+;;   :init
+;;   (add-theme 'dracula))
 
-(req-package reykjavik-theme
-  :require smart-mode-line
-  :defer t
-  :init
-  (add-theme 'reykjavik))
+;; (req-package reykjavik-theme
+;;   :require smart-mode-line
+;;   :defer t
+;;   :init
+;;   (add-theme 'reykjavik))
 
 (req-package jazz-theme
   :require smart-mode-line
@@ -148,13 +148,13 @@
   :init
   (add-theme 'jazz))
 
-(req-package cyberpunk-theme
-  :require smart-mode-line
-  :defer t
-  :init
-  (add-theme 'cyberpunk
-             (lambda ()
-               (normalize-common-faces))))
+;; (req-package cyberpunk-theme
+;;   :require smart-mode-line
+;;   :defer t
+;;   :init
+;;   (add-theme 'cyberpunk
+;;              (lambda ()
+;;                (normalize-common-faces))))
 
 (req-package mbo70s-theme
   :require smart-mode-line
@@ -174,11 +174,11 @@
   :init
   (add-theme 'suscolors))
 
-(req-package danneskjold-theme
-  :require smart-mode-line
-  :defer t
-  :init
-  (add-theme 'danneskjold))
+;; (req-package danneskjold-theme
+;;   :require smart-mode-line
+;;   :defer t
+;;   :init
+;;   (add-theme 'danneskjold))
 
 (req-package plan9-theme
   :require smart-mode-line
@@ -192,10 +192,10 @@
   :require smart-mode-line
   :defer t
   :init
-  (add-theme 'spolsky)
-  (add-theme 'graham)
-  (add-theme 'odersky)
-  (add-theme 'junio)
+;;  (add-theme 'spolsky)
+;;  (add-theme 'graham)
+;;  (add-theme 'odersky)
+;;  (add-theme 'junio)
   (add-theme 'wilson))
 
 (defun select-theme (&optional theme)

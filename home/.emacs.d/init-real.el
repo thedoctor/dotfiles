@@ -82,4 +82,4 @@
   (load-dir-one my-init-dir)
   (load my-custom-file t)
   (req-package-finish)
-  (funcall 'select-theme))
+  (select-theme))
