@@ -27,9 +27,9 @@
 (req-package zoom-frm
   :commands zoom-in/out
   :init (progn (define-key ctl-x-map [(control ?+)] 'zoom-in/out)
-			   (define-key ctl-x-map [(control ?-)] 'zoom-in/out)
-			   (define-key ctl-x-map [(control ?=)] 'zoom-in/out)
-			   (define-key ctl-x-map [(control ?0)] 'zoom-in/out)))
+               (define-key ctl-x-map [(control ?-)] 'zoom-in/out)
+               (define-key ctl-x-map [(control ?=)] 'zoom-in/out)
+               (define-key ctl-x-map [(control ?0)] 'zoom-in/out)))
 
 ;; process management
 

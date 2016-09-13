@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ select-theme
+ select-frame
+ yas-minor-mode
  package-list-packages
  package-list-packages-no-fetch
  package-menu-mark-delete
  package-install
- package-menu-mode
- el-get-install
- solidity-mode
 )
 
 ;; ----- smex-data -----
@@ -19,4 +19,7 @@
  (package-menu-mode . 4)
  (package-menu-mark-delete . 1)
  (package-list-packages-no-fetch . 1)
+ (yas-minor-mode . 2)
+ (select-theme . 8)
+ (select-frame . 1)
 )
