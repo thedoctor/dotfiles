@@ -10,3 +10,5 @@ home/Envs/*/**
 home/.python_environments
 
 *.pyc
+*~
+*#
