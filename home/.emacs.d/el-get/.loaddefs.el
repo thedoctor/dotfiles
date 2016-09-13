@@ -3,8 +3,11 @@
 ;;; Code:
 
 
-;;;### (autoloads nil "el-get/el-get" "el-get/el-get.el" (22312 30668
-;;;;;;  0 0))
+;;;### (autoloads (el-get el-get-self-checksum el-get-checksum el-get-make-recipes
+;;;;;;  el-get-cd el-get-reinstall el-get-remove el-get-self-update
+;;;;;;  el-get-update-packages-of-type el-get-update-all el-get-update
+;;;;;;  el-get-install el-get-version) "el-get/el-get" "el-get/el-get.el"
+;;;;;;  (22445 31830 154261 298000))
 ;;; Generated autoloads from el-get/el-get.el
 
 (autoload 'el-get-version "el-get/el-get" "\
@@ -103,8 +106,9 @@ already installed packages is considered.
 
 ;;;***
 
-;;;### (autoloads nil "el-get/el-get-bundle" "el-get/el-get-bundle.el"
-;;;;;;  (22312 30668 0 0))
+;;;### (autoloads (el-get-bundle! el-get-bundle el-get-bundle-el-get)
+;;;;;;  "el-get/el-get-bundle" "el-get/el-get-bundle.el" (22445 31830
+;;;;;;  150261 298000))
 ;;; Generated autoloads from el-get/el-get-bundle.el
 
 (autoload 'el-get-bundle-el-get "el-get/el-get-bundle" "\
@@ -153,8 +157,8 @@ required.
 
 ;;;***
 
-;;;### (autoloads nil "el-get/el-get-check" "el-get/el-get-check.el"
-;;;;;;  (22312 30668 0 0))
+;;;### (autoloads (el-get-check-recipe) "el-get/el-get-check" "el-get/el-get-check.el"
+;;;;;;  (22445 31830 150261 298000))
 ;;; Generated autoloads from el-get/el-get-check.el
 
 (autoload 'el-get-check-recipe "el-get/el-get-check" "\
@@ -172,8 +176,8 @@ object or a file path.
 
 ;;;***
 
-;;;### (autoloads nil "el-get/el-get-list-packages" "el-get/el-get-list-packages.el"
-;;;;;;  (22312 30668 0 0))
+;;;### (autoloads (el-get-list-packages) "el-get/el-get-list-packages"
+;;;;;;  "el-get/el-get-list-packages.el" (22445 31830 150261 298000))
 ;;; Generated autoloads from el-get/el-get-list-packages.el
 
 (autoload 'el-get-list-packages "el-get/el-get-list-packages" "\
@@ -183,11 +187,19 @@ Display a list of packages.
 
 ;;;***
 
+;;;### (autoloads nil "solidity-mode/solidity-mode" "solidity-mode/solidity-mode.el"
+;;;;;;  (22469 15392 127090 833000))
+;;; Generated autoloads from solidity-mode/solidity-mode.el
+
+(add-to-list 'auto-mode-alist '("\\.sol\\'" . solidity-mode))
+
+;;;***
+
 ;;;### (autoloads nil nil ("el-get/el-get-autoloading.el" "el-get/el-get-build.el"
 ;;;;;;  "el-get/el-get-byte-compile.el" "el-get/el-get-core.el" "el-get/el-get-custom.el"
 ;;;;;;  "el-get/el-get-dependencies.el" "el-get/el-get-install.el"
 ;;;;;;  "el-get/el-get-methods.el" "el-get/el-get-notify.el" "el-get/el-get-recipes.el"
-;;;;;;  "el-get/el-get-status.el") (22312 30669 813316 0))
+;;;;;;  "el-get/el-get-status.el") (22469 15392 362814 471000))
 
 ;;;***
 

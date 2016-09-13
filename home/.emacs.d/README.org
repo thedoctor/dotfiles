@@ -1,0 +1,24 @@
+* .emacs.d
+  Yet another starter kit for emacs.
+
+  This configuration tries to keep cannonical emacs behaviour, so any emacs familiar user could use it.
+
+  It has no =evil= or other radical stuff. It also extends functionality by replacing
+  canonical keybinding with alternative extensions doing the same thing, so user would never get lost.
+
+  This configuration uses =req-package= system that automatically installs packages on load.
+
+  First run is going to take =long time= as it has to download all required packages.
+
+  After that, load time is about =5 seconds= on my ssd machine.
+
+  To get started just clone this repo to your =.emacs.d= and run emacs.
+
+  #+BEGIN_SRC shell
+  git clone https://github.com/edvorg/emacs-configs.git ~/.emacs.d
+  emacs
+  #+END_SRC
+
+  For customization add your =*.el= files to =init.d= and it will be loaded by =load-dir= extension.
+
+  For additional information refer [[https://github.com/edvorg/req-package.git][req-package]] readme.

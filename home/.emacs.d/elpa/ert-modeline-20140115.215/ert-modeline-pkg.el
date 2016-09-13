@@ -1,0 +1,1 @@
+(define-package "ert-modeline" "20140115.215" "displays ert test results in the modeline." '((s "1.3.1") (dash "1.2.0") (emacs "24.1") (projectile "0.9.1")) :keywords '("tools" "tests" "convenience"))

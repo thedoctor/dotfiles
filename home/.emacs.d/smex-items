@@ -1,0 +1,20 @@
+
+;; ----- smex-history -----
+(
+ package-menu-mode
+ package-list-packages
+ el-get-install
+ package-install
+ solidity-mode
+ cd
+ 5x5
+)
+
+;; ----- smex-data -----
+(
+ (solidity-mode . 3)
+ (package-install . 1)
+ (el-get-install . 1)
+ (package-list-packages . 1)
+ (package-menu-mode . 2)
+)

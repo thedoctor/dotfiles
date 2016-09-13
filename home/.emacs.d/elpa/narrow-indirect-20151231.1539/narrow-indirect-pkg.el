@@ -1,0 +1,1 @@
+(define-package "narrow-indirect" "20151231.1539" "Narrow using an indirect buffer that is a clone" 'nil :url "http://www.emacswiki.org/narrow-indirect.el" :keywords '("narrow" "indirect" "buffer" "clone" "view" "multiple-modes"))

@@ -1,0 +1,20 @@
+(require 'req-package)
+
+(if (eq system-type 'darwin)
+    (progn (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
+		   (setenv "LANG" "en_US.UTF-8")
+		   (setenv "LC_ALL" "en_US.UTF-8")
+		   (setenv "LC_ALL" "en_US.UTF-8")
+		   (setenv "ANDROID_SDK" "/usr/local/opt/android-sdk")
+		   (setenv "ANDROID_HOME" "/usr/local/opt/android-sdk")
+		   (setenv "ANDROID_NDK" "/usr/local/opt/android-ndk")
+           (add-to-list 'exec-path "/usr/local/bin")
+           ;; (set-default-font "Hack-12" t)
+           ;; (set-default-font "Liberation Mono-12" t)
+           ;; (set-default-font "Oxygen Mono-12" t)
+           ;; (set-default-font "Anonymous-12" t)
+           (condition-case-unless-debug e
+               (set-default-font "SourceCodePro Semi-Bold 12" t)
+             (error (message "can not load SourceCodePro font : %s" e)))))
+
+(provide 'init-darwin)
