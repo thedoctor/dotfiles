@@ -146,7 +146,7 @@
   (add-hook 'after-change-major-mode-hook #'diff-hl-margin-mode)
   :config (global-diff-hl-mode))
 
-;; (req-package-finish)			
+;; (req-package-finish)
 
 ;;;;---------------------------------------------------------------------------
 ;; PACKAGES

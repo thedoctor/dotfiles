@@ -5,7 +5,13 @@
 (req-package solidity-mode
   :require flymake-solidity
   :mode "\\.sol\\'"
-  :init (setq solidity-solc-path "/usr/local/bin/solc")
+  :init
+  (setq solidity-solc-path "/usr/local/bin/solc")
+  (add-hook 'after-change-major-mode-hook
+            (lambda() (if (equal major-mode 'solidity-mode)
+                          (progn (setq c-basic-offset 4)
+;;                               (add-hook 'c-special-indent-hook (lambda() (if)))
+                                 ))))
   :bind ((:map solidity-mode-map ("M-j" . nil))
          (:map solidity-mode-map ("M-a" . nil))
          (:map solidity-mode-map ("C-M-j" . nil))))
