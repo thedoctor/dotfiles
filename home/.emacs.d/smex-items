@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ command-history
  select-theme
  package-install
  select-frame
  yas-minor-mode
  package-list-packages
  package-list-packages-no-fetch
- package-menu-mark-delete
 )
 
 ;; ----- smex-data -----
@@ -20,6 +20,7 @@
  (package-menu-mark-delete . 1)
  (package-list-packages-no-fetch . 1)
  (yas-minor-mode . 2)
- (select-theme . 57)
+ (select-theme . 59)
  (select-frame . 1)
+ (command-history . 1)
 )

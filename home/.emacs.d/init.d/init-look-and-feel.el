@@ -3,7 +3,7 @@
 ;; cursor configuration
 
 (setq-default cursor-type 'box)
-(blink-cursor-mode 1)
+(blink-cursor-mode 0)
 
 ;; use timeclock
 
