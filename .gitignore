@@ -12,3 +12,4 @@ home/.python_environments
 *.pyc
 *~
 *#
+*.elc
