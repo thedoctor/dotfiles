@@ -579,7 +579,7 @@ on every major platform.
    There is a website for Org which provides links to the newest
 version of Org, as well as additional information, frequently asked
 questions (FAQ), links to tutorials, etc.  This page is located at
-`http://orgmode.org'.  
+`http://orgmode.org'.
 
    An earlier version (7.3) of this manual is available as a paperback
 book from Network Theory Ltd.
@@ -989,10 +989,10 @@ C-u <TAB>
 
 `C-u C-u <TAB>'     (`org-set-startup-visibility')
      Switch back to the startup visibility of the buffer (*note Initial
-     visibility::).  
+     visibility::).
 
 `C-u C-u C-u <TAB>'     (`show-all')
-     Show all, including drawers.  
+     Show all, including drawers.
 
 `C-c C-r'     (`org-reveal')
      Reveal context around point, showing the current entry, the
@@ -1001,21 +1001,21 @@ C-u <TAB>
      (*note Sparse trees::) or an agenda command (*note Agenda
      commands::).  With a prefix argument show, on each level, all
      sibling headings.  With a double prefix argument, also show the
-     entire subtree of the parent.  
+     entire subtree of the parent.
 
 `C-c C-k'     (`show-branches')
      Expose all the headings of the subtree, CONTENT view for just one
-     subtree.  
+     subtree.
 
 `C-c <TAB>'     (`show-children')
      Expose all direct children of the subtree.  With a numeric prefix
-     argument N, expose all children down to level N.  
+     argument N, expose all children down to level N.
 
 `C-c C-x b'     (`org-tree-to-indirect-buffer')
      Show the current subtree in an indirect buffer(3).  With a numeric
      prefix argument N, go up to level N and then take that tree.  If N
      is negative then go up that many levels.  With a `C-u' prefix, do
-     not remove the previously used indirect buffer.  
+     not remove the previously used indirect buffer.
 
 `C-c C-x v'     (`org-copy-visible')
      Copy the visible text in the region into the kill ring.
@@ -1088,24 +1088,24 @@ File: org,  Node: Motion,  Next: Structure editing,  Prev: Visibility cycling,  
 The following commands jump to other headlines in the buffer.
 
 `C-c C-n'     (`outline-next-visible-heading')
-     Next heading.  
+     Next heading.
 
 `C-c C-p'     (`outline-previous-visible-heading')
-     Previous heading.  
+     Previous heading.
 
 `C-c C-f'     (`org-forward-same-level')
-     Next heading same level.  
+     Next heading same level.
 
 `C-c C-b'     (`org-backward-same-level')
-     Previous heading same level.  
+     Previous heading same level.
 
 `C-c C-u'     (`outline-up-heading')
-     Backward to higher level heading.  
+     Backward to higher level heading.
 
 `C-c C-j'     (`org-goto')
      Jump to a different place without changing the current outline
      visibility.  Shows the document structure in a temporary buffer,
-     where you can use the following keys to find your destination: 
+     where you can use the following keys to find your destination:
           <TAB>         Cycle visibility.
           <down> / <up>   Next/previous visible headline.
           <RET>         Select this location.
@@ -1146,69 +1146,69 @@ File: org,  Node: Structure editing,  Next: Sparse trees,  Prev: Motion,  Up: Do
      parent subtree.
 
      If point is at the beginning of a normal line, turn this line into
-     a heading.  
+     a heading.
 
 `C-<RET>'     (`org-insert-heading-respect-content')
      Just like `M-<RET>', except when adding a new heading below the
      current heading, the new heading is placed after the body instead
-     of before it.  This command works from anywhere in the entry.  
+     of before it.  This command works from anywhere in the entry.
 
 `M-S-<RET>'     (`org-insert-todo-heading')
      Insert new TODO entry with same level as current heading.  See
-     also the variable `org-treat-insert-todo-heading-as-state-change'.  
+     also the variable `org-treat-insert-todo-heading-as-state-change'.
 
 `C-S-<RET>'     (`org-insert-todo-heading-respect-content')
      Insert new TODO entry with same level as current heading.  Like
      `C-<RET>', the new headline will be inserted after the current
-     subtree.  
+     subtree.
 
 `<TAB>'     (`org-cycle')
      In a new entry with no text yet, the first <TAB> demotes the entry
      to become a child of the previous one.  The next <TAB> makes it a
      parent, and so on, all the way to top level.  Yet another <TAB>,
-     and you are back to the initial level.  
+     and you are back to the initial level.
 
 `M-<left>'     (`org-do-promote')
-     Promote current heading by one level.  
+     Promote current heading by one level.
 
 `M-<right>'     (`org-do-demote')
-     Demote current heading by one level.  
+     Demote current heading by one level.
 
 `M-S-<left>'     (`org-promote-subtree')
-     Promote the current subtree by one level.  
+     Promote the current subtree by one level.
 
 `M-S-<right>'     (`org-demote-subtree')
-     Demote the current subtree by one level.  
+     Demote the current subtree by one level.
 
 `M-S-<up>'     (`org-move-subtree-up')
-     Move subtree up (swap with previous subtree of same level).  
+     Move subtree up (swap with previous subtree of same level).
 
 `M-S-<down>'     (`org-move-subtree-down')
-     Move subtree down (swap with next subtree of same level).  
+     Move subtree down (swap with next subtree of same level).
 
 `M-h'     (`org-mark-element')
      Mark the element at point.  Hitting repeatedly will mark
      subsequent elements of the one just marked.  E.g., hitting <M-h>
      on a paragraph will mark it, hitting <M-h> immediately again will
-     mark the next one.  
+     mark the next one.
 
 `C-c @'     (`org-mark-subtree')
      Mark the subtree at point.  Hitting repeatedly will mark
-     subsequent subtrees of the same level than the marked subtree.  
+     subsequent subtrees of the same level than the marked subtree.
 
 `C-c C-x C-w'     (`org-cut-subtree')
      Kill subtree, i.e., remove it from buffer but save in kill ring.
-     With a numeric prefix argument N, kill N sequential subtrees.  
+     With a numeric prefix argument N, kill N sequential subtrees.
 
 `C-c C-x M-w'     (`org-copy-subtree')
      Copy subtree to kill ring.  With a numeric prefix argument N, copy
-     the N sequential subtrees.  
+     the N sequential subtrees.
 
 `C-c C-x C-y'     (`org-paste-subtree')
      Yank subtree from kill ring.  This does modify the level of the
      subtree to make sure the tree fits in nicely at the yank position.
      The yank level can also be specified with a numeric prefix
-     argument, or by yanking after a headline marker like `****'.  
+     argument, or by yanking after a headline marker like `****'.
 
 `C-y'     (`org-yank')
      Depending on the options `org-yank-adjusted-subtrees' and
@@ -1220,7 +1220,7 @@ File: org,  Node: Structure editing,  Next: Sparse trees,  Prev: Motion,  Up: Do
      this command will force a normal `yank' to be executed, with the
      prefix passed along.  A good way to force a normal yank is `C-u
      C-y'.  If you use `yank-pop' after a yank, it will yank previous
-     kill items plainly, without adjustment and folding.  
+     kill items plainly, without adjustment and folding.
 
 `C-c C-x c'     (`org-clone-subtree-with-time-shift')
      Clone a subtree by making a number of sibling copies of it.  You
@@ -1228,11 +1228,11 @@ File: org,  Node: Structure editing,  Next: Sparse trees,  Prev: Motion,  Up: Do
      also specify if any timestamps in the entry should be shifted.
      This can be useful, for example, to create a number of tasks
      related to a series of lectures to prepare.  For more details, see
-     the docstring of the command `org-clone-subtree-with-time-shift'.  
+     the docstring of the command `org-clone-subtree-with-time-shift'.
 
 `C-c C-w'     (`org-refile')
      Refile entry or region to a different location.  *Note Refile and
-     copy::.  
+     copy::.
 
 `C-c ^'     (`org-sort')
      Sort same-level entries.  When there is an active region, all
@@ -1244,16 +1244,16 @@ File: org,  Node: Structure editing,  Next: Sparse trees,  Prev: Motion,  Up: Do
      sequence the keywords have been defined in the setup) or by the
      value of a property.  Reverse sorting is possible as well.  You
      can also supply your own function to extract the sorting key.
-     With a `C-u' prefix, sorting will be case-sensitive.  
+     With a `C-u' prefix, sorting will be case-sensitive.
 
 `C-x n s'     (`org-narrow-to-subtree')
-     Narrow buffer to current subtree.  
+     Narrow buffer to current subtree.
 
 `C-x n b'     (`org-narrow-to-block')
-     Narrow buffer to current block.  
+     Narrow buffer to current block.
 
 `C-x n w'     (`widen')
-     Widen buffer to remove narrowing.  
+     Widen buffer to remove narrowing.
 
 `C-c *'     (`org-toggle-heading')
      Turn a normal line or plain list item into a headline (so that it
@@ -1289,7 +1289,7 @@ commands can be accessed through a dispatcher:
 
 `C-c /'     (`org-sparse-tree')
      This prompts for an extra key to select a sparse-tree creating
-     command.  
+     command.
 
 `C-c / r'     (`org-occur')
      Prompts for a regexp and shows a sparse tree with all matches.  If
@@ -1301,10 +1301,10 @@ commands can be accessed through a dispatcher:
      highlights disappear when the buffer is changed by an editing
      command(2), or by pressing `C-c C-c'.  When called with a `C-u'
      prefix argument, previous highlights are kept, so several calls to
-     this command can be stacked.  
+     this command can be stacked.
 
 `M-g n'  or  `M-g M-n'     (`next-error')
-     Jump to the next sparse tree match in this buffer.  
+     Jump to the next sparse tree match in this buffer.
 
 `M-g p'  or  `M-g M-p'     (`previous-error')
      Jump to the previous sparse tree match in this buffer.
@@ -1419,7 +1419,7 @@ If some of these actions get in your way, configure
      completely separated.  In a new item with no text yet, the first
      <TAB> demotes the item to become a child of the previous one.
      Subsequent <TAB>s move the item to meaningful levels in the list
-     and eventually get it back to its initial position.  
+     and eventually get it back to its initial position.
 
 `M-<RET>'     (`org-insert-heading')
      Insert new item at current level.  With a prefix argument, force a
@@ -1430,25 +1430,25 @@ If some of these actions get in your way, configure
      one.
 
 `M-S-<RET>'
-     Insert a new item with a checkbox (*note Checkboxes::).  
+     Insert a new item with a checkbox (*note Checkboxes::).
 
 `S-up'
 `S-down'
      Jump to the previous/next item in the current list(8), but only if
      `org-support-shift-select' is off.  If not, you can still use
      paragraph jumping commands like `C-<up>' and `C-<down>' to quite
-     similar effect.  
+     similar effect.
 
 `M-up'
 `M-down'
      Move the item including subitems up/down(9) (swap with
      previous/next item of same indentation).  If the list is ordered,
-     renumbering is automatic.  
+     renumbering is automatic.
 
 `M-left'
 `M-right'
      Decrease/increase the indentation of an item, leaving children
-     alone.  
+     alone.
 
 `M-S-<left>'
 `M-S-<right>'
@@ -1462,12 +1462,12 @@ If some of these actions get in your way, configure
      As a special case, using this command on the very first item of a
      list will move the whole list.  This behavior can be disabled by
      configuring `org-list-automatic-rules'.  The global indentation of
-     a list has no influence on the text _after_ the list.  
+     a list has no influence on the text _after_ the list.
 
 `C-c C-c'
      If there is a checkbox (*note Checkboxes::) in the item line,
      toggle the state of the checkbox.  In any case, verify bullets and
-     indentation consistency in the whole list.  
+     indentation consistency in the whole list.
 
 `C-c -'
      Cycle the entire list level through the different
@@ -1479,22 +1479,22 @@ If some of these actions get in your way, configure
      into an item.  With a prefix argument, all lines will be converted
      to list items.  If the first line already was a list item, any item
      marker will be removed from the list.  Finally, even without an
-     active region, a normal line will be converted into a list item.  
+     active region, a normal line will be converted into a list item.
 
 `C-c *'
      Turn a plain list item into a headline (so that it becomes a
      subheading at its location).  *Note Structure editing::, for a
-     detailed explanation.  
+     detailed explanation.
 
 `C-c C-*'
      Turn the whole plain list into a subtree of the current heading.
      Checkboxes (*note Checkboxes::) will become TODO (resp. DONE)
-     keywords when unchecked (resp. checked).  
+     keywords when unchecked (resp. checked).
 
 `S-left/right'
      This command also cycles bullet styles when the cursor in on the
      bullet or anywhere in an item line, details depending on
-     `org-support-shift-select'.  
+     `org-support-shift-select'.
 
 `C-c ^'
      Sort the plain list.  You will be prompted for the sorting method:
@@ -1685,7 +1685,7 @@ The following command handles footnotes:
      If the cursor is on a footnote reference, jump to the definition.
      If it is a the definition, jump back to the reference.  When
      called at a footnote location with a prefix argument, offer the
-     same menu as `C-c C-x f'.  
+     same menu as `C-c C-x f'.
 
 `C-c C-o  or mouse-1/2'
      Footnote labels are also links to the corresponding
@@ -1845,26 +1845,26 @@ Re-aligning and field motion
 ............................
 
 `C-c C-c     (`org-table-align')'
-     Re-align the table and don't move to another field.  
+     Re-align the table and don't move to another field.
 
 `C-c SPC     (`org-table-blank-field')'
-     Blank the field at point.  
+     Blank the field at point.
 
 `<TAB>     (`org-table-next-field')'
      Re-align the table, move to the next field.  Creates a new row if
-     necessary.  
+     necessary.
 
 `S-<TAB>     (`org-table-previous-field')'
-     Re-align, move to previous field.  
+     Re-align, move to previous field.
 
 `<RET>     (`org-table-next-row')'
      Re-align the table and move down to next row.  Creates a new row if
      necessary.  At the beginning or end of a line, <RET> still does
-     NEWLINE, so it can be used to split a table.  
+     NEWLINE, so it can be used to split a table.
 
 `M-a     (`org-table-beginning-of-field')'
      Move to beginning of the current table field, or on to the
-     previous field.  
+     previous field.
 
 `M-e     (`org-table-end-of-field')'
      Move to end of the current table field, or on to the next field.
@@ -1874,32 +1874,32 @@ Column and row editing
 
 `M-<left>     (`org-table-move-column-left')'
 `M-<right>     (`org-table-move-column-right')'
-     Move the current column left/right.  
+     Move the current column left/right.
 
 `M-S-<left>     (`org-table-delete-column')'
-     Kill the current column.  
+     Kill the current column.
 
 `M-S-<right>     (`org-table-insert-column')'
-     Insert a new column to the left of the cursor position.  
+     Insert a new column to the left of the cursor position.
 
 `M-<up>     (`org-table-move-row-up')'
 `M-<down>     (`org-table-move-row-down')'
-     Move the current row up/down.  
+     Move the current row up/down.
 
 `M-S-<up>     (`org-table-kill-row')'
-     Kill the current row or horizontal line.  
+     Kill the current row or horizontal line.
 
 `M-S-<down>     (`org-table-insert-row')'
      Insert a new row above the current row.  With a prefix argument,
-     the line is created below the current one.  
+     the line is created below the current one.
 
 `C-c -     (`org-table-insert-hline')'
      Insert a horizontal line below current row.  With a prefix
-     argument, the line is created above the current line.  
+     argument, the line is created above the current line.
 
 `C-c <RET>     (`org-table-hline-and-move')'
      Insert a horizontal line below current row, and move the cursor
-     into the row below that line.  
+     into the row below that line.
 
 `C-c ^     (`org-table-sort-lines')'
      Sort the table lines in the region.  The position of point
@@ -1922,18 +1922,18 @@ Regions
      Copy a rectangular region from a table to a special clipboard.
      Point and mark determine edge fields of the rectangle.  If there
      is no active region, copy just the current field.  The process
-     ignores horizontal separator lines.  
+     ignores horizontal separator lines.
 
 `C-c C-x C-w     (`org-table-cut-region')'
      Copy a rectangular region from a table to a special clipboard, and
-     blank all fields in the rectangle.  So this is the "cut" operation.  
+     blank all fields in the rectangle.  So this is the "cut" operation.
 
 `C-c C-x C-y     (`org-table-paste-rectangle')'
      Paste a rectangular region into a table.  The upper left corner
      ends up in the current field.  All involved fields will be
      overwritten.  If the rectangle does not fit into the present table,
      the table is enlarged as needed.  The process ignores horizontal
-     separator lines.  
+     separator lines.
 
 `M-<RET>     (`org-table-wrap-region')'
      Split the current field at the cursor position and move the rest
@@ -1951,7 +1951,7 @@ Calculations
 `C-c +     (`org-table-sum')'
      Sum the numbers in the current column, or in the rectangle defined
      by the active region.  The result is shown in the echo area and can
-     be inserted with `C-y'.  
+     be inserted with `C-y'.
 
 `S-<RET>     (`org-table-copy-down')'
      When current field is empty, copy from first non-empty field
@@ -1983,7 +1983,7 @@ Miscellaneous
      TAB-separated text files.  This command works by inserting the
      file into the buffer and then converting the region to a table.
      Any prefix argument is passed on to the converter, which uses it
-     to determine the separator.  
+     to determine the separator.
 
 `C-c |     (`org-table-create-or-convert-from-region')'
      Tables can also be imported by pasting tabular text into the Org
@@ -2664,27 +2664,27 @@ configure the option `org-table-use-standard-references'.
 `C-c =  or  C-u C-c =     (`org-table-eval-formula')'
      Edit the formula associated with the current column/field in the
      minibuffer.  See *note Column formulas::, and *note Field and
-     range formulas::.  
+     range formulas::.
 
 `C-u C-u C-c =     (`org-table-eval-formula')'
      Re-insert the active formula (either a field formula, or a column
      formula) into the current field, so that you can edit it directly
      in the field.  The advantage over editing in the minibuffer is
-     that you can use the command `C-c ?'.  
+     that you can use the command `C-c ?'.
 
 `C-c ?     (`org-table-field-info')'
      While editing a formula in a table field, highlight the field(s)
-     referenced by the reference at the cursor position in the formula.  
+     referenced by the reference at the cursor position in the formula.
 
 `C-c }'
      Toggle the display of row and column numbers for a table, using
      overlays (`org-table-toggle-coordinate-overlays').  These are
      updated each time the table is aligned; you can force it with `C-c
-     C-c'.  
+     C-c'.
 
 `C-c {'
      Toggle the formula debugger on and off
-     (`org-table-toggle-formula-debugger').  See below.  
+     (`org-table-toggle-formula-debugger').  See below.
 
 `C-c '     (`org-table-edit-formulas')'
      Edit all formulas for the current table in a special buffer, where
@@ -2698,38 +2698,38 @@ configure the option `org-table-use-standard-references'.
     `C-c C-c  or  C-x C-s     (`org-table-fedit-finish')'
           Exit the formula editor and store the modified formulas.
           With `C-u' prefix, also apply the new formulas to the entire
-          table.  
+          table.
 
     `C-c C-q     (`org-table-fedit-abort')'
-          Exit the formula editor without installing changes.  
+          Exit the formula editor without installing changes.
 
     `C-c C-r     (`org-table-fedit-toggle-ref-type')'
           Toggle all references in the formula editor between standard
-          (like `B3') and internal (like `@3$2').  
+          (like `B3') and internal (like `@3$2').
 
     `<TAB>     (`org-table-fedit-lisp-indent')'
           Pretty-print or indent Lisp formula at point.  When in a line
           containing a Lisp formula, format the formula according to
           Emacs Lisp rules.  Another <TAB> collapses the formula back
           again.  In the open formula, <TAB> re-indents just like in
-          Emacs Lisp mode.  
+          Emacs Lisp mode.
 
     `M-<TAB>     (`lisp-complete-symbol')'
-          Complete Lisp symbols, just like in Emacs Lisp mode.  
+          Complete Lisp symbols, just like in Emacs Lisp mode.
 
     `S-<up>/<down>/<left>/<right>'
           Shift the reference at point.  For example, if the reference
           is `B3' and you press `S-<right>', it will become `C3'.  This
-          also works for relative references and for hline references.  
+          also works for relative references and for hline references.
 
     `M-S-<up>     (`org-table-fedit-line-up')'
     `M-S-<down>     (`org-table-fedit-line-down')'
           Move the test line for column formulas in the Org buffer up
-          and down.  
+          and down.
 
     `M-<up>     (`org-table-fedit-scroll-down')'
     `M-<down>     (`org-table-fedit-scroll-up')'
-          Scroll the window displaying the table.  
+          Scroll the window displaying the table.
 
     `C-c }'
           Turn the coordinate grid in the table on and off.
@@ -2803,13 +2803,13 @@ the following commands:
 `C-c *     (`org-table-recalculate')'
      Recalculate the current row by first applying the stored column
      formulas from left to right, and all field/range formulas in the
-     current row.  
+     current row.
 
 `C-u C-c *'
 `C-u C-c C-c'
      Recompute the entire table, line by line.  Any lines before the
      first hline are left alone, assuming that these are part of the
-     table header.  
+     table header.
 
 `C-u C-u C-c *  or  C-u C-u C-c C-c     (`org-table-iterate')'
      Iterate the table by recomputing it until no further changes occur.
@@ -3359,7 +3359,7 @@ it into an Org file, and to follow the link.
      completion support for some link types(5)  For example, if you
      type `file <RET>', file name completion (alternative access: `C-u
      C-c C-l', see below) will be offered, and after `bbdb <RET>' you
-     can complete contact names.  
+     can complete contact names.
 
 `C-u C-c C-l'
      When `C-c C-l' is called with a `C-u' prefix argument, a link to a
@@ -3374,7 +3374,7 @@ it into an Org file, and to follow the link.
 
 `C-c C-l  (with cursor on existing link)'
      When the cursor is on an existing link, `C-c C-l' allows you to
-     edit the link and description parts of the link.  
+     edit the link and description parts of the link.
 
 `C-c C-o     (`org-open-at-point')'
      Open link at point.  This will launch a web browser for URLs (using
@@ -3397,16 +3397,16 @@ it into an Org file, and to follow the link.
 
 `<RET>'
      When `org-return-follows-link' is set, `<RET>' will also follow
-     the link at point.  
+     the link at point.
 
 `mouse-2'
 `mouse-1'
      On links, `mouse-2' will open the link just as `C-c C-o' would.
-     Under Emacs 22 and later, `mouse-1' will also follow a link.  
+     Under Emacs 22 and later, `mouse-1' will also follow a link.
 
 `mouse-3'
      Like `mouse-2', but force file links to be opened with Emacs, and
-     internal links to be displayed in another window(6).  
+     internal links to be displayed in another window(6).
 
 `C-c C-x C-v     (`org-toggle-inline-images')'
      Toggle the inline display of linked images.  Normally this will
@@ -3415,17 +3415,17 @@ it into an Org file, and to follow the link.
      with a prefix argument, also display images that do have a link
      description.  You can ask for inline images to be displayed at
      startup by configuring the variable
-     `org-startup-with-inline-images'(7).  
+     `org-startup-with-inline-images'(7).
 
 `C-c %     (`org-mark-ring-push')'
      Push the current position onto the mark ring, to be able to return
-     easily.  Commands following an internal link do this automatically.  
+     easily.  Commands following an internal link do this automatically.
 
 `C-c &     (`org-mark-ring-goto')'
      Jump back to a recorded position.  A position is recorded by the
      commands following internal links, and by `C-c %'.  Using this
      command several times in direct succession moves through a ring of
-     previously recorded positions.  
+     previously recorded positions.
 
 `C-c C-x C-n     (`org-next-link')'
 `C-c C-x C-p     (`org-previous-link')'
@@ -3684,7 +3684,7 @@ The most important commands to work with TODO entries are:
      Useful mostly if more than two TODO states are possible (*note
      TODO extensions::).  See also *note Conflicts::, for a discussion
      of the interaction with `shift-selection-mode'.  See also the
-     variable `org-treat-S-cursor-todo-selection-as-state-change'.  
+     variable `org-treat-S-cursor-todo-selection-as-state-change'.
 
 `C-c / t     (`org-show-todo-tree')'
      View TODO items in a _sparse tree_ (*note Sparse trees::).  Folds
@@ -3695,7 +3695,7 @@ The most important commands to work with TODO entries are:
      like `KWD1|KWD2|...' to list entries that match any one of these
      keywords.  With a numeric prefix argument N, show the tree for the
      Nth keyword in the option `org-todo-keywords'.  With two prefix
-     arguments, find all TODO states, both un-done and done.  
+     arguments, find all TODO states, both un-done and done.
 
 `C-c a t     (`org-todo-list')'
      Show the global TODO list.  Collects the TODO items (with not-DONE
@@ -3703,7 +3703,7 @@ The most important commands to work with TODO entries are:
      buffer.  The new buffer will be in `agenda-mode', which provides
      commands to examine and manipulate the TODO entries from the new
      buffer (*note Agenda commands::).  *Note Global TODO list::, for
-     more information.  
+     more information.
 
 `S-M-<RET>     (`org-insert-todo-heading')'
      Insert a new TODO entry below the current one.
@@ -3833,7 +3833,7 @@ using completion, you may also apply the following commands:
      example, `C-u C-u C-c C-t' or `C-S-<right>' would jump from `TODO'
      or `DONE' to `REPORT', and any of the words in the second row to
      `CANCELED'.  Note that the `C-S-' key binding conflict with
-     `shift-selection-mode' (*note Conflicts::).  
+     `shift-selection-mode' (*note Conflicts::).
 
 `S-<right>'
 `S-<left>'
@@ -3976,7 +3976,7 @@ property:
      used for this behavior because this should be local to the current
      entry, not inherited like a tag.  However, if you would like to
      track the value of this property with a tag for better visibility,
-     customize the option `org-track-ordered-property-with-tag'.  
+     customize the option `org-track-ordered-property-with-tag'.
 
 `C-u C-u C-u C-c C-t'
      Change TODO state, circumventing any state blocking.
@@ -4261,7 +4261,7 @@ be TODO items.
      you press <SPC> instead, the priority cookie is removed from the
      headline.  The priorities can also be changed "remotely" from the
      timeline and agenda buffer with the `,' command (*note Agenda
-     commands::).  
+     commands::).
 
 `S-<up>     (`org-priority-up')'
 `S-<down>     (`org-priority-down')'
@@ -4392,7 +4392,7 @@ The following commands work with checkboxes:
      Toggle checkbox status or (with prefix arg) checkbox presence at
      point.  With a single prefix argument, add an empty checkbox or
      remove the current one(3).  With a double prefix argument, set it
-     to `[-]', which is considered to be an intermediate state.  
+     to `[-]', which is considered to be an intermediate state.
 
 `C-c C-x C-b     (`org-toggle-checkbox')'
      Toggle checkbox status or (with prefix arg) checkbox presence at
@@ -4409,10 +4409,10 @@ The following commands work with checkboxes:
 
         - If there is no active region, just toggle the checkbox at
           point.
-     
+
 `M-S-<RET>     (`org-insert-todo-heading')'
      Insert a new item with a checkbox.  This works only if the cursor
-     is already in a plain list item (*note Plain lists::).  
+     is already in a plain list item (*note Plain lists::).
 
 `C-c C-x o     (`org-toggle-ordered-property')'
      Toggle the `ORDERED' property of the entry, to toggle if
@@ -4420,7 +4420,7 @@ The following commands work with checkboxes:
      for this behavior because this should be local to the current
      entry, not inherited like a tag.  However, if you would like to
      track the value of this property with a tag for better visibility,
-     customize `org-track-ordered-property-with-tag'.  
+     customize `org-track-ordered-property-with-tag'.
 
 `C-c #     (`org-update-statistics-cookies')'
      Update the statistics cookie in the current outline entry.  When
@@ -4624,7 +4624,7 @@ following keys:
      Pressing keys assigned to tags will add or remove them from the
      list of tags in the current line.  Selecting a tag in a group of
      mutually exclusive tags will turn off any other tags from that
-     group.  
+     group.
 
 `<TAB>'
      Enter a tag in the minibuffer, even if the tag is not in the
@@ -4633,7 +4633,7 @@ following keys:
      with a comma.
 
 `<SPC>'
-     Clear all tags for this line.  
+     Clear all tags for this line.
 
 `<RET>'
      Accept the modified set.
@@ -4780,11 +4780,11 @@ information into special lists.
      Create a sparse tree with all headlines matching a
      tags/property/TODO search.  With a `C-u' prefix argument, ignore
      headlines that are not a TODO line.  *Note Matching tags and
-     properties::.  
+     properties::.
 
 `C-c a m     (`org-tags-view')'
      Create a global list of tag matches from all agenda files.  *Note
-     Matching tags and properties::.  
+     Matching tags and properties::.
 
 `C-c a M     (`org-tags-view')'
      Create a global list of tag matches from all agenda files, but
@@ -4875,7 +4875,7 @@ publishers and the number of disks in a box like this:
        :END:
 
    If you want to set properties that can be inherited by any entry in a
-file, use a line like 
+file, use a line like
      #+PROPERTY: NDisks_ALL 1 2 3 4
 
    Contrary to properties set from a special drawer, you have to
@@ -4883,13 +4883,13 @@ refresh the buffer with `C-c C-c' to activate this change.
 
    If you want to add to the value of an existing property, append a
 `+' to the property name.  The following results in the property `var'
-having the value "foo=1 bar=2".  
+having the value "foo=1 bar=2".
      #+PROPERTY: var  foo=1
      #+PROPERTY: var+ bar=2
 
    It is also possible to add to the values of inherited properties.
 The following results in the `genres' property having the value "Classic
-Baroque" under the `Goldberg Variations' subtree.  
+Baroque" under the `Goldberg Variations' subtree.
      * CD collection
      ** Classic
          :PROPERTIES:
@@ -4914,7 +4914,7 @@ The following commands help to work with properties:
 `M-<TAB>     (`pcomplete')'
      After an initial colon in a line, complete property keys.  All
      keys used in the current file will be offered as possible
-     completions.  
+     completions.
 
 `C-c C-x p     (`org-set-property')'
      Set a property.  This prompts for a property name and a value.  If
@@ -4923,25 +4923,25 @@ The following commands help to work with properties:
 `C-u M-x org-insert-drawer RET'
      Insert a property drawer into the current entry.  The drawer will
      be inserted early in the entry, but after the lines with planning
-     information like deadlines.  
+     information like deadlines.
 
 `C-c C-c     (`org-property-action')'
      With the cursor in a property drawer, this executes property
-     commands.  
+     commands.
 
 `C-c C-c s     (`org-set-property')'
      Set a property in the current entry.  Both the property and the
-     value can be inserted using completion.  
+     value can be inserted using completion.
 
 `S-<right>     (`org-property-next-allowed-value')'
 `S-<left>     (`org-property-previous-allowed-value')'
-     Switch property at point to the next/previous allowed value.  
+     Switch property at point to the next/previous allowed value.
 
 `C-c C-c d     (`org-delete-property')'
-     Remove a property from the current entry.  
+     Remove a property from the current entry.
 
 `C-c C-c D     (`org-delete-property-globally')'
-     Globally remove a property, from all entries in the current file.  
+     Globally remove a property, from all entries in the current file.
 
 `C-c C-c c     (`org-compute-property-at-point')'
      Compute the property at point, using the operator and scope from
@@ -4990,11 +4990,11 @@ searches::).
 
 `C-c / m  or  C-c \     (`org-match-sparse-tree')'
      Create a sparse tree with all matching entries.  With a `C-u'
-     prefix argument, ignore headlines that are not a TODO line.  
+     prefix argument, ignore headlines that are not a TODO line.
 
 `C-c a m     (`org-tags-view')'
      Create a global list of tag/property  matches from all agenda
-     files.  *Note Matching tags and properties::.  
+     files.  *Note Matching tags and properties::.
 
 `C-c a M     (`org-tags-view')'
      Create a global list of tag matches from all agenda files, but
@@ -5236,14 +5236,14 @@ Turning column view on and off
      entry that contains the `:COLUMNS:' property.  If no such property
      is found, the format is taken from the `#+COLUMNS' line or from
      the variable `org-columns-default-format', and column view is
-     established for the current entry and its subtree.  
+     established for the current entry and its subtree.
 
 `r     (`org-columns-redo')'
      Recreate the column view, to include recent changes made in the
-     buffer.  
+     buffer.
 
 `g     (`org-columns-redo')'
-     Same as `r'.  
+     Same as `r'.
 
 `q     (`org-columns-quit')'
      Exit column view.
@@ -5252,31 +5252,31 @@ Editing values
 ..............
 
 `<left> <right> <up> <down>'
-     Move through the column view from field to field.  
+     Move through the column view from field to field.
 
 `S-<left>/<right>'
      Switch to the next/previous allowed value of the field.  For this,
      you have to have specified allowed values for a property.
 
 `1..9,0'
-     Directly select the Nth allowed value, `0' selects the 10th value.  
+     Directly select the Nth allowed value, `0' selects the 10th value.
 
 `n     (`org-columns-next-allowed-value')'
 `p     (`org-columns-previous-allowed-value')'
-     Same as `S-<left>/<right>' 
+     Same as `S-<left>/<right>'
 
 `e     (`org-columns-edit-value')'
      Edit the property at point.  For the special properties, this will
      invoke the same interface that you normally use to change that
      property.  For example, when editing a TAGS property, the tag
-     completion or fast selection interface will pop up.  
+     completion or fast selection interface will pop up.
 
 `C-c C-c     (`org-columns-set-tags-or-toggle')'
-     When there is a checkbox at point, toggle it.  
+     When there is a checkbox at point, toggle it.
 
 `v     (`org-columns-show-value')'
      View the full value of this property.  This is useful if the width
-     of the column is smaller than that of the value.  
+     of the column is smaller than that of the value.
 
 `a     (`org-columns-edit-allowed')'
      Edit the list of allowed values for this property.  If the list is
@@ -5289,10 +5289,10 @@ Modifying the table structure
 
 `<     (`org-columns-narrow')'
 `>     (`org-columns-widen')'
-     Make the column narrower/wider by one character.  
+     Make the column narrower/wider by one character.
 
 `S-M-<right>     (`org-columns-new')'
-     Insert a new column, to the left of the current column.  
+     Insert a new column, to the left of the current column.
 
 `S-M-<left>     (`org-columns-delete')'
      Delete the current column.
@@ -5319,7 +5319,7 @@ This dynamic block has the following parameters:
      This is the most important parameter.  Column view is a feature
      that is often localized to a certain (sub)tree, and the capture
      block might be at a different location in the file.  To identify
-     the tree whose view to capture, you can use 4 values: 
+     the tree whose view to capture, you can use 4 values:
           local     use the tree in which the capture block is located
           global    make a global view, including all headings in the file
           "file:PATH-TO-FILE"
@@ -5348,11 +5348,11 @@ The following commands insert or update the dynamic block:
 
 `C-c C-x i     (`org-insert-columns-dblock')'
      Insert a dynamic block capturing a column view.  You will be
-     prompted for the scope or ID of the view.  
+     prompted for the scope or ID of the view.
 
 `C-c C-c  or  C-c C-x C-u     (`org-dblock-update')'
      Update dynamic block at point.  The cursor needs to be in the
-     `#+BEGIN' line of the dynamic block.  
+     `#+BEGIN' line of the dynamic block.
 
 `C-u C-c C-x C-u     (`org-update-all-dblocks')'
      Update all dynamic blocks (*note Dynamic blocks::).  This is
@@ -5505,39 +5505,39 @@ format.
      cursor is at an existing timestamp in the buffer, the command is
      used to modify this timestamp instead of inserting a new one.
      When this command is used twice in succession, a time range is
-     inserted.  
+     inserted.
 
 `C-c !     (`org-time-stamp-inactive')'
      Like `C-c .', but insert an inactive timestamp that will not cause
-     an agenda entry.  
+     an agenda entry.
 
 `C-u C-c .'
 `C-u C-c !'
      Like `C-c .' and `C-c !', but use the alternative format which
      contains date and time.  The default time can be rounded to
      multiples of 5 minutes, see the option
-     `org-time-stamp-rounding-minutes'.  
+     `org-time-stamp-rounding-minutes'.
 
 `C-c C-c'
-     Normalize timestamp, insert/fix day name if missing or wrong.  
+     Normalize timestamp, insert/fix day name if missing or wrong.
 
 `C-c <     (`org-date-from-calendar')'
      Insert a timestamp corresponding to the cursor date in the
-     Calendar.  
+     Calendar.
 
 `C-c >     (`org-goto-calendar')'
      Access the Emacs calendar for the current date.  If there is a
      timestamp in the current line, go to the corresponding date
-     instead.  
+     instead.
 
 `C-c C-o     (`org-open-at-point')'
      Access the agenda for the date given by the timestamp or -range at
-     point (*note Weekly/daily agenda::).  
+     point (*note Weekly/daily agenda::).
 
 `S-<left>     (`org-timestamp-down-day')'
 `S-<right>     (`org-timestamp-up-day')'
      Change date at cursor by one day.  These key bindings conflict with
-     shift-selection and related modes (*note Conflicts::).  
+     shift-selection and related modes (*note Conflicts::).
 
 `S-<up>     (`org-timestamp-up')'
 `S-<down>     (`org-timestamp-down-down')'
@@ -5549,7 +5549,7 @@ format.
      if the cursor is in a headline and not at a timestamp, these same
      keys modify the priority of an item.  (*note Priorities::).  The
      key bindings also conflict with shift-selection and related modes
-     (*note Conflicts::).  
+     (*note Conflicts::).
 
 `C-c C-y     (`org-evaluate-time-range')'
      Evaluate a time range by computing the difference between start
@@ -5810,17 +5810,17 @@ schedule an item:
      timestamp will be removed.  When called with a prefix argument,
      remove the scheduling date from the entry.  Depending on the
      variable `org-log-reschedule'(3), a note will be taken when
-     changing an existing scheduling time.  
+     changing an existing scheduling time.
 
 `C-c / d     (`org-check-deadlines')'
      Create a sparse tree with all deadlines that are either past-due,
      or which will become due within `org-deadline-warning-days'.  With
      `C-u' prefix, show all deadlines in the file.  With a numeric
      prefix, check that many days.  For example, `C-1 C-c / d' shows
-     all deadlines due tomorrow.  
+     all deadlines due tomorrow.
 
 `C-c / b     (`org-check-before-date')'
-     Sparse tree for deadlines and scheduled items before a given date.  
+     Sparse tree for deadlines and scheduled items before a given date.
 
 `C-c / a     (`org-check-after-date')'
      Sparse tree for deadlines and scheduled items after a given date.
@@ -6000,7 +6000,7 @@ File: org,  Node: Clocking commands,  Next: The clock table,  Up: Clocking work 
      `org-extend-today-until'), `all' to include all time, or `auto'
      which is the default(3).
      Clicking with `mouse-1' onto the mode line entry will pop up a
-     menu with clocking options.  
+     menu with clocking options.
 
 `C-c C-x C-o     (`org-clock-out')'
      Stop the clock (clock-out).  This inserts another timestamp at the
@@ -6008,45 +6008,45 @@ File: org,  Node: Clocking commands,  Next: The clock table,  Up: Clocking work 
      computes the resulting time and inserts it after the time range as
      `=> HH:MM'.  See the variable `org-log-note-clock-out' for the
      possibility to record an additional note together with the
-     clock-out timestamp(4).  
+     clock-out timestamp(4).
 
 `C-c C-x C-x     (`org-clock-in-last')'
      Reclock the last clocked task.  With one `C-u' prefix argument,
      select the task from the clock history.  With two `C-u' prefixes,
      force continuous clocking by starting the clock when the last clock
-     stopped.  
+     stopped.
 
 `C-c C-x C-e     (`org-clock-modify-effort-estimate')'
-     Update the effort estimate for the current clock task.  
+     Update the effort estimate for the current clock task.
 
 `C-c C-c  or  C-c C-y     (`org-evaluate-time-range')'
      Recompute the time interval after changing one of the timestamps.
      This is only necessary if you edit the timestamps directly.  If
-     you change them with `S-<cursor>' keys, the update is automatic.  
+     you change them with `S-<cursor>' keys, the update is automatic.
 
 `C-S-<up/down>     (`org-clock-timestamps-up/down')'
      On `CLOCK' log lines, increase/decrease both timestamps so that the
-     clock duration keeps the same.  
+     clock duration keeps the same.
 
 `S-M-<up/down>     (`org-timestamp-up/down')'
      On `CLOCK' log lines, increase/decrease the timestamp at point and
      the one of the previous (or the next clock) timestamp by the same
      duration.  For example, if you hit `S-M-<up>' to increase a
      clocked-out timestamp by five minutes, then the clocked-in
-     timestamp of the next clock will be increased by five minutes.  
+     timestamp of the next clock will be increased by five minutes.
 
 `C-c C-t     (`org-todo')'
      Changing the TODO state of an item to DONE automatically stops the
-     clock if it is running in this same item.  
+     clock if it is running in this same item.
 
 `C-c C-x C-q     (`org-clock-cancel')'
      Cancel the current clock.  This is useful if a clock was started by
-     mistake, or if you ended up working on something else.  
+     mistake, or if you ended up working on something else.
 
 `C-c C-x C-j     (`org-clock-goto')'
      Jump to the headline of the currently clocked in task.  With a
      `C-u' prefix arg, select the target task from a list of recently
-     clocked tasks.  
+     clocked tasks.
 
 `C-c C-x C-d     (`org-clock-display')'
      Display time summaries for each subtree in the current buffer.
@@ -6091,15 +6091,15 @@ formatted as one or several Org tables.
      cursor is at an existing clock table, just update it.  When called
      with a prefix argument, jump to the first clock report in the
      current document and update it.  The clock table always includes
-     also trees with `:ARCHIVE:' tag.  
+     also trees with `:ARCHIVE:' tag.
 
 `C-c C-c  or  C-c C-x C-u     (`org-dblock-update')'
      Update dynamic block at point.  The cursor needs to be in the
-     `#+BEGIN' line of the dynamic block.  
+     `#+BEGIN' line of the dynamic block.
 
 `C-u C-c C-x C-u'
      Update all dynamic blocks (*note Dynamic blocks::).  This is
-     useful if you have several clock table blocks in a buffer.  
+     useful if you have several clock table blocks in a buffer.
 
 `S-<left>'
 `S-<right>     (`org-clocktable-try-shift')'
@@ -6331,7 +6331,7 @@ effort for an entry with the following commands:
 `C-c C-x e     (`org-set-effort')'
      Set the effort estimate for the current entry.  With a numeric
      prefix argument, set it to the Nth allowed value (see below).
-     This command is also accessible from the agenda with the `e' key.  
+     This command is also accessible from the agenda with the `e' key.
 
 `C-c C-x C-e     (`org-clock-modify-effort-estimate')'
      Modify the effort estimate of the item currently being clocked.
@@ -6394,7 +6394,7 @@ meeting or a video viewing.  There is also a countdown timer.
      notes after a break in the process.  When called with a double
      prefix argument `C-u C-u', change all timer strings in the active
      region by a certain amount.  This can be used to fix timer strings
-     if the timer was not started at exactly the right moment.  
+     if the timer was not started at exactly the right moment.
 
 `C-c C-x ;     (`org-timer-set-timer')'
      Start a countdown timer.  The user is prompted for a duration.
@@ -6409,19 +6409,19 @@ same commands.
      Insert the value of the current relative or countdown timer into
      the buffer.  If no timer is running, the relative timer will be
      started.  When called with a prefix argument, the relative timer
-     is restarted.  
+     is restarted.
 
 `C-c C-x -     (`org-timer-item')'
      Insert a description list item with the value of the current
      relative or countdown timer.  With a prefix argument, first reset
-     the relative timer to 0.  
+     the relative timer to 0.
 
 `M-<RET>     (`org-insert-heading')'
      Once the timer list is started, you can also use `M-<RET>' to
-     insert new timer items.  
+     insert new timer items.
 
 `C-c C-x ,     (`org-timer-pause-or-continue')'
-     Pause the timer, or continue it if it is already paused.  
+     Pause the timer, or continue it if it is already paused.
 
 `C-c C-x _     (`org-timer-stop')'
      Stop the timer.  After this, you can only start a new timer, not
@@ -6538,7 +6538,7 @@ with prefix commands:
 
 `C-u C-c c'
      Visit the target location of a capture template.  You get to
-     select the template in the usual way.  
+     select the template in the usual way.
 
 `C-u C-u C-c c'
      Visit the last stored capture item in its buffer.
@@ -6970,7 +6970,7 @@ following command is used:
 
 `C-c C-x g'
      Collect items from the feeds configured in `org-feed-alist' and
-     act upon them.  
+     act upon them.
 
 `C-c C-x G     (`org-feed-goto-inbox')'
      Prompt for a feed name and go to the inbox configured for this
@@ -7013,7 +7013,7 @@ special command:
 
 `C-c M-w     (`org-copy')'
      Copying works like refiling, except that the original note is not
-     deleted.  
+     deleted.
 
 `C-c C-w     (`org-refile')'
      Refile the entry or region at point.  This command offers possible
@@ -7032,10 +7032,10 @@ special command:
      able to create new nodes as new parents for refiling on the fly,
      check the variable `org-refile-allow-creating-parent-nodes'.  When
      the variable `org-log-refile'(1) is set, a timestamp or a note
-     will be recorded when an entry has been refiled.  
+     will be recorded when an entry has been refiled.
 
 `C-u C-c C-w'
-     Use the refile interface to jump to a heading.  
+     Use the refile interface to jump to a heading.
 
 `C-u C-u C-c C-w     (`org-refile-goto-last-stored')'
      Jump to the location where `org-refile' last moved a tree to.
@@ -7046,7 +7046,7 @@ special command:
 `C-3 C-c C-w'
      Refile and keep the entry in place.  Also see `org-refile-keep' to
      make this the default behavior, and beware that this may result in
-     duplicated `ID' properties.  
+     duplicated `ID' properties.
 
 `C-0 C-c C-w  or  C-u C-u C-u C-c C-w     (`org-refile-cache-clear')'
      Clear the target cache.  Caching of refile targets can be turned
@@ -7089,14 +7089,14 @@ file, the archive file.
 
 `C-c C-x C-s  or short  C-c $     (`org-archive-subtree')'
      Archive the subtree starting at the cursor position to the location
-     given by `org-archive-location'.  
+     given by `org-archive-location'.
 
 `C-u C-c C-x C-s'
      Check if any direct children of the current headline could be
      moved to the archive.  To do this, each subtree is checked for
      open TODO entries.  If none are found, the command offers to move
      it to the archive location.  If the cursor is _not_ on a headline
-     when this command is invoked, the level 1 trees will be checked.  
+     when this command is invoked, the level 1 trees will be checked.
 
 `C-u C-u C-c C-x C-s'
      As above, but check subtree for timestamps instead of TODO
@@ -7164,17 +7164,17 @@ at its location in the outline tree, but behaves in the following way:
 `C-c C-x a     (`org-toggle-archive-tag')'
      Toggle the ARCHIVE tag for the current headline.  When the tag is
      set, the headline changes to a shadowed face, and the subtree
-     below it is hidden.  
+     below it is hidden.
 
 `C-u C-c C-x a'
      Check if any direct children of the current headline should be
      archived.  To do this, each subtree is checked for open TODO
      entries.  If none are found, the command offers to set the ARCHIVE
      tag for the child.  If the cursor is _not_ on a headline when this
-     command is invoked, the level 1 trees will be checked.  
+     command is invoked, the level 1 trees will be checked.
 
 `C-TAB     (`org-force-cycle-archived')'
-     Cycle a tree even if it is tagged with ARCHIVE.  
+     Cycle a tree even if it is tagged with ARCHIVE.
 
 `C-c C-x A     (`org-archive-to-archive-sibling')'
      Move the current entry to the _Archive Sibling_.  This is a
@@ -7257,14 +7257,14 @@ easiest way to maintain it is through the following commands
      Add current file to the list of agenda files.  The file is added to
      the front of the list.  If it was already in the list, it is moved
      to the front.  With a prefix argument, file is added/moved to the
-     end.  
+     end.
 
 `C-c ]     (`org-remove-file')'
-     Remove current file from the list of agenda files.  
+     Remove current file from the list of agenda files.
 
 `C-'     (`org-cycle-agenda-files')'
 `C-,'
-     Cycle through agenda file list, visiting one file after the other.  
+     Cycle through agenda file list, visiting one file after the other.
 
 `M-x org-iswitchb RET'
      Command to use an `iswitchb'-like interface to switch to and
@@ -7287,7 +7287,7 @@ for an extended period, use the following commands:
      restriction remains in effect until removed with `C-c C-x >', or
      by typing either `<' or `>' in the agenda dispatcher.  If there is
      a window displaying an agenda view, the new restriction takes
-     effect immediately.  
+     effect immediately.
 
 `C-c C-x >     (`org-agenda-remove-restriction-lock')'
      Remove the permanent restriction created by `C-c C-x <'.
@@ -7299,7 +7299,7 @@ the Speedbar frame:
      Permanently restrict the agenda to the item--either an Org file or
      a subtree in such a file--at the cursor in the Speedbar frame.  If
      there is a window displaying an agenda view, the new restriction
-     takes effect immediately.  
+     takes effect immediately.
 
 `> in the speedbar frame     (`org-agenda-remove-restriction-lock')'
      Lift the restriction.
@@ -7557,7 +7557,7 @@ collected into a single place.
      default, this lists items with a state the is not a DONE state.
      The buffer is in `agenda-mode', so there are commands to examine
      and manipulate the TODO entries directly from that buffer (*note
-     Agenda commands::).  
+     Agenda commands::).
 
 `C-c a T     (`org-todo-list')'
      Like the above, but allows selection of a specific TODO keyword.
@@ -7611,7 +7611,7 @@ sparse trees with `C-c / m'.
      The command prompts for a selection criterion, which is a boolean
      logic expression with tags, like `+work+urgent-withboss' or
      `work|home' (*note Tags::).  If you often need a specific search,
-     define a custom command for it (*note Agenda dispatcher::).  
+     define a custom command for it (*note Agenda dispatcher::).
 
 `C-c a M     (`org-tags-view')'
      Like `C-c a m', but only select headlines that are also TODO items
@@ -7812,7 +7812,7 @@ mode produces.  During the review, you need to identify such projects
 and define next actions for them.
 
 `C-c a #     (`org-agenda-list-stuck-projects')'
-     List projects that are stuck.  
+     List projects that are stuck.
 
 `C-c a !'
      Customize the variable `org-stuck-projects' to define what a stuck
@@ -8150,13 +8150,13 @@ Motion
 ......
 
 `n     (`org-agenda-next-line')'
-     Next line (same as <down> and `C-n').  
+     Next line (same as <down> and `C-n').
 
 `p     (`org-agenda-previous-line')'
-     Previous line (same as <up> and `C-p').  
+     Previous line (same as <up> and `C-p').
 
 `N     (`org-agenda-next-item')'
-     Next item: same as next line, but only consider items.  
+     Next item: same as next line, but only consider items.
 
 `P     (`org-agenda-previous-item')'
      Previous item: same as previous line, but only consider items.
@@ -8167,23 +8167,23 @@ View/Go to Org file
 `<SPC>  or  mouse-3     (`org-agenda-show-and-scroll-up')'
      Display the original location of the item in another window.  With
      prefix arg, make sure that the entire entry is made visible in the
-     outline, not only the heading.  
+     outline, not only the heading.
 
 `L     (`org-agenda-recenter')'
-     Display original location and recenter that window.  
+     Display original location and recenter that window.
 
 `<TAB>  or  mouse-2     (`org-agenda-goto')'
-     Go to the original location of the item in another window.  
+     Go to the original location of the item in another window.
 
 `<RET>     (`org-agenda-switch-to')'
-     Go to the original location of the item and delete other windows.  
+     Go to the original location of the item and delete other windows.
 
 `F     (`org-agenda-follow-mode')'
      Toggle Follow mode.  In Follow mode, as you move the cursor through
      the agenda buffer, the other window always shows the corresponding
      location in the Org file.  The initial setting for this mode in new
      agenda buffers can be set with the variable
-     `org-agenda-start-with-follow-mode'.  
+     `org-agenda-start-with-follow-mode'.
 
 `C-c C-x b     (`org-agenda-tree-to-indirect-buffer')'
      Display the entire subtree of the current item in an indirect
@@ -8202,10 +8202,10 @@ Change display
 
 `A'
      Interactively select another agenda view and append it to the
-     current view.  
+     current view.
 
 `o'
-     Delete other windows.  
+     Delete other windows.
 
 `v d  or short  d     (`org-agenda-day-view')'
 `v w  or short  w     (`org-agenda-week-view')'
@@ -8224,29 +8224,29 @@ Change display
      `200712 w' will jump to week 12 in 2007.  If such a year
      specification has only one or two digits, it will be mapped to the
      interval 1938-2037.  `v <SPC>' will reset to what is set in
-     `org-agenda-span'.  
+     `org-agenda-span'.
 
 `f     (`org-agenda-later')'
      Go forward in time to display the following
      `org-agenda-current-span' days.  For example, if the display
      covers a week, switch to the following week.  With prefix arg, go
-     forward that many times `org-agenda-current-span' days.  
+     forward that many times `org-agenda-current-span' days.
 
 `b     (`org-agenda-earlier')'
-     Go backward in time to display earlier dates.  
+     Go backward in time to display earlier dates.
 
 `.     (`org-agenda-goto-today')'
-     Go to today.  
+     Go to today.
 
 `j     (`org-agenda-goto-date')'
-     Prompt for a date and go there.  
+     Prompt for a date and go there.
 
 `J     (`org-agenda-clock-goto')'
-     Go to the currently clocked-in task in the agenda buffer.  
+     Go to the currently clocked-in task in the agenda buffer.
 
 `D     (`org-agenda-toggle-diary')'
      Toggle the inclusion of diary entries.  See *note Weekly/daily
-     agenda::.  
+     agenda::.
 
 `v l  or short  l     (`org-agenda-log-mode')'
      Toggle Logbook mode.  In Logbook mode, entries that were marked
@@ -8257,18 +8257,18 @@ Change display
      with a `C-u' prefix, show all possible logbook entries, including
      state changes.  When called with two prefix arguments `C-u C-u',
      show only logging information, nothing else.  `v L' is equivalent
-     to `C-u v l'.  
+     to `C-u v l'.
 
 `v [  or short  [     (`org-agenda-manipulate-query-add')'
      Include inactive timestamps into the current view.  Only for
-     weekly/daily agenda and timeline views.  
+     weekly/daily agenda and timeline views.
 
 `v a     (`org-agenda-archives-mode')'
 `v A     (`org-agenda-archives-mode 'files')'
      Toggle Archives mode.  In Archives mode, trees that are marked
      `ARCHIVED' are also scanned when producing the agenda.  When you
      use the capital `A', even all archive files are included.  To exit
-     archives mode, press `v a' again.  
+     archives mode, press `v a' again.
 
 `v R  or short  R     (`org-agenda-clockreport-mode')'
      Toggle Clockreport mode.  In Clockreport mode, the daily/weekly
@@ -8279,7 +8279,7 @@ Change display
      using a prefix argument when toggling this mode (i.e., `C-u R'),
      the clock table will not show contributions from entries that are
      hidden by agenda filtering(1).  See also the variable
-     `org-clock-report-include-clocking-task'.  
+     `org-clock-report-include-clocking-task'.
 
 `v c'
      Show overlapping clock entries, clocking gaps, and other clocking
@@ -8287,7 +8287,7 @@ Change display
      lines and fix them manually.  See the variable
      `org-agenda-clock-consistency-checks' for information on how to
      customize the definition of what constituted a clocking problem.
-     To return to normal agenda display, press `l' to exit Logbook mode.  
+     To return to normal agenda display, press `l' to exit Logbook mode.
 
 `v E  or short  E     (`org-agenda-entry-text-mode')'
      Toggle entry text mode.  In entry text mode, a number of lines
@@ -8295,25 +8295,25 @@ Change display
      displayed below the line.  The maximum number of lines is given by
      the variable `org-agenda-entry-text-maxlines'.  Calling this
      command with a numeric prefix argument will temporarily modify
-     that number to the prefix value.  
+     that number to the prefix value.
 
 `G     (`org-agenda-toggle-time-grid')'
      Toggle the time grid on and off.  See also the variables
-     `org-agenda-use-time-grid' and `org-agenda-time-grid'.  
+     `org-agenda-use-time-grid' and `org-agenda-time-grid'.
 
 `r     (`org-agenda-redo')'
      Recreate the agenda buffer, for example to reflect the changes
      after modification of the timestamps of items with `S-<left>' and
      `S-<right>'.  When the buffer is the global TODO list, a prefix
      argument is interpreted to create a selective list for a specific
-     TODO keyword.  
+     TODO keyword.
 
 `g     (`org-agenda-redo')'
-     Same as `r'.  
+     Same as `r'.
 
 `C-x C-s  or short  s     (`org-save-all-org-buffers')'
      Save all Org buffers in the current Emacs session, and also the
-     locations of IDs.  
+     locations of IDs.
 
 `C-c C-x C-c     (`org-agenda-columns')'
      Invoke column view (*note Column view::) in the agenda buffer.
@@ -8365,86 +8365,86 @@ Remote editing
 ..............
 
 `0--9'
-     Digit argument.  
+     Digit argument.
 
 `C-_     (`org-agenda-undo')'
      Undo a change due to a remote editing command.  The change is
-     undone both in the agenda buffer and in the remote buffer.  
+     undone both in the agenda buffer and in the remote buffer.
 
 `t     (`org-agenda-todo')'
      Change the TODO state of the item, both in the agenda and in the
-     original org file.  
+     original org file.
 
 `C-S-<right>     (`org-agenda-todo-nextset')'
 
 `C-S-<left>     (`org-agenda-todo-previousset')'
-     Switch to the next/previous set of TODO keywords.  
+     Switch to the next/previous set of TODO keywords.
 
 `C-k     (`org-agenda-kill')'
      Delete the current agenda item along with the entire subtree
      belonging to it in the original Org file.  If the text to be
      deleted remotely is longer than one line, the kill needs to be
-     confirmed by the user.  See variable `org-agenda-confirm-kill'.  
+     confirmed by the user.  See variable `org-agenda-confirm-kill'.
 
 `C-c C-w     (`org-agenda-refile')'
-     Refile the entry at point.  
+     Refile the entry at point.
 
 `C-c C-x C-a  or short  a     (`org-agenda-archive-default-with-confirmation')'
      Archive the subtree corresponding to the entry at point using the
      default archiving command set in `org-archive-default-command'.
-     When using the `a' key, confirmation will be required.  
+     When using the `a' key, confirmation will be required.
 
 `C-c C-x a     (`org-agenda-toggle-archive-tag')'
-     Toggle the ARCHIVE tag for the current headline.  
+     Toggle the ARCHIVE tag for the current headline.
 
 `C-c C-x A     (`org-agenda-archive-to-archive-sibling')'
      Move the subtree corresponding to the current entry to its _archive
-     sibling_.  
+     sibling_.
 
 `C-c C-x C-s  or short  $     (`org-agenda-archive')'
      Archive the subtree corresponding to the current headline.  This
      means the entry will be moved to the configured archive location,
-     most likely a different file.  
+     most likely a different file.
 
 `T     (`org-agenda-show-tags')'
      Show all tags associated with the current item.  This is useful if
      you have turned off `org-agenda-show-inherited-tags', but still
-     want to see all tags of a headline occasionally.  
+     want to see all tags of a headline occasionally.
 
 `:     (`org-agenda-set-tags')'
      Set tags for the current headline.  If there is an active region
-     in the agenda, change a tag for all headings in the region.  
+     in the agenda, change a tag for all headings in the region.
 
 `,'
      Set the priority for the current item (`org-agenda-priority').
      Org mode prompts for the priority character.  If you reply with
-     <SPC>, the priority cookie is removed from the entry.  
+     <SPC>, the priority cookie is removed from the entry.
 
 `P     (`org-agenda-show-priority')'
-     Display weighted priority of current item.  
+     Display weighted priority of current item.
 
 `+  or  S-<up>     (`org-agenda-priority-up')'
      Increase the priority of the current item.  The priority is
      changed in the original buffer, but the agenda is not resorted.
-     Use the `r' key for this.  
+     Use the `r' key for this.
 
 `-  or  S-<down>     (`org-agenda-priority-down')'
-     Decrease the priority of the current item.  
+     Decrease the priority of the current item.
 
 `z  or  C-c C-z     (`org-agenda-add-note')'
      Add a note to the entry.  This note will be recorded, and then
      filed to the same location where state change notes are put.
-     Depending on `org-log-into-drawer', this may be inside a drawer.  
+     Depending on `org-log-into-drawer', this may be inside a drawer.
 
 `C-c C-a     (`org-attach')'
-     Dispatcher for all command related to attachments.  
+     Dispatcher for all command related to attachments.
 
 `C-c C-s     (`org-agenda-schedule')'
      Schedule this item.  With prefix arg remove the scheduling
-     timestamp 
+     timestamp
 
 `C-c C-d     (`org-agenda-deadline')'
-     Set a deadline for this item.  With prefix arg remove the deadline.  
+     Set a deadline for this item.  With prefix arg remove the deadline.
 
 `S-<right>     (`org-agenda-do-date-later')'
      Change the timestamp associated with the current line by one day
@@ -8458,34 +8458,34 @@ Remote editing
      changing minutes.
      The stamp is changed in the original Org file, but the change is
      not directly reflected in the agenda buffer.  Use `r' or `g' to
-     update the buffer.  
+     update the buffer.
 
 `S-<left>     (`org-agenda-do-date-earlier')'
      Change the timestamp associated with the current line by one day
-     into the past.  
+     into the past.
 
 `>     (`org-agenda-date-prompt')'
      Change the timestamp associated with the current line.  The key
      `>' has been chosen, because it is the same as `S-.'  on my
-     keyboard.  
+     keyboard.
 
 `I     (`org-agenda-clock-in')'
      Start the clock on the current item.  If a clock is running
-     already, it is stopped first.  
+     already, it is stopped first.
 
 `O     (`org-agenda-clock-out')'
-     Stop the previously started clock.  
+     Stop the previously started clock.
 
 `X     (`org-agenda-clock-cancel')'
-     Cancel the currently running clock.  
+     Cancel the currently running clock.
 
 `J     (`org-agenda-clock-goto')'
-     Jump to the running clock in another window.  
+     Jump to the running clock in another window.
 
 `k     (`org-agenda-capture')'
      Like `org-capture', but use the date at point as the default date
      for the capture template.  See `org-capture-use-agenda-date' to
-     make this the default behavior of `org-capture'.  
+     make this the default behavior of `org-capture'.
 
 Dragging agenda lines forward/backward
 ......................................
@@ -8503,25 +8503,25 @@ Bulk remote editing selected entries
 
 `m     (`org-agenda-bulk-mark')'
      Mark the entry at point for bulk action.  With numeric prefix
-     argument, mark that many successive entries.  
+     argument, mark that many successive entries.
 
 `*     (`org-agenda-bulk-mark-all')'
-     Mark all visible agenda entries for bulk action.  
+     Mark all visible agenda entries for bulk action.
 
 `u     (`org-agenda-bulk-unmark')'
-     Unmark entry at point for bulk action.  
+     Unmark entry at point for bulk action.
 
 `U     (`org-agenda-bulk-remove-all-marks')'
-     Unmark all marked entries for bulk action.  
+     Unmark all marked entries for bulk action.
 
 `M-m     (`org-agenda-bulk-toggle')'
-     Toggle mark of the entry at point for bulk action.  
+     Toggle mark of the entry at point for bulk action.
 
 `M-*     (`org-agenda-bulk-toggle-all')'
-     Toggle marks of all visible entries for bulk action.  
+     Toggle marks of all visible entries for bulk action.
 
 `%     (`org-agenda-bulk-mark-regexp')'
-     Mark entries matching a regular expression for bulk action.  
+     Mark entries matching a regular expression for bulk action.
 
 `B     (`org-agenda-bulk-action')'
      Bulk action: act on all marked entries in the agenda.  This will
@@ -8592,11 +8592,11 @@ Calendar commands
 .................
 
 `c     (`org-agenda-goto-calendar')'
-     Open the Emacs calendar and move to the date at the agenda cursor.  
+     Open the Emacs calendar and move to the date at the agenda cursor.
 
 `c     (`org-calendar-goto-agenda')'
      When in the calendar, compute and show the Org mode agenda for the
-     date at the cursor.  
+     date at the cursor.
 
 `i     (`org-agenda-diary-entry')'
      Insert a new entry into the diary, using the date at the cursor
@@ -8615,20 +8615,20 @@ Calendar commands
      entry will be created in `org-agenda-diary-file' without further
      interaction.  If you directly press <RET> at the prompt without
      typing text, the target file will be shown in another window for
-     you to finish the entry there.  See also the `k r' command.  
+     you to finish the entry there.  See also the `k r' command.
 
 `M     (`org-agenda-phases-of-moon')'
      Show the phases of the moon for the three months around current
-     date.  
+     date.
 
 `S     (`org-agenda-sunrise-sunset')'
      Show sunrise and sunset times.  The geographical location must be
      set with calendar variables, see the documentation for the Emacs
-     calendar.  
+     calendar.
 
 `C     (`org-agenda-convert-date')'
      Convert the date at cursor into many other cultural and historic
-     calendars.  
+     calendars.
 
 `H     (`org-agenda-holidays')'
      Show holidays for three months around the cursor date.
@@ -8656,7 +8656,7 @@ Quit and Exit
 .............
 
 `q     (`org-agenda-quit')'
-     Quit agenda, remove the agenda buffer.  
+     Quit agenda, remove the agenda buffer.
 
 `x     (`org-agenda-exit')'
      Exit agenda, remove the agenda buffer and all buffers loaded by
@@ -8703,7 +8703,7 @@ File: org,  Node: Storing searches,  Next: Block agenda,  Up: Custom agenda view
 The first application of custom searches is the definition of keyboard
 shortcuts for frequently used searches, either creating an agenda
 buffer, or a sparse tree (the latter covering of course only the current
-buffer).  
+buffer).
 
    Custom commands are configured in the variable
 `org-agenda-custom-commands'.  You can customize this variable, for
@@ -9231,7 +9231,7 @@ this:
      but not any simpler -- Albert Einstein
      #+END_QUOTE
 
-   If you would like to center some text, do it like this: 
+   If you would like to center some text, do it like this:
      #+BEGIN_CENTER
      Everything should be made as simple as possible, \\
      but not any simpler
@@ -9351,7 +9351,7 @@ File: org,  Node: Literal examples,  Next: Include files,  Prev: Images and tabl
 
 You can include literal examples that should not be subjected to
 markup.  Such examples will be typeset in monospace, so this is well
-suited for source code and similar examples.  
+suited for source code and similar examples.
 
      #+BEGIN_EXAMPLE
      Some example from a text file.
@@ -9371,7 +9371,7 @@ other text that can be marked up by font-lock in Emacs, you can ask for
 the example to look like the fontified Emacs buffer(1).  This is done
 with the `src' block, where you also need to specify the name of the
 major mode that should be used to fontify the example(2), see *note
-Easy templates:: for shortcuts to easily insert code blocks.  
+Easy templates:: for shortcuts to easily insert code blocks.
 
      #+BEGIN_SRC emacs-lisp
        (defun org-xor (a b)
@@ -9424,7 +9424,7 @@ so often, shortcuts are provided using the Easy templates facility
      regions (where each line starts with a colon followed by a space)
      will be edited using `artist-mode'(5) to allow creating ASCII
      drawings easily.  Using this command in an empty line will create
-     a new fixed-width region.  
+     a new fixed-width region.
 
 `C-c l'
      Calling `org-store-link' while editing a source code example in a
@@ -9469,7 +9469,7 @@ File: org,  Node: Include files,  Next: Index entries,  Prev: Literal examples, 
 ==================
 
 During export, you can include the content of another file.  For
-example, to include your `.emacs' file, you could use: 
+example, to include your `.emacs' file, you could use:
 
      #+INCLUDE: "~/.emacs" src emacs-lisp
 
@@ -9782,7 +9782,7 @@ of the former can be used to adjust the size of the preview images.
      process all fragments in the current entry (between two
      headlines).  When called with a prefix argument, process the
      entire subtree.  When called with two prefix arguments, or when
-     the cursor is before the first headline, process the entire buffer.  
+     the cursor is before the first headline, process the entire buffer.
 
 `C-c C-c'
      Remove the overlay preview images.
@@ -10260,7 +10260,7 @@ ASCII export commands
      Export as an ASCII file.  For an Org file, `myfile.org', the ASCII
      file will be `myfile.txt'.  The file will be overwritten without
      warning.  When the original file is `myfile.txt', the resulting
-     file becomes `myfile.txt.txt' in order to prevent data loss.  
+     file becomes `myfile.txt.txt' in order to prevent data loss.
 
 `C-c C-e t A/L/U     (`org-ascii-export-as-ascii')'
      Export to a temporary buffer.  Do not create a file.
@@ -10350,10 +10350,10 @@ File: org,  Node: Beamer export commands,  Next: Beamer specific export settings
 `C-c C-e l b     (`org-beamer-export-to-latex')'
      Export as a LaTeX file.  For an Org file `myfile.org', the LaTeX
      file will be `myfile.tex'.  The file will be overwritten without
-     warning.  
+     warning.
 
 `C-c C-e l B     (`org-beamer-export-as-latex')'
-     Export to a temporary buffer.  Do not create a file.  
+     Export to a temporary buffer.  Do not create a file.
 
 `C-c C-e l P     (`org-beamer-export-to-pdf')'
      Export as LaTeX and then process to PDF.
@@ -10611,7 +10611,7 @@ File: org,  Node: HTML Export commands,  Next: HTML Specific export settings,  U
      Export as an HTML file.  For an Org file `myfile.org', the HTML
      file will be `myfile.html'.  The file will be overwritten without
      warning.  `C-c C-e h o' Export as an HTML file and immediately
-     open it with a browser.  
+     open it with a browser.
 
 `C-c C-e h H     (`org-html-export-as-html')'
      Export to a temporary buffer.  Do not create a file.
@@ -10789,7 +10789,7 @@ verbatim to the exported file use either
 
      #+HTML: Literal HTML code for export
 
-or 
+or
 
      #+BEGIN_HTML
      All lines between these markers are exported literally
@@ -11133,10 +11133,10 @@ File: org,  Node: LaTeX export commands,  Next: LaTeX specific export settings, 
 `C-c C-e l l     (`org-latex-export-to-latex')'
      Export as a LaTeX file.  For an Org file `myfile.org', the LaTeX
      file will be `myfile.tex'.  The file will be overwritten without
-     warning.  
+     warning.
 
 `C-c C-e l L     (`org-latex-export-as-latex')'
-     Export to a temporary buffer.  Do not create a file.  
+     Export to a temporary buffer.  Do not create a file.
 
 `C-c C-e l p     (`org-latex-export-to-pdf')'
      Export as LaTeX and then process to PDF.
@@ -11554,7 +11554,7 @@ Markdown export commands
 `C-c C-e m m     (`org-md-export-to-markdown')'
      Export as a text file written in Markdown syntax.  For an Org file,
      `myfile.org', the resulting file will be `myfile.md'.  The file
-     will be overwritten without warning.  
+     will be overwritten without warning.
 
 `C-c C-e m M     (`org-md-export-as-markdown')'
      Export to a temporary buffer.  Do not create a file.
@@ -12356,7 +12356,7 @@ have to define these styles yourselves.
      are listed in the following table.
 
      Table cell type   `table-cell' style          `paragraph' style
-     ------------------------------------------------------------------------------- 
+     -------------------------------------------------------------------------------
 
      Body              `CustomTableCell'           `CustomTableParagraph'
      First column      `CustomFirstColumnTableCell'`CustomFirstColumnTableParagraph'
@@ -12464,7 +12464,7 @@ Org export commands
 `C-c C-e O o     (`org-org-export-to-org')'
      Export as an Org document.  For an Org file, `myfile.org', the
      resulting file will be `myfile.org.org'.  The file will be
-     overwritten without warning.  
+     overwritten without warning.
 
 `C-c C-e O O     (`org-org-export-as-org')'
      Export to a temporary buffer.  Do not create a file.
@@ -12501,7 +12501,7 @@ File: org,  Node: Texinfo export commands,  Next: Texinfo specific export settin
 `C-c C-e i t     (`org-texinfo-export-to-texinfo')'
      Export as a Texinfo file.  For an Org file, `myfile.org', the
      resulting file will be `myfile.texi'.  The file will be
-     overwritten without warning.  
+     overwritten without warning.
 
 `C-c C-e i i     (`org-texinfo-export-to-info')'
      Export to Texinfo and then process to an Info file(1).
@@ -12865,12 +12865,12 @@ different instances originate.
 
 `C-c C-e c f     (`org-icalendar-export-to-ics')'
      Create iCalendar entries for the current buffer and store them in
-     the same directory, using a file extension `.ics'.  
+     the same directory, using a file extension `.ics'.
 
 `C-c C-e c a     (`org-icalendar-export-agenda-files')'
      Like `C-c C-e c f', but do this for all files in
      `org-agenda-files'.  For each of these files, a separate iCalendar
-     file will be written.  
+     file will be written.
 
 `C-c C-e c c     (`org-icalendar-combine-agenda-files')'
      Create a single large iCalendar file from all files in
@@ -13690,13 +13690,13 @@ Once properly configured, Org can publish with the following commands:
 
 `C-c C-e P x     (`org-publish')'
      Prompt for a specific project and publish all files that belong to
-     it.  
+     it.
 
 `C-c C-e P p     (`org-publish-current-project')'
-     Publish the project containing the current file.  
+     Publish the project containing the current file.
 
 `C-c C-e P f     (`org-publish-current-file')'
-     Publish only the current file.  
+     Publish only the current file.
 
 `C-c C-e P a     (`org-publish-all')'
      Publish every project.
@@ -13765,7 +13765,7 @@ structure of a `src' block is
 
    The `#+NAME:' line is optional, and can be used to name the code
 block.  Live code blocks require that a language be specified on the
-`#+BEGIN_SRC' line.  Switches and header arguments are optional.  
+`#+BEGIN_SRC' line.  Switches and header arguments are optional.
 
    Live code blocks can also be specified inline using
 
@@ -13783,14 +13783,14 @@ block.  Live code blocks require that a language be specified on the
      other files, or from Org mode table formulas (see *note The
      spreadsheet::).  Names are assumed to be unique and the behavior
      of Org mode when two or more blocks share the same name is
-     undefined.  
+     undefined.
 
 `<language>'
-     The language of the code in the block (see *note Languages::).  
+     The language of the code in the block (see *note Languages::).
 
 `<switches>'
      Optional switches control code block export (see the discussion of
-     switches in *note Literal examples::) 
+     switches in *note Literal examples::)
 
 `<header arguments>'
      Optional header arguments control many aspects of evaluation,
@@ -14091,7 +14091,7 @@ File: org,  Node: Languages,  Next: Header arguments,  Prev: Library of Babel,  
 Code blocks in the following languages are supported.
 
 Language           Identifier         Language           Identifier
----------------------------------------------------------------------------- 
+----------------------------------------------------------------------------
 Asymptote          asymptote          Awk                awk
 C                  C                  C++                C++
 Clojure            clojure            CSS                css
@@ -14111,7 +14111,7 @@ R                  R                  Ruby               ruby
 Sass               sass               Scheme             scheme
 GNU Screen         screen             Sed                sed
 shell              sh                 SQL                sql
-SQLite             sqlite                                
+SQLite             sqlite
 
    Language-specific documentation is available for some languages.  If
 available, it can be found at
@@ -14311,7 +14311,7 @@ blocks
    Code block header arguments can span multiple lines using
 `#+HEADER:' or `#+HEADERS:' lines preceding a code block or nested
 between the `#+NAME:' line and the `#+BEGIN_SRC' line of a named code
-block.  
+block.
 
    Multi-line header arguments on an un-named code block:
 
@@ -15514,7 +15514,7 @@ listing of the possible results header arguments see *note results::.
 
                     Non-session              Session
 `:results value'    value of last            value of last expression
-                    expression               
+                    expression
 `:results output'   contents of STDOUT       concatenation of interpreter
                                              output
 
@@ -15660,49 +15660,49 @@ context.
    In an Org mode buffer, the following key bindings are active:
 
 `C-c C-v p'   or   `C-c C-v      `org-babel-previous-src-block'
-C-p'                             
+C-p'
 `C-c C-v n'   or   `C-c C-v      `org-babel-next-src-block'
-C-n'                             
+C-n'
 `C-c C-v e'   or   `C-c C-v      `org-babel-execute-maybe'
-C-e'                             
+C-e'
 `C-c C-v o'   or   `C-c C-v      `org-babel-open-src-block-result'
-C-o'                             
+C-o'
 `C-c C-v v'   or   `C-c C-v      `org-babel-expand-src-block'
-C-v'                             
+C-v'
 `C-c C-v u'   or   `C-c C-v      `org-babel-goto-src-block-head'
-C-u'                             
+C-u'
 `C-c C-v g'   or   `C-c C-v      `org-babel-goto-named-src-block'
-C-g'                             
+C-g'
 `C-c C-v r'   or   `C-c C-v      `org-babel-goto-named-result'
-C-r'                             
+C-r'
 `C-c C-v b'   or   `C-c C-v      `org-babel-execute-buffer'
-C-b'                             
+C-b'
 `C-c C-v s'   or   `C-c C-v      `org-babel-execute-subtree'
-C-s'                             
+C-s'
 `C-c C-v d'   or   `C-c C-v      `org-babel-demarcate-block'
-C-d'                             
+C-d'
 `C-c C-v t'   or   `C-c C-v      `org-babel-tangle'
-C-t'                             
+C-t'
 `C-c C-v f'   or   `C-c C-v      `org-babel-tangle-file'
-C-f'                             
+C-f'
 `C-c C-v c'   or   `C-c C-v      `org-babel-check-src-block'
-C-c'                             
+C-c'
 `C-c C-v j'   or   `C-c C-v      `org-babel-insert-header-arg'
-C-j'                             
+C-j'
 `C-c C-v l'   or   `C-c C-v      `org-babel-load-in-session'
-C-l'                             
+C-l'
 `C-c C-v i'   or   `C-c C-v      `org-babel-lob-ingest'
-C-i'                             
+C-i'
 `C-c C-v I'   or   `C-c C-v      `org-babel-view-src-block-info'
-C-I'                             
+C-I'
 `C-c C-v z'   or   `C-c C-v      `org-babel-switch-to-session-with-code'
-C-z'                             
+C-z'
 `C-c C-v a'   or   `C-c C-v      `org-babel-sha1-hash'
-C-a'                             
+C-a'
 `C-c C-v h'   or   `C-c C-v      `org-babel-describe-bindings'
-C-h'                             
+C-h'
 `C-c C-v x'   or   `C-c C-v      `org-babel-do-key-sequence-in-edit-buffer'
-C-x'                             
+C-x'
 
 
 File: org,  Node: Batch execution,  Prev: Key bindings and useful functions,  Up: Working with source code
@@ -15996,7 +15996,7 @@ file is visited again in a new Emacs session.
 `#+PROPERTY: Property_Name Value'
      This line sets a default inheritance value for entries in the
      current buffer, most useful for specifying the allowed values of a
-     property.  
+     property.
 
 `#+SETUPFILE: file'
      This line defines a file that holds more in-buffer setup.
@@ -16015,7 +16015,7 @@ file is visited again in a new Emacs session.
      The first set of options deals with the initial visibility of the
      outline tree.  The corresponding variable for global default
      settings is `org-startup-folded', with a default value `t', which
-     means `overview'.  
+     means `overview'.
           overview         top-level headlines only
           content          all headlines
           showall          no folding of any entries
@@ -16029,27 +16029,27 @@ file is visited again in a new Emacs session.
      Then there are options for aligning tables upon visiting a file.
      This is useful in files containing narrowed table columns.  The
      corresponding variable is `org-startup-align-all-tables', with a
-     default value `nil'.  
+     default value `nil'.
           align      align all tables
           noalign    don't align tables on startup
 
      When visiting a file, inline images can be automatically
      displayed.  The corresponding variable is
      `org-startup-with-inline-images', with a default value `nil' to
-     avoid delays when visiting a file.  
+     avoid delays when visiting a file.
           inlineimages   show inline images
           noinlineimages don't show inline images on startup
 
      When visiting a file, LaTeX fragments can be converted to images
      automatically.  The variable `org-startup-with-latex-preview' which
      controls this behavior, is set to `nil' by default to avoid delays
-     on startup.  
+     on startup.
           latexpreview   preview LaTeX fragments
           nolatexpreview don't preview LaTeX fragments
 
      Logging the closing and reopening of TODO items and clock
      intervals can be configured using these options (see variables
-     `org-log-done', `org-log-note-clock-out' and `org-log-repeat') 
+     `org-log-done', `org-log-note-clock-out' and `org-log-repeat')
           logdone             record a timestamp when an item is marked DONE
           lognotedone         record timestamp and a note when DONE
           nologdone           don't record when items are marked DONE
@@ -16075,7 +16075,7 @@ file is visited again in a new Emacs session.
      Here are the options for hiding leading stars in outline headings,
      and for indenting outlines.  The corresponding variables are
      `org-hide-leading-stars' and `org-odd-levels-only', both with a
-     default setting `nil' (meaning `showstars' and `oddeven').  
+     default setting `nil' (meaning `showstars' and `oddeven').
           hidestars  make all but one of the stars starting a headline invisible.
           showstars  show all stars starting a headline
           indent     virtual indentation according to outline level
@@ -16085,17 +16085,17 @@ file is visited again in a new Emacs session.
 
      To turn on custom format overlays over timestamps (variables
      `org-put-time-stamp-overlays' and
-     `org-time-stamp-overlay-formats'), use 
+     `org-time-stamp-overlay-formats'), use
           customtime overlay custom time format
 
      The following options influence the table spreadsheet (variable
-     `constants-unit-system').  
+     `constants-unit-system').
           constcgs   `constants.el' should use the c-g-s unit system
           constSI    `constants.el' should use the SI unit system
 
      To influence footnote settings, use the following keywords.  The
      corresponding variables are `org-footnote-define-inline',
-     `org-footnote-auto-label', and `org-footnote-auto-adjust'.  
+     `org-footnote-auto-label', and `org-footnote-auto-adjust'.
           fninline    define footnotes inline
           fnnoinline  define footnotes in separate section
           fnlocal     define footnotes near first reference, but not inline
@@ -16107,19 +16107,19 @@ file is visited again in a new Emacs session.
           nofnadjust  do not renumber and sort automatically
 
      To hide blocks on startup, use these keywords.  The corresponding
-     variable is `org-hide-block-startup'.  
+     variable is `org-hide-block-startup'.
           hideblocks   Hide all begin/end blocks on startup
           nohideblocks Do not hide blocks on startup
 
      The display of entities as UTF-8 characters is governed by the
-     variable `org-pretty-entities' and the keywords 
+     variable `org-pretty-entities' and the keywords
           entitiespretty  Show entities as UTF-8 characters where possible
           entitiesplain   Leave entities plain
 
 `#+TAGS:  TAG1(c1) TAG2(c2)'
      These lines (several such lines are allowed) specify the valid
      tags in this file, and (potentially) the corresponding _fast tag
-     selection_ keys.  The corresponding variable is `org-tag-alist'.  
+     selection_ keys.  The corresponding variable is `org-tag-alist'.
 
 `#+TBLFM:'
      This line contains the formulas for the table directly above the
@@ -16324,28 +16324,28 @@ better.  For example, changing a timestamp is really only fun with
 re-insert the timestamp.
 
 Default     Alternative 1  Speed   Alternative 2
-                           key     
-`S-<TAB>'   `C-u <TAB>'    `C'     
+                           key
+`S-<TAB>'   `C-u <TAB>'    `C'
 `M-<left>'  `C-c C-x l'    `l'     `<Esc> <left>'
-`M-S-<left>'`C-c C-x L'    `L'     
+`M-S-<left>'`C-c C-x L'    `L'
 `M-<right>' `C-c C-x r'    `r'     `<Esc>
                                    <right>'
-`M-S-<right>'`C-c C-x R'    `R'     
+`M-S-<right>'`C-c C-x R'    `R'
 `M-<up>'    `C-c C-x u'    ` '     `<Esc> <up>'
-`M-S-<up>'  `C-c C-x U'    `U'     
+`M-S-<up>'  `C-c C-x U'    `U'
 `M-<down>'  `C-c C-x d'    ` '     `<Esc> <down>'
-`M-S-<down>'`C-c C-x D'    `D'     
-`S-<RET>'   `C-c C-x c'    ` '     
+`M-S-<down>'`C-c C-x D'    `D'
+`S-<RET>'   `C-c C-x c'    ` '
 `M-<RET>'   `C-c C-x m'    ` '     `<Esc> <RET>'
-`M-S-<RET>' `C-c C-x M'    ` '     
-`S-<left>'  `C-c <left>'   ` '     
-`S-<right>' `C-c <right>'  ` '     
-`S-<up>'    `C-c <up>'     ` '     
-`S-<down>'  `C-c <down>'   ` '     
-`C-S-<left>'`C-c C-x       ` '     
-            <left>'                
-`C-S-<right>'`C-c C-x       ` '     
-            <right>'               
+`M-S-<RET>' `C-c C-x M'    ` '
+`S-<left>'  `C-c <left>'   ` '
+`S-<right>' `C-c <right>'  ` '
+`S-<up>'    `C-c <up>'     ` '
+`S-<down>'  `C-c <down>'   ` '
+`C-S-<left>'`C-c C-x       ` '
+            <left>'
+`C-S-<right>'`C-c C-x       ` '
+            <right>'
 
 
 File: org,  Node: Interaction,  Next: org-crypt,  Prev: TTY keys,  Up: Miscellaneous
@@ -16410,7 +16410,7 @@ File: org,  Node: Cooperation,  Next: Conflicts,  Up: Interaction
      files and index items in files.  Org mode supports Speedbar and
      allows you to drill into Org files directly from the Speedbar.  It
      also allows you to restrict the scope of agenda commands to a file
-     or a subtree by using the command `<' in the Speedbar frame.  
+     or a subtree by using the command `<' in the Speedbar frame.
 
 `table.el' by Takaaki Ota
      Complex ASCII tables with automatic line wrapping, column- and
@@ -16424,7 +16424,7 @@ File: org,  Node: Cooperation,  Next: Conflicts,  Up: Interaction
 
     `C-c '     (`org-edit-special')'
           Edit a `table.el' table.  Works when the cursor is in a
-          table.el table.  
+          table.el table.
 
     `C-c ~     (`org-table-create-with-table.el')'
           Insert a `table.el' table.  If there is already a table at
@@ -16846,7 +16846,7 @@ there before.  For example in C mode where comments are between `/* ...
      /* END RECEIVE ORGTBL table_name */
 
 Just above the source table, we put a special line that tells Orgtbl
-mode how to translate this table and where to install it.  For example: 
+mode how to translate this table and where to install it.  For example:
      #+ORGTBL: SEND table_name translation_function arguments...
 
 `table_name' is the reference name for the table that is also used in
@@ -17104,7 +17104,7 @@ producing the content of the block.
    Dynamic blocks are updated with the following commands
 
 `C-c C-x C-u     (`org-dblock-update')'
-     Update dynamic block at point.  
+     Update dynamic block at point.
 
 `C-u C-c C-x C-u'
      Update all dynamic blocks in the current file.
@@ -17386,7 +17386,7 @@ properties.
      POM may also be `nil', in which case the current entry is used.
      If WHICH is `nil' or `all', get all properties.  If WHICH is
      `special' or `standard', only get that subclass.
-   
+
  -- Function: org-entry-get pom property &optional inherit
      Get value of `PROPERTY' for entry at point-or-marker `POM'.  By
      default, this only looks at properties defined locally in the

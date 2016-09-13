@@ -1,20 +1,22 @@
 
 ;; ----- smex-history -----
 (
- package-menu-mode
  package-list-packages
- el-get-install
+ package-list-packages-no-fetch
+ package-menu-mark-delete
  package-install
+ package-menu-mode
+ el-get-install
  solidity-mode
- cd
- 5x5
 )
 
 ;; ----- smex-data -----
 (
  (solidity-mode . 3)
- (package-install . 1)
+ (package-install . 2)
  (el-get-install . 1)
- (package-list-packages . 1)
- (package-menu-mode . 2)
+ (package-list-packages . 3)
+ (package-menu-mode . 4)
+ (package-menu-mark-delete . 1)
+ (package-list-packages-no-fetch . 1)
 )

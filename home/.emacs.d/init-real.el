@@ -40,11 +40,6 @@
                    (package-install package)))
              (require package))))
 
-;; use package
-
-(require-package 'use-package)
-(require 'use-package)
-
 ;; el-get
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -54,6 +49,11 @@
   :config
   (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get/el-get/recipes")
   (el-get 'sync))
+
+;; use package
+
+(require-package 'use-package)
+(require 'use-package)
 
 ;; chords
 
@@ -83,4 +83,3 @@
   (load my-custom-file t)
   (req-package-finish)
   (funcall 'select-theme))
-

@@ -4,14 +4,14 @@
   :bind (("C-M-<up>" . shift-number-up)
          ("C-M-<down>" . shift-number-down)))
 
-(req-package twittering-mode
-  :commands twit
-  :config
-  (setq twittering-icon-mode t)
-  (setq twittering-use-icon-storage t)
-  (load "~/Dropbox/emacs/twittering-custom.el" t)
-  (setq twittering-use-master-password t)
-  (twittering-enable-unread-status-notifier))
+;; (req-package twittering-mode
+;;   :commands twit
+;;   :config
+;;   (setq twittering-icon-mode t)
+;;   (setq twittering-use-icon-storage t)
+;;   (load "~/Dropbox/emacs/twittering-custom.el" t)
+;;   (setq twittering-use-master-password t)
+;;   (twittering-enable-unread-status-notifier))
 
 (req-package multifiles
   :bind ("C-!" . mf/mirror-region-in-multifile))
@@ -105,8 +105,7 @@
   :config (smex-initialize))
 
 ;; googling
-
-(req-package google-this)
+;; (req-package google-this)
 
 ;; string edit
 
@@ -154,9 +153,9 @@
 
 ;; scratch persist
 
-(req-package scratch-persist
-  :require (eldoc hl-defined scratch-ext)
-  :init (setq scratch-persist-file "~/Dropbox/emacs/scratch.el"))
+;; (req-package scratch-persist
+;;   :require (eldoc hl-defined scratch-ext)
+;;   :init (setq scratch-persist-file "~/Dropbox/emacs/scratch.el"))
 
 ;; indentation
 
@@ -165,7 +164,7 @@
 (add-hook-exec 'find-file (lambda () (setq indent-tabs-mode nil)))
 (electric-indent-mode 1)
 
-;; show keystrockes early
+;; show keystrokes early
 
 (setq echo-keystrokes 0.2)
 
@@ -234,8 +233,8 @@
 
 ;; duplicate thing
 
-(req-package duplicate-thing
-  :config (progn (global-set-key (kbd "M-c") 'duplicate-thing)))
+;; (req-package duplicate-thing
+;;   :config (progn (global-set-key (kbd "M-c") 'duplicate-thing)))
 
 ;; smart parenthesis
 
