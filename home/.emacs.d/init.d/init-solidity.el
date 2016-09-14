@@ -10,8 +10,7 @@
   (add-hook 'after-change-major-mode-hook
             (lambda() (if (equal major-mode 'solidity-mode)
                           (progn (setq c-basic-offset 4)
-;;                               (add-hook 'c-special-indent-hook (lambda() (if)))
-                                 ))))
+                                 (c-set-offset (quote statement-cont) 0 nil)))))
   :bind ((:map solidity-mode-map ("M-j" . nil))
          (:map solidity-mode-map ("M-a" . nil))
          (:map solidity-mode-map ("C-M-j" . nil))))

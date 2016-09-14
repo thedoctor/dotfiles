@@ -217,8 +217,6 @@
     (split-window-horizontally)))
 (add-hook 'temp-buffer-setup-hook 'split-horizontally-for-temp-buffers)
 
-(c-set-offset (quote statement-cont) 0 nil)
-
 (setq-default indent-tabs-mode nil)
 
 (setq-default column-number-mode t)

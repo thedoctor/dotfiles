@@ -44,7 +44,7 @@
          (setq sml/name-width 20)
          (setq sml/mode-width 'full)
          (setq sml/hidden-modes nil)
-		 (setq sml/theme nil)
+         (setq sml/theme nil)
          (add-to-list 'sml/hidden-modes " Anzu")
          (add-to-list 'sml/hidden-modes " AC")
          (add-to-list 'sml/hidden-modes " yas")
@@ -94,17 +94,17 @@
                        org-done
                        org-document-title))))
 
-(req-package soothe-theme
-  :require smart-mode-line
-  :defer t
-  :init
-  (add-theme 'soothe))
+;; (req-package soothe-theme
+;;   :require smart-mode-line
+;;   :defer t
+;;   :init
+;;   (add-theme 'soothe))
 
-(req-package gotham-theme
-  :require smart-mode-line
-  :defer t
-  :init
-  (add-theme 'gotham))
+;; (req-package gotham-theme
+;;   :require smart-mode-line
+;;   :defer t
+;;   :init
+;;   (add-theme 'gotham))
 
 (req-package gruvbox-theme
   :require smart-mode-line

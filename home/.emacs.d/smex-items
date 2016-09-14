@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ c-set-offset
+ jedi:setup
+ delete-frame
  command-history
  select-theme
  package-install
  select-frame
- yas-minor-mode
- package-list-packages
- package-list-packages-no-fetch
 )
 
 ;; ----- smex-data -----
@@ -23,4 +23,8 @@
  (select-theme . 59)
  (select-frame . 1)
  (command-history . 1)
+ (delete-frame . 1)
+ (jedi:setup . 1)
+ (jedi-mode . 1)
+ (c-set-offset . 1)
 )

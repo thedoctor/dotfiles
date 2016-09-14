@@ -240,17 +240,17 @@
 
 (req-package smartparens-config
   :require smartparens
-  :config (progn (smartparens-global-mode t)
-                 (smartparens-global-strict-mode t)
-                 (show-smartparens-global-mode t)
-                 (global-set-key (kbd "C-M-a") 'sp-beginning-of-sexp)
-                 (global-set-key (kbd "C-M-e") 'sp-end-of-sexp)
-                 (global-set-key (kbd "C-M-k") 'sp-kill-sexp)
-                 (global-set-key (kbd "C-M-k") 'sp-kill-sexp)
-                 (global-set-key (kbd "C-M-n") 'sp-forward-sexp)
-                 (global-set-key (kbd "C-M-p") 'sp-backward-sexp)
-                 (global-set-key (kbd "C-M-b") 'sp-up-sexp)
-                 (global-set-key (kbd "C-M-f") 'sp-down-sexp)))
+  :config (progn (smartparens-global-mode 0)
+                 (smartparens-global-strict-mode 0)
+                 (show-smartparens-global-mode t)))
+                 ;; (global-set-key (kbd "C-M-a") 'sp-beginning-of-sexp)
+                 ;; (global-set-key (kbd "C-M-e") 'sp-end-of-sexp)
+                 ;; (global-set-key (kbd "C-M-k") 'sp-kill-sexp)
+                 ;; (global-set-key (kbd "C-M-k") 'sp-kill-sexp)
+                 ;; (global-set-key (kbd "C-M-n") 'sp-forward-sexp)
+                 ;; (global-set-key (kbd "C-M-p") 'sp-backward-sexp)
+                 ;; (global-set-key (kbd "C-M-b") 'sp-up-sexp)
+                 ;; (global-set-key (kbd "C-M-f") 'sp-down-sexp)))
 
 ;; auto reverting
 
