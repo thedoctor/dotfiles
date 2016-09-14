@@ -66,7 +66,7 @@ gemset(){
     cp "${HOME}/.gemwallet.${1}" "${HOME}/.gemwallet"
 }
 
-ngrepl() {
+ngrepl(){
     echo "> sudo ngrep -W byline -d lo port $1"
     sudo ngrep -W byline -d lo port $1
 }
@@ -178,7 +178,7 @@ grel(){
     fi
 }
 
-irclog () {
+irclog (){
     cat "$@" | grep -v "has joined #" | grep -v "has quit \["  | grep -v "now known as"
 }
 
@@ -218,7 +218,7 @@ gl(){
     g log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 }
 
-glp() {
+glp(){
     if [[ $# -eq 0 ]]; then
         g log -p --stat
     else
@@ -237,6 +237,26 @@ up(){
         d=..
     fi
     cd $d
+}
+
+pc(){
+    if [[ $# -eq 0 ]]; then
+        echo "Usage: pc password-name-fragment [result-set-index]"
+    else
+        local lst=( $(find ${HOME}/.password-store -name "*${1}*" | cut -d'/' -f 5-| sed 's/.gpg$//') )
+
+        if [[ ${#lst[@]} -gt 1 ]]; then
+            if [[ $# -gt 1 ]]; then
+                pass -c ${lst[$(($2 - 1))]}
+            else
+                for i in "${!lst[@]}"; do
+                    printf "%s\t%s\n" "$(($i+1))" "${lst[$i]}"
+                done
+            fi
+        else
+            pass -c ${lst[0]}
+        fi
+    fi
 }
 
 alias bashrc='source ~/.bashrc'
@@ -267,6 +287,8 @@ alias kvpn="pass -c gem/kube-vpn; osascript -e 'tell application \"Viscosity\" t
 
 alias rmpyc="find . -type f -name '*.pyc' -exec rm -f {} \;"
 alias rmtilda="find . -name '*~' -exec rm {} \;"
+alias rmhash="find . -name '*\#*' -exec rm {} \;"
+alias cltr="rmpyc && rmtilda && rmhash"
 alias nifty="sudo kextunload /System/Library/Extensions/AppleStorageDrivers.kext/Contents/PlugIns/AppleUSBCardReader.kext && sudo kextload /System/Library/Extensions/AppleStorageDrivers.kext/Contents/PlugIns/AppleUSBCardReader.kext"
 
 alias wiki="web https://gemology.atlassian.net/wiki/display/GE/Gem+Engineering"
