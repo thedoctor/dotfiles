@@ -1,1 +1,0 @@
-("~/dev/gem/projects/gem-solidity-contracts/contracts/document-registry/" "~/.homesick/repos/dotfiles/" "~/dev/gem/projects/gem-solidity-contracts/contracts/identity-registry/" "~/dev/gem/projects/gem-network/" "~/dev/gem/projects/gem-logic/" "/usr/local/" "~/dev/gem/gem-solidity-contracts/" "~/.emacs.d/" "~/dev/gem/gem-solidity-contracts/permissioned-object-registry/")

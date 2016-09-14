@@ -7,9 +7,10 @@ home/.emacs.d/elpa/archives/**
 
 # Don't keep virtualenvs
 home/Envs/*/**
-home/.python_environments
+home/.python-environments
 
-*.pyc
-*~
-*#
-*.elc
+**/*.pyc
+**/*~
+**/*#
+**/*.elc
+**/*.eld
