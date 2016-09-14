@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ replace-regexp
  c-set-offset
  jedi:setup
  delete-frame
  command-history
  select-theme
  package-install
- select-frame
 )
 
 ;; ----- smex-data -----
@@ -27,4 +27,5 @@
  (jedi:setup . 1)
  (jedi-mode . 1)
  (c-set-offset . 1)
+ (replace-regexp . 1)
 )

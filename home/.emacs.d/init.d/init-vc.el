@@ -2,11 +2,11 @@
 
 (defun find-upper-svn-root (from acc)
   (let* ((UPPER (expand-file-name (concat from "/..")))
-		 (NEWACC (cond ((file-exists-p (concat from "/.svn")) from)
-					   (t acc))))
-	(if (equal from "/")
-		NEWACC
-	  (find-upper-svn-root UPPER NEWACC))))
+         (NEWACC (cond ((file-exists-p (concat from "/.svn")) from)
+                       (t acc))))
+    (if (equal from "/")
+        NEWACC
+      (find-upper-svn-root UPPER NEWACC))))
 
 (defun upper-svn-status ()
   (interactive)
