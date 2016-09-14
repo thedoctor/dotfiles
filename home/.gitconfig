@@ -3,7 +3,7 @@
         name = Matt Smith
         email = matt.the.smith@gmail.com
 [core]
-        editor = emacs
+        editor = emacsclient -t
         excludesfile = /Users/matt/.gitignore_global
         pager = diff-so-fancy | less --tabs=1,5 -R
 [web]
