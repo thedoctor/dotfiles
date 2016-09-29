@@ -388,6 +388,9 @@ if [[ "$SEXY" != "1" ]]; then
     export PS1="$(pwd): "
 fi
 
+### Cargo is the rust package manager
+export PATH="${HOME}/.cargo/bin:$PATH"
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:${HOME}/.local/bin:$PATH"
 
@@ -401,5 +404,5 @@ export PYCOIN_SERVICE_PROVIDERS=BLOCKR_IO:BLOCKCHAIN_INFO:BITEASY:BLOCKEXPLORER
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # ^--- well that's bullshit
-export SDKMAN_DIR="/home/matt/.sdkman"
-[[ -s "/home/matt/.sdkman/bin/sdkman-init.sh" ]] && source "/home/matt/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="${HOME}/.sdkman"
+[[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"
