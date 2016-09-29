@@ -10,7 +10,7 @@
       c-basic-offset)))
 
 (req-package solidity-mode
-  :require flymake-solidity
+;;  :require flymake-solidity
   :mode "\\.sol\\'"
   :config
   (setq solidity-solc-path "/usr/local/bin/solc")

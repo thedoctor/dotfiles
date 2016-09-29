@@ -106,6 +106,46 @@ k(){
     kubectl "$@"
 }
 
+knamespace(){
+    kubectl config set-context minikube --namespace="$1"
+}
+
+kn(){
+    kubectl --namespace "$1" "${@: 2:$#-1}"
+}
+
+kl(){
+    ${HOME}/dev/gem/projects/gem-os-minikube/bin/gkube-podLog.sh $1
+}
+
+kd(){
+    k delete deployment $1
+    k delete service $1
+    if [[ $1 = 'gem-gateway' ]]; then
+        ${HOME}/dev/gem/projects/gem-os-minikube/bin/registerContainers.sh $1 --exclude gradle
+        ${HOME}/dev/gem/projects/gem-os-minikube/bin/gkube-deployService.sh $(k config view -o jsonpath='{.contexts[?(@.name == "minikube")].context.namespace}') $1 --expose NodePort
+    else
+        ${HOME}/dev/gem/projects/gem-os-minikube/bin/registerContainers.sh $1
+        ${HOME}/dev/gem/projects/gem-os-minikube/bin/gkube-deployService.sh $(k config view -o jsonpath='{.contexts[?(@.name == "minikube")].context.namespace}') $1
+    fi
+}
+
+ke(){
+    if [[ $# -lt 1 ]]; then
+        echo "Usage: kp POD-IDENTIFIER-SUBSTRING"
+    else
+        k exec $(k get pods | cut -f 1 -d ' ' |grep $1)  "${@: 2:$#-1}"
+    fi
+}
+
+kpd(){
+    if [[ $# -lt 1 ]]; then
+        echo "Usage: kpd POD-IDENTIFIER-SUBSTRING"
+    else
+        k delete pod $(k get pods | cut -f 1 -d ' ' |grep $1)
+    fi
+}
+
 jiranum(){
     prefix=""
     env_re="[0-9]+"
@@ -236,7 +276,12 @@ up(){
     if [[ -z "$d" ]]; then
         d=..
     fi
-    cd $d
+
+    if [[ $# -gt 1 ]]; then
+        cd $d; cd $2
+    else
+        cd $d
+    fi
 }
 
 pc(){

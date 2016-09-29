@@ -1,26 +1,26 @@
 
 ;; ----- smex-history -----
 (
- replace-regexp
- c-set-offset
- jedi:setup
- delete-frame
- command-history
- select-theme
- package-install
+ package-list-packages
+ toggle-debug-on-error
+ solidity-mode
+ flymake-popup-current-error-menu
+ flymake-solidity-load
+ kill-buffer-and-window
+ toggle-truncate-lines
 )
 
 ;; ----- smex-data -----
 (
- (solidity-mode . 3)
+ (solidity-mode . 6)
  (package-install . 3)
  (el-get-install . 1)
- (package-list-packages . 3)
+ (package-list-packages . 5)
  (package-menu-mode . 4)
  (package-menu-mark-delete . 1)
  (package-list-packages-no-fetch . 1)
  (yas-minor-mode . 2)
- (select-theme . 59)
+ (select-theme . 62)
  (select-frame . 1)
  (command-history . 1)
  (delete-frame . 1)
@@ -28,4 +28,10 @@
  (jedi-mode . 1)
  (c-set-offset . 1)
  (replace-regexp . 1)
+ (flymake-popup-current-error-menu . 38)
+ (toggle-truncate-lines . 2)
+ (term . 2)
+ (kill-buffer-and-window . 1)
+ (flymake-solidity-load . 2)
+ (toggle-debug-on-error . 1)
 )

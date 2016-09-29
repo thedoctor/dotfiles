@@ -56,8 +56,8 @@
 
 ;; revertible delete other windows
 
-(req-package zygospore
-  :chords ((";1" . zygospore-toggle-delete-other-windows)))
+;; (req-package zygospore
+;;   :chords ((";1" . zygospore-toggle-delete-other-windows)))
 
 ;; delete trailing whitespaces before saving some buffer
 
@@ -73,16 +73,16 @@
 (req-package narrow-indirect)
 
 ;; shit text left/right
-
+;; TODO try this
 (req-package smart-shift
   :bind (("C-{" . smart-shift-left)
          ("C-}" . smart-shift-right)))
 
 ;; save kill ring to disk
-
-(req-package savekill
-  :config (progn (setq savekill-max-saved-items nil)
-                 (load save-kill-file-name t)))
+;; Hahaaaaa, no
+;; (req-package savekill
+;;   :config (progn (setq savekill-max-saved-items nil)
+;;                  (load save-kill-file-name t)))
 
 ;; google tanslate
 
@@ -90,8 +90,9 @@
   :init (require 'google-translate-smooth-ui)
   :bind ("C-c t" . google-translate-smooth-translate))
 
-(req-package define-word
-  :bind ("C-c d" . define-word-at-point))
+;; I'm good.
+;; (req-package define-word
+;;   :bind ("C-c d" . define-word-at-point))
 
 ;; swith off some warnings
 
@@ -99,7 +100,7 @@
   :config (add-to-list 'warning-suppress-types '(undo discard-info)))
 
 ;; use fuzzy for M-x
-
+;; Dis good
 (req-package smex
   :bind ("M-x" . smex)
   :config (smex-initialize))
@@ -108,48 +109,47 @@
 ;; (req-package google-this)
 
 ;; string edit
-
+;; TODO: use this
 (req-package string-edit
   :config (global-set-key (kbd "C-c e") 'string-edit-at-point))
 
 ;; paradox
 
-(req-package paradox
-  :chords ((";p" . paradox-list-packages)))
+(req-package paradox)
 
 ;; multiple cursors
-
-(req-package multiple-cursors
-  :init
-  (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-  (global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this))
+;; TODO: Consider this.
+;; (req-package multiple-cursors
+;;   :init
+;;   (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+;;   (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+;;   (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+;;   (global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this))
 
 ;; ant
-
-(req-package ant)
+;; nope
+;; (req-package ant)
 
 ;; sos
-
-(req-package sos :commands sos)
+;; nah
+;; (req-package sos :commands sos)
 
 ;; howdoi
 
-(req-package howdoi)
+;; (req-package howdoi)
 
 ;; swoop
-
-(req-package swoop :commands swoop)
+;; looks cool, but meh
+;; (req-package swoop :commands swoop)
 
 ;; save history
-
+;; sure
 (req-package savehist
   :config (savehist-mode 1))
 
 ;; sudo support
-
-(req-package sudo-ext)
+;; nah
+;; (req-package sudo-ext)
 
 ;; scratch persist
 
@@ -173,8 +173,8 @@
 (setq set-mark-command-repeat-pop t)
 
 ;; save bookmarks on emacs exit
-
-(setq-default bookmark-save-flag 1)
+;; dunno wat this is
+;; (setq-default bookmark-save-flag 1)
 
 ;; do not use dialog boxes
 
@@ -205,28 +205,29 @@
 ;; switch window
 
 (req-package ace-window
-  :chords ((";o" . ace-window))
+;;  :chords ((";o" . ace-window))
   :bind (("C-x o" . ace-window)))
 
 ;; ace jump mode
 
 (req-package ace-jump-mode
-  :bind (("M-/" . ace-jump-word-mode)
-         ("M-'" . ace-jump-char-mode)
-         ("M-g M-g" . ace-jump-line-mode)))
+  :bind (("M-SPC" . ace-jump-word-mode)))
+  ;;        ("M-'" . ace-jump-char-mode)
+  ;;        ("M-g M-g" . ace-jump-line-mode)))
+
 
 ;; quickly jump to links
 
-(req-package ace-link :config (ace-link-setup-default))
+;; (req-package ace-link :config (ace-link-setup-default))
 
 ;; ace jump buffer
 
 (req-package ace-jump-buffer
   :require (shell)
-  :bind ("M-?" . ace-jump-buffer))
+  :bind ("C-x C-b" . ace-jump-buffer))
 
 ;; move text
-
+;; TODO: should reduce C-w's
 (req-package move-text
   :config (progn (global-set-key (kbd "M-n") 'move-text-down)
                  (global-set-key (kbd "M-p") 'move-text-up)))
@@ -254,11 +255,11 @@
 
 ;; auto reverting
 
-(req-package autorevert
-  :config (progn (setq global-auto-revert-non-file-buffers t)
-                 (setq auto-revert-interval 0.5)
-                 (setq auto-revert-verbose nil)
-                 (add-to-list 'auto-mode-alist '("\\.log\\'" . auto-revert-tail-mode))))
+;; (req-package autorevert
+;;   :config (progn (setq global-auto-revert-non-file-buffers t)
+;;                  (setq auto-revert-interval 0.5)
+;;                  (setq auto-revert-verbose nil)
+;;                  (add-to-list 'auto-mode-alist '("\\.log\\'" . auto-revert-tail-mode))))
 
 ;; shrink/enlarge window
 
@@ -287,18 +288,21 @@
 
 ;; rectangles
 
-(req-package rectangle-utils
-  :bind ("C-x r e" . extend-rectangle-to-end))
+;; (req-package rectangle-utils
+;;   :bind ("C-x r e" . extend-rectangle-to-end))
 
-(req-package prodigy
-  :commands prodigy)
+;; Could be cool, buuuuut, meh
+;; (req-package prodigy
+;;   :commands prodigy)
 
+;; Cool, but will I ever use it?
 (req-package symon
   :disabled t
   :config (symon-mode 1))
 
-(req-package fireplace
-  :commands fireplace)
+;; Colors don't work.
+;; (req-package fireplace
+;;   :commands fireplace)
 
 (req-package keyfreq
   :config
@@ -322,18 +326,19 @@
   :require sgml-mode
   :config (add-hook-exec 'sgml-mode 'idle-highlight-mode))
 
+;; Love it
 (req-package guide-key
   :config
   (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x v" "C-x C-a" "C-c" "C-x" "C-c C-v"))
   (guide-key-mode 1))
 
-(req-package elfeed
-  :commands elfeed
-  :config
-  (setf url-queue-timeout 60)
-  (load "~/Dropbox/emacs/elfeed-feeds.el" t)
-  (setq elfeed-db-directory "~/Dropbox/emacs/elfeed")
-  (setq elfeed-enclosure-default-dir "~/Dropbox/emacs")
-  (setq elfeed-search-filter "@1-months-ago +unread"))
+;; (req-package elfeed
+;;   :commands elfeed
+;;   :config
+;;   (setf url-queue-timeout 60)
+;;   (load "~/Dropbox/emacs/elfeed-feeds.el" t)
+;;   (setq elfeed-db-directory "~/Dropbox/emacs/elfeed")
+;;   (setq elfeed-enclosure-default-dir "~/Dropbox/emacs")
+;;   (setq elfeed-search-filter "@1-months-ago +unread"))
 
 (provide 'init-ext)

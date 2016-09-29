@@ -31,13 +31,13 @@
 
 (req-package helm-gitignore :commands helm-gitignore)
 
-;; helm company
+;; ;; helm company
 
-(req-package helm-company
-  :require company
-  :commands helm-company
-  :config (progn (define-key company-mode-map (kbd "C-:") 'helm-company)
-                 (define-key company-active-map (kbd "C-:") 'helm-company)))
+;; (req-package helm-company
+;;   :require company
+;;   :commands helm-company
+;;   :config (progn (define-key company-mode-map (kbd "C-:") 'helm-company)
+;;                  (define-key company-active-map (kbd "C-:") 'helm-company)))
 
 ;; helm helm commands
 

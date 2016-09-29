@@ -16,16 +16,16 @@
 
 ;; sunrise commander
 
-(req-package sunrise-commander :commands sunrise-cd)
+;; (req-package sunrise-commander :commands sunrise-cd)
 
-(req-package sunrise-x-loop :require sunrise-commander)
+;; (req-package sunrise-x-loop :require sunrise-commander)
 
-;; dired rainbow
+;; ;; dired rainbow
 
-(req-package dired-rainbow :require dired)
+;; (req-package dired-rainbow :require dired)
 
-;; dired open
+;; ;; dired open
 
-(req-package dired-open :require dired)
+;; (req-package dired-open :require dired)
 
 (provide 'init-dired)

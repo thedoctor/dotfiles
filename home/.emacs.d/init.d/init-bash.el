@@ -12,6 +12,6 @@
     'bash-completion-dynamic-complete))
 
 (req-package shell-pop
-  :bind ("M-\"" . shell-pop))
+  :bind ("M-\\" . shell-pop))
 
 (provide 'init-bash)

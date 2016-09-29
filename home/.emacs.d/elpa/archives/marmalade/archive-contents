@@ -2997,6 +2997,11 @@
  (fsvn .
        [(0 9 13)
 	nil "Another frontend of subversion." tar])
+ (fsbot-data-browser .
+		     [(0 1)
+		      ((dash
+			(2 12 1)))
+		      "browse the fsbot database using tabulated-list-mode" single])
  (fringe-helper .
 		[(1 0 1)
 		 nil "helper functions for fringe bitmaps" single])
