@@ -406,3 +406,22 @@ export PYCOIN_SERVICE_PROVIDERS=BLOCKR_IO:BLOCKCHAIN_INFO:BITEASY:BLOCKEXPLORER
 # ^--- well that's bullshit
 export SDKMAN_DIR="${HOME}/.sdkman"
 [[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"
+
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
+
+if [[ $machine = "Mac" ]]; then
+    if [ -f "${HOME}/.bashrc-mac" ]; then
+	source "${HOME}/.bashrc-mac"
+    fi
+elif [[ $machine = "Linux" ]]; then
+    if [ -f "${HOME}/.bashrc-linux" ]; then
+	source "${HOME}/.bashrc-linux"
+    fi
+fi
