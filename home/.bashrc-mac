@@ -1,9 +1,18 @@
 #!/bin/bash
-type -a brew &> /dev/null || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew update
-type -a pyenv &> /dev/null || brew install pyenv pyenv-virtualenv make cmake
+
+# Well we need `l`; and so we obviously need the rust toolchain
 type -a cargo &> /dev/null || curl https://sh.rustup.rs -sSf | sh
 type -a exa &> /dev/null || cargo install exa
+
+# Homebrew confiiiiiiig
+type -a brew &> /dev/null || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew update
+# we foolishly assume pyenv being installed means all this shit is!
+if [[ type -a pyenv &> /dev/null ]]; then
+   brew install pyenv pyenv-virtualenv \ # pyenv
+                make cmake \ # build-essentials
+		gnupg yubikey-personalization hopenpgp-tools ykman pinentry-mac # yubikey bullshit
+fi
 
 [[ -s "$(brew --prefix dvm)/dvm.sh" ]] && source "$(brew --prefix dvm)/dvm.sh"
 [[ -s "$(brew --prefix dvm)/bash_completion" ]] && source "$(brew --prefix dvm)/bash_completion"
