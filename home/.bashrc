@@ -329,8 +329,8 @@ export WORKON_HOME=~/Envs
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-pyenv install 3.6.6
-pyenv global 3.6.6
+# pyenv install 3.6.6
+# pyenv global 3.6.6
 
 # Basic Shell
 if [[ "$SEXY" != "1" ]]; then
