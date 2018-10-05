@@ -367,39 +367,8 @@ e.g. \"c:t\"."
 The sentence can be set in `org-export-creator-string', which
 see.
 
-This option can also be set with the OPTIONS keyword, e.g.,
-\"creator:t\"."
-  :group 'org-export-general
-  :version "25.1"
-  :package-version '(Org . "8.3")
-  :type 'boolean)
-
-(defcustom org-export-with-date t
-  "Non-nil means insert date in the exported document.
-This option can also be set with the OPTIONS keyword,
-e.g. \"date:nil\"."
-  :group 'org-export-general
-  :type 'boolean)
-
-(defcustom org-export-date-timestamp-format nil
-  "Time-stamp format string to use for DATE keyword.
-
-The format string, when specified, only applies if date consists
-in a single time-stamp.  Otherwise its value will be ignored.
-
-See `format-time-string' for details on how to build this
-string."
-  :group 'org-export-general
-  :type '(choice
-	  (string :tag "Time-stamp format string")
-	  (const :tag "No format string" nil)))
-
-(defcustom org-export-creator-string
-  (format "Emacs %s (Org mode %s)"
-	  emacs-version
-	  (if (fboundp 'org-version) (org-version) "unknown version"))
-  "Information about the creator of the document.
-This option can also be set on with the CREATOR keyword."
+This option can also be seK¬#ú:  ~  k             n
+ë org/jetbrains/kotlin/load/java/lazy/descriptors/LazyJavaPackageScope$KotlinClassLookupResult$NotFound.classPK   ®†<K0—ó?    q             Aë org/jetbrains/kotlin/load/java/lazy/descriptors/LazyJavaPackageScope$KotlinClassLookupResult$SyntheticClass.classPK   ®†<K?ØÓŠ  Ä  b             ë org/jetbrains/kotlin/load/java/lazy/descriptors/LazyJavaPackageScope$KotlinClassLookupResult.classPK   ®†<K Ãø®ª	  ö  T             9ë org/jetbrains/kotlin/load/java/lazy/descriptors/LazyJavaPackageScope$classes$1.classPK   ®†<K$ë¼àá  Ê	  e             eë org/jetbrains/kotlin/load/java/lazy/descriptors/LazyJavaPackageScope$knownClassNamesInPackage$1.classPK   ®†<K>+ d  ®<  J             Ù!ë org/jetbrains/kotlin/load/java/lazy/descriptors/LazyJavaPackageScope.classPK   ®†<KdÿÇƒ  Í  W             µ4ë org/jetbrains/kotlin/load/java/lazy/descriptors/LazyJavaScope$MethodSignatureData.classPK   ®†<K:ÀãªP    [             ½=ë org/jetwith the CREATOR keyword."
   :group 'org-export-general
   :type '(string :tag "Creator string"))
 

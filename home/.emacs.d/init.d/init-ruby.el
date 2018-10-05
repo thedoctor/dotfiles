@@ -3,7 +3,7 @@
 ;; ruby mode for rakefile
 
 (req-package ruby-mode
-  :mode "\\.rb\\'" )
+  :mode "\\.rb\\'" "Fastfile")
 
 ;; (req-package rubocop
 ;;   :mode "\\.rb\\'" "Rakefile"

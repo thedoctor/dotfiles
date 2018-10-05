@@ -542,36 +542,7 @@ If the value is not a number and is non-nil, show all replied tweets
 which is already fetched.
 If the value is nil, doesn't show replied tweets."
 
-  :type '(choice (const :tag "Do not show replied tweets"
-			:value nil)
-		 (const :tag "Show all replied tweets"
-			:value t)
-		 (integer :tag "Number of replied tweet"))
-  :group 'twittering-mode)
-
-(defcustom twittering-default-show-replied-tweets nil
-  "*The number of default replied tweets which will be shown in one tweet.
-This value will be used only when showing new tweets.
-
-See `twittering-show-replied-tweets' for more details."
-  :type '(choice (const nil)
-		 integer)
-  :group 'twittering-mode)
-
-(defcustom twittering-disable-overlay-on-too-long-string nil
-  "*If non-nil, disable overlay on too long string on edit buffer.
-
-If nil, `twittering-edit-mode' puts an overlay `twittering-warning-overlay' on
-characters exceeding the maximum length.
-
-On some environments, some input methods seem to interfere the update of the
-overlay.  In such case, you may avoid the problems by setting this variable to
-non-nil."
-  :type 'boolean
-  :group 'twittering-mode)
-
-(defcustom twittering-use-show-minibuffer-length t
-  "*Show current length of minibuffer if this variable is non-nil.
+  :type '(ch64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿt length of minibuffer if this variable is non-nil.
 
 We suggest that you should set to nil to disable the showing function
 when it conflict with your input method (such as AquaSKK, etc.)"
@@ -3965,37 +3936,7 @@ This function requires `epa' or `alpaca' library."
       (let ((buffer-file-name file)
 	    (coding-system-for-read 'binary)
 	    (coding-system-for-write 'binary)
-	    ;; Bind `default-directory' to the temporary directory
-	    ;; because it is possible that the directory pointed by
-	    ;; `default-directory' has been already removed.
-	    (default-directory temporary-file-directory))
-	(insert str)
-	(condition-case nil
-	    (if (alpaca-save-buffer)
-		t
-	      (delete-file file)
-	      nil)
-	  (error
-	   (when (file-exists-p file)
-	     (delete-file file))
-	   nil)))))
-   (t
-    nil)))
-
-(defun twittering-ensure-private-info ()
-  "Ensure that private information is loaded if necessary.
-Return non-nil if `twittering-use-master-password' is nil or private
-information has been already loaded. Also, return non-nil
-if `twittering-use-master-password' is non-nil and this function succeeded
-in loading private information.
-Return nil if private information cannot be loaded."
-  (if (or (not twittering-use-master-password)
-	  (twittering-private-info-loaded-p))
-      ;; The private information is unnecessary or already loaded.
-      t
-    (cond
-     ((not (twittering-capable-of-encryption-p))
-      (message "You need GnuPG and (EasyPG or alpaca.el) for master password!")
+	    ;; Bind `default-directory' to the temporar64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ (EasyPG or alpaca.el) for master password!")
       nil)
      ((and (memq twittering-auth-method '(oauth xauth))
 	   (file-exists-p twittering-private-info-file))
@@ -7570,33 +7511,7 @@ references. This function decodes them."
 		   (cond
 		    ((string= "amp" letter-entity) (list-push "&" result))
 		    ((string= "gt" letter-entity) (list-push ">" result))
-		    ((string= "lt" letter-entity) (list-push "<" result))
-		    ((string= "quot" letter-entity) (list-push "\"" result))
-		    (t (list-push "?" result))))
-		  (t (list-push "?" result)))
-	    (setq cursor (match-end 0))))
-	(list-push (substring encoded-str cursor) result)
-	(apply 'concat (nreverse result)))
-    ""))
-
-;; JSON
-(defun twittering-extract-common-element-from-json (json-object)
-  "Extract common parameters of a tweet from JSON-OBJECT.
-Return an alist including text, created_at and entities, which are common
-to JSON objects from ordinary timeline and search timeline."
-  (let* ((encoded-text (cdr (assq 'text json-object)))
-	 (text
-	  (twittering-decode-html-entities
-	   (twittering-decode-entities-after-parsing-xml encoded-text)))
-	 (gap-list (twittering-make-gap-list text))
-	 (entities (cdr (assq 'entities json-object)))
-	 (urls (cdr (assq 'urls entities)))
-	 (hashtags (cdr (assq 'hashtags entities)))
-	 (mentions (cdr (assq 'user_mentions entities)))
-	 (media (cdr (assq 'media entities)))
-	 (func
-	  (lambda (entry sym-table)
-	    (mapcar (lambda (sym-entry)
+		    ((string= "lt" letter-entity) (lis64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿar (lambda (sym-entry)
 		      (let ((sym (car sym-entry))
 			    (target (cdr sym-entry)))
 			`(,sym . ,(cdr (assq target entry)))))

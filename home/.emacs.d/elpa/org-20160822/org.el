@@ -1438,32 +1438,11 @@ the values `folded', `children', or `subtree'."
 
 (defcustom org-odd-levels-only nil
   "Non-nil means skip even levels and only use odd levels for the outline.
-This has the effect that two stars are being added/taken away in
-promotion/demotion commands.  It also influences how levels are
-handled by the exporters.
-Changing it requires restart of `font-lock-mode' to become effective
-for fontification also in regions already fontified.
-You may also set this on a per-file basis by adding one of the following
-lines to the buffer:
-
-   #+STARTUP: odd
-   #+STARTUP: oddeven"
-  :group 'org-edit-structure
-  :group 'org-appearance
-  :type 'boolean)
-
-(defcustom org-adapt-indentation t
-  "Non-nil means adapt indentation to outline node level.
-
-When this variable is set, Org assumes that you write outlines by
-indenting text in each node to align with the headline (after the
-stars).  The following issues are influenced by this variable:
-
-- The indentation is increased by one space in a demotion
-  command, and decreased by one in a promotion command.  However,
-  in the latter case, if shifting some line in the entry body
-  would alter document structure (e.g., insert a new headline),
-  indentation is not changed at all.
+This has the effect that two staü¸šPi^`×t˜~aïjRõkÄÈÕôkñµbUMÅrw¢ã©ÅÛ‚nyû»`U^8´Ğ]˜W’—,š'afiŞ†è)K‹`E®Õ‹Ä:ÎaZKƒ6lˆù@&ç‰É[KÖÖ$ Ó©p$'–,¨v—Œ.)š6}Zy‰»ljéèÒòiÓ§»ËÊÊF—Qx†»¤tJEÏ(q—L.™Šñ“ñG©»dJé4ûÇ´p¦é“&E3MŸTÍ4}Ò÷”£'ĞSİ•QÒŠóƒÿ-úR'aE³DÈnÖä©3([%Bv£&—M²ÃÓÜ“gPj’Ù-*+-³ÃSì’‘é{½† 7­ö;€L·‡ò*[´İDã(PªÀ%şe€;ü+³
+GkBÖQÀ,tD³‚ã,ègAı-`A®-dÁ`<±`¨Ã,nÁ‘m¤yŒ²à0F[oÁ·`¬ã,oA…Y0Á‚b&Z0É‚Q¶Ô‚ÉL±`ªeh‡Z0İ‚"©Ü‚™Ì²àf[0Ç‚¹TX0Ï‚ù,° Ò‚…,²`±U¢È–ZPmAµ,³`¹+,XiÁ*V[°Æ‚µÔYp¤ë,XoÁQmÁ1kÁ‹Úîµ`£õ4Xà³`“›-Øbß‚­l³ ñÿPK
+   i“LÍdùÈ  ô  a   org/jetbrains/kotlin/serialization/ContractSerializer$ContractSerializerWorker$WhenMappings.class¥QÛA=,8«¬®¼­tÁKF}01˜Mğ0Y`ÁEÃÃ¦:lÃĞCfLü+51Æ˜ı ?ÊØÓŒOú¤I§úTuWsºüüv
+àFa4uf\#&dìÌCéÄ<,˜¡tZ¡TóU?­ò¨úgiFs}0<á²Ë–K!§±"”glÍœ€É©ãgÜW²„NÊÔåŠM˜bBf±ÎjY”„’NÇ&E2š'@·îVÛrµè¿Ê?I™ªOôõ‘K(¼ôõP¡ÙZıˆğâ¯öüT}ìLxìGbilºrúÆñ¡ç	ù5V<&Ôê£Î?ÏjØØÅÅ.à’³8WDWvspÜõúƒc¯×jÿEp×Ššà:Á
+£‰,0oàÚ¸‰½„ú–&l¿m¶w†ĞÆMË]Â¶VÒi7S)6îmNîëaoz‡=oØ³QÛÔê„\+œpBåõJ*±àG"ã€7¥•Q—Ÿt all.
 
 - Property drawers and planning information is inserted indented
   when this variable is set.  When nil, they will not be indented.
@@ -4790,32 +4769,9 @@ Otherwise, these types are allowed:
 
 ;; Declare Column View Code
 
-(declare-function org-columns-number-to-string "org-colview" (n fmt &optional printf))
-(declare-function org-columns-get-format-and-top-level "org-colview" ())
-(declare-function org-columns-compute "org-colview" (property))
-
-;; Declare ID code
-
-(declare-function org-id-store-link "org-id")
-(declare-function org-id-locations-load "org-id")
-(declare-function org-id-locations-save "org-id")
-(defvar org-id-track-globally)
-
-;;; Variables for pre-computed regular expressions, all buffer local
-
-(defvar org-todo-regexp nil
-  "Matches any of the TODO state keywords.")
-(make-variable-buffer-local 'org-todo-regexp)
-(defvar org-not-done-regexp nil
-  "Matches any of the TODO state keywords except the last one.")
-(make-variable-buffer-local 'org-not-done-regexp)
-(defvar org-not-done-heading-regexp nil
-  "Matches a TODO headline that is not done.")
-(make-variable-buffer-local 'org-not-done-heading-regexp)
-(defvar org-todo-line-regexp nil
-  "Matches a headline and puts TODO state into group 2 if present.")
-(make-variable-buffer-local 'org-todo-line-regexp)
-(defvar org-complex-heading-regexp nil
+(declare-function org-columns-number-to-string "org-colview" (n fmt &oÌœI}£0¥96[{•Ét6šÔtím	ô8í;Ş—¿Äº,“‰x Ÿ#åZc¹ƒŠÔÑv*ï–â@çw¸ÎøŞ÷ä
+#¾ÛŸŞMÏ1Ò·8‰St	iS4ªOD=í‘Şh—¹1¨d~ºİØ`îìİİxEÌ[úó2oS8lFõ-ÊK—8R¸mˆ*£.ŸÀ$_±úšƒµ"u¨ŸK°"ÇÔß ™írøu•ó,Å°A‹î«Aí¾™˜¥ŸÅ(IÀke{6æ$Ú[Øëì;óŸO]M³=n´¡3¿ÂÖF¶ÔõyÏã‚ÎœãØŞYä:†÷]Zô~tÃA\ĞŞ™›íM<}OêõEêBfOÁ\Îısùœå‘fËSØ—S×Z1€^Á <¡şpBó×K’8Wp9lÄå9Ö+³‚ºÒ•;PSq:: ª9CÍÉ#¨«ŸĞ’óœ…Ï;Œ®NcúTÔai@×èšŒÓ£@äj$ï=ì{ã8®ëìÇ‡qcËq¬íôWöã&EämŠÈCÇğ‰úÜ’Ü0š­Ï+ÉÀ‚{Ğ¯j÷êóKò9«Ş(1^À‘{*1qd _<‹'£¬ê8ê¬Ğ½ı8:ˆ~¿ªûãıøê³x±ÂYñM:¿‰Åõîw}W½ÂUıø¶^R`Ïÿçãr·A§¼¦ w¾ŒIÇñãÎ¢Ÿöãõ¯âçıøe–mpäD#*SËÑ<kÓÒ÷†Í3]ûÏPPˆÆßS[\˜ŸãğÈá9¾‚_ãŸ(çâÿyº÷ã_ño0peÿ78šó—Q€ƒäîAÂºPnÆBéæü[¨)Ã¥¸;p"¸W³şAõ
+ÿ¿›ÿ?€Oà1Ö¿ŒOá	ö÷ã0á^üŸæş‡¹ï},ŸÅoÅÄïğ9QßtÜ'(µù\n6p£µDê>àmÒhàĞ	JÏĞQ1ğÎpÙ3fÀ=dÇ†ÇøOú+ŠO9àè	aÿšòiHBÎÎÁom9#ÍyZ‰ñ,~Ïòï,o°ü©âş›'>¥¥²Õß¿ òò¶KòxJõ4-JÏ"’ş9÷ü•³³gjƒ÷ {Âix˜«Ä™xX3Æ×	Ú?(R¬cq°}a(¶o:Ø†Èµí¬¹‡á#–oU»ˆ—¿¢_\™ØÍJ`7ËÁNÕêiú\»"Mú£üı¦à‹ÔäÇ5fy71ÕAçENËAGéûJÚ PÎ££|RpÈÿŒäŞƒÓıÇ%¿SÊx¿J!Ñ"İÍ-•Ol÷?%S‡ô9K®fI¿LéÜ¼ÒQîŠJ­ÛœŞ¬l
   "Matches a headline and puts everything into groups:
 group 1: the stars
 group 2: The todo keyword, maybe
@@ -8239,40 +8195,11 @@ After top level, it switches back to sibling level."
     (save-excursion
       (setq end (copy-marker end))
       (goto-char beg)
-      (if (and (re-search-forward org-outline-regexp-bol nil t)
-	       (< (point) end))
-	  (funcall fun))
-      (while (and (progn
-		    (outline-next-heading)
-		    (< (point) end))
-		  (not (eobp)))
-	(funcall fun)))))
-
-(defun org-fixup-indentation (diff)
-  "Change the indentation in the current entry by DIFF.
-
-DIFF is an integer.  Indentation is done according to the
-following rules:
-
-  - Planning information and property drawers are always indented
-    according to the new level of the headline;
-
-  - Footnote definitions and their contents are ignored;
-
-  - Inlinetasks' boundaries are not shifted;
-
-  - Empty lines are ignored;
-
-  - Other lines' indentation are shifted by DIFF columns, unless
-    it would introduce a structural change in the document, in
-    which case no shifting is done at all.
-
-Assume point is at a heading or an inlinetask beginning."
-  (org-with-wide-buffer
-   (narrow-to-region (line-beginning-position)
-		     (save-excursion
-		       (if (org-with-limited-levels (org-at-heading-p))
-			   (org-with-limited-levels (outline-next-heading))
+      (if UÓ]œh¯.0^·8U2ª[xC!Y9 Dévv)İÍ.¥ƒ#ËóĞ@ˆÛ¡Ş^’ôm‰ö–™GïYŞ£Dßf¢ e[d½D%¾dÿƒ–‘5şÍŞ¶Ã÷p,ú†=Âñ[Øó#â²[ÆqÒtœšoÓÿÔ=$n#C,É[èXdIK²Œ÷îáƒÛ¸áË÷1zù.2m—æqYòÌã“¶Ï*í+ÔõÌC™ÇÔ]Ì”¡=¼ã¾9®Ò÷5w÷7a ("Ôê$ë+ìƒŸ¡¿`#{€6öJ´2Ø#BÇÇ¸Aã7Ø¯¸F|ÛÑôøù]OĞ'àƒëU"ú%ı}¬ÚeÔUÿt=ìŠöÎa zhÌ><‡SÑvï®D½waÿàŠlÀWò‘DÛşÚ¥~|CÔKÈ¾	7äkŠz\Îd şf’j@S
+!÷·m½­)lÃöÙ¿cÌ"¡ö	l°Ğaa—…N]vÿPK
+   i“L¶FhÌ–  ½  x   org/jetbrains/kotlin/resolve/multiplatform/ExpectedActualResolver$Compatibility$Incompatible$TypeParameterVariance.class½TÍOAÿÍ¶´¥ù¥øUµhAa…“I‰±VM
+ MÆdºâĞíl33mäÆÉ?Ä“‰MÁ›WşãÛ¥M¸)fwß¼ïß›÷föûÏ_,ÂeĞŞr·…­k.•q[õ¥rµ0ßn»ë[Ùñ¹mºí>}Û’g»Ü_;öÑùrĞîp+ëÒ—v'_Q^_öE~c§#^pÍÛÂ
+]ãZrå‰$Ã«³ÄM"Æ==l¾eF«}Àayƒ[^dpÚ½u……$Mb=‡µHÕX`(ìfÒÎ¤sü¥œÔ·wÎäÁî¢sŸ=N¦œÃ÷	gÄ9üˆ…ş‹¶úÿ;L»y}¦°+ÌÔÒQÂ®•b˜8µ†çÿ¸”$.2d~¯‡¡ô×Id†ş bHUV×7J«å§‰%©¤}ÈPlÏ§]†›3ÒŠ\¯¿U“š9KMÈuNº`r\‹\C6›BeS¸Æğ±Pİæ=îú\m¹ëVKµU<ÃqEò²TbåäØo÷Ú®TTâ¾ûD49å/ÊXİõl W¸n	]œ©ep¹4â¸Á·o¤¡,y~ÔˆĞ6†ƒé®`t¸;äU4±jàq?:4Íh¸*•Xí¶ëB÷5éõ «=ñL†MT	]ö¹1‚€²k]ee[Ô¤	G\Rith-limited-levels (outline-next-heading))
 			 (org-inlinetask-goto-end))
 		       (point)))
    (forward-line)
@@ -15207,32 +15134,8 @@ Also insert END."
 
 (defvar org-last-tag-selection-key nil)
 (defun org-fast-tag-selection (current inherited table &optional todo-table)
-  "Fast tag selection with single keys.
-CURRENT is the current list of tags in the headline, INHERITED is the
-list of inherited tags, and TABLE is an alist of tags and corresponding keys,
-possibly with grouping information.  TODO-TABLE is a similar table with
-TODO keywords, should these have keys assigned to them.
-If the keys are nil, a-z are automatically assigned.
-Returns the new tags string, or nil to not change the current settings."
-  (let* ((fulltable (append table todo-table))
-	 (maxlen (apply 'max (mapcar
-			      (lambda (x)
-				(if (stringp (car x)) (string-width (car x)) 0))
-			      fulltable)))
-	 (buf (current-buffer))
-	 (expert (eq org-fast-tag-selection-single-key 'expert))
-	 (buffer-tags nil)
-	 (fwidth (+ maxlen 3 1 3))
-	 (ncol (/ (- (window-width) 4) fwidth))
-	 (i-face 'org-done)
-	 (c-face 'org-todo)
-	 tg cnt e c char c1 c2 ntable tbl rtn
-	 ov-start ov-end ov-prefix
-	 (exit-after-next org-fast-tag-selection-single-key)
-	 (done-keywords org-done-keywords)
-	 groups ingroup intaggroup)
-    (save-excursion
-      (beginning-of-line 1)
+  "Fast tag seleûÍÍ.¿şîïÿ 0…ß	djõõÂ¦a¯ÖuÓ’…­š]1­B¹fÙ¤õÂ|E—²hİ©E!´M}G/Ttk½ğúê¦Q¶£	¨ózyÃ8·eô—<„EÃÖ×t[ŸPª;!ÚNp'uÕQÁ" ¶È´v^ˆÏİ›‹+CJ\Ñİ‹ÓËÜi#¾Øìµ—Fº©çª;±—:õñGêĞ£{SÊ¤¸2“T5e8<$&CÉ„V“á¤2Ù5!-êiª£ÅHSÔÍŒ?şS/tkîÊk_}ZèÓ4W{–TÁ³m¢8–«Úà°2IÎÄUå©#S½$·¸âè-Î8z¬H,hC”RµaE\ûê¡…˜vŒ¬ÇI$Ÿ ù$ËËO÷¢Pød†ÃjBëYDéõj}4ÔâAsHÓúi¨ÅÙæPRëü×®SÌİ”@¶ô}Óˆò}4"íz£l×êl˜<¡}átKÃ¶G“¹ƒ VüÙ´¶§n¬›„§Û&á
+•š™]7îT(µ7în45µfÜÑ»Xİ®Uƒàx§zs‰Í]Ë6¤a›•B‰z†Ş²ÉøMäºaÏOp*3~ø3"¤—;Ç7@x{#ÔhÁrûÙ%ŸNlz-ĞKóVZù‰—kÕíšEøç[•©Vå­Êp¹¶}W Ëx·¡W#R³7Œ:œ]nÌ×ÖíÚŠ]7­u˜¨ÀXà(tËª¹ÉÂR£RÑW+Ì­¶×ñ‹ÓÜ!òê­İoçšÍ›ÏòÜåùÇG‚<Ìe/Í&0€#1( CÛ¦L …sløQƒ®ôãÒfé:Å9Ó2íK*R'½(6wªÓ"÷-½R(Z|Ò,Ë(.	RM/o]×ëzÕà ¥ç½ÀÙL)x´æ©Ë%j/ár/âŠŠAP†Ms¸G¯üşğ±|ÿºÄ‹ÓQœwcŞw/ğõÁú0ÿõŠ{ÏşPQÅ5r‘Òªí÷X#Şƒ¶+³²fÔ£¸ÇLÜ°—	Ôñ‹*V(ÓôímÃZ˜ÈtH‹=&Ÿ|û	nòoVúaî·ò¯ü)üHË½@ıŒ>óüH[½'ë/¨öåG:–v}‡Ş%ã*VÈáu^sÒ·˜@w8}©Üœ;ÓQ˜ä\;»QĞã§/ÀpUºt:ÅOÑ©zİ¸ÊÕğÀ¯Ğ_”À6Şå¯Êâ±å†e›U£hí˜Ò¤x¹Y¨€®˜ë–n7êTWÃnyM–je½rS¯›\1opC—(À¥FuÕ¨{–÷\‡-›ùû”Ä£{/'.ŠŸü§Eåpçít'ù2râ—Ü6rşõÿØa„= (beginning-of-line 1)
       (if (looking-at
 	   (org-re ".*[ \t]\\(:[[:alnum:]_@#%:]+:\\)[ \t]*$"))
 	  (setq ov-start (match-beginning 1)
@@ -21758,30 +21661,12 @@ on context.  See the individual commands for more information."
      ["Toggle Recalculate Mark" org-table-rotate-recalc-marks (org-at-table-p)]
      "--"
      ["Sum Column/Rectangle" org-table-sum
-      (or (org-at-table-p) (org-region-active-p))]
-     ["Which Column?" org-table-current-column (org-at-table-p)])
-    ["Debug Formulas"
-     org-table-toggle-formula-debugger
-     :style toggle :selected (org-bound-and-true-p org-table-formula-debug)]
-    ["Show Col/Row Numbers"
-     org-table-toggle-coordinate-overlays
-     :style toggle
-     :selected (org-bound-and-true-p org-table-overlay-coordinates)]
-    "--"
-    ["Create" org-table-create (and (not (org-at-table-p))
-				    org-enable-table-editor)]
-    ["Convert Region" org-table-convert-region (not (org-at-table-p 'any))]
-    ["Import from File" org-table-import (not (org-at-table-p))]
-    ["Export to File" org-table-export (org-at-table-p)]
-    "--"
-    ["Create/Convert from/to table.el" org-table-create-with-table.el t]
-    "--"
-    ("Plot"
-     ["Ascii plot" orgtbl-ascii-plot :active (org-at-table-p) :keys "C-c \" a"]
-     ["Gnuplot" org-plot/gnuplot :active (org-at-table-p) :keys "C-c \" g"])))
-
-(easy-menu-define org-org-menu org-mode-map "Org menu"
-  '("Org"
+      (or (orgŞÁ'Úğ9š*zœ0Ì¼ºa’§)™®hT—c*U!ƒ“İ9|f¢ŸaÊ«Q¨ûŠÒ¥f£*üy^uôRk—p…ûRãâ‘rÀíú_íà‰¹¦È†(¸-©$‘4ôäÖp`è-Ë%—MŸXÌ²×ôm‘—š¿ï–k;¢†¦¹ìQÿÆ
+®+ü)‡+%ˆóxGAeSü6©ÈP÷tÓ.£ÿ-ñ¸n'½7ã“4ôÎu‘°½Œ¥Ç6z„w×‘ıE¯^|Ag„ °Œ~=&éæhkócÖñáØ $<ÂÍM?Dş!
+$iºs]Çì:Ê`„B¸ëçöÿ’Î£›"0Oõb§ÛNlS!5_Ñİ@è_Œ_§VÓ-ez©?Üí80Ôq šûùtøw,üÚ~ÒoôßRÈÛ°U‚ašG`Óm¸ãpŒh›ğNSDP#¬@
+^#)}‹è* Şşöcà1özƒx£@-‚)b>¾CaXáM…·ŞVQ8¡ıPK
+   i“LÅe5ŒĞ  ½  H   org/jetbrains/kotlin/resolve/calls/tower/UnsupportedInnerClassCall.class­TISAşzIQBØÁ}cSp¹àRlRS†`äÂÁêLºBÃ¤'5İ‰åßâÉ£ZZZ,Ê£?ÊòuQ”…VÍ¼×ïÍ×ß[úõ|ÿñå+€YÜgXˆâ²·#L1æRio72¡T^,tÖ…ğ0Ô‰^ŠØ{®t­Zb#J¾R"^¹Ö‹H1<<1ÏºõÕŒŒÔ’äei#ƒÚúüJ5”4… ªŠÚ5İ¹&Ûª0¼ÄŸcp*õ6*Yá’Yl˜°Âa`»ä*Í0<ÙßËºÎ Óx÷÷\'sÎuÒ‰Áı½Ygš-œÍ&3Î°3İöíuÒÉ$Ö»[VšĞÃ‰t{&ùíM2eÙf–rÿŞ,ÊıñÉië1¤*Bk^Œ:€¾±Ü¯s/äªìL,Uyn|“Á-³zˆëÿE˜¸€!{âÚÉr¥"Ãííå#“¯QIèÁPŒ0$Ì¶ÔÉRIó(†‹ÍwêO*#bÅCÏW6‚–Ná2Ã@°-‚İg<æA_7¹F/o­¸#3w\Á¸Šk.®à:ƒŠ/rU’4]b¾j§e(Í«n2ôû«ÏÖ
+!·übcíÅÊr~y}~c™áéiNòø@ÔÄ1Œw`ù±ÿHl[s·\$p›ad½¦Œ¬_Õ¥–ÅPÌÿ:P:½Å¨$ì$Db“Ç’g"
     ("Show/Hide"
      ["Cycle Visibility" org-cycle :active (or (bobp) (outline-on-heading-p))]
      ["Cycle Global Visibility" org-shifttab :active (not (org-at-table-p))]

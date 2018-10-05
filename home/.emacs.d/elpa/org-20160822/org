@@ -2627,26 +2627,9 @@ Org has three predefined Emacs Lisp functions for lookups in tables.
      `nil', the matching element `S' of `S-LIST' is returned.
 
 `(org-lookup-last VAL S-LIST R-LIST &optional PREDICATE)'
-     Similar to `org-lookup-first' above, but searches for the last
-     element for which `PREDICATE' is `t'.
-
-`(org-lookup-all VAL S-LIST R-LIST &optional PREDICATE)'
-     Similar to `org-lookup-first', but searches for all elements for
-     which `PREDICATE' is `t', and returns all corresponding values.
-     This function can not be used by itself in a formula, because it
-     returns a list of values.  However, powerful lookups can be built
-     when this function is combined with other Emacs Lisp functions.
-
-   If the ranges used in these functions contain empty fields, the `E'
-mode for the formula should usually be specified: otherwise empty
-fields will not be included in `S-LIST' and/or `R-LIST' which can, for
-example, result in an incorrect mapping from an element of `S-LIST' to
-the corresponding element of `R-LIST'.
-
-   These three functions can be used to implement associative arrays,
-count matching cells, rank results, group data etc.  For practical
-examples see this tutorial on Worg
-(http://orgmode.org/worg/org-tutorials/org-lookups.html).
+     Similar to `org-lookup-first'¾ÅĞ,‘1.ÃÍ4qÆµïÛC­öÛ'¹¿èø0‘¸\eŸÂEyÎ½ŒûßEØ‡”6çJq•^¼M”6åJñì¸X/xÄKº—÷}{&Ÿ¨¿Îötûk%ÿÑSı´[¸æ×x*ğì½¦­>°İÏxt·‚c6o)uó½TÓ½"„óT=o¼ĞÄÎ›MÏŠ‚´4‘È0ûnıíi‹¹‹7Š`]æ	Å9)	—î>‘L,ÿA6«»_2—’ Ü“îNº_êNö,z’'<zóÆcÌ¸¯‰÷É‹}*î3‹dpî—’¯^æ-»!:	˜
+—$ı,HFv^„¥È¾­pâÀœHö ÎRòÉâ 2à$İ0[0µpZ€ò¼¤W‚¾&İóºMDü*üë¨½jÿ[œ'&ÓöÍ'ÙlÖ¾ù8ãä›K y>ÃÉWç99’æ$uŒ“©Y ’~òi =5ÃÉÔ4/LsrdŒ“ãQ4˜Ä{{7ë^l§…°R^.QG¢\¢V÷Û[ÈeÆŞBÎÚ[È×ø1{yŸHKÉ©Şè”%R2E¹¸t„üêàÒqî^ò$ºçIN‰¸!˜	]ÜàMt¢®ÈH©„Gèœû6¾Šæ×óy€_‚ z0âIãTİÉŞÒ%~ Qè‚xì†ÇÀÅã‚ßÑ ¬ÆÜzl[i-GàBòC;™\ÙäÊp®/H§m’ş#ã(nÿ¾e-á\ÓO¿óÆçÖò©²€ËïlMò4×fVŸ_Î«Ÿ_+Ú»>Œ}›e?Ñ{ L	ïß0îÉÅdeaØwéiìYvÕşXã¹mMnW+jßq7Yı4ë²XNvŞzÙ?*˜$ËØ%ı2Ø:V^ŸØ°Îò6¡-£^´ãXÍŸ‰Äìs|V¤v<°ÖÜácßûÙìÅ­PñŠ×Şü>‡KÆ«ğƒtârÖ>Õ,ÌZ¬fw€™è˜yíÏ…MÎ¯ÉÙfŒÿ|šü#¾çbCÉø¢~Z?Õ¥§»ôSçjğ~–ëŞØ@ÔA”ÿ…MuCß’—
+xÁÚ€ş^QŸøbÅ>½U_Ø§~«Ù÷xŸ\<àñ.ZOWÇc‹3Ë3Ö,·œwxC¾e8¿.ƒÃ»à$èlÆşÚSëªQ«óĞ2¤z:Ï&óy€_4X "@C5?ÆÎñ3ï˜ÂºûÂDâ‚Í>i‚Õ$€&?¨²vOÖñ`mà§è…:#EuÚHÖñ‚æ±ÊQ>XÆíÈ}ÌBP Y?ex9^ç±óW —êLqĞÚ8¡m¼èæ„hnJÔÜaÏ9”6n w{Ú=}ÊÒ®hbps.html).
 
 
 File: org,  Node: Editing and debugging formulas,  Next: Updating the table,  Prev: Lookup functions,  Up: The spreadsheet
@@ -5746,25 +5729,11 @@ SCHEDULED
      the compilation for _today_, until the entry is marked DONE, i.e.,
      the task will automatically be forwarded until completed.
 
-          *** TODO Call Trillian for a date on New Years Eve.
-              SCHEDULED: <2004-12-25 Sat>
-
-     If you want to _delay_ the display of this task in the agenda, use
-     `SCHEDULED: <2004-12-25 Sat -2d>': the task is still scheduled on
-     the 25th but will appear two days later.  In case the task
-     contains a repeater, the delay is considered to affect all
-     occurrences; if you want the delay to only affect the first
-     scheduled occurrence of the task, use `--2d' instead.  See
-     `org-scheduled-delay-days' and
-     `org-agenda-skip-scheduled-delay-if-deadline' for details on how to
-     control this globally or per agenda.
-
-     Important: Scheduling an item in Org mode should not be understood
-     in the same way that we understand scheduling a meeting.  Setting
-     a date for a meeting is just a simple appointment, you should mark
-     this entry with a simple plain timestamp, to get this item shown
-     on the date where it applies.  This is a frequent misunderstanding
-     by Org users.  In Org mode, scheduling means setting a date when
+          *** TODO Call Trillian for a date on New Years E_MıÀÀ»#$¡ıÂÈA*:vìŸ ÿÏŸLáé[B–ë®¦ñÊIk
+—Â$²˜¡róÇ¤äÙ4Y’Ta"5EPÓèdYô°zËÏğÊ²Ğ&1-Î)Ú´‡“G˜=¹™XÕy\:Œgxî¥¯İQ ¯İø0ŞĞŞEdPĞR¡JH[#Í‚‚!õ/PKzı”&  $  PK  ±†<K            >   net/rubygrapefruit/platform/internal/Platform$MacOs32Bit.classPMOÛ@}c'q0„”ï–C	R0!¢€8		)´HT¹oÂ™5Zo*øWô„ÔC ?
+uŒRÑ“YKófŞÎ›}ã§çß 4±NØÕÒfØ»q+/ÍPÙà6ö227ÒV-Âà,e>ŸŠş÷¸µ}¤¬"´Ş¡öà¦^¹ÍkñS™y(ü±BÍHÓÃ!?š@((­ì!Á­Õ»„/µNÆiûõn	%LûÈ¡LÈÙ+Åc÷2ï³ÏŞÒ\fkõNò‹‚PèApnÒ¾.Fñ]CµvwŠ˜Kòá`àÜmš™ı³çvt!	ÕNÔaW%z¡ü‘B¹£´ü6¼éI“2şy44}y¬’¢t¢µ4íPÄ±Œ±ÎFrHË;a…«-®ˆ±°A¨üâÌÁ*ÇÒ‹T×F93Ôæø³©ºÁ˜ô¹Õù‡7R÷?éq%¹›N¥_ÆüÆ#ÇïÎ¿©8É–°Ì­ÿ:pğqÔŸÇ'ÆåÑFŠğùãS)ò¦&sş_PK¢,Œ  R  PK  ±†<K            >   net/rubygrapefruit/platform/internal/Platform$MacOs64Bit.classPMOÛ@}c'q0BÊG¡åãÀ!AJMÔñ¥@B¢
+	”û&YÂ"gÖÿª=!õÀèª£ ödÖÒ¼™·ófßøÏßßO X'ìhi3ì<ô¸•Wf¨lp
+{™A ´•F‹08O™SÑıo7•õ@„¯ïP{p	S¯Ü—q'õLƒ<şØ!Èf¤áa‚M ”VöÁ­ÖÚ„fµ•qÚ~­]B	Ó>r˜!äìµâ±{ÇŒ÷Ùgo}iOz„¹j­•ü¢ º\X£tŸ¯'¢ø¾.½ífóÉÛS>,œû-B#ólú(êIB¥uEØF‰N(/“@˜i)-Ï†ƒ4)ã_DCÓn
      you want to start working on an action item.
 
    You may use timestamps with repeaters in scheduling and deadline
@@ -8785,32 +8754,8 @@ deadline string.  See `org-agenda-entry-types' on how to set what
 planning information will be taken into account.
 
 
-File: org,  Node: Block agenda,  Next: Setting options,  Prev: Storing searches,  Up: Custom agenda views
-
-10.6.2 Block agenda
--------------------
-
-Another possibility is the construction of agenda views that comprise
-the results of _several_ commands, each of which creates a block in the
-agenda buffer.  The available commands include `agenda' for the daily
-or weekly agenda (as created with `C-c a a'), `alltodo' for the global
-TODO list (as constructed with `C-c a t'), and the matching commands
-discussed above: `todo', `tags', and `tags-todo'.  Here are two
-examples:
-
-     (setq org-agenda-custom-commands
-           '(("h" "Agenda and Home-related tasks"
-              ((agenda "")
-               (tags-todo "home")
-               (tags "garden")))
-             ("o" "Agenda and Office-related tasks"
-              ((agenda "")
-               (tags-todo "work")
-               (tags "office")))))
-
-This will define `C-c a h' to create a multi-block view for stuff you
-need to attend to at home.  The resulting agenda buffer will contain
-your agenda for the current week, all TODO items that carry the tag
+File: org,  Node: Block agenda$1.classPK   «†<K_º+Ï	  @  2             ´‹Y org/jetbrains/kotlin/gnu/trove/TIntArrayList.classPK   «†<KÅ «ˆ   ¡   1             ã•Y org/jetbrains/kotlin/gnu/trove/TIntFunction.classPK   «†<KÕB‹g  s  -             Ê–Y org/jetbrains/kotlin/gnu/trove/TIntHash.classPK   «†<Kö,GQÀ  U  2             :Y org/jetbrains/kotlin/gnu/trove/TIntHashSet$1.classPK   «†<K`á°     2             ZŸY org/jetbrains/kotlin/gnu/trove/TIntHashSet$2.classPK   «†<Kj®Wó    >             Ğ¡Y org/jetbrains/kotlin/gnu/trove/TIntHashSet$HashProcedure.classPK   «†<K¬:l™
+  ğ  0             /¤Y org/jetbrains/kotlin/gnu/trove/TIntHashSet.classPK   «†<KâÉv¬   Ó   8             &¯Y org/jetbrains/kotlin/gnu/trove/TIntHashingStrategy.classPK   «†<Kfóö¥3  A  5             8°Y org/jetbrains/kotlin/gnu/trove/TIntIntHashMap$1.classPK   «†<K&ñïK	  Î  ?             Î²Y org/jetbrains/kotlin/gnu/trove/TIntIntHashMap$EqProcedure.classPK   «†<Kœ‚Gá   s  A da for the current week, all TODO items that carry the tag
 `home', and also all lines tagged with `garden'.  Finally the command
 `C-c a o' provides a similar view for office tasks.
 
@@ -15399,34 +15344,8 @@ and their effects are shown below.
      Evaluation of the code block during export will require a query.
 
    If this header argument is not set then evaluation is determined by
-the value of the `org-confirm-babel-evaluate' variable see *note Code
-evaluation security::.
-
-
-File: org,  Node: wrap,  Next: post,  Prev: eval,  Up: Specific header arguments
-
-14.8.2.26 `:wrap'
-.................
-
-The `:wrap' header argument is used to mark the results of source block
-evaluation.  The header argument can be passed a string that will be
-appended to `#+BEGIN_' and `#+END_', which will then be used to wrap the
-results.  If not string is specified then the results will be wrapped
-in a `#+BEGIN/END_RESULTS' block.
-
-
-File: org,  Node: post,  Next: prologue,  Prev: wrap,  Up: Specific header arguments
-
-14.8.2.27 `:post'
-.................
-
-The `:post' header argument is used to post-process the results of a
-code block execution.  When a post argument is given, the results of
-the code block will temporarily be bound to the `*this*' variable.
-This variable may then be included in header argument forms such as
-those used in *note var:: header argument specifications allowing
-passing of results to other code blocks, or direct execution via Emacs
-Lisp.  Additional header arguments may be passed to the
+the value of the `org-confirm-babel-evaluate' variable see *note Code×ı€òPRw­Wyÿ}Âa•vùÂNBıÕ:ïƒùâØÂëèéª¿$kóĞŸ˜©½KjÇ/a{¤àöjlm¯´ö%ê¿l—ÌU8ÂšÏÔÏQíª¿á±ÚËlı÷¹åÁv	e–¹–"7`°53€[M…3m¬/¼ÅX]Äg¸‰G˜8økÁ	gc¨äxår¼‰?œÑÍC+)Í»y(Â_°:öp&lL2À'ıÙ'<;ÉÒ ¾ÅœÆó¥"lËµ!3ç~™÷¿Ìû_òhvF2‡"(¢:TĞ.l¢(¶Q#h -ô b´Gi/zè!Ğ>œàõ1jâC©'©gh?ÎòÚ:ˆ‹Ã'Ô†ËÔ+ÔÏxı&Á·Ô‰é(~¦8~¡nüJã7Jâw–K>íDIÅ_ˆQ´ëOìâ‘¿ùØã¡â_¾OQPR™ß<ê¿Í;ä›™W	ÆGQ‰LÂuœ¹ê— [\%~	–àe._šÁï’yüV=ïø-`‹“¾|¹4ç›»ôùGä;"¯‹œ›%kğe§ø9írÄsù.[sgxÏKğ>ÛØ}€O2ÈËe÷ğ9ÿW¨fB¸¯¸ô?PK¡Â¸å  c  PK  ±†<K            `   kotlin/reflect/jvm/internal/impl/storage/LockBasedStorageManager$LockBasedNotNullLazyValue.classµUmOG~Æ/®æÍ	BÚ:…&6Nsi›7b—i#Erh#¤ |Yì]|ŞC{wHÉÈÈÈ×$•ŠÔJíÇJıQmgï#@(U	_vfwvf™yöî¯¿ıÀWX!ltıĞSÚ5ò™'Û¡»½Ûs•¥ÑÂsUoÇsƒĞ7bKºM¿İ]ì´’ƒGBójæúç«~¸y^S¼x¾.¼H@„7µ{Ím±+\Oè-÷‡ÍmÎR_l~¸´ı|µµúbı¿G>Š7ñ'´Î [9ÂÂÿ†VÀ áÒ	é®Ûö–N»€!Âô‰ã$”×E87'‚@šPù:øNbÓ“mJ«p‘ +§w¬ÖóY¤Ûq>÷Aªİ¨W×	³Mßl¹Û2Ü4B±Uhí‡"¹™VS/bcò(ráO* ˆHÆ“8õôspø‘àĞ]ÂÊé;NpÚ~o'
+íH	WŞ3F--µü¾Q13”Şõ»ô|¥züãPÄ%|lGôIÃBeÂÔÁ½å}Â}oŒÏ´ıŒp!*+Õ²‘ad´ì”57is„‰Êñ$ arguments may be passed to the
 `:post'-function.
 
    The following two examples illustrate the usage of the `:post' header

@@ -1,5 +1,5 @@
 (1
- (sunrise-commander     . [(6 463)
+ (sunrise-commander     . [(6 464)
                            nil
                            "Two-pane file manager for Emacs based on Dired and inspired by MC"
                            single])

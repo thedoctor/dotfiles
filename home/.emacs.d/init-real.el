@@ -1,8 +1,11 @@
 ;; start emacs server
 
-(require 'server)
-(unless (server-running-p)
-  (server-start))
+;; (require 'server)
+;; (unless (server-running-p)
+;;   (server-start))
+
+;; (require 'atomic-chrome)
+;; (atomic-chrome-start-server)
 
 ;; recompile configs
 
@@ -10,11 +13,11 @@
 
 ;; elpa
 
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/"))
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-(add-to-list 'package-archives '("sunrise" . "http://joseito.republika.pl/sunrise-commander/"))
+;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+;; (add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/"))
+;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+;; (add-to-list 'package-archives '("sunrise" . "http://joseito.republika.pl/sunrise-commander/"))
 
 (defconst my-init-dir "~/.emacs.d/init.d")
 (defconst emacs-major-version-rad 1000000)
@@ -23,8 +26,9 @@
   (<= (+ (* major emacs-major-version-rad) minor)
       (+ (* emacs-major-version emacs-major-version-rad) emacs-minor-version)))
 
-(if (not (has-emacs-version 24 0))
-    (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+;; (if (and (not (has-emacs-version 24 0))
+;; 	 (not (has-emacs-version 25 0)))
+;;     (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 (eval-when-compile (package-initialize))
 
@@ -42,13 +46,13 @@
 
 ;; el-get
 
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-(require-package 'el-get)
-(require 'el-get)
-(use-package el-get
-  :config
-  (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get/el-get/recipes")
-  (el-get 'sync))
+;;(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+;;(require-package 'el-get)
+;;(require 'el-get)
+;;(use-package el-get
+;;  :config
+;;  (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get/el-get/recipes")
+;;  (el-get 'sync))
 
 ;; use package
 

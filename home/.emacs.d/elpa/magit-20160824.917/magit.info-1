@@ -3414,33 +3414,8 @@ File: magit.info,  Node: Applying,  Next: Committing,  Prev: Staging and unstagi
 ============
 
 Magit provides several "apply variants": stage, unstage, discard,
-reverse, and "regular apply".  At least when operating on a hunk they
-are all implemented using â€˜git applyâ€™, which is why they are called
-"apply variants".
-
-   â€¢ Stage.  Apply a change from the working tree to the index.  The
-     change also remains in the working tree.
-
-   â€¢ Unstage.  Remove a change from the index.  The change remains in
-     the working tree.
-
-   â€¢ Discard.  On a staged change, remove it from the working tree and
-     the index.  On an unstaged change, remove it from the working tree
-     only.
-
-   â€¢ Reverse.  Reverse a change in the working tree.  Both committed and
-     staged changes can be reversed.  Unstaged changes cannot be
-     reversed.  Discard them instead.
-
-   â€¢ Apply.  Apply a change to the working tree.  Both committed and
-     staged changes can be applied.  Unstaged changes cannot be applied
-     - as they already have been applied.
-
-   The previous section described the staging and unstaging commands.
-What follows are the commands which implement the remaining apply
-variants.
-
-â€˜aâ€™     (â€˜magit-applyâ€™)
+reverse, and "regular apply".  At least when opeR°2,M$êÑ{;Éëôz8¹èşH§_UÌ€œ~¬Ó[vŒ2Ãã–“HÏ£÷u_±™G?	é. ‡œ qÏ0˜_Y×`®†‹UnÒ›Ã{ôs]^B&ßn!£~A\¤qJK<úeŸ~VÜ%ÏäªZç×:ó#$ó†µóDRüú5ıº~¥ßˆu¬ˆÀy“ê¥ò-D­’-öpUkcÄ»>¾Eÿp*Ï€!²Ùİ^Ît³’èõVtÜô‰9&ƒS%9Mq?¡8µÂÑ¤yòGî¾:U‚NC¿ÒšºHyóše‘¨SÓ§Bìöé|ßĞèñï!\,ôğN ùÏ›fìí¡=Ç©*ÿ¿7èá€Vôe@¯·”] ¹Òœ•\ÆzÕÛı+SõwÚß<×ÿ?-ì³_®Í¨Ñö›Ÿa9oi)rÌeÑ ù¹±~Ÿµğ} ãßá¿ƒi¾ÿÑ|†ï‡%|A>yÚïŸïGtú>H’e(’¤J§yá4 œ!?R1ŸùÎçk>Â:ò9ÆÇÇMÀ÷£;Ñ›!?1ıu>':ŸÇuZ/C~:ÿ>	ß';ëOSğ9ü8N„ó‘«ˆ,êKÄ7…2¦í¡âJİF3Ûè”PĞµRƒ®všµ•<¡¼6ªÜE‹C{hIe±‹–…rwœìäİA+·’o­BËê]´FXhƒS¼›Îb*ô=»é\éY(¥ó™¡ôBoĞ»›à´µÒ¥…¾ŒË‚¾Vºz#¹]VèZôí Ÿí¦›4-Üzà±P¦µ‹nåå·Ñí…PĞ½,×Vré]ô‹ºÿb#õz‚îüvÚº•Ü;è®]tºí¢{CAÏ.º¿ƒìíè¾=¯•Xh$ßƒn§Â”ÚÛiïÂü}ä—Š|ù
+µÑ#»t¤ì¢ÇQıÔ#T\è¥sáËcÌÜJÏ½­ôR¡OèY,µicÓÆ´Ò«²±ßî¢·ìåú§<Ds*uF ¢ÒtWl%¿+VQ˜Š.oS[é½B?X^Ø‡ı¡ }°˜/àŸò•4›şG¸ÒéÍ‡øç£zÜGô'òòOIÓ'8d?_ÒŸé/ÔG–şJŸb””>‘2%FeJŸÓ\ô–Òßéæç¤7QK1%V7•ò,ú'ê,ú%>ÿ…:£UôıëÎ ùôz›||ğKÌ—Ê×¡¯¡E„¥³°–MçÇäu(ù„ôc´İ E"ºbxÔèz(ÅTB?£Rºc6b§›è"º‰.¡›Q{¾İJ·Ñí äÈÏz‘î¤×è¬æ¿ó¶€ªíØæîCp:íâAÔÆ#©€™)
 
      Apply the change at point to the working tree.
 

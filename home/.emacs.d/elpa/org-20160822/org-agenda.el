@@ -2672,25 +2672,7 @@ to limit entries to in this type."
 (defvar org-match nil)
 ;;;###autoload
 (defun org-agenda (&optional arg org-keys restriction)
-  "Dispatch agenda commands to collect entries to the agenda buffer.
-Prompts for a command to execute.  Any prefix arg will be passed
-on to the selected command.  The default selections are:
-
-a     Call `org-agenda-list' to display the agenda for current day or week.
-t     Call `org-todo-list' to display the global todo list.
-T     Call `org-todo-list' to display the global todo list, select only
-      entries with a specific TODO keyword (the user gets a prompt).
-m     Call `org-tags-view' to display headlines with tags matching
-      a condition  (the user is prompted for the condition).
-M     Like `m', but select only TODO entries, no ordinary headlines.
-L     Create a timeline for the current buffer.
-e     Export views to associated files.
-s     Search entries for keywords.
-S     Search entries for keywords, only with TODO keywords.
-/     Multi occur across all agenda files and also files listed
-      in `org-agenda-text-search-extra-files'.
-<     Restrict agenda commands to buffer, subtree, or region.
-      Press several times to get the desired effect.
+64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ    Press several times to get the desired effect.
 >     Remove a previous restriction.
 #     List \"stuck\" projects.
 !     Configure what \"stuck\" means.
@@ -5988,36 +5970,7 @@ See also the user option `org-agenda-clock-consistency-checks'."
       (setq tlend (or te tlend) tlstart (or ts tlstart))
       (when issue
 	;; OK, there was some issue, add an overlay to show the issue
-	(setq ov (make-overlay (point-at-bol) (point-at-eol)))
-	(overlay-put ov 'before-string
-		     (concat
-		      (org-add-props
-			  (format "%-43s" (concat " " issue))
-			  nil
-			'face face)
-		      "\n"))
-	(overlay-put ov 'evaporate t)))))
-
-(defun org-agenda-check-clock-gap (t1 t2 ok-list)
-  "Check if gap T1 -> T2 contains one of the OK-LIST time-of-day values."
-  (catch 'exit
-    (unless ok-list
-      ;; there are no OK times for gaps...
-      (throw 'exit nil))
-    (if (> (- (/ t2 36000) (/ t1 36000)) 24)
-	;; This is more than 24 hours, so it is OK.
-	;; because we have at least one OK time, that must be in the
-	;; 24 hour interval.
-	(throw 'exit t))
-    ;; We have a shorter gap.
-    ;; Now we have to get the minute of the day when these times are
-    (let* ((t1dec (decode-time (seconds-to-time t1)))
-	   (t2dec (decode-time (seconds-to-time t2)))
-	   ;; compute the minute on the day
-	   (min1 (+ (nth 1 t1dec) (* 60 (nth 2 t1dec))))
-	   (min2 (+ (nth 1 t2dec) (* 60 (nth 2 t2dec)))))
-      (when (< min2 min1)
-	;; if min2 is smaller than min1, this means it is on the next day.
+	(s64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿÄÄÃÿ; if min2 is smaller than min1, this means it is on the next day.
 	;; Wrap it to after midnight.
 	(setq min2 (+ min2 1440)))
       ;; Now check if any of the OK times is in the gap

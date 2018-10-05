@@ -2615,34 +2615,9 @@ The syntax check is deferred if FORCE-DEFERRED is non-nil, or if
   (when (and flycheck-mode (flycheck-may-check-automatically condition))
     (if (or force-deferred (flycheck-must-defer-check))
         (flycheck-buffer-deferred)
-      (with-demoted-errors "Error while checking syntax automatically: %S"
-        (flycheck-buffer)))))
-
-(defvar-local flycheck-idle-change-timer nil
-  "Timer to mark the idle time since the last change.")
-
-(defun flycheck-clear-idle-change-timer ()
-  "Clear the idle change timer."
-  (when flycheck-idle-change-timer
-    (cancel-timer flycheck-idle-change-timer)
-    (setq flycheck-idle-change-timer nil)))
-
-(defun flycheck-handle-change (beg end _len)
-  "Handle a buffer change between BEG and END.
-
-BEG and END mark the beginning and end of the change text.  _LEN
-is ignored.
-
-Start a syntax check if a new line has been inserted into the
-buffer."
-  ;; Save and restore the match data, as recommended in (elisp)Change Hooks
-  (save-match-data
-    (when flycheck-mode
-      ;; The buffer was changed, thus clear the idle timer
-      (flycheck-clear-idle-change-timer)
-      (if (string-match-p (rx "\n") (buffer-substring beg end))
-          (flycheck-buffer-automatically 'new-line 'force-deferred)
-        (setq flycheck-idle-change-timer
+z³\õCêåM±"Í©ïjÔši*»%jîœ}‡ÑGºÕ3È9ÅlîÌé8ŞÀ¹8B8Ã9ª½mulCÁP6wÂR[­#£íRì.&p—hK¢ˆ­}õì‰H±–rgßåâÉ´EKïv—^·ÎiR‰YÌ&Áº[?¦­dş;ÎpÙ´MwEÁÈkª/çy¼ëç™£<î¡I§Í–ÛV0)œÍ5	:¶9úıüsp	KI¤„†GJB!Í‘–°Æ r¨>aàğ)C†##a“acPÂ6ÃÇa˜cXÕ4Â1"¡É0Ê1*á.ÃÇ˜„ÏÆ9Æ%´&8&$““¦8¦$<¤c(vĞq¦+tÕŞqËpêzËÜiëVCwLŸƒÎ¸fØºÛs¨Ğ:=§m¬›ş /Û¶áˆ5º«s”;B_ÂÁÕqÿRh2ĞT é@Õ@Í:èP Ã:èX ãN:è”¯ê„ÿbPe}ˆãM¼ÇDÓ¤ş/áaú{\~‰ØôŒŠ±aŠÏ"Ä/ĞşüŞD&4ûŞ~B‡\à\%=™!ä»~†9„éÄf¯L=Ãü“Má=¿ÜSÓ¿1‹`´ü¢,Dù6âWúÕO53ï‡Ÿáƒ§¸&à£>Ë>¸.`5*à†€bL@IÀ:pS@Y•q‚*ª¬
+ÚReä šT´«&í	º¥öº-èÊİô™št_®¦µ=PÓ‚ö¨ª SĞ‘: ÈR3?‡=\Óš}–µfÄÃu­õpCkÆ<”´&ópSkªÔµAB}UêÜ!‰{¨“Ğµï‘ô{¸MÂ=Ü#Iz¸O’òĞ&I{Ø'Q=˜$,í)¦Ÿüí’*ùäÉ$ùq‚¼x™|¸@­ù¯JŞ»K¾;"ç}M®û†|÷-Îã;òİcúî>§ğ¯¸ˆ—¸„W4ówºìppİa|)4
+G¸J¡6C|uüOPKöğ˜ø  l  PK  °†<K            D   org/jetbrains/kotlin/org/jline/terminal/Attributes$ControlFlag.class¥”ÿrWÇ¿»ÀlÈOÒ´U›Ú[©61ÖÄ²¥Å²„£‰Yqãf™Åéô	úéÿºÎÔN;uüÛñ	ú0½»U´şÓI2s¾÷sî¹gï¹ç/ÿşı9€%<dXïö:¹cÃiõtÓîçvË´sÂI#ç½ÓÖ­\Áqzfkàıyµk;½®U²ôk-idle-change-timer
               (run-at-time flycheck-idle-change-delay nil
                            #'flycheck-handle-idle-change))))))
 

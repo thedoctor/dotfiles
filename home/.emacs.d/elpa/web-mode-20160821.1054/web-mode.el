@@ -2448,36 +2448,7 @@ another auto-completion with different ac-sources (e.g. ac-php)")
               open (match-beginning 0)
               delim-open nil
               delim-close nil
-              pos nil)
-
-        (let ((l (length tagopen)))
-          (when (member (string-to-char tagopen) '(?\s ?\t))
-            (setq tagopen (replace-regexp-in-string "\\`[ \t]*" "" tagopen))
-            (setq open (+ open (- l (length tagopen))))
-            (setq l (length tagopen))
-            )
-          (setq sub1 (substring tagopen 0 1)
-                sub2 (substring tagopen 0 (if (>= l 2) 2 1)))
-          )
-        ;;(message " found block #(%S) at pos=(%S), part-type=(%S)" i open (get-text-property open 'part-side))
-        (cond
-
-         ((string= web-mode-engine "php")
-          (unless (member (char-after) '(?x ?X))
-            (setq closing-string '("<\\?". "\\?>")))
-          (cond
-           ((looking-at-p "<?php")
-            (setq delim-open "<?php"))
-           ((eq (char-after) ?\=)
-            (setq delim-open "<?="))
-           (t
-            (setq delim-open "<?"))
-           ) ;cond
-          (setq delim-close "?>")
-          ) ;php
-
-         ((string= web-mode-engine "erb")
-          (cond
+     64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿegaÿÏ×Óÿhjeÿ64.ÿ64.ÿ64.ÿHHBÿÏ×Óÿqsnÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿËÒÍÿŠˆÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿKKEÿÏ×Óÿ½Ã¿ÿÅÌÈÿoqlÿ75/ÿ64.ÿ64.ÿ64.ÿ:82ÿy{wÿÊÑÎÿª°¬ÿ860ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ©¯ªÿÀÆÂÿ:82ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ[[VÿÏ×Óÿnoiÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿegaÿÏ×Óÿhjeÿ64.ÿ64.ÿ64.ÿHHBÿÏ×Óÿqsnÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ (cond
            ((string= sub2 "<%")
             (setq closing-string '("<%". "%>")
                   delim-open "<%[=-]?"
@@ -6076,22 +6047,7 @@ another auto-completion with different ac-sources (e.g. ac-php)")
       (set-process-filter proc
                           (lambda (proc output)
                             (let ((offset 0) overlay pos (old 0) msg)
-                              (remove-overlays (point-min) (point-max) 'font-lock-face 'web-mode-error-face)
-                              (while (string-match
-                                      "line \\([[:digit:]]+\\), col \\([[:digit:]]+\\), \\(.+\\)\\.$"
-                                      output offset)
-                                (setq web-mode-jshint-errors (1+ web-mode-jshint-errors))
-                                (setq offset (match-end 0))
-                                (setq pos (web-mode-coord-position
-                                           (match-string-no-properties 1 output)
-                                           (match-string-no-properties 2 output)))
-                                (when (get-text-property pos 'tag-beg)
-                                  (setq pos (1- pos)))
-                                (when (not (= pos old))
-                                  (setq old pos)
-                                  (setq overlay (make-overlay pos (1+ pos)))
-                                  (overlay-put overlay 'font-lock-face 'web-mode-error-face)
-                                  )
+                              (remove-overlays (point-min) (point-max) 'font-lock-face 64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ                    )
                                 (setq msg (or (overlay-get overlay 'help-echo)
                                                (concat "line="
                                                        (match-string-no-properties 1 output)

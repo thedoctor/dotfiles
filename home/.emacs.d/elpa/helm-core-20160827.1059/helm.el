@@ -1242,29 +1242,10 @@ If INDEX is specified, action is added to the action list at INDEX,
 otherwise added at end.
 This allows users to add specific actions to an existing source
 without modifying source code."
-  (let ((actions    (helm-attr 'action source 'ignorefn))
-        (new-action (list (cons name fn))))
-    (when (functionp actions)
-      (setq actions (list (cons "Default action" actions))))
-    (helm-attrset 'action
-                  (if index
-                      (helm-append-at-nth actions new-action index)
-                    (append actions new-action))
-                  source)))
-
-(defun helm-delete-action-from-source (action-or-name source)
-  "Delete ACTION-OR-NAME from SOURCE.
-ACTION-OR-NAME can either be the name of action or the symbol function
-associated to name."
-  (let* ((actions    (helm-attr 'action source 'ignorefn))
-         (del-action (if (symbolp action-or-name)
-                         (rassoc action-or-name actions)
-                       (assoc action-or-name actions))))
-    (helm-attrset 'action (delete del-action actions) source)))
-
-(cl-defun helm-add-action-to-source-if (name fn source predicate
-                                             &optional (index 4) test-only)
-  "Add new action NAME linked to function FN to SOURCE.
+  (let brains/kotlin/load/java/JavaIncompatibilityRulesOverridabilityCondition$Companion.classµX{xÕÿİİ$³LÖ%„MBE!>€dCÈÆ` ¡“İI2dvf™™V¡µïJí+ÚRi«ÖB¢­ÚÚjßï÷ë¿~ıÚ¯ÿú}ı>è¹w&ûÀ,±æËÎ½÷Ì=gÎùß=÷Î¼~ùÅ—4ão÷™VdŸêôZŠfØ‘AÓÑ5#¢›J"²OR"ít‰q3™R­WÓ5çĞö´®Ú[‡TËÒŠ+j5„æh¦QÓÊgÔ“À*„]1ú#[{÷©qG‚Ÿ¡ù:6:³:<ß¶¨’P¥…Á—òS Œ_$öŠ!øÅÇÀI”hb8>~´^öUùd_ÅøQÙàr™w¹,à­7Ì4Kø«Æ6ûÙz)à»ôT™¯Â×>·Â?ß×XÒ\VQJmµoÛ+*|µò&_{UE9õ‚j§S;c“ïÒÓe3¹cÍ;;Ş)ô	0øk—u3¬L˜ªÍ-yZê&eHÍZÕÕnEO«ÛKIªjmÖŒ„Í0ÓN§TkƒjÇ--å˜Ã-…½Md¦Ø‘VE×²˜U#G¦ÛéŞ\;s4{›¥%Éã!U8l©]&¥«¯¨GlLqkŞ#*“J*?Š®C)•¡î- öúíCI>—ŒTåYÈu¹åÚ~uO¢L†gºÓWpÄ5]%{ÿß¼K3LË$Ÿ!Y;¥\MIiÙN†%Wi*†a:
+wÍtšNgZ×[¨dXäÙÜ7”Œhe(z$j8iiq[ÂÍóâj|0eÔö,0,­í¸º ´äHbÜLË²î j±LÆRÔ0á®k  G*Ì€™È†(a­¢)0SB¤Å7ƒ*ÊV¨_uòYEË2T»Ì8íhz¤C³– Vâİ2pÃŒü{ne(±µÃª(Ñ VcM9nCK9ùüçÎŞu¶­Z"aîdÚ:×­ïhÛ@Ërgk±nîÂz½í ›´°™GÅp|‚‹áš3nİÚ¹±#ÚÚÛ»µ³£'l˜i=&R„{Õ°•öf%´¾>ÕR',–^8•	4Ì}€_•ÍoÆÇ6Ëâmd(»]34‡®,@N„MˆÊ¸í³³÷»,ó G\BC9á¼ÕÒú5
+‹áøš‹iÉ”®(EAtb+ÏÅ6†ÕS6#a{9b"?Y§£„‹ëó½·ãå$şíà¹¿¡öª
+ß`z 4äB; ZâÅªl;˜²TÛ&£‚™ NAME linked to function FN to SOURCE.
 Action NAME will be available when the current candidate matches PREDICATE.
 This function adds an entry in the `action-transformer' attribute
 of SOURCE (or creates one if not found).

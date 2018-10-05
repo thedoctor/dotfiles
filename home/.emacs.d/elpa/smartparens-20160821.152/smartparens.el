@@ -3234,32 +3234,7 @@ common prefix excluding the current pair."
                      ;; current longest possible prefix---otherwise
                      ;; they would overflow to the closing pair
                      ;; TODO: this ignores the possibility when lp is
-                     ;; inserted by trigger.  We assume triggers are
-                     ;; shorter than the openings and this situation,
-                     ;; if ever, should be very rare
-                     (--remove (>= (length (plist-get it :open))
-                                   (length (plist-get lp :open))) pairs)))))))
-
-(defun sp--insert-pair-get-pair-info (active-pair)
-  "Get basic info about the to-be-inserted pair."
-  (let ((open-pair (plist-get active-pair :open)))
-    (list
-     open-pair
-     (plist-get active-pair :close)
-     (-if-let (tr (plist-get active-pair :trigger))
-         (if (sp--looking-back-p (sp--strict-regexp-quote tr)) tr open-pair)
-       open-pair))))
-
-(defun sp-insert-pair (&optional pair)
-  "Automatically insert the closing pair if it is allowed in current context.
-
-If PAIR is provided, use this as pair ID instead of looking
-through the recent history of pressed keys.
-
-You can disable this feature completely for all modes and all pairs by
-setting `sp-autoinsert-pair' to nil.
-
-You can globally disable insertion of closing pair if point is
+                     ;; inser                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                able insertion of closing pair if point is
 followed by the matching opening pair.  It is disabled by
 default."
   (sp--with-case-sensitive

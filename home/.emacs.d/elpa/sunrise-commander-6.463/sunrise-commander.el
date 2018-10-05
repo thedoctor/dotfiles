@@ -192,50 +192,7 @@
 ;; filesystem. Type h at any moment for information on available key bindings.
 
 ;; 6) Type M-x customize-group <RET> sunrise <RET> to customize options, fonts
-;; and colors (activate AVFS support here, too).
-
-;; 7) Enjoy :)
-
-;;; Code:
-
-(require 'advice)
-(require 'desktop)
-(require 'dired)
-(require 'dired-aux)
-(require 'dired-x)
-(require 'enriched)
-(require 'esh-mode)
-(require 'find-dired)
-(require 'font-lock)
-(require 'hl-line)
-(require 'sort)
-(require 'term)
-(require 'tramp)
-(eval-when-compile (require 'cl)
-                   (require 'recentf))
-
-(eval-and-compile
-  (unless (fboundp 'cl-labels)
-    (defalias 'cl-labels 'labels))
-  (unless (fboundp 'cl-letf)
-    (defalias 'cl-letf 'letf)))
-
-(defgroup sunrise nil
-  "The Sunrise Commander File Manager."
-  :group 'files)
-
-(defcustom sr-show-file-attributes t
-  "Whether to initially display file attributes in Sunrise panes.
-You can always toggle file attributes display pressing
-\\<sr-mode-map>\\[sr-toggle-attributes]."
-  :group 'sunrise
-  :type 'boolean)
-
-(defcustom sr-autoload-extensions t
-  "Whether to load extensions immediately after their declaration, or when the
-SC core is loaded (e.g. when using autoload cookies)."
-  :group 'sunrise
-  :type 'boolean)
+;; and colors (activat64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿÁÈÃÿ•š•ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ64.ÿ—œ˜ÿ  :type 'boolean)
 
 (defcustom sr-show-hidden-files nil
   "Whether to initially display hidden files in Sunrise panes.
