@@ -1,0 +1,9 @@
+#!/bin/bash
+type -a brew &> /dev/null || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew update
+type -a pyenv &> /dev/null || brew install pyenv pyenv-virtualenv make cmake
+type -a cargo &> /dev/null || curl https://sh.rustup.rs -sSf | sh
+type -a exa &> /dev/null || cargo install exa
+
+[[ -s "$(brew --prefix dvm)/dvm.sh" ]] && source "$(brew --prefix dvm)/dvm.sh"
+[[ -s "$(brew --prefix dvm)/bash_completion" ]] && source "$(brew --prefix dvm)/bash_completion"

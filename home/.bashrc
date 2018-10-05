@@ -1,6 +1,16 @@
 PATH=$PATH:$HOME/bin:/usr/sbin:$HOME/.util/bin
 export PATH
 
+if [[ $machine = "Mac" ]]; then
+    if [ -f "${HOME}/.bashrc-mac" ]; then
+	source "${HOME}/.bashrc-mac"
+    fi
+elif [[ $machine = "Linux" ]]; then
+    if [ -f "${HOME}/.bashrc-linux" ]; then
+	source "${HOME}/.bashrc-linux"
+    fi
+fi
+
 export EDITOR="emacsclient -t"
 
 export RBENV_ROOT="${HOME}/.rbenv";
@@ -9,61 +19,16 @@ if [[ -d "${RBENV_ROOT}" ]]; then
     eval "$(rbenv init -)";
 fi
 
-# Bitcoin/Sidechains Dev
-bc(){
-    /Users/matt/dev/gem/gembox/projects/elements/build/osx/bitcoin-cli $@;
-}
-btx(){
-    /Users/matt/dev/gem/gembox/projects/elements/build/osx/bitcoin-tx $@;
-}
-ac(){
-    /Users/matt/dev/gem/gembox/projects/elements/build/osx/alpha-cli $@;
-}
-atx(){
-    /Users/matt/dev/gem/gembox/projects/elements/build/osx/alpha-tx $@;
-}
-
 # Ergodox
 updox(){
     cd "${HOME}/dev/ergodox/tmk_keyboard/keyboard/ergodox"
     make -f Makefile.lufa clean && make -f Makefile.lufa
     cd -
-
-    # cd "${HOME}/dev/ergodox"
-    # python3 'build-scripts/gen-ui-info.py' --current-date '2014-06-09 22:35:15+02:00' --git-commit-date '2012-12-20 16:34:08 -0800' --git-commit-id '43ee200b2b6e2e234ee8d13d8824e1d5068ba7d0' --map-file-path 'tmk_keyboard/keyboard/ergodox_lufa.map' --source-code-path 'tmk_keyboard/keyboard' --matrix-file-path 'tmk_keyboard/common/matrix.h' --layout-file-path 'tmk_keyboard/keyboard/ergodox/keymap.c' > ui-info
-    # python3 build-scripts/gen-layout.py --ui-info-file ui-info >layout.html
-    # python -c 'from webbrowser import open_new; open_new("./layout.html");'
-    # cd -
 }
 
 web(){
     # TODO: check for scheme and make a smart guess to prepend one if missing.
     python -c "from webbrowser import open; open('${1}')"
-}
-
-addy(){
-    if [[ $# -eq 0 ]]; then
-        echo "Usage: addy INT(mg) [time]"
-    else
-        if [[ $# -eq 1 ]]; then
-            echo '.' | gcalcli --calendar Medical --title "adderall ${1}mg" --when "`date`" --duration 5 --description '' --where '' add
-        else
-            echo '.' | gcalcli --calendar Medical --title "adderall ${1}mg" --when "${2}" --duration 5 --description '' --where '' add
-        fi
-    fi
-}
-
-gemsave(){
-    if [[ -f "${HOME}/.gemwallet" ]]; then
-        cp "${HOME}/.gemwallet" "${HOME}/.gemwallet.${1}"
-    fi
-}
-
-gemset(){
-    if [[ -f "${HOME}/.gemwallet" ]]; then
-        rm "${HOME}/.gemwallet"
-    fi
-    cp "${HOME}/.gemwallet.${1}" "${HOME}/.gemwallet"
 }
 
 ngrepl(){
@@ -74,6 +39,7 @@ ngrepl(){
 mfind(){
     find "$1" -type f -exec grep -iIHn "$2" {} \;
 }
+
 mrepl(){
     if [[ $# -eq 3 ]]; then
         read -p "Are you sure you want to replace all occurrences of $2 with $3 in $1? [Y/n] " -r
@@ -86,12 +52,12 @@ mrepl(){
     fi
 }
 
-decc(){
-    dec $@ | pbcopy
-}
-
 dec(){
     find ~/.encrypted/ -type f -iregex ".*${1}.*[gpgasc][gpgasc][gpgasc]" -exec gpg -d {} \;
+}
+
+decc(){
+    dec $@ | pbcopy
 }
 
 viscosity(){
@@ -357,31 +323,11 @@ if [[ -f ~/.git-completion.bash ]]; then
 fi
 
 # Python Environment
+
 export PYTHONSTARTUP=~/.pythonrc
 export WORKON_HOME=~/Envs
-
-pip install --upgrade pip &>/dev/null
-
-if [[ ! -e "${HOME}/.local/bin/virtualenvwrapper.sh" ]] &&
-       [[ ! -e "${HOME}/virtualenvwrapper.sh" ]] &&
-       [[ ! -e "/usr/local/bin/virtualenvwrapper.sh" ]]; then
-    pip install --user virtualenv
-    pip install --user virtualenvwrapper
-fi
-
-if [[ -n $SEXY ]]; then
-    if [[ -f "${HOME}/.local/bin/virtualenvwrapper.sh" ]]; then
-        source ~/.local/bin/virtualenvwrapper.sh
-        export PATH="$PATH:${HOME}/.local/bin"
-        workon py
-    elif [[ -f "${HOME}/virtualenvwrapper.sh" ]]; then
-        source ~/virtualenvwrapper.sh
-        workon py
-    elif [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
-        source /usr/local/bin/virtualenvwrapper.sh
-        workon py
-    fi
-fi
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # Basic Shell
 if [[ "$SEXY" != "1" ]]; then
@@ -393,14 +339,6 @@ export PATH="${HOME}/.cargo/bin:$PATH"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:${HOME}/.local/bin:$PATH"
-
-### For tx, bx, and ku (pycoin cli tools)
-export PYCOIN_CACHE_DIR=~/.pycoin_cache
-export PYCOIN_SERVICE_PROVIDERS=BLOCKR_IO:BLOCKCHAIN_INFO:BITEASY:BLOCKEXPLORER
-
-[[ -s "$(brew --prefix dvm)/dvm.sh" ]] && source "$(brew --prefix dvm)/dvm.sh"
-
-[[ -s "$(brew --prefix dvm)/bash_completion" ]] && source "$(brew --prefix dvm)/bash_completion"
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # ^--- well that's bullshit
@@ -415,13 +353,3 @@ case "${unameOut}" in
     MINGW*)     machine=MinGw;;
     *)          machine="UNKNOWN:${unameOut}"
 esac
-
-if [[ $machine = "Mac" ]]; then
-    if [ -f "${HOME}/.bashrc-mac" ]; then
-	source "${HOME}/.bashrc-mac"
-    fi
-elif [[ $machine = "Linux" ]]; then
-    if [ -f "${HOME}/.bashrc-linux" ]; then
-	source "${HOME}/.bashrc-linux"
-    fi
-fi
