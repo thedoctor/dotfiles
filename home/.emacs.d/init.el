@@ -18,8 +18,8 @@
 
 ;; turn off startup screen
 
-(setq inhibit-splash-screen t)
-(setq inhibit-startup-message t)
+(setq inhibit-splash-screen nil)
+(setq inhibit-startup-message nil)
 
 ;; load extensions
 

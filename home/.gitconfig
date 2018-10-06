@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
         name = Matt Smith
-        email = matt.the.smith@gmail.com
+        email = matts@springlabs.com
 [core]
         editor = emacsclient -t
         excludesfile = /Users/matt/.gitignore_global

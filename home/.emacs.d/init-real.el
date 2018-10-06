@@ -13,11 +13,11 @@
 
 ;; elpa
 
-;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-;; (add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/"))
-;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-;; (add-to-list 'package-archives '("sunrise" . "http://joseito.republika.pl/sunrise-commander/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives '("sunrise" . "http://joseito.republika.pl/sunrise-commander/"))
 
 (defconst my-init-dir "~/.emacs.d/init.d")
 (defconst emacs-major-version-rad 1000000)
@@ -83,7 +83,7 @@
   (setq load-dir-debug nil)
   (setq load-dir-recursive t)
   :config
-  (load-dir-one my-init-dir)
   (load my-custom-file t)
+  (load-dir-one my-init-dir)
   (req-package-finish)
   (select-theme))

@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ package-delete
+ package-autoremove
+ elpy
  select-theme
  jedi:complete
  jedi:setup
  jedi:install-server
- package-install
- package-list-packages
- zoom-frm-out
 )
 
 ;; ----- smex-data -----
@@ -63,7 +63,8 @@
  (list-packages . 1)
  (jedi:show-doc . 1)
  (jedi:stop-server . 2)
- (package-autoremove . 1)
- (package-delete . 4)
+ (package-autoremove . 2)
+ (package-delete . 8)
  (jedi:complete . 2)
+ (elpy . 2)
 )
