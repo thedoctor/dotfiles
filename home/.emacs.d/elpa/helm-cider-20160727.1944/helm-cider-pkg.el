@@ -1,1 +1,0 @@
-(define-package "helm-cider" "20160727.1944" "Helm interface to CIDER" '((emacs "24.4") (cider "0.12") (helm-core "1.9") (seq "1.0")) :url "https://github.com/clojure-emacs/helm-cider" :keywords '("tools" "convenience"))
