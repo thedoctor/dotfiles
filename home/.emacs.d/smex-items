@@ -1,21 +1,21 @@
 
 ;; ----- smex-history -----
 (
- package-delete
+ elpy-yapf-fix-code
+ elpy-config
+ elpy-mode
+ elpy-doc
+ python-mode
+ package-install
  package-autoremove
- elpy
- select-theme
- jedi:complete
- jedi:setup
- jedi:install-server
 )
 
 ;; ----- smex-data -----
 (
  (solidity-mode . 6)
- (package-install . 10)
+ (package-install . 11)
  (el-get-install . 1)
- (package-list-packages . 6)
+ (package-list-packages . 7)
  (package-menu-mode . 4)
  (package-menu-mark-delete . 1)
  (package-list-packages-no-fetch . 1)
@@ -25,7 +25,7 @@
  (command-history . 1)
  (delete-frame . 1)
  (jedi:setup . 12)
- (jedi-mode . 6)
+ (jedi-mode . 7)
  (c-set-offset . 2)
  (replace-regexp . 3)
  (flymake-popup-current-error-menu . 38)
@@ -60,11 +60,16 @@
  (jedi:install-server . 4)
  (epc:pop-to-last-server-process-buffer . 1)
  (pkg-info-version-info . 1)
- (list-packages . 1)
+ (list-packages . 2)
  (jedi:show-doc . 1)
  (jedi:stop-server . 2)
- (package-autoremove . 2)
- (package-delete . 8)
+ (package-autoremove . 4)
+ (package-delete . 10)
  (jedi:complete . 2)
- (elpy . 2)
+ (elpy . 3)
+ (python-mode . 2)
+ (elpy-doc . 1)
+ (elpy-mode . 3)
+ (elpy-config . 1)
+ (elpy-yapf-fix-code . 1)
 )

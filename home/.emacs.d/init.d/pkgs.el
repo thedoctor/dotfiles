@@ -2,6 +2,14 @@
 (req-package ace-jump-mode
   :bind ("ESC SPC" . ace-jump-mode))
 
+(req-package python-mode
+  :mode "\\.py\\'" "\\.pythonrc\\'"
+  :config (elpy-mode))
+
+(req-package elpy
+  :require python-mode
+  :config (enable-elpy))
+
 (req-package arduino-mode
   :mode "\\.sketch\\'"
   :defer t)
@@ -30,13 +38,13 @@
          (:map solidity-mode-map ("M-a" . nil))
          (:map solidity-mode-map ("C-M-j" . nil))))
 
-(req-package jedi
-  :mode ("\\.py\\'" . python-mode) ( "\\.pythonrc\\'" . python-mode)
-  :interpreter ("python" . python-mode)
-  :init (setq jedi:complete-on-dot t)
-  :config
-  ((add-hook 'python-mode-hook 'jedi:setup)
-   (add-hook 'python-mode-hook (lambda () (setq python-indent-offset 4)))))
+;; (req-package jedi
+;;   :mode ("\\.py\\'" . python-mode) ( "\\.pythonrc\\'" . python-mode)
+;;   :interpreter ("python" . python-mode)
+;;   :init (setq jedi:complete-on-dot t)
+;;   :config
+;;   ((add-hook 'python-mode-hook 'jedi:setup)
+;;    (add-hook 'python-mode-hook (lambda () (setq python-indent-offset 4)))))
 
 (req-package rubocop
   :mode "\\.rb\\'" "Rakefile"
