@@ -1,14 +1,15 @@
+(req-package smex)
 
 (req-package ace-jump-mode
   :bind ("ESC SPC" . ace-jump-mode))
 
-(req-package python-mode
-  :mode "\\.py\\'" "\\.pythonrc\\'"
-  :config (elpy-mode))
-
 (req-package elpy
   :require python-mode
   :config (enable-elpy))
+
+(req-package python-mode
+  :mode "\\.py\\'" "\\.pythonrc\\'"
+  :config (elpy-mode))
 
 (req-package arduino-mode
   :mode "\\.sketch\\'"

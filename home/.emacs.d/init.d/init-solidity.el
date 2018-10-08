@@ -13,7 +13,7 @@
 ;;  :require flymake-solidity
   :mode "\\.sol\\'"
   :config
-  (setq solidity-solc-path "/usr/local/bin/solc")
+  (setq solidity-solc-path "/usr/local/bin/solcjs")
   :init
   (add-hook
    'after-change-major-mode-hook
