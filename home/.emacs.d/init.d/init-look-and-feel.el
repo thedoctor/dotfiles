@@ -3,31 +3,29 @@
 ;; cursor configuration
 
 (setq-default cursor-type 'box)
-(blink-cursor-mode 0)
+(blink-cursor-mode 1)
 
 ;; use timeclock
 
 (req-package timeclock
+  :ensure t
   :config (progn (display-time-mode 1)))
 
 ;; highlight number in code
 
 (req-package highlight-numbers
+  :ensure t
   :config (add-hook-exec 'find-file (lambda () (highlight-numbers-mode 1))))
 
 ;; some very useful extension
 
 (req-package nyan-mode
+  :ensure t
   :config (progn (setq nyan-animation-frame-interval 0.1)
                  (setq nyan-bar-length 8)
                  (setq nyan-wavy-trail t)
                  (nyan-mode)
                  (nyan-start-animation)))
-
-;; beacon
-
-(req-package beacon
-  :config (beacon-mode))
 
 ;; customizations
 
@@ -38,13 +36,14 @@
 ;; main line
 
 (req-package smart-mode-line
+  :ensure t
   :config
   (progn (setq sml/shorten-modes t)
          (setq sml/shorten-directory t)
          (setq sml/name-width 20)
          (setq sml/mode-width 'full)
          (setq sml/hidden-modes nil)
-         (setq sml/theme nil)
+		 (setq sml/theme nil)
          (add-to-list 'sml/hidden-modes " Anzu")
          (add-to-list 'sml/hidden-modes " AC")
          (add-to-list 'sml/hidden-modes " yas")
@@ -54,8 +53,9 @@
          (add-to-list 'sml/hidden-modes " ARev")
          (add-to-list 'sml/hidden-modes " SliNav")
          (add-to-list 'sml/hidden-modes " ElDoc")
-         ;; (add-to-list 'sml/hidden-modes " company")
+         (add-to-list 'sml/hidden-modes " company")
          (add-to-list 'sml/hidden-modes " overseer")
+         (add-to-list 'sml/hidden-modes " Guide")
          (sml/setup)))
 
 ;; theme
@@ -68,134 +68,72 @@
   (when custom-fn
     (puthash theme custom-fn my-theme-customizations)))
 
-(defun normalize-faces (faces)
-  (dolist (face faces)
-    (progn
-      (set-face-attribute face nil :family "menlo")
-      (set-face-attribute face nil :underline nil)
-      (set-face-attribute face nil :box nil)
-      (set-face-attribute face nil :height 1.0)
-      (set-face-attribute face nil :width 'normal)
-      (set-face-attribute face nil :weight 'normal))))
+;; (normalize-faces (face-list))
 
-(defun normalize-common-faces ()
-  (eval-after-load 'smartparens
-    (normalize-faces '(show-paren-match)))
-  (eval-after-load 'org-faces
-    (normalize-faces '(org-level-1
-                       org-level-2
-                       org-level-3
-                       org-level-4
-                       org-level-5
-                       org-level-6
-                       org-level-7
-                       org-level-8
-                       org-todo
-                       org-done
-                       org-document-title))))
+(req-package soothe-theme
+  :ensure t
+  :require smart-mode-line
+  :defer t
+  :init
+  (add-theme 'soothe))
 
-;; (req-package soothe-theme
-;;   :require smart-mode-line
-;;   :defer t
-;;   :init
-;;   (add-theme 'soothe))
+(req-package gotham-theme
+  :ensure t
+  :require smart-mode-line
+  :defer t
+  :init
+  (add-theme 'gotham))
 
-;; (req-package gotham-theme
-;;   :require smart-mode-line
-;;   :defer t
-;;   :init
-;;   (add-theme 'gotham))
+(req-package kaolin-themes
+  :ensure t
+  :require smart-mode-line
+  :defer t
+  :init
+  (add-theme 'kaolin-dark)
+  (add-theme 'kaolin-ocean)
+  (add-theme 'kaolin-eclipse))
 
 (req-package gruvbox-theme
+  :ensure t
   :require smart-mode-line
   :defer t
   :init
   (add-theme 'gruvbox))
 
-(req-package firebelly-theme
+(req-package darktooth-theme
+  :ensure t
   :require smart-mode-line
   :defer t
   :init
-  (add-theme 'firebelly))
-
-;; (req-package darktooth-theme
-;;   :require smart-mode-line
-;;   :defer t
-;;   :init
-;;   (add-theme 'darktooth))
-
-;; (req-package hc-zenburn-theme
-;;   :require smart-mode-line
-;;   :defer t
-;;   :init
-;;   (add-theme 'hc-zenburn))
-
-;; (req-package dracula-theme
-;;   :require smart-mode-line
-;;   :defer t
-;;   :init
-;;   (add-theme 'dracula))
-
-;; (req-package reykjavik-theme
-;;   :require smart-mode-line
-;;   :defer t
-;;   :init
-;;   (add-theme 'reykjavik))
+  (add-theme 'darktooth))
 
 (req-package jazz-theme
+  :ensure t
   :require smart-mode-line
   :defer t
   :init
   (add-theme 'jazz))
 
-;; (req-package cyberpunk-theme
-;;   :require smart-mode-line
-;;   :defer t
-;;   :init
-;;   (add-theme 'cyberpunk
-;;              (lambda ()
-;;                (normalize-common-faces))))
-
-(req-package mbo70s-theme
-  :require smart-mode-line
-  :defer t
-  :init
-  (add-theme 'mbo70s))
-
 (req-package yoshi-theme
+  :ensure t
   :require smart-mode-line
   :defer t
   :init
   (add-theme 'yoshi))
 
-(req-package suscolors-theme
-  :require smart-mode-line
-  :defer t
-  :init
-  (add-theme 'suscolors))
-
-;; (req-package danneskjold-theme
-;;   :require smart-mode-line
-;;   :defer t
-;;   :init
-;;   (add-theme 'danneskjold))
-
 (req-package plan9-theme
+  :ensure t
   :require smart-mode-line
   :defer t
   :init
-  (add-theme 'plan9
-             (lambda ()
-               (normalize-common-faces))))
+  (add-theme 'plan9))
 
 (req-package sublime-themes
+  :ensure t
   :require smart-mode-line
   :defer t
   :init
-;;  (add-theme 'spolsky)
-;;  (add-theme 'graham)
-;;  (add-theme 'odersky)
-;;  (add-theme 'junio)
+  (add-theme 'junio)
   (add-theme 'wilson))
 
 (defun select-theme (&optional theme)
@@ -220,6 +158,7 @@
 ;; anzu
 
 (req-package anzu
+  :ensure t
   :require
   smart-mode-line
   :config
@@ -250,30 +189,44 @@
 ;; todo, fixme highlighting
 
 (req-package fic-mode
+  :ensure t
   :config
   (add-hook-exec 'prog-mode (lambda () (fic-mode 1))))
 
 (req-package rainbow-delimiters
+  :ensure t
+  :commands rainbow-delimiters-mode
+  :init
+  (custom-set-variables '(rainbow-delimiters-max-face-count 8))
+  (add-hook-exec 'emacs-lisp-mode (lambda () (rainbow-delimiters-mode 1))))
+
+(req-package rainbow-delimiters
+  :ensure t
   :require clojure-mode
   :commands rainbow-delimiters-mode
-  :init (progn (custom-set-variables '(rainbow-delimiters-max-face-count 8))
-               (custom-set-faces '(rainbow-delimiters-depth-1-face ((t (:inherit org-level-1)))))
-               (custom-set-faces '(rainbow-delimiters-depth-2-face ((t (:inherit org-level-2)))))
-               (custom-set-faces '(rainbow-delimiters-depth-3-face ((t (:inherit org-level-3)))))
-               (custom-set-faces '(rainbow-delimiters-depth-4-face ((t (:inherit org-level-4)))))
-               (custom-set-faces '(rainbow-delimiters-depth-5-face ((t (:inherit org-level-5)))))
-               (custom-set-faces '(rainbow-delimiters-depth-6-face ((t (:inherit org-level-6)))))
-               (custom-set-faces '(rainbow-delimiters-depth-7-face ((t (:inherit org-level-7)))))
-               (custom-set-faces '(rainbow-delimiters-depth-8-face ((t (:inherit org-level-8)))))
-               (add-hook-exec 'emacs-lisp-mode (lambda () (rainbow-delimiters-mode 1)))
-               (add-hook-exec 'clojure-mode (lambda () (rainbow-delimiters-mode 1)))))
+  :init
+  (add-hook-exec 'clojure-mode (lambda () (rainbow-delimiters-mode 1))))
 
 ;; diff highlight
 
+(req-package smartrep
+  :ensure t)
+
 (req-package diff-hl
+  :ensure t
   :require smartrep
   :config
   (global-diff-hl-mode 1)
   (global-set-key (kbd "C-x v R") 'diff-hl-revert-hunk))
+
+(req-package nameless
+  :ensure t
+  :config (add-hook-exec 'emacs-lisp-mode #'nameless-mode))
+
+(req-package dash
+  :ensure t
+  :config
+  (dash-enable-font-lock)
+  (message "loaded"))
 
 (provide 'init-look-and-feel)

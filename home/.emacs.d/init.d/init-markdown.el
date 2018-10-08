@@ -3,6 +3,6 @@
 ;; md mode
 
 (req-package markdown-mode
-  :mode "\\.text\\'" "\\.md\\'" "\\.markdown\\'")
+  :ensure t :mode "\\.md\\'")
 
 (provide 'init-markdown)

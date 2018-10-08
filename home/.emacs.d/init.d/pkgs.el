@@ -31,14 +31,6 @@
   :mode "\\.php\\'" "\\.module\\'" "\\.css.php\\'" "\\.inc\\'"
   :interpreter "php")
 
-;; (req-package jedi
-;;   :mode ("\\.py\\'" . python-mode) ( "\\.pythonrc\\'" . python-mode)
-;;   :interpreter ("python" . python-mode)
-;;   :init (setq jedi:complete-on-dot t)
-;;   :config
-;;   ((add-hook 'python-mode-hook 'jedi:setup)
-;;    (add-hook 'python-mode-hook (lambda () (setq python-indent-offset 4)))))
-
 (req-package rubocop
   :mode "\\.rb\\'" "Rakefile"
   :interpreter "ruby"
@@ -76,7 +68,13 @@
    (add-hook 'c++-mode-hook 'my-c++-mode-hook)
    (add-hook 'c-mode-hook 'my-c++-mode-hook)))
 
+(req-package windmove)
+(req-package buffer-move)
+(req-package revive)
+(req-package dash)
+(req-package web-mode)
 (req-package flycheck)
+
 (req-package helm)
 (req-package helm-ls-git)
 (req-package helm-fuzzy-find)

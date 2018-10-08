@@ -3,6 +3,7 @@
 ;; xt mosue
 
 (req-package xt-mouse
+  :ensure t
   :require mouse
   :config (progn (xterm-mouse-mode 1)
                  (defun track-mouse (e))))
@@ -10,7 +11,8 @@
 (req-package mouse
   :config (progn (global-set-key (kbd "<C-down-mouse-1>") nil)
                  (global-set-key (kbd "<C-down-mouse-2>") nil)
-                 (global-set-key (kbd "<C-down-mouse-3>") nil)))
+                 (global-set-key (kbd "<C-down-mouse-3>") nil)
+                 (global-set-key (kbd "<mouse-3>") nil)))
 
 ;; smooth mouse scroll
 

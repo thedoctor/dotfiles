@@ -1,63 +1,84 @@
 (require 'req-package)
 
 (req-package shift-number
+  :ensure t
   :bind (("C-M-<up>" . shift-number-up)
          ("C-M-<down>" . shift-number-down)))
 
-;; (req-package twittering-mode
-;;   :commands twit
-;;   :config
-;;   (setq twittering-icon-mode t)
-;;   (setq twittering-use-icon-storage t)
-;;   (load "~/Dropbox/emacs/twittering-custom.el" t)
-;;   (setq twittering-use-master-password t)
-;;   (twittering-enable-unread-status-notifier))
+(req-package bool-flip
+  :ensure t
+  :bind (("C-M-^" . bool-flip-do-flip)))
+
+(req-package twittering-mode
+  :ensure t
+  :commands twit
+  :config
+  (setq twittering-icon-mode t)
+  (setq twittering-use-icon-storage t)
+  (load "~/Dropbox/emacs/twittering-custom.el" t)
+  (setq twittering-use-master-password t)
+  (twittering-enable-unread-status-notifier))
+
+(req-package mastodon
+  :ensure t
+  :commands mastodon
+  :init (setq mastodon-instance-url "https://mastodon.social"))
 
 (req-package multifiles
+  :ensure t
   :bind ("C-!" . mf/mirror-region-in-multifile))
 
 ;; proced
 
 (req-package proced
+  :ensure t
   :commands proced
   :config (setq-default proced-filter 'all))
 
 ;; zoom frame
 
 (req-package zoom-frm
+  :ensure t
   :commands zoom-in/out
   :init (progn (define-key ctl-x-map [(control ?+)] 'zoom-in/out)
-               (define-key ctl-x-map [(control ?-)] 'zoom-in/out)
-               (define-key ctl-x-map [(control ?=)] 'zoom-in/out)
-               (define-key ctl-x-map [(control ?0)] 'zoom-in/out)))
+			   (define-key ctl-x-map [(control ?-)] 'zoom-in/out)
+			   (define-key ctl-x-map [(control ?=)] 'zoom-in/out)
+			   (define-key ctl-x-map [(control ?0)] 'zoom-in/out)))
 
 ;; process management
 
-(req-package list-processes+
+(req-package list-processes
   :bind ("<f2>" . list-processes+))
 
 ;; camcoder
 
-(req-package camcorder :commands camcorder-record)
+(req-package camcorder
+  :ensure t
+  :commands camcorder-record)
 
 ;; edit server
 
 (req-package edit-server
+  :ensure t
   :config (edit-server-start))
 
 ;; emacs bugtracker
 
-(req-package debbugs :commands debbugs)
+(req-package debbugs
+  :ensure t
+  :commands debbugs)
 
 ;; open recent files
 
 (req-package recentf
+  :ensure t
   :config (recentf-mode 1))
 
 ;; revertible delete other windows
 
-;; (req-package zygospore
-;;   :chords ((";1" . zygospore-toggle-delete-other-windows)))
+(req-package zygospore
+  :ensure t
+  :chords ((";1" . zygospore-toggle-delete-other-windows)))
 
 ;; delete trailing whitespaces before saving some buffer
 
@@ -66,96 +87,127 @@
 ;; temp file
 
 (req-package find-temp-file
+  :ensure t
   :bind ("C-x C-t" . find-temp-file))
 
 ;; narrow region to other window
 
-(req-package narrow-indirect)
+(req-package narrow-indirect
+  :ensure t)
 
 ;; shit text left/right
-;; TODO try this
+
 (req-package smart-shift
+  :ensure t
   :bind (("C-{" . smart-shift-left)
          ("C-}" . smart-shift-right)))
 
 ;; save kill ring to disk
-;; Hahaaaaa, no
-;; (req-package savekill
-;;   :config (progn (setq savekill-max-saved-items nil)
-;;                  (load save-kill-file-name t)))
+
+(req-package savekill
+  :ensure t
+  :config (progn (setq savekill-max-saved-items nil)
+                 (load save-kill-file-name t)))
 
 ;; google tanslate
 
-(req-package google-translate
-  :init (require 'google-translate-smooth-ui)
+(req-package google-translate-smooth-ui
+  :ensure google-translate
   :bind ("C-c t" . google-translate-smooth-translate))
 
-;; I'm good.
-;; (req-package define-word
-;;   :bind ("C-c d" . define-word-at-point))
+(req-package define-word
+  :ensure t
+  :bind ("C-c d" . define-word-at-point))
 
 ;; swith off some warnings
 
 (req-package warnings
+  :ensure t
   :config (add-to-list 'warning-suppress-types '(undo discard-info)))
 
 ;; use fuzzy for M-x
-;; Dis good
+
 (req-package smex
+  :ensure t
   :bind ("M-x" . smex)
   :config (smex-initialize))
 
 ;; googling
-;; (req-package google-this)
+
+(req-package google-this
+  :commands google-this
+  :ensure t)
 
 ;; string edit
-;; TODO: use this
+
 (req-package string-edit
-  :config (global-set-key (kbd "C-c e") 'string-edit-at-point))
+  :ensure t
+  :bind ("C-c e" . string-edit-at-point))
 
 ;; paradox
 
-(req-package paradox)
+(req-package paradox
+  :ensure t
+  :chords ((";p" . paradox-list-packages)))
 
 ;; multiple cursors
-;; TODO: Consider this.
-;; (req-package multiple-cursors
-;;   :init
-;;   (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-;;   (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-;;   (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-;;   (global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this))
+
+(req-package multiple-cursors
+  :ensure t
+  :bind (("C-S-c C-S-c" . mc/edit-lines)
+         ("C-<" . mc/mark-previous-like-this)
+         ("C->" . mc/mark-next-like-this)
+         ("C-c ." . mc/mark-all-like-this)
+         ("C-M->" . mc/skip-to-next-like-this)
+         ("C-M-<" . mc/skip-to-previous-like-this)))
 
 ;; ant
-;; nope
-;; (req-package ant)
+
+(req-package ant
+  :ensure t
+  :commands ant)
 
 ;; sos
-;; nah
-;; (req-package sos :commands sos)
+
+(req-package sos
+  :ensure t
+  :commands sos)
 
 ;; howdoi
 
-;; (req-package howdoi)
+(req-package howdoi
+  :ensure t
+  :commands howdoi-query)
 
 ;; swoop
-;; looks cool, but meh
-;; (req-package swoop :commands swoop)
+
+(req-package swoop
+  :ensure t
+  :commands swoop)
 
 ;; save history
-;; sure
+
 (req-package savehist
+  :ensure t
   :config (savehist-mode 1))
 
 ;; sudo support
-;; nah
-;; (req-package sudo-ext)
+
+(req-package sudo-ext
+  :ensure t)
 
 ;; scratch persist
 
-;; (req-package scratch-persist
-;;   :require (eldoc hl-defined scratch-ext)
-;;   :init (setq scratch-persist-file "~/Dropbox/emacs/scratch.el"))
+(req-package hl-defined
+  :ensure t)
+
+(req-package scratch-ext
+  :ensure t)
+
+(req-package scratch-persist
+  :ensure t
+  :require (eldoc hl-defined scratch-ext)
+  :init (setq scratch-persist-file "~/Dropbox/emacs/scratch.el"))
 
 ;; indentation
 
@@ -164,7 +216,7 @@
 (add-hook-exec 'find-file (lambda () (setq indent-tabs-mode nil)))
 (electric-indent-mode 1)
 
-;; show keystrokes early
+;; show keystrockes early
 
 (setq echo-keystrokes 0.2)
 
@@ -173,8 +225,8 @@
 (setq set-mark-command-repeat-pop t)
 
 ;; save bookmarks on emacs exit
-;; dunno wat this is
-;; (setq-default bookmark-save-flag 1)
+
+(setq-default bookmark-save-flag 1)
 
 ;; do not use dialog boxes
 
@@ -205,140 +257,160 @@
 ;; switch window
 
 (req-package ace-window
-;;  :chords ((";o" . ace-window))
+  :ensure t
+  :chords ((";o" . ace-window))
   :bind (("C-x o" . ace-window)))
 
 ;; ace jump mode
 
 (req-package ace-jump-mode
-  :bind (("M-SPC" . ace-jump-word-mode)))
-  ;;        ("M-'" . ace-jump-char-mode)
-  ;;        ("M-g M-g" . ace-jump-line-mode)))
-
+  :ensure t
+  :bind (("M-/" . ace-jump-word-mode)
+         ("M-'" . ace-jump-char-mode)
+         ("M-g M-g" . ace-jump-line-mode)))
 
 ;; quickly jump to links
 
-;; (req-package ace-link :config (ace-link-setup-default))
+(req-package ace-link
+  :ensure t
+  :bind ("M-/" . ace-jump-word-mode)
+  :config (ace-link-setup-default))
 
 ;; ace jump buffer
 
 (req-package ace-jump-buffer
+  :ensure t
   :require (shell)
-  :bind ("C-x C-b" . ace-jump-buffer))
+  :bind ("M-?" . ace-jump-buffer))
 
 ;; move text
-;; TODO: should reduce C-w's
+
 (req-package move-text
-  :config (progn (global-set-key (kbd "M-n") 'move-text-down)
-                 (global-set-key (kbd "M-p") 'move-text-up)))
+  :ensure t
+  :bind (("M-n" . move-text-down)
+         ("M-p" . move-text-up)))
 
 ;; duplicate thing
 
-;; (req-package duplicate-thing
-;;   :config (progn (global-set-key (kbd "M-c") 'duplicate-thing)))
+(req-package duplicate-thing
+  :ensure t
+  :bind ("M-c" . duplicate-thing))
 
 ;; smart parenthesis
 
 (req-package smartparens-config
-  :require smartparens
-  :config (progn (smartparens-global-mode 0)
-                 (smartparens-global-strict-mode 0)
-                 (show-smartparens-global-mode t)))
-                 ;; (global-set-key (kbd "C-M-a") 'sp-beginning-of-sexp)
-                 ;; (global-set-key (kbd "C-M-e") 'sp-end-of-sexp)
-                 ;; (global-set-key (kbd "C-M-k") 'sp-kill-sexp)
-                 ;; (global-set-key (kbd "C-M-k") 'sp-kill-sexp)
-                 ;; (global-set-key (kbd "C-M-n") 'sp-forward-sexp)
-                 ;; (global-set-key (kbd "C-M-p") 'sp-backward-sexp)
-                 ;; (global-set-key (kbd "C-M-b") 'sp-up-sexp)
-                 ;; (global-set-key (kbd "C-M-f") 'sp-down-sexp)))
+  :ensure smartparens
+  :config (progn (smartparens-global-mode t)
+                 (add-hook-exec 'clojure-mode 'smartparens-strict-mode)
+                 (add-hook-exec 'emacs-lisp-mode 'smartparens-strict-mode)
+                 (add-hook-exec 'css-mode 'smartparens-strict-mode)
+                 (add-hook-exec 'rust-mode 'smartparens-strict-mode)
+                 (show-smartparens-global-mode t)
+                 (global-set-key (kbd "C-M-a") 'sp-beginning-of-sexp)
+                 (global-set-key (kbd "C-M-e") 'sp-end-of-sexp)
+                 (global-set-key (kbd "C-M-k") 'sp-kill-sexp)
+                 (global-set-key (kbd "C-M-k") 'sp-kill-sexp)
+                 (global-set-key (kbd "C-M-n") 'sp-forward-sexp)
+                 (global-set-key (kbd "C-M-p") 'sp-backward-sexp)
+                 (global-set-key (kbd "C-M-b") 'sp-up-sexp)
+                 (global-set-key (kbd "C-M-f") 'sp-down-sexp)))
 
 ;; auto reverting
 
-;; (req-package autorevert
-;;   :config (progn (setq global-auto-revert-non-file-buffers t)
-;;                  (setq auto-revert-interval 0.5)
-;;                  (setq auto-revert-verbose nil)
-;;                  (add-to-list 'auto-mode-alist '("\\.log\\'" . auto-revert-tail-mode))))
+(req-package autorevert
+  :ensure t
+  :config (progn (setq global-auto-revert-non-file-buffers nil)
+                 (setq auto-revert-interval 0.5)
+                 (setq auto-revert-verbose nil)
+                 (add-to-list 'auto-mode-alist '("\\.log\\'" . auto-revert-tail-mode))))
 
 ;; shrink/enlarge window
 
-(global-set-key (kbd "s-{") (lambda () (interactive) (shrink-window 10 1)))
-(global-set-key (kbd "s-}") (lambda () (interactive) (enlarge-window 10 1)))
-(global-set-key (kbd "s-?") (lambda () (interactive) (shrink-window 5 nil)))
-(global-set-key (kbd "s-\"") (lambda () (interactive) (enlarge-window 5 nil)))
-(global-set-key (kbd "s-]") (lambda () (interactive) (other-window 1)))
-(global-set-key (kbd "s-[") (lambda () (interactive) (other-window -1)))
+(global-set-key (kbd "C-M-{") (lambda () (interactive) (shrink-window 10 1)))
+(global-set-key (kbd "C-M-}") (lambda () (interactive) (enlarge-window 10 1)))
+(global-set-key (kbd "C-M-?") (lambda () (interactive) (shrink-window 5 nil)))
+(global-set-key (kbd "C-M-\"") (lambda () (interactive) (enlarge-window 5 nil)))
+(global-set-key (kbd "C-M-]") (lambda () (interactive) (other-window 1)))
+(global-set-key (kbd "C-M-[") (lambda () (interactive) (other-window -1)))
 
 ;; expand region
 
 (req-package expand-region
+  :ensure t
   :bind ("M-=" . er/expand-region)
   :init (eval-after-load 'dired '(define-key dired-mode-map (kbd "M-=") 'er/expand-region)))
 
 ;; desc unbound keys
 
-(req-package unbound)
+(req-package unbound
+  :ensure t
+  :commands describe-unbound-keys)
 
 ;; rotate
 
 (req-package rotate
-  :config
-  (global-set-key (kbd "s-P") 'rotate-layout))
+  :ensure t
+  :bind ("C-M-s-<return>" . rotate-layout))
 
 ;; rectangles
 
-;; (req-package rectangle-utils
-;;   :bind ("C-x r e" . extend-rectangle-to-end))
+(req-package rectangle-utils
+  :ensure t
+  :bind ("C-x r e" . rectangle-utils-extend-rectangle-to-end))
 
-;; Could be cool, buuuuut, meh
-;; (req-package prodigy
-;;   :commands prodigy)
+(req-package prodigy
+  :ensure t
+  :commands prodigy)
 
-;; Cool, but will I ever use it?
-(req-package symon
-  :disabled t
-  :config (symon-mode 1))
-
-;; Colors don't work.
-;; (req-package fireplace
-;;   :commands fireplace)
-
-(req-package keyfreq
-  :config
-  (keyfreq-mode 1)
-  (keyfreq-autosave-mode 1))
+(req-package fireplace
+  :ensure t
+  :commands fireplace)
 
 (req-package neotree
+  :ensure t
   :commands neotree)
 
 (req-package idle-highlight-mode
+  :ensure t
+  :require org-faces
   :config
-  (setq idle-highlight-idle-time 1.0)
-  (set-face-attribute 'idle-highlight nil :inherit 'underline)
+  (setq idle-highlight-idle-time 0.5)
+  (set-face-attribute 'idle-highlight nil :inherit 'org-todo)
   (add-hook-exec 'emacs-lisp-mode 'idle-highlight-mode))
 
 (req-package idle-highlight-mode
+  :ensure t
   :require clojure-mode
   :config (add-hook-exec 'clojure-mode 'idle-highlight-mode))
 
 (req-package idle-highlight-mode
+  :ensure t
   :require sgml-mode
   :config (add-hook-exec 'sgml-mode 'idle-highlight-mode))
 
-;; Love it
 (req-package guide-key
+  :ensure t
   :config
-  (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x v" "C-x C-a" "C-c" "C-x" "C-c C-v"))
+  (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x v" "C-x C-a" "C-c" "C-x" "C-c C-v" "C-c C-t" "C-c C-m" "C-x c"))
   (guide-key-mode 1))
 
-;; (req-package elfeed
-;;   :commands elfeed
-;;   :config
-;;   (setf url-queue-timeout 60)
-;;   (load "~/Dropbox/emacs/elfeed-feeds.el" t)
-;;   (setq elfeed-db-directory "~/Dropbox/emacs/elfeed")
-;;   (setq elfeed-enclosure-default-dir "~/Dropbox/emacs")
-;;   (setq elfeed-search-filter "@1-months-ago +unread"))
+;; (req-package easy-kill
+;;   :config (global-set-key [remap kill-ring-save] 'easy-kill))
+
+(req-package podcaster
+  :commands podcaster
+  :ensure t
+  :config (setq podcaster-feeds-urls '("http://feeds.cognitect.com/cognicast/feed.rss")))
+
+(req-package wotd
+  :ensure t
+  :commands wotd-all wotd-select)
+
+(req-package neotree
+  :bind ("C-c C-f C-d" . neotree-toggle))
+
+(req-package protobuf-mode
+  :ensure t
+  :mode (("proto\\'" . protobuf-mode)))
 
 (provide 'init-ext)

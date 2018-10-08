@@ -1,41 +1,24 @@
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
+;(package-initialize)
 
 (require 'package)
 
 ;; bootstrap utils
 
 (defconst my-custom-file "~/.emacs.d/custom.el")
-(defconst my-init-dir "~/.emacs.d/init.d")
 
-(setq package-enable-at-startup t)
+(setq custom-file my-custom-file)
+(setq package-enable-at-startup nil)
+;; (load my-custom-file t)
 (setq auto-save-default nil)
-(setq make-backup-files t)
+(setq make-backup-files nil)
 (put 'erase-buffer 'disabled nil)
+(setq vc-follow-symlinks t)
 
-;; turn off startup screen
+;; turn off sctartup screen
 
-(setq inhibit-splash-screen nil)
-(setq inhibit-startup-message nil)
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
 
 ;; load extensions
 
 (add-hook 'after-init-hook (lambda () (load "~/.emacs.d/init-real.el")))
-;; (custom-set-variables
-;;  ;; custom-set-variables was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(package-selected-packages
-;;    (quote
-;;     (el-get load-dir req-package use-package-chords use-package))))
-;; (custom-set-faces
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  )
