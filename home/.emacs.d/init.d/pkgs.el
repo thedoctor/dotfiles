@@ -30,14 +30,6 @@
   :mode "\\.php\\'" "\\.module\\'" "\\.css.php\\'" "\\.inc\\'"
   :interpreter "php")
 
-(req-package solidity-mode
-  :require flymake-solidity
-  :mode "\\.sol\\'"
-  :init (setq solidity-solc-path "/usr/local/bin/solc")
-  :bind ((:map solidity-mode-map ("M-j" . nil))
-         (:map solidity-mode-map ("M-a" . nil))
-         (:map solidity-mode-map ("C-M-j" . nil))))
-
 ;; (req-package jedi
 ;;   :mode ("\\.py\\'" . python-mode) ( "\\.pythonrc\\'" . python-mode)
 ;;   :interpreter ("python" . python-mode)
