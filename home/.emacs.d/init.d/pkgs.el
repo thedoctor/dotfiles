@@ -5,7 +5,8 @@
 
 (req-package elpy
   :require python-mode
-  :config (enable-elpy))
+  :config
+  (enable-elpy))
 
 (req-package python-mode
   :mode "\\.py\\'" "\\.pythonrc\\'"
@@ -46,9 +47,10 @@
 (req-package go-errcheck
   :require go-mode
   :init
-  (add-hook 'after-change-major-mode-hook (lambda() (if (equal major-mode 'go-mode)
-                                                        (add-hook 'before-save-hook 'gofmt-before-save)
-                                                      (remove-hook 'before-save-hook 'gofmt-before-save)))))
+  (add-hook 'after-change-major-mode-hook
+            (lambda() (if (equal major-mode 'go-mode)
+                          (add-hook 'before-save-hook 'gofmt-before-save)
+                        (remove-hook 'before-save-hook 'gofmt-before-save)))))
 
 (req-package c++-mode
   :mode ("\\.h\\'" . c++-mode) ("\\.cpp\\'" . c++-mode)
@@ -70,7 +72,10 @@
 
 (req-package windmove)
 (req-package buffer-move)
-(req-package revive)
+(req-package revive
+  :config
+  ((setq-default default-directory "~/.emacs.d/revive")))
+
 (req-package dash)
 (req-package web-mode)
 (req-package flycheck)
@@ -116,7 +121,10 @@
               (unless (equal major-mode 'fundamental-mode) (column-marker-1 81))
               ;; Python is actually 79
               (if (or (equal major-mode 'python-mode)
-                      (equal major-mode 'jedi-mode)) (column-marker-1 80))
+                      (equal major-mode 'jedi-mode)
+                      ;; smh spring
+                      (equal major-mode 'elpy-mode)) (column-marker-1 121))
+                      ;;(equal major-mode 'elpy-mode)) (column-marker-1 80))
               ;; And the fatties are 100
               (if (or (equal major-mode 'java-mode)
                       (equal major-mode 'json-mode)

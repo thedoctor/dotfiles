@@ -105,6 +105,14 @@
 ;; TODO Figure out indent region.
 ;; (global-set-key (kbd "<C-tab>") 'indent-region)
 
+;; paragraph up/down
+(global-set-key (kbd "C-<up>") 'backward-paragraph)
+(global-set-key (kbd "C-<down>") 'forward-paragraph)
+(define-key elpy-mode-map (kbd "C-<up>") 'backward-paragraph)
+(define-key elpy-mode-map (kbd "C-<down>") 'forward-paragraph)
+(define-key elpy-mode-map (kbd "C-M-g") 'elpy-goto-definition)
+(define-key elpy-mode-map (kbd "C-M-i") 'enlarge-window-three)
+
 ;; line-mode for editing, char-mode for terminal
 (global-set-key (kbd "C-x x") 'toggle-term-mode)
 
