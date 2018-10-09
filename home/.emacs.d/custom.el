@@ -6,6 +6,7 @@
  '(package-selected-packages
    (quote
     (hl-defined narrow-indirect zoom-frm dummy-h-mode zygospore ztree yoshi-theme yaml-mode xmlgen wotd wgrep visual-regexp-steroids use-package-el-get use-package-chords unbound twittering-mode toml-mode swoop sudo-ext sublime-themes string-edit sos soothe-theme smartrep smartparens smart-shift smart-mode-line slime-company shift-number shell-pop scratch-ext scala-mode sbt-mode savekill rotate restclient req-package rectangle-utils rake rainbow-delimiters racer psvn protobuf-mode prodigy podcaster plan9-theme pkgbuild-mode peek-mode paradox overseer org-dashboard org-cliplink org-bullets nyan-mode nameless multiple-cursors multifiles move-text mastodon makefile-runner magit lua-mode load-dir litable kibit-helper kaolin-themes js2-mode jazz-theme igrep ido-at-point idle-highlight-mode hyperbole httprepl howdoi hindent highlight-numbers helm-themes helm-swoop helm-proc helm-org-rifle helm-ls-git helm-helm-commands helm-google helm-gitignore helm-github-stars helm-descbinds helm-company helm-books haskell-snippets guide-key gruvbox-theme groovy-mode grizzl gotham-theme google-translate google-this glsl-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger gist flx-ido fireplace find-temp-file fic-mode expand-region exec-path-from-shell ert-modeline emr emmet-mode elpy elm-mode elisp-slime-nav edit-server duplicate-thing dockerfile-mode docker django-mode dired-rainbow dired-open dired-launch dired-details diff-hl define-word debbugs darktooth-theme company-shell company-quickhelp company-ghc clojure-mode cljsbuild-mode cargo camcorder bool-flip batch-mode bash-completion anzu ant ace-window ace-link ace-jump-helm-line ace-jump-buffer 4clojure))))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -28,10 +29,11 @@
 
 (setq-default column-number-mode t)
 
+;; Disable smartparens
+;; (setq-default smartparens-global-mode nil)
+
 ;; Enable elpy
 (elpy-enable)
-
-
 
 ;; ace-window set window selection keys to home row instead of numbers
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
@@ -175,28 +177,8 @@
 (global-set-key (kbd "C-x <kp-4>")  'buf-move-left)
 (global-set-key (kbd "C-x <kp-6>") 'buf-move-right)
 
-;; COLEMAK (ergodox)
-;; Resizing windows
-;; (global-set-key (kbd "ESC y")             'enlarge-window-three)
-;; (global-set-key (kbd "ESC u")              'shrink-window-three)
-;; (global-set-key (kbd "ESC l")  'shrink-window-horizontally-five)
-;; (global-set-key (kbd "ESC ;") 'enlarge-window-horizontally-five)
-
-;; ;; Windmove - for switching between frames -- easier than C-x o.
-;; (global-set-key (kbd "ESC i")    'windmove-up)
-;; (global-set-key (kbd "ESC e")  'windmove-down)
-;; (global-set-key (kbd "ESC n")  'windmove-left)
-;; (global-set-key (kbd "ESC o") 'windmove-right)
-
-;; ;; Buffer-move - for swapping buffers between frames.
-;; (global-set-key (kbd "C-x i")    'buf-move-up)
-;; (global-set-key (kbd "C-x e")  'buf-move-down)
-;; (global-set-key (kbd "C-x n")  'buf-move-left)
-;; (global-set-key (kbd "C-x o") 'buf-move-right)
-
 ;; disable bell
 (setq ring-bell-function 'ignore)
-
 
 (provide 'custom)
 ;;; custom.el ends here

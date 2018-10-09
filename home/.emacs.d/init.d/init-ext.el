@@ -9,15 +9,15 @@
   :ensure t
   :bind (("C-M-^" . bool-flip-do-flip)))
 
-(req-package twittering-mode
-  :ensure t
-  :commands twit
-  :config
-  (setq twittering-icon-mode t)
-  (setq twittering-use-icon-storage t)
-  (load "~/Dropbox/emacs/twittering-custom.el" t)
-  (setq twittering-use-master-password t)
-  (twittering-enable-unread-status-notifier))
+;; (req-package twittering-mode
+;;   :ensure t
+;;   :commands twit
+;;   :config
+;;   (setq twittering-icon-mode t)
+;;   (setq twittering-use-icon-storage t)
+;;   (load "~/Dropbox/emacs/twittering-custom.el" t)
+;;   (setq twittering-use-master-password t)
+;;   (twittering-enable-unread-status-notifier))
 
 (req-package mastodon
   :ensure t
@@ -41,9 +41,9 @@
   :ensure t
   :commands zoom-in/out
   :init (progn (define-key ctl-x-map [(control ?+)] 'zoom-in/out)
-			   (define-key ctl-x-map [(control ?-)] 'zoom-in/out)
-			   (define-key ctl-x-map [(control ?=)] 'zoom-in/out)
-			   (define-key ctl-x-map [(control ?0)] 'zoom-in/out)))
+               (define-key ctl-x-map [(control ?-)] 'zoom-in/out)
+               (define-key ctl-x-map [(control ?=)] 'zoom-in/out)
+               (define-key ctl-x-map [(control ?0)] 'zoom-in/out)))
 
 ;; process management
 
@@ -298,22 +298,22 @@
 
 ;; smart parenthesis
 
-(req-package smartparens-config
-  :ensure smartparens
-  :config (progn (smartparens-global-mode t)
-                 (add-hook-exec 'clojure-mode 'smartparens-strict-mode)
-                 (add-hook-exec 'emacs-lisp-mode 'smartparens-strict-mode)
-                 (add-hook-exec 'css-mode 'smartparens-strict-mode)
-                 (add-hook-exec 'rust-mode 'smartparens-strict-mode)
-                 (show-smartparens-global-mode t)
-                 (global-set-key (kbd "C-M-a") 'sp-beginning-of-sexp)
-                 (global-set-key (kbd "C-M-e") 'sp-end-of-sexp)
-                 (global-set-key (kbd "C-M-k") 'sp-kill-sexp)
-                 (global-set-key (kbd "C-M-k") 'sp-kill-sexp)
-                 (global-set-key (kbd "C-M-n") 'sp-forward-sexp)
-                 (global-set-key (kbd "C-M-p") 'sp-backward-sexp)
-                 (global-set-key (kbd "C-M-b") 'sp-up-sexp)
-                 (global-set-key (kbd "C-M-f") 'sp-down-sexp)))
+;; (req-package smartparens-config
+;;   :ensure smartparens
+;;   :config (progn (smartparens-global-mode t)
+;;                  (add-hook-exec 'clojure-mode 'smartparens-strict-mode)
+;;                  (add-hook-exec 'emacs-lisp-mode 'smartparens-strict-mode)
+;;                  (add-hook-exec 'css-mode 'smartparens-strict-mode)
+;;                  (add-hook-exec 'rust-mode 'smartparens-strict-mode)
+;;                  (show-smartparens-global-mode t)
+;;                  (global-set-key (kbd "C-M-a") 'sp-beginning-of-sexp)
+;;                  (global-set-key (kbd "C-M-e") 'sp-end-of-sexp)
+;;                  (global-set-key (kbd "C-M-k") 'sp-kill-sexp)
+;;                  (global-set-key (kbd "C-M-k") 'sp-kill-sexp)
+;;                  (global-set-key (kbd "C-M-n") 'sp-forward-sexp)
+;;                  (global-set-key (kbd "C-M-p") 'sp-backward-sexp)
+;;                  (global-set-key (kbd "C-M-b") 'sp-up-sexp)
+;;                  (global-set-key (kbd "C-M-f") 'sp-down-sexp)))
 
 ;; auto reverting
 
