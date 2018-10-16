@@ -71,6 +71,7 @@
    (add-hook 'c-mode-hook 'my-c++-mode-hook)))
 
 (req-package windmove)
+;; this didn't work, had to package-install manually...
 (req-package buffer-move)
 (req-package revive
   :config

@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (hl-defined narrow-indirect zoom-frm dummy-h-mode zygospore ztree yoshi-theme yaml-mode xmlgen wotd wgrep visual-regexp-steroids use-package-el-get use-package-chords unbound twittering-mode toml-mode swoop sudo-ext sublime-themes string-edit sos soothe-theme smartrep smartparens smart-shift smart-mode-line slime-company shift-number shell-pop scratch-ext scala-mode sbt-mode savekill rotate restclient req-package rectangle-utils rake rainbow-delimiters racer psvn protobuf-mode prodigy podcaster plan9-theme pkgbuild-mode peek-mode paradox overseer org-dashboard org-cliplink org-bullets nyan-mode nameless multiple-cursors multifiles move-text mastodon makefile-runner magit lua-mode load-dir litable kibit-helper kaolin-themes js2-mode jazz-theme igrep ido-at-point idle-highlight-mode hyperbole httprepl howdoi hindent highlight-numbers helm-themes helm-swoop helm-proc helm-org-rifle helm-ls-git helm-helm-commands helm-google helm-gitignore helm-github-stars helm-descbinds helm-company helm-books haskell-snippets guide-key gruvbox-theme groovy-mode grizzl gotham-theme google-translate google-this glsl-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger gist flx-ido fireplace find-temp-file fic-mode expand-region exec-path-from-shell ert-modeline emr emmet-mode elpy elm-mode elisp-slime-nav edit-server duplicate-thing dockerfile-mode docker django-mode dired-rainbow dired-open dired-launch dired-details diff-hl define-word debbugs darktooth-theme company-shell company-quickhelp company-ghc clojure-mode cljsbuild-mode cargo camcorder bool-flip batch-mode bash-completion anzu ant ace-window ace-link ace-jump-helm-line ace-jump-buffer 4clojure))))
+    (hl-defined narrow-indirect zoom-frm dummy-h-mode zygospore ztree yoshi-theme yaml-mode xmlgen wotd wgrep visual-regexp-steroids use-package-el-get use-package-chords unbound twittering-mode toml-mode swoop sudo-ext sublime-themes string-edit sos soothe-theme smartrep smartparens smart-shift smart-mode-line slime-company shift-number shell-pop scratch-ext scala-mode sbt-mode savekill rotate restclient req-package rectangle-utils rake rainbow-delimiters racer psvn protobuf-mode prodigy podcaster plan9-theme pkgbuild-mode peek-mode paradox overseer org-dashboard org-cliplink org-bullets nyan-mode nameless multiple-cursors multifiles move-text mastodon makefile-runner magit lua-mode load-dir litable kibit-helper kaolin-themes js2-mode jazz-theme igrep ido-at-point idle-highlight-mode hyperbole httprepl howdoi hindent highlight-numbers helm-themes helm-swoop helm-proc helm-org-rifle helm-ls-git helm-helm-commands helm-google helm-gitignore helm-github-stars helm-descbinds helm-company helm-books haskell-snippets guide-key gruvbox-theme groovy-mode grizzl gotham-theme google-translate google-this glsl-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger gist flx-ido fireplace find-temp-file fic-mode expand-region exec-path-from-shell ert-modeline emr emmet-mode elpy elm-mode elisp-slime-nav edit-server duplicate-thing dockerfile-mode docker django-mode dired-rainbow dired-open dired-launch dired-details diff-hl define-word debbugs darktooth-theme company-shell company-quickhelp company-ghc clojure-mode cljsbuild-mode cargo camcorder buffer-move bool-flip batch-mode bash-completion anzu ant ace-window ace-link ace-jump-helm-line ace-jump-buffer 4clojure))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -95,6 +95,14 @@
   (interactive "r")
   (shell-command-on-region b e "pbcopy"))
 
+(defun my/emerge (local remote base output)
+  "facility for emerging via emacsclient"
+  (emerge-files-with-ancestor nil local remote base output nil 'my/emerge--close-current-frame))
+
+(defun my/emerge--close-current-frame ()
+  "Close the current frame"
+  (delete-frame (selected-frame)))
+
 ;;;;---------------------------------------------------------------------------
 ;; SECTION: Key Bindings
 ;;;;---------------------------------------------------------------------------
@@ -135,20 +143,19 @@
 
 (global-set-key (kbd "C-x w") 'delete-trailing-whitespace)
 
-;; (global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-a") 'helm-M-x)
+(global-set-key (kbd "M-x") 'helm-M-x)
 ;; (global-set-key (kbd "M-w") 'helm-imenu)
-;; (global-set-key (kbd "C-x C-d") 'helm-browse-project)
+(global-set-key (kbd "C-x C-d") 'helm-browse-project)
 ;; (global-set-key (kbd "M-m") 'helm-do-grep)
 
 ;; QWERTY (ergodox)
 ;; Resizing windows
 (global-unset-key (kbd "C-M-i"))
 (add-hook 'help-mode-hook
-          (lambda()
-            (local-unset-key (kbd "C-M-i"))))
+          (lambda() (local-unset-key (kbd "C-M-i"))))
 (add-hook 'after-change-major-mode-hook
-          (lambda()
-            (local-unset-key (kbd "C-M-i"))))
+          (lambda() (local-unset-key (kbd "C-M-i"))))
 (global-set-key (kbd "C-M-i")             'enlarge-window-three)
 (global-set-key (kbd "C-M-k")              'shrink-window-three)
 (global-set-key (kbd "C-M-j")  'shrink-window-horizontally-five)

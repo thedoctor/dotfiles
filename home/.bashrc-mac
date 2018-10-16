@@ -8,11 +8,11 @@ type -a exa &> /dev/null || cargo install exa
 type -a brew &> /dev/null || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update
 # we foolishly assume pyenv being installed means all this shit is!
-if [[ type -a pyenv &> /dev/null ]]; then
-   brew install pyenv pyenv-virtualenv \ # pyenv
-                make cmake \ # build-essentials
-		gnupg yubikey-personalization hopenpgp-tools ykman pinentry-mac # yubikey bullshit
-		diff-so-fancy
+if [ type -a pyenv &> /dev/null ]; then
+   brew install pyenv pyenv-virtualenv \
+                make cmake \
+                gnupg yubikey-personalization hopenpgp-tools ykman pinentry-mac \
+                diff-so-fancy
 fi
 
 [[ -s "$(brew --prefix dvm)/dvm.sh" ]] && source "$(brew --prefix dvm)/dvm.sh"

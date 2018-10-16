@@ -3,11 +3,11 @@ export PATH
 
 if [[ $machine = "Mac" ]]; then
     if [ -f "${HOME}/.bashrc-mac" ]; then
-	source "${HOME}/.bashrc-mac"
+        source "${HOME}/.bashrc-mac"
     fi
 elif [[ $machine = "Linux" ]]; then
     if [ -f "${HOME}/.bashrc-linux" ]; then
-	source "${HOME}/.bashrc-linux"
+        source "${HOME}/.bashrc-linux"
     fi
 fi
 
@@ -42,10 +42,13 @@ mfind(){
 
 mrepl(){
     if [[ $# -eq 3 ]]; then
-        read -p "Are you sure you want to replace all occurrences of $2 with $3 in $1? [Y/n] " -r
+        read -p "Are you sure you want to replace all occurrences of $2 with $3 in $1? [y/N] " -r
         echo
         if [[ $REPLY =~ ^[Yy]$ ]]; then
-            find "$1" -type f -exec sed -i "s/$2/$3/g" {} \;
+            find "$1" -type f -exec sed -i.deleteme "s/$2/$3/g" {} \;
+            find "$1" -type f -name "*.deleteme" -exec rm -f {} \;
+        else
+            echo 'Okay, nvm'
         fi
     else
         echo 'Usage: mrepl DIR search-string replace-string'
