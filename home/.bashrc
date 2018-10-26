@@ -281,7 +281,7 @@ alias dl="tail -f /tmp/drupal_debug.txt"
 alias dockerc="docker-compose"
 alias dockerm="docker-machine"
 
-alias e='emacsclient -t'
+alias e='ec'
 alias eamcs='emacs'
 alias emac='emacs'
 alias emcas='emacs'
@@ -308,6 +308,10 @@ alias nifty="sudo kextunload /System/Library/Extensions/AppleStorageDrivers.kext
 alias wiki="web https://gemology.atlassian.net/wiki/display/GE/Gem+Engineering"
 alias kraken="pc kraken && web https://kraken.com/login"
 alias naw="web https://www.youtube.com/watch?v=-K7fCQlUhj0"
+
+# Spring stuff
+alias spring="springctl "
+
 
 # Run twolfson/sexy-bash-prompt
 if [[ -f ~/.bash_prompt && -n $SEXY ]]; then
