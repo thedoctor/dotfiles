@@ -3,16 +3,21 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(minimap-major-modes (quote (prog-mode markdown-mode)))
+ '(minimap-mode t)
+ '(minimap-width-fraction 0.1)
+ '(minimap-window-location (quote right))
  '(package-selected-packages
    (quote
-    (hl-defined narrow-indirect zoom-frm dummy-h-mode zygospore ztree yoshi-theme yaml-mode xmlgen wotd wgrep visual-regexp-steroids use-package-el-get use-package-chords unbound twittering-mode toml-mode swoop sudo-ext sublime-themes string-edit sos soothe-theme smartrep smartparens smart-shift smart-mode-line slime-company shift-number shell-pop scratch-ext scala-mode sbt-mode savekill rotate restclient req-package rectangle-utils rake rainbow-delimiters racer psvn protobuf-mode prodigy podcaster plan9-theme pkgbuild-mode peek-mode paradox overseer org-dashboard org-cliplink org-bullets nyan-mode nameless multiple-cursors multifiles move-text mastodon makefile-runner magit lua-mode load-dir litable kibit-helper kaolin-themes js2-mode jazz-theme igrep ido-at-point idle-highlight-mode hyperbole httprepl howdoi hindent highlight-numbers helm-themes helm-swoop helm-proc helm-org-rifle helm-ls-git helm-helm-commands helm-google helm-gitignore helm-github-stars helm-descbinds helm-company helm-books haskell-snippets guide-key gruvbox-theme groovy-mode grizzl gotham-theme google-translate google-this glsl-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger gist flx-ido fireplace find-temp-file fic-mode expand-region exec-path-from-shell ert-modeline emr emmet-mode elpy elm-mode elisp-slime-nav edit-server duplicate-thing dockerfile-mode docker django-mode dired-rainbow dired-open dired-launch dired-details diff-hl define-word debbugs darktooth-theme company-shell company-quickhelp company-ghc clojure-mode cljsbuild-mode cargo camcorder buffer-move bool-flip batch-mode bash-completion anzu ant ace-window ace-link ace-jump-helm-line ace-jump-buffer 4clojure))))
+    (hl-defined narrow-indirect zoom-frm dummy-h-mode zygospore ztree zoom yoshi-theme yaml-mode xmlgen wotd wgrep visual-regexp-steroids use-package-el-get use-package-chords undercover unbound twittering-mode toml-mode swoop sudo-ext sublime-themes string-edit sos soothe-theme solidity-mode smex smartrep smartparens smart-shift smart-mode-line slime-company shift-number shell-pop scratch-persist scratch-ext scala-mode sbt-mode savekill rotate revive restclient req-package rectangle-utils rake rainbow-delimiters racer psvn protobuf-mode prodigy podcaster plan9-theme pkgbuild-mode peek-mode paradox overseer org-dashboard org-cliplink org-bullets nyan-mode nameless multiple-cursors multifiles move-text minimap mastodon markdown-preview-mode makefile-runner magit lua-mode load-dir litable kibit-helper kaolin-themes js2-mode jazz-theme igrep ido-at-point idle-highlight-mode hyperbole httprepl howdoi hindent highlight-numbers helm-themes helm-swoop helm-proc helm-org-rifle helm-ls-git helm-helm-commands helm-google helm-gitignore helm-github-stars helm-descbinds helm-company helm-books haskell-snippets guide-key gruvbox-theme groovy-mode grizzl gotham-theme google-translate google-this glsl-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger gist flycheck-rust flycheck-pos-tip flx-ido fireplace find-temp-file fic-mode expand-region exec-path-from-shell ert-modeline ert-expectations emr emmet-mode elpy elm-mode elisp-slime-nav el-mock edit-server duplicate-thing dockerfile-mode docker django-mode dired-rainbow dired-open dired-launch dired-details diff-hl define-word debbugs darktooth-theme company-shell company-quickhelp company-ghc clojure-mode cljsbuild-mode cargo camcorder buffer-move bool-flip batch-mode bash-completion anzu ant ace-window ace-link ace-jump-helm-line ace-jump-buffer 4clojure)))
+ '(rainbow-delimiters-max-face-count 8))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil)))))
+ '(minimap-active-region-background ((t (:background "#3377")))))
 
 ;;;;---------------------------------------------------------------------------
 ;; Section: Preferences
