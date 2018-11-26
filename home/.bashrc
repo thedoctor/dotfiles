@@ -71,47 +71,130 @@ be(){
     bundle exec "$@"
 }
 
+# Kubernetes shortcuts
+
 k(){
+    echo "> kubectl $@"
     kubectl "$@"
 }
 
-knamespace(){
-    kubectl config set-context minikube --namespace="$1"
-}
-
-kn(){
-    kubectl --namespace "$1" "${@: 2:$#-1}"
-}
-
-kl(){
-    ${HOME}/dev/gem/projects/gem-os-minikube/bin/gkube-podLog.sh $1
-}
-
-kd(){
-    k delete deployment $1
-    k delete service $1
-    if [[ $1 = 'gem-gateway' ]]; then
-        ${HOME}/dev/gem/projects/gem-os-minikube/bin/registerContainers.sh $1 --exclude gradle
-        ${HOME}/dev/gem/projects/gem-os-minikube/bin/gkube-deployService.sh $(k config view -o jsonpath='{.contexts[?(@.name == "minikube")].context.namespace}') $1 --expose NodePort
+kc(){
+    if [[ $# -lt 1 ]]; then
+        echo "Usage: kc [CONTEXT-TO-SELECT || kubectl-config-ARGS...]"
+        k config view
+    elif [[ $# -eq 1 ]]; then
+        k config use-context $1
     else
-        ${HOME}/dev/gem/projects/gem-os-minikube/bin/registerContainers.sh $1
-        ${HOME}/dev/gem/projects/gem-os-minikube/bin/gkube-deployService.sh $(k config view -o jsonpath='{.contexts[?(@.name == "minikube")].context.namespace}') $1
+        k config $@
     fi
 }
 
-ke(){
+kn(){
     if [[ $# -lt 1 ]]; then
-        echo "Usage: kp POD-IDENTIFIER-SUBSTRING"
+        echo "Usage: kn [NAMESPACE-TO-SET || (NAMESPACE|all) KUBECTL-COMMAND-TO-RUN]"
+        k get namespaces
+    elif [[ $# -eq 1 ]]; then
+        k config set-context $(kubectl config current-context) --namespace="$1"
+    elif [[ $1 = "all" ]]; then
+        k "${@: 2:$#-1}" --all-namespaces
+    else
+        k --namespace="$1"  "${@: 2:$#-1}"
+    fi
+}
+
+kl(){
+    if [[ $# -lt 1 ]]; then
+        echo "Usage: kl [-f] POD-SEARCH-STRING"
+        return 1
+    fi
+    if [[ $1 = "-f" ]]; then
+        k logs -f $(kg pods | cut -f 1 -d ' ' |grep $2)
+    else
+        k logs $(kg pods | cut -f 1 -d ' ' |grep $1)
+    fi
+}
+
+kssh(){
+    echo "Usage: kssh POD-SEARCH-STRING"
+    k exec -it $(kg pods | cut -f 1 -d ' ' |grep $1)  -- /bin/bash
+}
+
+# Deletes things of [THING-TYPE] fuzzy-matching [SEARCH-STRING]
+kd(){
+    echo $#
+    if [[ $# -lt 1 ]]; then
+        echo "Usage: kd [-f] [THING-TYPE] SEARCH-STRING"
+        return 1
+    fi
+    if [[ $# -lt 2 ]]; then
+        kdd $@
+    elif [[ $# -eq 2 ]] && [[ $1 = '-f' ]]; then
+        kdd $@
+    elif [[ $1 = "-f" ]]; then
+        k delete $2 $(kg $2 | cut -f 1 -d ' ' |grep $3) --grace-period=0
+    else
+        k delete $1 $(kg $1 | cut -f 1 -d ' ' |grep $2)
+    fi
+}
+
+# Deletes all things with exact name match
+kdd(){
+    if [[ $1 = '-f' ]]; then
+        THING="${2} --grace-period=0"
+    else
+        THING=$1
+    fi
+    k delete deployment $THING 2>/dev/null
+    k delete rc $THING 2>/dev/null
+    k delete service $THING 2>/dev/null
+    k delete pod $THING 2>/dev/null
+}
+
+kdsc(){
+    if [[ $# -lt 1 ]]; then
+        echo "Usage: kdsc THING-TYPE SEARCH-STRING"
+    else
+        k describe $1 $(kg $1 | cut -f 1 -d ' ' |grep $2)
+    fi
+}
+
+# Execute a command in a pod
+ke(){
+    if [[ $# -lt 2 ]]; then
+        echo "Usage: ke POD-SEARCH-STRING COMMAND"
     else
         k exec $(k get pods | cut -f 1 -d ' ' |grep $1)  "${@: 2:$#-1}"
     fi
 }
 
+kg(){
+    if [[ $# -lt 1 ]]; then
+        printf "Usage: kg [THING-TYPE(pods|rc|rs|deployments|svc|pv|pvc|...)]\n"
+        printf "\n--namespaces--\n"
+        kg namespaces
+        printf "\n--persistentvolumes--\n"
+        kg pv
+        printf "\n--persistentvolumeclaims--\n"
+        kg pvc
+        printf "\n--services--\n"
+        kg svc
+        printf "\n--deployments--\n"
+        kg deployments
+        printf "\n--replicationcontrollers--\n"
+        kg rc
+        printf "\n--pods--\n"
+        kg pods
+    else
+        k get "${@}"
+    fi
+}
+
+# Deletes a pod
 kpd(){
     if [[ $# -lt 1 ]]; then
         echo "Usage: kpd POD-IDENTIFIER-SUBSTRING"
     else
-        k delete pod $(k get pods | cut -f 1 -d ' ' |grep $1)
+        k delete pod
     fi
 }
 
@@ -308,10 +391,12 @@ alias nifty="sudo kextunload /System/Library/Extensions/AppleStorageDrivers.kext
 alias wiki="web https://gemology.atlassian.net/wiki/display/GE/Gem+Engineering"
 alias kraken="pc kraken && web https://kraken.com/login"
 alias naw="web https://www.youtube.com/watch?v=-K7fCQlUhj0"
+note(){
+    e "~/notes/$(date +%Y-%m-%d)-$1.md"
+}
 
 # Spring stuff
 alias spring="springctl "
-
 
 # Run twolfson/sexy-bash-prompt
 if [[ -f ~/.bash_prompt && -n $SEXY ]]; then

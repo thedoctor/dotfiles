@@ -135,12 +135,19 @@
                       (equal major-mode 'dart-mode)
                       (equal major-mode 'html-mode)) (column-marker-1 101)))))
 
+(defun delete-trailing-whitespace-except-markdown ()
+  "delete trailing whitespace; but not in markdown because trailing spaces have meaning _eyeroll"
+  (unless (equal major-mode 'markdown-mode) (delete-trailing-whitespace)))
+
 (req-package highlight-chars
   :commands (hc-highlight-tabs hc-highlight-trailing-whitespace)
   :init
   (add-hook 'font-lock-mode-hook #'hc-highlight-tabs)
   (add-hook 'font-lock-mode-hook #'hc-highlight-trailing-whitespace)
-  (add-hook 'before-save-hook #'delete-trailing-whitespace))
+  (add-hook 'before-save-hook #'delete-trailing-whitespace-except-markdown))
+
+;; can't figure out where this gets set...
+(remove-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (req-package-force stripe-buffer
   :commands (turn-on-stripe-buffer-mode stripe-listify-buffer)

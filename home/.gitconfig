@@ -1,57 +1,57 @@
 # This is Git's per-user configuration file.
 [user]
-        name = Matt Smith
-        email = matts@springlabs.com
+    name = Matt Smith
+    email = matts@springlabs.com
 [core]
-        editor = emacsclient -t
-        excludesfile = /Users/matt/.gitignore_global
-        pager = diff-so-fancy | less --tabs=1,5 -R
+    editor = emacsclient -t
+    excludesfile = /Users/matt/.gitignore_global
+    pager = diff-so-fancy | less --tabs=1,5 -R
 [web]
-        browser = google-chrome
+    browser = google-chrome
 [merge]
-        tool = emerge
+    tool = emerge
 [color]
-        ui = auto
+    ui = auto
 [color "branch"]
-        current = yellow bold
-        local = green bold
-        remote = cyan bold
+    current = yellow bold
+    local = green bold
+    remote = cyan bold
 [color "diff"]
-        meta = yellow bold
-        frag = magenta bold
-        old = red bold
-        new = green bold
-        whitespace = red reverse
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
 [color "diff-highlight"]
-        oldNormal = red bold
-        newNormal = green bold
-        oldHighlight = red bold 52
-        newHighlight = green bold 22
+    oldNormal = red bold
+    newNormal = green bold
+    oldHighlight = red bold 52
+    newHighlight = green bold 22
 [color "status"]
-        added = green bold
-        changed = yellow bold
-        untracked = red bold
+    added = green bold
+    changed = yellow bold
+    untracked = red bold
 [pager]
-        diff = diff-so-fancy | less --tabs=1,5 -RFX
-        show = diff-so-fancy | less --tabs=1,5 -RFX
+    diff = diff-so-fancy | less --tabs=1,5 -RFX
+    show = diff-so-fancy | less --tabs=1,5 -RFX
 [alias]
-        s = status
-        a = add
-        c = commit
-        cam = !git commit -a -m "$@"
-        cm = !git commit -m "$@"
-        p = push
-        t = tag
-        pt = push --tags
-        po = push origin
-        pot = push origin --tags
-        pl = pull
-        plo = pull origin
-        sub = submodule
-        co = checkout
-        rb = rebase
-        rs = reset
-        m = merge
-        mt = mergetool
-        release = !grel
-	dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
+    s = status
+    a = add
+    c = commit
+    cam = !git commit -a -m "$@"
+    cm = !git commit -m "$@"
+    p = push
+    t = tag
+    pt = push --tags
+    po = push origin
+    pot = push origin --tags
+    pl = pull
+    plo = pull origin
+    sub = submodule
+    co = checkout
+    rb = rebase
+    rs = reset
+    m = merge
+    mt = mergetool
+    release = !grel
+    dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"

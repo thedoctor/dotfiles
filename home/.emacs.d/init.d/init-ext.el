@@ -82,7 +82,7 @@
 
 ;; delete trailing whitespaces before saving some buffer
 
-(add-hook-exec 'before-save 'delete-trailing-whitespace)
+;; (add-hook-exec 'before-save 'delete-trailing-whitespace-except-markdown)
 
 ;; temp file
 
