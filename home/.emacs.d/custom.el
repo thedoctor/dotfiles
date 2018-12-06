@@ -36,6 +36,7 @@
 
 ;; Disable smartparens
 ;; (setq-default smartparens-global-mode nil)
+(add-hook 'after-change-major-mode-hook #'turn-off-smartparens-mode)
 
 ;; Enable elpy
 (elpy-enable)

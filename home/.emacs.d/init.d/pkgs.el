@@ -119,7 +119,8 @@
   (add-hook 'after-change-major-mode-hook
             (lambda ()
               ;; Usually limit is 80 characters
-              (unless (equal major-mode 'fundamental-mode) (column-marker-1 81))
+              (unless (or (equal major-mode 'fundamental-mode)
+                          (equal major-mode 'markdown-mode)) (column-marker-1 81))
               ;; Python is actually 79
               (if (or (equal major-mode 'python-mode)
                       (equal major-mode 'jedi-mode)
