@@ -1,15 +1,20 @@
+
 (req-package smex)
 
-(req-package ace-jump-mode
-  :bind ("ESC SPC" . ace-jump-mode))
+;; (req-package ace-jump-mode
+;;   :bind ("ESC SPC" . ace-jump-mode))
 
 (req-package elpy
   :require python-mode
+  :init (add-hook 'python-mode-hook
+                  (lambda ()
+                    (require 'sphinx-doc)
+                    (sphinx-doc-mode t)))
   :config
   (enable-elpy))
 
 (req-package python-mode
-  :mode "\\.py\\'" "\\.pythonrc\\'"
+  :mode "\\.py\\'" "\\.pythonrc\\'" "\\BUILD\\'"
   :config (elpy-mode))
 
 (req-package arduino-mode
@@ -123,12 +128,10 @@
                           (equal major-mode 'markdown-mode)) (column-marker-1 81))
               ;; Python is actually 79
               (if (or (equal major-mode 'python-mode)
-                      (equal major-mode 'jedi-mode)
-                      ;; smh spring
-                      (equal major-mode 'elpy-mode)) (column-marker-1 121))
-                      ;;(equal major-mode 'elpy-mode)) (column-marker-1 80))
+                      (equal major-mode 'jedi-mode)) (column-marker-1 101))
               ;; And the fatties are 100
-              (if (or (equal major-mode 'java-mode)
+              (if (or (equal major-mode 'elpy-mode)
+                      (equal major-mode 'java-mode)
                       (equal major-mode 'json-mode)
                       (equal major-mode 'js-mode)
                       (equal major-mode 'js2-mode)

@@ -118,7 +118,9 @@
         end-of-buffer
         find-file-in-vcs-directory
         handle-select-window
+        handle-switch-frame
         helm-buffers-list
+        helm-find-files
         revert-buffer
         save-some-buffers
         switch-window

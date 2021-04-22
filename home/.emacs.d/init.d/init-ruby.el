@@ -5,7 +5,7 @@
 (req-package ruby-mode
   :ensure t
   :mode (("Rakefile\\'" . ruby-mode)
-		 ("rb\\'" . ruby-mode)))
+         ("rb\\'" . ruby-mode)))
 
 (req-package rake
   :ensure t :commands rake)

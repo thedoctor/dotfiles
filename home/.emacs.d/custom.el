@@ -3,25 +3,21 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(minimap-major-modes (quote (prog-mode markdown-mode)))
- '(minimap-mode t)
- '(minimap-width-fraction 0.1)
- '(minimap-window-location (quote right))
  '(package-selected-packages
-   (quote
-    (hl-defined narrow-indirect zoom-frm dummy-h-mode zygospore ztree zoom yoshi-theme yaml-mode xmlgen wotd wgrep visual-regexp-steroids use-package-el-get use-package-chords undercover unbound twittering-mode toml-mode swoop sudo-ext sublime-themes string-edit sos soothe-theme solidity-mode smex smartrep smartparens smart-shift smart-mode-line slime-company shift-number shell-pop scratch-persist scratch-ext scala-mode sbt-mode savekill rotate revive restclient req-package rectangle-utils rake rainbow-delimiters racer psvn protobuf-mode prodigy podcaster plan9-theme pkgbuild-mode peek-mode paradox overseer org-dashboard org-cliplink org-bullets nyan-mode nameless multiple-cursors multifiles move-text minimap mastodon markdown-preview-mode makefile-runner magit lua-mode load-dir litable kibit-helper kaolin-themes js2-mode jazz-theme igrep ido-at-point idle-highlight-mode hyperbole httprepl howdoi hindent highlight-numbers helm-themes helm-swoop helm-proc helm-org-rifle helm-ls-git helm-helm-commands helm-google helm-gitignore helm-github-stars helm-descbinds helm-company helm-books haskell-snippets guide-key gruvbox-theme groovy-mode grizzl gotham-theme google-translate google-this glsl-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger gist flycheck-rust flycheck-pos-tip flx-ido fireplace find-temp-file fic-mode expand-region exec-path-from-shell ert-modeline ert-expectations emr emmet-mode elpy elm-mode elisp-slime-nav el-mock edit-server duplicate-thing dockerfile-mode docker django-mode dired-rainbow dired-open dired-launch dired-details diff-hl define-word debbugs darktooth-theme company-shell company-quickhelp company-ghc clojure-mode cljsbuild-mode cargo camcorder buffer-move bool-flip batch-mode bash-completion anzu ant ace-window ace-link ace-jump-helm-line ace-jump-buffer 4clojure)))
- '(rainbow-delimiters-max-face-count 8))
+   '(hl-defined narrow-indirect zoom-frm dummy-h-mode zygospore ztree zoom yoshi-theme yaml-mode xmlgen wotd wgrep-helm visual-regexp-steroids use-package-el-get use-package-chords undercover unbound typescript twittering-mode toml-mode swoop sudo-ext sublime-themes string-edit sphinx-doc sos soothe-theme smex smartrep smartparens smart-shift smart-mode-line slime-company shift-number shell-pop sesman scratch-persist scratch-ext scala-mode sbt-mode savekill rotate revive restclient req-package rectangle-utils rake rainbow-delimiters racer psvn protobuf-mode prodigy podcaster plan9-theme pkgbuild-mode peek-mode paradox overseer org-roam org-dashboard org-cliplink org-bullets nyan-mode nameless multiple-cursors multifiles move-text minimap mermaid-mode mastodon markdown-preview-mode makefile-runner magit-svn magit-gitflow lua-mode load-dir litable kibit-helper kaolin-themes js2-mode jazz-theme isortify igrep ido-at-point idle-highlight-mode hyperbole httprepl howdoi hindent highlight-numbers helm-themes helm-swoop helm-rg helm-projectile helm-proc helm-org-rifle helm-ls-git helm-helm-commands helm-google helm-gitignore helm-github-stars helm-descbinds helm-company helm-books haskell-snippets guide-key gruvbox-theme groovy-mode grizzl graphviz-dot-mode gotham-theme google-translate google-this glsl-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger gist flycheck-rust flycheck-pos-tip flx-ido fireplace find-temp-file find-file-in-project fic-mode expand-region exec-path-from-shell ert-modeline ert-expectations emr emmet-mode elpy elm-mode elisp-slime-nav el-mock edit-server duplicate-thing dockerfile-mode docker django-mode dired-rainbow dired-open dired-launch dired-details diff-hl define-word debbugs darktooth-theme company-solidity company-shell company-quickhelp company-ghc clojure-snippets clojure-mode-extra-font-locking cljsbuild-mode cargo camcorder buffer-move bool-flip batch-mode bash-completion avy-menu anzu ant align-cljlet ace-window ace-link ace-jump-mode ace-jump-helm-line ace-jump-buffer 4clojure)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(minimap-active-region-background ((t (:background "#3377")))))
+ '(default ((t (:background nil)))))
 
 ;;;;---------------------------------------------------------------------------
 ;; Section: Preferences
 ;;;;---------------------------------------------------------------------------
+
+
 
 (defun split-horizontally-for-temp-buffers ()
   "Split the window horizontally for temp buffers."
@@ -53,8 +49,12 @@
   (setq font-lock-auto-fontify t))   ; XEmacs
 
 ;; Show me dem line-numbers
-(setq linum-format "%d ")
-(add-hook 'after-change-major-mode-hook 'linum-mode)
+;; (setq linum-format "%d ")
+;;(add-hook 'after-change-major-mode-hook 'display-line-numbers-mode)
+(when (version<= "26.0.50" emacs-version )
+  (global-display-line-numbers-mode))
+(setq display-line-numbers-grow-only t)
+(setq display-line-numbers-width-start t)
 
 ;; Reload file from disk - without a verbose yes/no confirm
 (defun revert-buffer-no-confirm ()
@@ -109,9 +109,23 @@
   "Close the current frame"
   (delete-frame (selected-frame)))
 
+(defun insert-pdb ()
+  "Insert pdb import and set_trace at cursor point."
+  (interactive)
+  (insert "breakpoint()")
+  (call-interactively (global-key-binding "\C-i")))
+
+(defun elpy-goto-usages ()
+  "Find usages of thing under point in elpy"
+  (interactive)
+  (call-interactively (xref-find-references (elpy-xref--identifier-at-point))))
+
 ;;;;---------------------------------------------------------------------------
-;; SECTION: Key Bindings
+;;;; SECTION: Key Bindings
 ;;;;---------------------------------------------------------------------------
+
+(global-set-key (kbd "M-p") 'insert-pdb)
+(global-set-key (kbd "M-SPC") 'avy-goto-char-2)
 
 ;; respectful mode
 ;; (global-set-key (kbd "C-x e") 'respectful-mode)
@@ -124,7 +138,8 @@
 (global-set-key (kbd "C-<down>") 'forward-paragraph)
 (define-key elpy-mode-map (kbd "C-<up>") 'backward-paragraph)
 (define-key elpy-mode-map (kbd "C-<down>") 'forward-paragraph)
-(define-key elpy-mode-map (kbd "C-M-g") 'elpy-goto-definition)
+(define-key elpy-mode-map (kbd "C-M-g") 'elpy-goto-assignment)
+(define-key elpy-mode-map (kbd "C-M-u") 'elpy-goto-usages)
 (define-key elpy-mode-map (kbd "C-M-i") 'enlarge-window-three)
 
 ;; line-mode for editing, char-mode for terminal
@@ -151,9 +166,11 @@
 
 (global-set-key (kbd "M-a") 'helm-M-x)
 (global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-f") 'helm-projectile-rg)
 ;; (global-set-key (kbd "M-w") 'helm-imenu)
 (global-set-key (kbd "C-x C-d") 'helm-browse-project)
 ;; (global-set-key (kbd "M-m") 'helm-do-grep)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
 
 ;; QWERTY (ergodox)
 ;; Resizing windows

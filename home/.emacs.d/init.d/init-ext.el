@@ -263,25 +263,29 @@
 
 ;; ace jump mode
 
-(req-package ace-jump-mode
-  :ensure t
-  :bind (("M-/" . ace-jump-word-mode)
-         ("M-'" . ace-jump-char-mode)
-         ("M-g M-g" . ace-jump-line-mode)))
+;; (req-package avy-menu
+;;   :ensure t
+;;   :bind (("M-SPC" . avy-goto-char-2)))
 
-;; quickly jump to links
+;; (req-package ace-jump-mode
+;;   :ensure t
+;;   :bind (("M-/" . ace-jump-word-mode)
+;;          ("M-'" . ace-jump-char-mode)
+;;          ("M-g M-g" . ace-jump-line-mode)))
 
-(req-package ace-link
-  :ensure t
-  :bind ("M-/" . ace-jump-word-mode)
-  :config (ace-link-setup-default))
+;; ;; quickly jump to links
 
-;; ace jump buffer
+;; (req-package ace-link
+;;   :ensure t
+;;   :bind ("M-/" . ace-jump-word-mode)
+;;   :config (ace-link-setup-default))
 
-(req-package ace-jump-buffer
-  :ensure t
-  :require (shell)
-  :bind ("M-?" . ace-jump-buffer))
+;; ;; ace jump buffer
+
+;; (req-package ace-jump-buffer
+;;   :ensure t
+;;   :require (shell)
+;;   :bind ("M-?" . ace-jump-buffer))
 
 ;; move text
 

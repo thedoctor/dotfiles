@@ -14,15 +14,15 @@
 
 (if (and (not (has-emacs-version 24 0))
          (not (has-emacs-version 25 0))
-         (not (has-emacs-version 26 0)))
+         (not (has-emacs-version 26 0))
+         (not (has-emacs-version 26 1)))
     (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 ;; elpa
 
-(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("melpa-stable" . "https://stable.melpa.org/packages/")
-                         ("org" . "https://orgmode.org/elpa/")
+                         ;; ("org" . "https://orgmode.org/elpa/")
                          ("marmalade" . "https://marmalade-repo.org/packages/")))
 
 (defconst my-init-dir "~/.emacs.d/init.d")
